@@ -1,0 +1,31 @@
+- Controller SHOULD NOT have __contructor() ONLY _init()	
+- modify all models based on "menu package"
+- add function previewAction () to needed controllers
+- rename all protected/private fields to start with _ (underscore)
+- add public $col to all models
+
+
+- add the followings to Aula_Controller_Action and remove them from all controllers
+	private $fields = array ();
+	private $authObj = NULL;
+	private $errorMessage = Array ();
+	
+- renamethe following and remove _ 
+	public $_request = NULL;
+	public $_globals = array ();
+
+
+- re-set all accessors with public/private/protected and final
+
+
+
+- check if there's 2 calls for $this -> init(); in Aula_Controller_Action
+- rename $this->view->init() to $this->view->_init()
+
+### DONE
+###############################
+# create controllerAdmin file for all controllers
+# rename all classes
+# remove duplicated functions for Admin/User controllers
+# remove all classes/functions comments blocks
+# Look for initAdmin, AdminAction, Action', 

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Election Ticker' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Election Ticker' );
+	?></span></a></li>
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt"><a href="#er" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Aula_Save' );
+?></button>
+</em></a> <a href="#er" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
+echo $this->__ ( 'Aula_Reset' );
+?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Election Ticker' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Aula_Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea name="content" id="content"
+			class="txtarea" style="height: 200px;"><?php
+			print $this->sanitized->content->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->content->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->content->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+
+</div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab1--></div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

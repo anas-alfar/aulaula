@@ -1,0 +1,125 @@
+
+<div class="lftpanel"><!--bigbox-->
+<div class="bigbox"><span class="bigtop"><span><em></em></span></span>
+<div class="boxdata"><!--classifieds-->
+                    	<?php
+																					if (! empty ( $this->quickClassifiedsList ) and is_array ( $this->quickClassifiedsList )) {
+																						?>
+                        <div class="cleaner marglftrit">
+<h2 class="classad fr"><img
+	src="<?php
+																						print $this->defaultSkinImagesUrl;
+																						?>spacer.gif"
+	alt="إعلانات مبوبة" title="إعلانات مبوبة" width="113" height="21" /></h2>
+<span class="classadimg"></span></div>
+<ul class="adslst">
+	<marquee class="cleaner" direction="up" scrolldelay="100"
+		scrollamount="3" onmouseout="this.start()" onmouseover="this.stop()">
+	<li><strong class="orng fnt11">للاعلان هنا ولمدة ثلاث ايام على مدار
+	الساعة بقيمة عشرة دنانير ... مدة العرض محدودة... للمهتمين الاتصال على
+	هاتف رقم 0777557488</strong></li>
+	                           	<?php
+																						foreach ( $this->quickClassifiedsList as $classified ) {
+																							echo '<li>' . $this->cleanHtml ( $classified ) . '</li>';
+																						}
+																						?>
+                        	</marquee>
+</ul>
+                   		<?php
+																					}
+																					?>
+                   		<!--end quick classifieds--> <!--secrets-->
+                        <?php
+																								if (! empty ( $this->newsSecretsList ) and is_array ( $this->newsSecretsList )) {
+																									?>
+                        <div class="cleaner marglftrit">
+<h2 class="sectitle fr"><img
+	src="<?php
+																									print $this->defaultSkinImagesUrl;
+																									?>spacer.gif"
+	alt="خفايا و أسرار" title="خفايا و أسرار" width="103" height="23" /></h2>
+<span class="sectitleimg"></span></div>
+<ul class="seclst">
+	<marquee class="cleaner" direction="up" scrolldelay="100"
+		scrollamount="3" onmouseout="this.start()" onmouseover="this.stop()">
+								<?php
+																									$countSecrets = count ( $this->newsSecretsList );
+																									for($k = 0; $k < $countSecrets; $k ++) {
+																										echo '<li>' . $this->cleanHtml ( $this->newsSecretsList [$k] ) . '</li>';
+																									}
+																									?>
+                            </marquee>
+</ul>
+                    	<?php
+																								}
+																								?>
+                        <!--end secrets-->
+                        
+                        <?php
+																								if (! empty ( $this->newsCityTalkList ) and is_array ( $this->newsCityTalkList )) {
+																									?>
+                        <!--city talk-->
+<div class="cleaner marglftrit">
+<h2 class="ctytalk fr"><img
+	src="<?php
+																									print $this->defaultSkinImagesUrl;
+																									?>spacer.gif"
+	alt="حديث المدينة" title="حديث المدينة" width="116" height="18" /></h2>
+<span class="ctytalkimg"></span></div>
+<ul class="ctylst" style="height: 440px;">
+                    	    <?php
+																									$countCityTalk = count ( $this->newsCityTalkList );
+																									for($k = 0; $k < $countCityTalk; $k ++) {
+																										?>
+                            <li><a
+		href="/object-article/view/id/<?php
+																										echo $this->newsCityTalkList [$k] ['id'];
+																										?>/title/<?php
+																										echo $this->newsCityTalkList [$k] ['title'];
+																										?>"><?php
+																										echo $this->cleanHtml ( $this->newsCityTalkList [$k] ['title'] );
+																										?></a></li>
+	<li style='color: white; background: none;'>-------------------------------------------------------------</li>
+                        	<?php
+																									}
+																									?>
+                        </ul>
+                        <?php
+																								}
+																								?>
+                        <!--end city talk--> <!--world misc-->
+<div class="cleaner marglftrit">
+<h2 class="vartitle fr"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="منوعات من العالم" title="منوعات من العالم" width="150" height="18" /></h2>
+<span class="vartitleimg"></span></div>
+<ul class="worldvar" style="height: 332px;">
+                            <?php
+																												$countWorldMisc = count ( $this->newsWorldMiscList );
+																												for($k = 0; $k < $countWorldMisc; $k ++) {
+																													?>
+                            <li><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsWorldMiscList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsWorldMiscList [$k] ['title'];
+																													?>"><?php
+																													echo $this->cleanHtml ( $this->newsWorldMiscList [$k] ['title'] );
+																													?></a></li>
+							<?php
+																												}
+																												?>	                        
+                        </ul>
+<!--end world misc--></div>
+<span class="bigbotom"><span><em></em></span></span></div>
+<!--end bigbox-->
+				<?php
+				include './googleAds/googleAds.phtml';
+				?>
+				
+				<?php
+				include './banner/leftBanner.phtml';
+				?>
+            </div>

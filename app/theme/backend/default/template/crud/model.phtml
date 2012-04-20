@@ -1,0 +1,15 @@
+<?php
+
+class %s extends Aula_Model_DbTable {
+	
+	protected \$_name = '%s';
+	protected \$_primary = '%s';
+	protected \$_dependentTables = array(%s);
+	protected \$_referenceMap    = array(%s);
+	
+	public function __construct() {
+		\$this -> cols = \$this -> _cols = array (%s);
+		\$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS %s ';
+		parent::__construct();
+	}
+}

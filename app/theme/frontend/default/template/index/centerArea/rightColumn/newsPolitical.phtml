@@ -1,0 +1,90 @@
+
+<div class="politic-news margt1">
+<h3 class="domentitle"><span><a
+	href="/object-article/list/category/<?php
+	echo NEWS_POLITICAL;
+	?>"
+	class="polititle"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="أخبار سياسية" title="أخبار سياسية" width="110" height="22" /></a></span>
+</h3>
+<div class="domendatabg cleaner">
+<ul class="newslstbg fr cleaner wdth75per">
+                            <?php
+																												$countPolitical = count ( $this->newsPoliticalList );
+																												for($k = 0; $k < $countPolitical; $k ++) {
+																													?>
+                            <li>
+	<p class="algnmid"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsPoliticalList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsPoliticalList [$k] ['title'];
+																													?>"><img
+		src="<?php
+																													echo $this->newsPoliticalList [$k] ['imageUrl'];
+																													?>"
+		alt="<?php
+																													echo $this->newsPoliticalList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsPoliticalList [$k] ['photo_alias'];
+																													?>"
+		class="thumb" /></a></p>
+	<p class="descmin"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsPoliticalList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsPoliticalList [$k] ['title'];
+																													?>"><?php
+																													echo $this->cleanHtml ( $this->newsPoliticalList [$k] ['title'] );
+																													?></a></p>
+	<p>التعليقات: <strong class="red"><?php
+																													echo $this->newsPoliticalList [$k] ['total_comments'];
+																													?></strong></p>
+	<p>المشاهدات: <strong class="red"><?php
+																													echo $this->newsPoliticalList [$k] ['total_views'];
+																													?></strong></p>
+	</li>
+                            <?php
+																													if ($k == 2) {
+																														break;
+																													}
+																													?>
+                            <?php
+																												}
+																												?>
+                        </ul>
+<div class="readmore">
+<h3 class="redmorbg"><a
+	href="/object-article/list/category/<?php
+	echo NEWS_POLITICAL;
+	?>"
+	class="redmortitle"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="إقرأ المزيد" title="إقرأ المزيد" width="63" height="17" /></a></h3>
+<ul class="locallst margrit5">
+							<?php
+							$countPolitical = count ( $this->newsPoliticalList );
+							for($k = 3; $k < $countPolitical; $k ++) {
+								?>
+                                <li><a
+		href="/object-article/view/id/<?php
+								echo $this->newsPoliticalList [$k] ['id'];
+								?>/title/<?php
+								echo $this->newsPoliticalList [$k] ['title'];
+								?>"
+		class="blak fnt11"><?php
+								echo $this->cleanHtml ( $this->newsPoliticalList [$k] ['title'] );
+								?></a></li>
+                            <?php
+							}
+							?>
+                            </ul>
+</div>
+</div>
+</div>

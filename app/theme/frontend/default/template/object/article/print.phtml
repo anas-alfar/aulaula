@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './header/meta.phtml';
+?>
+</head>
+<body class="nobg">
+<div class="print-page"><!--header-->
+<div class="cleaner print-head"><a href="javascript:window.print();"
+	class="print-ico-iner">طباعة</a><span class="fl date-prnt"><?php
+	echo $this->today;
+	?></span></div>
+<!--end_header--> <!--article-->
+<div class="article">
+<h2 class="title"><?php
+echo $this->cleanHtml ( $this->articleDetails ['title'] );
+?></h2>
+<!--cleaner-->
+<div class="cleaner"><!-- <img src="<?php
+echo $this->articleDetails ['imageUrl'];
+?>" alt="<?php
+echo $this->articleDetails ['photo_alias'];
+?>"  title="<?php
+echo $this->articleDetails ['photo_alias'];
+?>" class="thumblftmor fl" /> -->
+<p class="margthalf datedark"><?php
+echo $this->articleDetails ['date_added'];
+?></p>
+<!--description-->
+<div class="description" id="description">
+<p><?php
+echo $this->cleanHtml ( $this->articleDetails ['full_text'] );
+?></p>
+</div>
+<!--end description--></div>
+<!--end cleaner--></div>
+<!--end article-->
+<p class="printcopy">جميع الحقوق محفوظة لموقع متشابه &copy; 2011</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+
+<li class="libox">
+<div class="postsbox">
+<h3 class="domentitle"><span><a
+	href="/object-article/list/category/<?php
+	echo NEWS_ARTICLES;
+	?>"
+	class="posts"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="مقالات" title="مقالات" width="56" height="21" /></a></span></h3>
+<div id="s88" style="position: relative; overflow: hidden;">
+<div class="domendata">
+<ul class="newslst padritlft5" style="width: 223px;">
+                            <?php
+																												for($k = 0; $k < 5; $k ++) {
+																													?>
+                            <li
+		class="cleaner<?php
+																													echo ($k == 4) ? ' last' : '';
+																													?>"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><img
+		class="thumb fr"
+		alt="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		src="<?php
+																													echo $this->newsArticlesList [$k] ['imageUrl'];
+																													?>"></a>
+	<div>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><?php
+																													echo $this->cleanHtml ( $this->newsArticlesList [$k] ['title'] );
+																													?></a></h2>
+	<cite class="date">
+                                    <?php
+																													if (! empty ( $this->newsArticlesList [$k] ['original_author'] ) and ! is_numeric ( $this->newsArticlesList [$k] ['original_author'] )) {
+																														echo '<a href="/object-article/list/writer/' . $this->authorsListWriters [$this->newsArticlesList [$k] ['original_author']] . '/name/' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '">' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '</a>';
+																													}
+																													?>
+                                    </cite></div>
+	</li>
+			<?php
+																												}
+																												?>
+                        </ul>
+</div>
+<div class="domendata">
+<ul class="newslst padritlft5" style="width: 223px;">
+                            <?php
+																												for($k = 5; $k < 10; $k ++) {
+																													?>
+                            <li
+		class="cleaner<?php
+																													echo ($k == 9) ? ' last' : '';
+																													?>"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><img
+		class="thumb fr"
+		alt="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		src="<?php
+																													echo $this->newsArticlesList [$k] ['imageUrl'];
+																													?>"></a>
+	<div>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><?php
+																													echo $this->cleanHtml ( $this->newsArticlesList [$k] ['title'] );
+																													?></a></h2>
+	<cite class="date">
+                                    <?php
+																													if (! empty ( $this->newsArticlesList [$k] ['original_author'] ) and ! is_numeric ( $this->newsArticlesList [$k] ['original_author'] )) {
+																														echo '<a href="/object-article/list/writer/' . $this->authorsListWriters [$this->newsArticlesList [$k] ['original_author']] . '/name/' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '">' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '</a>';
+																													}
+																													?>
+                                    </cite></div>
+	</li>
+			<?php
+																												}
+																												?>
+                        </ul>
+</div>
+<div class="domendata">
+<ul class="newslst padritlft5" style="width: 223px;">
+                            <?php
+																												for($k = 10; $k < 15; $k ++) {
+																													?>
+                            <li
+		class="cleaner<?php
+																													echo ($k == 14) ? ' last' : '';
+																													?>"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><img
+		class="thumb fr"
+		alt="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsArticlesList [$k] ['photo_alias'];
+																													?>"
+		src="<?php
+																													echo $this->newsArticlesList [$k] ['imageUrl'];
+																													?>"></a>
+	<div>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsArticlesList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsArticlesList [$k] ['title'];
+																													?>"><?php
+																													echo $this->cleanHtml ( $this->newsArticlesList [$k] ['title'] );
+																													?></a></h2>
+	<cite class="date">
+                                    <?php
+																													if (! empty ( $this->newsArticlesList [$k] ['original_author'] ) and ! is_numeric ( $this->newsArticlesList [$k] ['original_author'] )) {
+																														echo '<a href="/object-article/list/writer/' . $this->authorsListWriters [$this->newsArticlesList [$k] ['original_author']] . '/name/' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '">' . $this->cleanHtml ( $this->newsArticlesList [$k] ['original_author'] ) . '</a>';
+																													}
+																													?>
+                                    </cite></div>
+	</li>
+			<?php
+																												}
+																												?>
+                        </ul>
+</div>
+</div>
+</div>
+</li>

@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+<style>
+caption,th,td {
+	text-align: left;
+}
+</style>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'CRUD Menu' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'CRUD Management' );
+	?></span></a></li>
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt"><a href="#er" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Aula_Save' );
+?></button>
+</em></a> <a href="#er" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
+echo $this->__ ( 'Aula_Reset' );
+?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
+<div class="entrdata" style="direction: ltr;">
+<h2 class="datatitle" style="text-align: center;"><?php
+echo $this->__ ( 'CRUD' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist" style="width: 100%;">
+<?php
+$toClass = new Zend_Filter_Inflector ( ':tbl', array (':tbl' => array ('StringToLower', 'Word_UnderscoreToCamelCase' ) ) );
+foreach ( $this->tables as $table ) {
+	?>
+	<tr id="tables">
+		<td class="lable jstalgntop" style="text-align: left;"><?php
+	echo $toClass->filter ( array ('tbl' => $table ) );
+	?> Table:</td>
+		<td class="lablvalue jstalgntop" style="text-align: left;"><input
+			type="checkbox" id="<?php
+	print $table;
+	?>"
+			name="table_checkbox[<?php
+	print $table;
+	?>]" class="intchk fr"
+			value="<?php
+	print $table;
+	?>"><label class="inptlabl fl"
+			for="<?php
+	print $table;
+	?>"><?php
+	print $table;
+	?></label></td>
+		<td><input type="text" id="new_tab_for_<?php
+	print $table;
+	?>"
+			class="inpttxt" value="" />&nbsp;
+		<button name="add_tab" alt="<?php
+	print $table;
+	?>">Add New Tab</button>
+		</td>
+		<td><select id="<?php
+	print $table;
+	?>_tabs"
+			name="table_tabs[<?php
+	print $table;
+	?>]">
+			<option value="main_tab">Main Tab</option>
+		</select></td>
+	</tr>
+	<tr id="<?php
+	print $table;
+	?>-table-div" alt="hidden">
+		<td colspan="4"></td>
+	</tr>
+<?php
+}
+?>
+</table>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('button[name=add_tab]').bind( 'click', function () {
+		var tableName = $(this).attr("alt");
+		if ($('#new_tab_for_'+tableName).val() != "") {
+// /			$("#"+tableName+"_tabs:select").append
+		}
+		return false;
+	});
+	
+	$('#tables input:checkbox').bind( 'click', function () {
+		var tableName = this.id;
+		var targetedDiv = '#'+tableName+'-table-div';
+		var targetedTd = '#'+tableName+'-table-div td';
+		
+		$(targetedTd).html('<img src="<?php
+		print $this->defaultSkinImagesUrl;
+		?>loading.gif" title="loading" alt="loading" />');
+		
+		$.getJSON('/admin/handle/pkg/crud/action/list-table-columns/table/'+tableName,function(result){
+			var html = "";
+			var count = result.length;
+			
+			html += "\t\t\t<table class='srch-rsult'>\r\n";
+			html += "\t\t\t\t<tr class='heading'>\r\n";
+			html += "<td>id</td><td>Column Name</td><td>Required</td><td>Sortable</td><td>Validation</td><td>Default Value</td><td>Form Tab</td><td>Input Type</td>";
+			html += "\t\t\t\t</tr>\r\n";
+			for (var columnId in result) {
+				html += "\t\t\t\t<tr>\r\n";
+				html += '<td><input type="hidden" name ="'+tableName+'_columns['+columnId+']" class="intchk fr" value="'+result[columnId]['COLUMN_NAME']+'"><label>'+columnId+'</label></td>';
+				html += '<td><label>'+result[columnId]['COLUMN_NAME']+'</label></td>';
+				html += '<td>'+drawRequiredOptions(result,columnId)+'</td>';
+				html += '<td>'+drawSortableOptions(result,columnId)+'</td>';
+				html += '<td>'+drawValidationList(result,columnId)+'</td>';
+				html += '<td>'+drawDefaultValues(result,columnId)+'</td>';
+				html += '<td>'+'-'+'</td>';
+				html += '<td>'+'-'+'</td>';
+				html += "\t\t\t\t</tr>\r\n";
+			}
+			html += "\t\t\t</table>\r\n";
+			$(targetedTd).html(html);
+			return;
+		});
+	});
+
+	/*
+	result[columnId]['PRIMARY']		true|false|
+	result[columnId]['IDENTITY']		true|false|
+	result[columnId]['NULLABLE']	false|
+	result[columnId]['DATA_TYPE']	int|varchar|datetime|text|mediumText|timestamp|
+	result[columnId]['DEFAULT']		null| |Yes|No|CURRENT_TIMESTAMP
+	result[columnId]['LENGTH']		null|255|
+	result[columnId]['UNSIGNED']	null|true|
+	*/
+	
+	function drawRequiredOptions(result,columnId){
+		var html = '';
+		var requiredFlag = '';
+		if ((result[columnId]['PRIMARY'] == true) || (result[columnId]['IDENTITY'] == true) || (result[columnId]['NULLABLE'] == false && result[columnId]['DEFAULT'] == null)) {
+			requiredFlag = ' checked ';
+		}
+		html += '<input type="checkbox" name ="'+result[columnId]['TABLE_NAME']+'_required['+columnId+']" class="intchk fr" value="'+result[columnId]['COLUMN_NAME']+'" '+requiredFlag+' />';
+		return html;
+	}
+	
+	function drawSortableOptions(result,columnId){
+		var html = '';
+		var sortableFlag = '';
+		if (result[columnId]['DATA_TYPE'] == 'text' || result[columnId]['DATA_TYPE'] == 'mediumText' || result[columnId]['DATA_TYPE'] == 'largeText' || result[columnId]['COLUMN_NAME'].indexOf('_id', -3) != -1 || result[columnId]['COLUMN_NAME'].indexOf('publish_', -3) != -1 || result[columnId]['COLUMN_NAME'].indexOf('modified_', 0) != -1 || result[columnId]['COLUMN_NAME'].indexOf('locked_', 0) != -1) {
+			sortableFlag = '';
+		} else if ((result[columnId]['PRIMARY'] == true) || (result[columnId]['IDENTITY'] == true) || (result[columnId]['NULLABLE'] == false)) {
+			sortableFlag = ' checked ';
+		}
+		html += '<input type="checkbox" name ="'+result[columnId]['TABLE_NAME']+'_sortable['+columnId+']" class="intchk fr" value="'+result[columnId]['COLUMN_NAME']+'" '+sortableFlag+' />';
+		return html;
+	}
+	
+	function drawDefaultValues(result,columnId){
+		var html = '';
+		var selected = '';
+		var enumTemp = '';
+		var defaultValue = '';
+		if (result[columnId]['DEFAULT'] == '' || result[columnId]['DEFAULT'] == 'null' || result[columnId]['DEFAULT'] == null) {
+			html += '<input type="text" name ="'+result[columnId]['TABLE_NAME']+'_default_value['+columnId+']" class="inpttxt" value="" />';
+		} else if (result[columnId]['DEFAULT'] == 0  || result[columnId]['DEFAULT'] == '0'|| result[columnId]['DEFAULT'] == '0000-00-00 00:00:00') {
+			html += '<input type="text" name ="'+result[columnId]['TABLE_NAME']+'_default_value['+columnId+']" class="inpttxt" value="'+result[columnId]['DEFAULT']+'" />';
+		} else if (result[columnId]['DATA_TYPE'].indexOf('enum', 0) != -1) {
+			enumTemp = result[columnId]['DATA_TYPE'].substr(5);
+			selected = '';
+			enumTemp = enumTemp.substr(0, enumTemp.length-1);
+			enumTemp = enumTemp.replace('enum(', '').replace(')','').split(",");
+			html += '<select name ="'+result[columnId]['TABLE_NAME']+'_default_value['+columnId+']" class="inptslct">';
+			for (var i=0; i<enumTemp.length; i++) {
+				selected = '';
+				enumTemp[i] = enumTemp[i].replace("'","");
+				if (result[columnId]['DEFAULT'] == enumTemp[i]) {
+					selected = 'selected="selected"';
+				}
+				html += '<option value="'+enumTemp[i]+'" '+selected+'>'+enumTemp[i].replace("'","")+'</option>';
+			}
+			html += '</select>';
+		} else if (result[columnId]['DEFAULT'] == 'CURRENT_TIMESTAMP') {
+			html += '<input type="hidden" name ="'+result[columnId]['TABLE_NAME']+'_default_value['+columnId+']" value="CURRENT_TIMESTAMP" /><span>CURRENT_TIMESTAMP</span>';
+		}
+		return html;
+	}
+	
+	function drawValidationList(result,columnId){
+		var html = '';
+		var dataTypeAlphabatic = '';
+		var dataTypeNumeric = '';
+		var dataTypeNumericUnsigned = '';
+		var dataTypeAlphabaticNumeric = '';
+		var dataTypeNickName = '';
+		var dataTypePassword = '';
+		var dataTypeEmail = '';
+		var dataTypeRegualText = '';
+		var dataTypeFreeText = '';
+		var dataTypeAlphabaticNumericEnglishArabic = '';
+		var dataTypeUrl = '';
+		var dataTypeUri = '';
+		var dataTypeShortDateTime = '';
+		var dataTypeLongDateTime = '';
+		var dataTypeCodeConvention = '';
+		var dataTypeFilePath = '';
+		var dataTypeFileUploaded = '';
+		
+		switch (result[columnId]['DATA_TYPE'].toUpperCase()) {
+			case "TINYINT":
+			case "SMALLINT":
+			case "MEDIUMINT":
+			case "INT":
+			case "BIGINT":
+			case "BIT":
+			case "FLOAT":
+			case "DOUBLE":
+			case "DECIMAL":
+				if (result[columnId]['UNSIGNED'] == true) {
+					dataTypeNumericUnsigned = 'selected="selected"';
+				} else {
+					dataTypeNumeric = 'selected="selected"';
+				}
+			break;
+			case "ENUM":
+			case "CHAR":
+			case "VARCHAR":
+			case "SET":
+			case "TINYTEXT":
+				dataTypeRegualText = 'selected="selected"';
+			break;
+			case "TEXT":
+			case "MEDIUMTEXT":
+			case "LONGTEXT":
+				dataTypeFreeText = 'selected="selected"';
+			break;
+			case "BINARY":
+			case "VARBINARY":
+			case "TINYBLOB":
+			case "BLOB":
+			case "MEDIUMBLOB":
+			case "LONGBLOB":
+			break;
+			case "DATE":
+				dataTypeRegualText = 'selected="selected"';
+			break;
+			case "TIME":
+				dataTypeShortDateTime = 'selected="selected"';
+			break;
+			case "DATETIME":
+				dataTypeLongDateTime = 'selected="selected"';
+			break;
+			case "TIMESTAMP":
+			break;
+			case "YEAR":
+			break;
+			default:
+			break;
+		}
+		html += '<select name="'+result[columnId]['TABLE_NAME']+'_validation['+columnId+']" class="inptslct"">';
+		html += '<option value="">No Validation</option>';
+		html += '<option '+dataTypeAlphabatic+' value="alphabatic">Alphabatic Only</option>';
+		html += '<option '+dataTypeNumeric+' value="numeric">Numeric Only</option>';
+		html += '<option '+dataTypeNumericUnsigned+' value="numericUnsigned">Unsigned Numeric Only</option>';
+		html += '<option '+dataTypeAlphabaticNumeric+' value="alphabaticNumeric">Alphabatic Numeric</option>';
+		html += '<option '+dataTypeNickName+' value="nickName">Nick Name</option>';
+		html += '<option '+dataTypePassword+' value="password">Password</option>';
+		html += '<option '+dataTypeEmail+' value="email">Email Address</option>';
+		html += '<option '+dataTypeRegualText+' value="regualText">Regual Text</option>';
+		html += '<option '+dataTypeFreeText+' value="text">Free Text</option>';
+		html += '<option '+dataTypeAlphabaticNumericEnglishArabic+' value="alphabaticNumericEnglishArabic">Alphabatic Numeric English/Arabic</option>';
+		html += '<option '+dataTypeUrl+' value="url">URL</option>';
+		html += '<option '+dataTypeUri+' value="uri">URI</option>';
+		html += '<option '+dataTypeShortDateTime+' value="shortDateTime">Short Date Time</option>';
+		html += '<option '+dataTypeLongDateTime+' value="longDateTime">Long Date Time</option>';
+		html += '<option '+dataTypeCodeConvention+' value="codeConvention">Code Convention</option>';
+		html += '<option '+dataTypeFilePath+' value="filePath">File Path</option>';
+		html += '<option '+dataTypeFileUploaded+' value="fileUploaded">File Uploaded</option>';
+		html += '</select>';
+		return html;
+	}
+	
+})
+</script></div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab1--></div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

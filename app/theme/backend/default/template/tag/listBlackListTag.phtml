@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+<!--content-->
+<form method="get" action="" id="frm">
+<div><input type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" /> <input
+	type="hidden" id="actionURI"
+	value="<?php
+	print $this->sanitized->actionURI->value;
+	?>" /></div>
+<div class="content">
+<div class="srch-rslt cleaner">
+<h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Tag_Tag' );
+?></h3>
+<a href="<?php
+print $this->sanitized->actionURI->value;
+?>addBlackTag"
+	class="add-btn"><em><?php
+	echo $this->__ ( 'Tag_Add New Black List Tag' );
+	?></em></a></div>
+<!--filtration-->
+<div class="filtration cleaner">
+<button type="button"
+	onclick="return changeFormAction('deleteBlack', 'post');" name="delete"
+	id="delete" class="inpt-btn fr"><span><em><?php
+	echo $this->__ ( 'Tag_Delete' );
+	?></em></span></button>
+</div>
+<!--end filtration--> <!--srch-rsult-->
+<table class="srch-rsult">
+	<tr class="heading">
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
+			id="selectAll" /></th>
+		<th class="jstalgntop col1"><span><?php
+		echo $this->__ ( 'Tag_Title' );
+		?></span></th>
+	</tr>
+	
+	<?php
+	if (! empty ( $this->tagList )) {
+		echo $this->tagList;
+	}
+	?>
+	
+</table>
+
+<!--begin paging-->
+<?php
+include './html/paging.phtml';
+?>
+<!--end paging--></div>
+<!--end content-->
+</form>
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

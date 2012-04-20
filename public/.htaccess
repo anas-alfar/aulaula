@@ -1,0 +1,16 @@
+# public/.htaccess
+
+# set application environment [development-testing-staging-production]
+SetEnv AULA_APP_ENV 	'development'
+# set physical application path
+SetEnv AULA_APP_PATH 	'/var/www/html/www.mutashabih.local/'
+# set domain name 
+SetEnv AULA_APP_DOMAIN 	'mutashabih.local'
+
+# define default re-write rules
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ /index.php [NC,L]

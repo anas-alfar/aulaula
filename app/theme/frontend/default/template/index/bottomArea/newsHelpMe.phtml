@@ -1,0 +1,53 @@
+
+<li class="hbpcbox">
+<div class="needsolbox">
+<h3 class="domentitle"><span><a
+	href="/object-article/list/category/<?php
+	echo NEWS_HELP_ME;
+	?>"
+	class="needsol"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="أريد حلا" title="أريد حلا" width="59" height="25" /></a></span></h3>
+<div class="domendata">
+<ul class="newslst padritlft5">
+                           <?php
+																											$countHelpMe = count ( $this->newsHelpMeList );
+																											for($k = 0; $k < $countHelpMe; $k ++) {
+																												?>
+                            <li
+		class="cleaner<?php
+																												echo ($k == ($countHelpMe) - 1) ? ' last' : '';
+																												?>"><a
+		href="/object-article/view/id/<?php
+																												echo $this->newsHelpMeList [$k] ['id'];
+																												?>/title/<?php
+																												echo $this->newsHelpMeList [$k] ['title'];
+																												?>"><img
+		src="<?php
+																												echo $this->newsHelpMeList [$k] ['imageUrl'];
+																												?>"
+		title="<?php
+																												echo $this->newsHelpMeList [$k] ['photo_alias'];
+																												?>"
+		alt="<?php
+																												echo $this->newsHelpMeList [$k] ['photo_alias'];
+																												?>"
+		class="thumb fr"></a>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																												echo $this->newsHelpMeList [$k] ['id'];
+																												?>/title/<?php
+																												echo $this->newsHelpMeList [$k] ['title'];
+																												?>"><?php
+																												echo $this->cleanHtml ( $this->newsHelpMeList [$k] ['title'] );
+																												?></a></h2>
+	</li>
+							<?php
+																											}
+																											?>
+                        </ul>
+</div>
+</div>
+</li>

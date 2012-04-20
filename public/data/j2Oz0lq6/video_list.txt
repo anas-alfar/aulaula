@@ -1,0 +1,6 @@
+
+var tinyMCEImageList = new Array(
+	// Name, URL
+	["Logo 1", "http://tinymce.moxiecode.com/examples/img/logo.jpg"],
+	["Logo 2 Over", "http://tinymce.moxiecode.com/examples/img/logo_over.jpg"]
+);

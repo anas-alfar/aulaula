@@ -1,0 +1,64 @@
+<div class="header cleaner">
+<h1 class="logo fr"><a href="#er"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>logo.png"
+	alt="المتشابه اللفظي في القرآن المجيد" width="178" height="139" /></a></h1>
+<h2 class="slogan fr"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>mutashabeh.png"
+	alt="المتشابهات اللفظية في القرآن الكريم " width="343" height="84" /></h2>
+<table class="datetime">
+	<tr>
+		<td>
+		<p class="timelabl"><img
+			src="<?php
+			print $this->defaultSkinImagesUrl;
+			?>timelabel.png"
+			alt="التوقيت" width="46" height="13" /></p>
+		</td>
+		<td id="clock"><script>
+<!--
+var Digital2 = <?php
+echo time () * 1000;
+?>;
+function show(){
+	var Digital=new Date(Digital2 );
+	Digital2 = Digital2  +1000; 
+	var hours=Digital.getHours();
+	var minutes=Digital.getMinutes();
+	var seconds=Digital.getSeconds();
+	var dn="صباحا";
+	if (hours>12){
+	dn="مساء";
+	hours=hours-12;
+}
+if (hours==0)
+		hours=12;
+if (minutes<=9)
+		minutes="0"+minutes;
+if (seconds<=9)
+		seconds="0"+seconds;
+document.getElementById("clock").innerHTML="<strong>"+hours+":"+minutes+":"
++seconds+" "+dn+"</strong>";
+setTimeout("show()",1000);
+}
+show();
+//-->
+</script></td>
+	</tr>
+	<tr>
+		<td>
+		<p class="datelabl"><img
+			src="<?php
+			print $this->defaultSkinImagesUrl;
+			?>datelabel.png"
+			alt="التاريخ" width="44" height="13" /></p>
+		</td>
+		<td><strong><?php
+		echo date ( 'd-m-Y' );
+		?></strong></td>
+	</tr>
+</table>
+</div>

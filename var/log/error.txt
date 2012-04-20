@@ -1,0 +1,3281 @@
+WARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Controller/Db.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Controller/Db.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Controller/Db.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Controller/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Controller/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(./Zend/Controller/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(./Zend/Controller/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 33 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(./Zend/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 53 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 56 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 3 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(./Zend/Db.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 56 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_close() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 74 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 76 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 80 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 84 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 85 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(Zend/Db/Adapter/Pdo/Mysqli.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(): Failed opening 'Zend/Db/Adapter/Pdo/Mysqli.php' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')WARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(Zend/Db/Adapter/Pdo/Mysqli.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(): Failed opening 'Zend/Db/Adapter/Pdo/Mysqli.php' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')WARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(Zend/Db/Adapter/Pdo/Mysqli.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(): Failed opening 'Zend/Db/Adapter/Pdo/Mysqli.php' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')WARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(Zend/Db/Adapter/Pdo/Mysqli.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 146 in file /var/www/html/www.mutashabih.local/library/Zend/Loader.php
+include_once(): Failed opening 'Zend/Db/Adapter/Pdo/Mysqli.php' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')WARNING [2]:
+Line 4 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+require_once(Zend/Db/Adapter/Pdo/Mysqli.php): failed to open stream: No such file or directoryWARNING [2]:
+Line 75 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 77 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 81 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 85 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 86 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenNOTICE [8]:
+Line 27 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Undefined variable: connectionWARNING [2]:
+Line 75 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 77 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 81 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 85 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 86 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 74 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 76 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 80 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 84 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 85 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 80 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 82 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 86 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 90 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 91 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenE_STRICT [2048]:
+Line 46 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Creating default object from empty valueE_STRICT [2048]:
+Line 46 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Creating default object from empty valueE_STRICT [2048]:
+Line 49 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Creating default object from empty valueWARNING [2]:
+Line 91 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 93 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 97 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 101 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 102 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenE_STRICT [2048]:
+Line 49 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Creating default object from empty valueWARNING [2]:
+Line 91 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 93 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 97 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 101 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 102 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenE_STRICT [2048]:
+Line 49 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+Creating default object from empty valueWARNING [2]:
+Line 91 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 93 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 97 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 101 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 102 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 91 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_query() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 93 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_errno() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 97 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_fetch_array() expects parameter 1 to be mysqli_result, null givenWARNING [2]:
+Line 101 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_next_result() expects parameter 1 to be mysqli, object givenWARNING [2]:
+Line 102 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Db.php
+mysqli_free_result() expects parameter 1 to be mysqli_result, null givenNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: dataWARNING [2]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+file_put_contents(dasdsad): failed to open stream: Permission deniedNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: dataWARNING [2]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+file_put_contents(dasdsad): failed to open stream: Permission deniedNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: dataWARNING [2]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+file_put_contents(dasdsad): failed to open stream: Permission deniedNOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: varNOTICE [8]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: dataWARNING [2]:
+Line 52 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+file_put_contents(dasdsad): failed to open stream: Permission deniedWARNING [2]:
+Line 124 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()E_STRICT [2048]:
+Line 380 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/Default.php
+Creating default object from empty valueNOTICE [8]:
+Line 386 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/Default.php
+Undefined index: successWARNING [2]:
+Line 124 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()E_STRICT [2048]:
+Line 380 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/Default.php
+Creating default object from empty valueNOTICE [8]:
+Line 386 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/Default.php
+Undefined index: successNOTICE [8]:
+Line 144 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/DefaultAdmin.php
+Undefined property: BootStrap::$_controllerNOTICE [8]:
+Line 144 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/DefaultAdmin.php
+Undefined property: BootStrap::$_actionNOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Undefined property: Aula_Model_View::$fcNOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Trying to get property of non-objectWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/): failed to open stream: SuccessWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '//' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')NOTICE [8]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: Aula_Model_Router::$viewNOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Undefined property: Aula_Model_View::$fcNOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Trying to get property of non-objectWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/): failed to open stream: SuccessWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '//' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')NOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Undefined property: Aula_Model_View::$fcNOTICE [8]:
+Line 138 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Trying to get property of non-objectWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/): failed to open stream: SuccessWARNING [2]:
+Line 139 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '//' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')NOTICE [8]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Undefined property: Aula_Model_View::$fcNOTICE [8]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Trying to get property of non-objectWARNING [2]:
+Line 141 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/): failed to open stream: SuccessWARNING [2]:
+Line 141 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '//' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')NOTICE [8]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Undefined property: Aula_Model_View::$fcNOTICE [8]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Trying to get property of non-objectWARNING [2]:
+Line 141 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/): failed to open stream: SuccessWARNING [2]:
+Line 141 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '//' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')UNKNOWN ERROR [8192]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Session.php
+Function session_unregister() is deprecatedWARNING [2]:
+Line 147 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(/var/www/html/www.mutashabih.local/app/theme/backend/default/template): failed to open stream: SuccessWARNING [2]:
+Line 147 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/www.mutashabih.local/app/theme/backend/default/template/' for inclusion (include_path='/var/www/html/www.mutashabih.local/library:/var/www/html/www.mutashabih.local/app/packages:.:/usr/share/pear:/usr/share/php')NOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined property: Aula_Model_Router::$settingNOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Trying to get property of non-objectNOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined property: BootStrap::$settingNOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Trying to get property of non-objectNOTICE [8]:
+Line 131 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined property: BootStrap::$settingNOTICE [8]:
+Line 131 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Trying to get property of non-objectNOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined property: Aula_Model_Router::$settingNOTICE [8]:
+Line 130 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Trying to get property of non-objectUNKNOWN ERROR [8192]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Session.php
+Function session_unregister() is deprecatedNOTICE [8]:
+Line 244 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Default.php
+Undefined offset: 0NOTICE [8]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: parentIdsWARNING [2]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Invalid argument supplied for foreach()NOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu2-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu3-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu1-optionNOTICE [8]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: parentIdsWARNING [2]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Invalid argument supplied for foreach()NOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu2-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu3-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu1-optionNOTICE [8]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: parentIdsWARNING [2]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Invalid argument supplied for foreach()NOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu2-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu3-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu1-optionNOTICE [8]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined variable: parentIdsWARNING [2]:
+Line 241 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Invalid argument supplied for foreach()NOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu2-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu3-optionNOTICE [8]:
+Line 250 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Undefined index: menu1-optionNOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 116 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 119 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 119 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 120 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 120 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 120 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0NOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrrNOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrrNOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrrNOTICE [8]:
+Line 62 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrNOTICE [8]:
+Line 64 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrNOTICE [8]:
+Line 62 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrNOTICE [8]:
+Line 63 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrNOTICE [8]:
+Line 64 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rrNOTICE [8]:
+Line 64 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rr
+===========================
+NOTICE [8]:
+Line 32 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rr
+===========================
+NOTICE [8]:
+Line 31 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rr
+===========================
+NOTICE [8]:
+Line 31 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: rr
+===========================
+NOTICE [8]:
+Line 145 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: Aula_Model_Router::$fc
+===========================
+NOTICE [8]:
+Line 145 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: Aula_Model_Router::$fc
+===========================
+NOTICE [8]:
+Line 145 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: Aula_Model_Router::$fc
+===========================
+NOTICE [8]:
+Line 145 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: Aula_Model_Router::$frontcontroller
+===========================
+NOTICE [8]:
+Line 145 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined property: BootStrap::$fc
+===========================
+NOTICE [8]:
+Line 143 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Undefined variable: rrr
+===========================
+NOTICE [8]:
+Line 143 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Use of undefined constant ffs - assumed 'ffs'
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 30 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php
+Undefined variable: bootstrap
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 2 in file /var/www/html/www.mutashabih.local/app/packages/Home/Controller/Default.php
+Undefined variable: sdfsdfsdf
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+WARNING [2]:
+Line 203 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Missing argument 1 for Aula_Controller_Action::buildMenu(), called in /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php on line 68 and defined
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Action.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/mutashabehat.phtml
+Undefined index: mutashbehat
+===========================
+WARNING [2]:
+Line 160 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 18 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/dabt.phtml
+Undefined index: dabt
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/www.mutashabih.local/app/theme/frontend/default/template/blocks/quraan.phtml
+Undefined index: quraan
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 214 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 214 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 233 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 214 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+E_STRICT [2048]:
+Line 140 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Type.php
+Declaration of Menu_Model_Type::insert() should be compatible with that of Aula_Model_DbTable::insert()
+===========================
+E_STRICT [2048]:
+Line 214 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+E_STRICT [2048]:
+Line 314 in file /var/www/html/www.mutashabih.local/app/packages/Poll/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$subLevel
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$published
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$approved
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$order
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$comments
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Type::$options
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Zend_Db_Table_Rowset::$sorting
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::insert() should be compatible with that of Zend_Db_Table_Abstract::insert()
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 92 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/DbTable.php
+Declaration of Aula_Model_DbTable::update() should be compatible with that of Zend_Db_Table_Abstract::update()
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 215 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 259 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 216 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 260 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 216 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 260 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 15 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$token
+===========================
+NOTICE [8]:
+Line 15 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 31 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$status
+===========================
+NOTICE [8]:
+Line 34 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$redirectURI
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 260 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 215 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 259 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 233 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 259 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined variable: _col
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 253 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$dateAdded
+===========================
+NOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 253 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 254 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 235 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 254 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+UNKNOWN ERROR [4096]:
+Line 44 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Object of class stdClass could not be converted to string
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+UNKNOWN ERROR [4096]:
+Line 235 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Object of class stdClass could not be converted to string
+===========================
+NOTICE [8]:
+Line 253 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 234 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 256 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 257 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$link
+===========================
+NOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$published
+===========================
+NOTICE [8]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$approved
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 238 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 257 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$link
+===========================
+NOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$published
+===========================
+NOTICE [8]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$approved
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 257 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$link
+===========================
+NOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$published
+===========================
+NOTICE [8]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$approved
+===========================
+NOTICE [8]:
+Line 255 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$link
+===========================
+NOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$published
+===========================
+NOTICE [8]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$approved
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+E_STRICT [2048]:
+Line 238 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 258 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$link
+===========================
+NOTICE [8]:
+Line 51 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$published
+===========================
+NOTICE [8]:
+Line 55 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/listMenu.phtml
+Undefined property: stdClass::$approved
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 1265 in file /var/www/html/www.mutashabih.local/library/Zend/Db/Table/Abstract.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Default.php
+Undefined variable: where
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Model/Default.php
+Undefined variable: data
+===========================
+NOTICE [8]:
+Line 259 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 259 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Model_Default::$_totalRecordsFound
+===========================
+UNKNOWN ERROR [8192]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Session.php
+Function session_unregister() is deprecated
+===========================
+UNKNOWN ERROR [4096]:
+Line 181 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Object of class stdClass could not be converted to string
+===========================
+UNKNOWN ERROR [4096]:
+Line 182 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Object of class stdClass could not be converted to string
+===========================
+UNKNOWN ERROR [4096]:
+Line 182 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Object of class stdClass could not be converted to string
+===========================
+UNKNOWN ERROR [4096]:
+Line 182 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Object of class stdClass could not be converted to string
+===========================
+NOTICE [8]:
+Line 184 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined variable: table
+===========================
+NOTICE [8]:
+Line 46 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/addMenu.phtml
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 35 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php
+Undefined property: Menu_Controller_DefaultAdmin::$menuTypeListResult
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 1729 in file /var/www/html/www.mutashabih.local/app/packages/Category/Model/Default.php
+Undefined property: Category_Model_Default::$tableName
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 103 in file /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 29 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: columns
+===========================
+WARNING [2]:
+Line 29 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 57 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _name
+===========================
+NOTICE [8]:
+Line 58 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _primary
+===========================
+NOTICE [8]:
+Line 59 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _dependentTables
+===========================
+NOTICE [8]:
+Line 62 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _referenceMap
+===========================
+UNKNOWN ERROR [4096]:
+Line 62 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Object of class Crud_Controller_DefaultAdmin could not be converted to string
+===========================
+NOTICE [8]:
+Line 175 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _name
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _primary
+===========================
+NOTICE [8]:
+Line 177 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _dependentTables
+===========================
+NOTICE [8]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _referenceMap
+===========================
+UNKNOWN ERROR [4096]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Object of class Crud_Controller_DefaultAdmin could not be converted to string
+===========================
+NOTICE [8]:
+Line 159 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: toClass
+===========================
+NOTICE [8]:
+Line 175 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _name
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _primary
+===========================
+NOTICE [8]:
+Line 177 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _dependentTables
+===========================
+NOTICE [8]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _referenceMap
+===========================
+UNKNOWN ERROR [4096]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Object of class Crud_Controller_DefaultAdmin could not be converted to string
+===========================
+NOTICE [8]:
+Line 159 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: toClass
+===========================
+NOTICE [8]:
+Line 175 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _name
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _primary
+===========================
+NOTICE [8]:
+Line 177 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _dependentTables
+===========================
+NOTICE [8]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: _referenceMap
+===========================
+UNKNOWN ERROR [4096]:
+Line 180 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Object of class Crud_Controller_DefaultAdmin could not be converted to string
+===========================
+NOTICE [8]:
+Line 161 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 161 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 158 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 162 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 168 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 168 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 168 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 168 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 171 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 171 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 173 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 165 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 165 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 169 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 169 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 169 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 165 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 176 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 179 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+WARNING [2]:
+Line 43 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+array_shift() expects parameter 1 to be array, string given
+===========================
+WARNING [2]:
+Line 45 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+array_shift() expects parameter 1 to be array, string given
+===========================
+WARNING [2]:
+Line 45 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+array_shift() expects parameter 1 to be array, string given
+===========================
+WARNING [2]:
+Line 45 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+array_shift() expects parameter 1 to be array, string given
+===========================
+WARNING [2]:
+Line 45 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+array_shift() expects parameter 1 to be array, string given
+===========================
+NOTICE [8]:
+Line 186 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 186 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 192 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 192 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: search_log
+===========================
+WARNING [2]:
+Line 157 in file /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php
+file_get_contents(/var/www/html/www.mutashabih.local/app/theme/backend/default/template/model.phtml): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Undefined property: stdClass::$content
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Undefined property: stdClass::$content
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Undefined property: stdClass::$content
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 48 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Undefined property: stdClass::$content
+===========================
+NOTICE [8]:
+Line 48 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/www.mutashabih.local/app/theme/backend/default/template/crud/default.phtml
+Undefined variable: name
+===========================
+NOTICE [8]:
+Line 244 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined variable: table
+===========================
+NOTICE [8]:
+Line 244 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: 
+===========================
+NOTICE [8]:
+Line 244 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: banner
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/www.mutashabih.local/app/packages/Crud/Controller/DefaultAdmin.php
+Undefined index: $meta
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 261 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/DefaultAdmin.php
+Undefined property: Category_Model_Default::$_totalRecordsFound
+===========================
+NOTICE [8]:
+Line 261 in file /var/www/html/www.mutashabih.local/app/packages/Category/Controller/DefaultAdmin.php
+Undefined property: Category_Model_Default::$_totalRecordsFound
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/%20admin/Controller/DefaultAdmin.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 209 in file /var/www/html/www.mutashabih.local/app/packages/Banner/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/www.mutashabih.local/public/index.php
+require_once(/var/www/html/www.mutashabih.local/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 119 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Form/AddAdmin.php
+Undefined variable: password
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/www.mutashabih.local/library/Zend/Form.php
+Exception caught by form: Plugin by name ' tab active ' was not found in the registry; used paths:
+Zend_Dojo_Form_Decorator_: Zend/Dojo/Form/Decorator/
+Zend_Form_Decorator_: Zend/Form/Decorator/
+Stack Trace:
+#0 /var/www/html/www.mutashabih.local/library/Zend/Form.php(2625): Zend_Loader_PluginLoader->load(' tab active ')
+#1 /var/www/html/www.mutashabih.local/library/Zend/Form.php(3357): Zend_Form->_getDecorator(' tab active ', NULL)
+#2 /var/www/html/www.mutashabih.local/library/Zend/Form.php(2778): Zend_Form->_loadDecorator(Array, 'class')
+#3 /var/www/html/www.mutashabih.local/library/Zend/Form.php(2902): Zend_Form->getDecorators()
+#4 /var/www/html/www.mutashabih.local/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#5 /var/www/html/www.mutashabih.local/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#6 /var/www/html/www.mutashabih.local/library/Zend/Form.php(2920): Zend_Form->render()
+#7 /var/www/html/www.mutashabih.local/app/theme/backend/default/template/menu/add.phtml(22): Zend_Form->__toString()
+#8 /var/www/html/www.mutashabih.local/app/packages/Aula/Model/View.php(146): include('/var/www/html/w...')
+#9 /var/www/html/www.mutashabih.local/app/packages/Menu/Controller/DefaultAdmin.php(75): Aula_Model_View->render('menu/add.phtml')
+#10 /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php(132): Menu_Controller_DefaultAdmin->addAction()
+#11 /var/www/html/www.mutashabih.local/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/www.mutashabih.local/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#13 /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#14 /var/www/html/www.mutashabih.local/public/index.php(82): Aula_Controller_Default->dispatcher()
+#15 /var/www/html/www.mutashabih.local/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#16 /var/www/html/www.mutashabih.local/public/index.php(144): Aula_Controller_Default->__construct()
+#17 {main}
+===========================
+NOTICE [8]:
+Line 6 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Form/AddAdmin.php
+Undefined variable: form
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/www.mutashabih.local/app/packages/Menu/Form/AddAdmin.php
+Undefined variable: aulaView
+===========================

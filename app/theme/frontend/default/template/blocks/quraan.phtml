@@ -1,0 +1,30 @@
+<!--                <div class="box">
+                    <h2 class="boxtitle"><span><img src="<?php
+																				print $this->defaultSkinImagesUrl;
+																				?>title4.gif" alt="القرآن الكريم" width="96" height="17" /></span></h2>
+                    <div class="boxdata">
+                        <ul class="lst">
+                            <li><span class="circlbg"><a href="#er">مصاحف (مترجم بلغات)</a></span></li>
+                            <li><span class="circlbg"><a href="#er">ابحث في القرآن</a></span></li>
+                            <li><span class="circlbg"><a href="#er">مواقع قرآنية</a></span></li>
+                            <li><span class="circlbg"><a href="#er">برامج قرآنية</a></span></li>
+                            <li><span class="circlbg"><a href="#er">بحوث علمية</a></span></li>
+                            <li><span class="circlbg"><a href="#er">فتاوى قرآنية</a></span></li>
+                        </ul>
+                    </div>
+                    <span class="boxbotom"><span></span></span>
+                </div>-->
+<div class="box">
+<h2 class="boxtitle"><span><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>title4.gif"
+	alt="القرآن الكريم" width="96" height="17" /></span></h2>
+<div class="boxdata">
+<ul class="lst">
+                            <?php
+																												$this->drawMenu ( $this->menuList ['quraan'] );
+																												?>
+				        </ul>
+</div>
+<span class="boxbotom"><span></span></span></div>

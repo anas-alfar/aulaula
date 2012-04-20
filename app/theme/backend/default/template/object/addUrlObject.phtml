@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Object_Add New Url' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab5"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_URL' );
+	?></span></a></li>
+	<?php
+	include './object/addCommonObjectTab.phtml';
+	?>
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt"><!--<h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Object_Add New Url' );
+?></h3>-->
+<a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save And Continue Edit' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Reset' );
+?></button>
+</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
+<button name="btn_submit" value="-1" class="emptbtn" type="button"
+	onlcick="javascript:history.go(-1);"><?php
+	echo $this->__ ( 'Object_Back' );
+	?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab5" style="display: block;">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_URL' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleUrl" name="titleUrl"
+			value="<?php
+			print $this->sanitized->titleUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasUrl" name="aliasUrl"
+			value="<?php
+			print $this->sanitized->aliasUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextUrl" name="introTextUrl"><?php
+			print $this->sanitized->introTextUrl->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="urlUrl" name="urlUrl"
+			value="<?php
+			print $this->sanitized->urlUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->urlUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->urlUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Styel' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="styleUrl" name="styleUrl"
+			value="<?php
+			print $this->sanitized->styleUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->styleUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->styleUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourceUrl" name="sourceUrl">
+		<?php
+		echo $this->sourceUrlList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourceUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourceUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL Type' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="urlTypeUrl" name="urlTypeUrl">
+		<?php
+		echo $this->urlTypeUrlList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->urlTypeUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->urlTypeUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<?php
+include './object/addCommonAdvanceMetaDesign.phtml';
+?>
+
+</div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

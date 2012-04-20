@@ -1,0 +1,90 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>Cotrol panel</title>
+<link href="<?php
+print $this->defaultSkinCssUrl;
+?>admin.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>jquery.js"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>superfish.js"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>jquery.datepicker.js"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>tiny_mce/jquery.tinymce.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+                $('ul.navlst').superfish();
+                // When a link is clicked
+                $("li.tab").click(function() {
+                        // switch all tabs off
+                        $(".active").removeClass("active");
+                        // switch this tab on
+                        $(this).addClass("active");
+                        // slide all content up
+                        $(".mytabscont").hide();
+                        // slide this content up
+                        var content_show = $(this).attr("title");
+                        $("#" + content_show).show();
+                });
+                $(".slctdate").datepicker({
+                        dateFormat : 'yy-mm-dd',
+                        showOn : ('option', 'showOn', 'button')
+                });
+                $("#selectAll").click(function() {
+                        var checked_status = this.checked;
+                        $("input[id=check]").each(function() {
+                                this.checked = checked_status;
+                        });
+                });
+                setTimeout(function() {
+                        $('.notification,.success,.error').fadeOut('slow');
+                }, 3000);
+        });
+        function changeFormAction(actionURI, method, filter) {
+                if(filter == 'search') {
+                        $("input[search=1]").attr("search", function(arr) {
+                                return arr;
+                        }).each(function() {
+                                if($('#' + this.id).attr('value') != '') {
+                                        actionURI += $('#' + this.id).attr('name') + "/" + $('#' + this.id).attr('value') + "/";
+                                }
+                        });
+                        if($("#publishedSearch option:selected").attr('value') != -1 && $("#publishedSearch option:selected").attr('value') != undefined) {
+                                actionURI += $("#publishedSearch").attr('name') + "/" + $("#publishedSearch option:selected").attr('value') + "/";
+                        }
+                        if($("#approvedSearch option:selected").attr('value') != -1 && $("#approvedSearch option:selected").attr('value') != undefined) {
+                                actionURI += $("#approvedSearch").attr('name') + "/" + $("#approvedSearch option:selected").attr('value') + "/";
+                        }
+                }
+                $("#frm").attr("method", method);
+                $("#frm").attr("action", $('#actionURI').attr('value') + actionURI);
+                $("#frm").submit();
+                return true;
+        }
+</script>
+<!--[if lte IE 6]>
+<style type="text/css" media="screen">
+div.container{
+width:expression(((document.compatMode && document.compatMode=='CSS1Compat') ? document.documentElement.clientWidth : document.body.clientWidth) < 1024 ? "1000px" : "auto");
+}
+</style>
+<![endif]-->
+<?php
+Zend_Dojo::enableView ( $this );
+Zend_Dojo_View_Helper_Dojo::setUseDeclarative ();
+
+$this->dojo ()->setLocalPath ( $this->defaultSkinJsUrl . 'dojo/dojo/dojo.js' )->requireModule ( 'dijit.layout.ContentPane' )->requireModule ( 'dijit.layout.TabContainer' )->requireModule ( 'dijit.form.ComboBox' )->requireModule ( 'dijit.form.Form' )->requireModule ( 'dijit.form.TextBox' )->addStyleSheetModule ( 'dijit.themes.claro' );
+
+$this->dojo ()->enable ();
+echo $this->dojo();
+?>

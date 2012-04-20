@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Tag_Add New Black List Tag' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Tag_Information' );
+	?></span></a></li>
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt"><!-- <h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Tag_Add New Blck List Tag' );
+?></h3>-->
+<a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Tag_Save And Continue Edit' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Tag_Save' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
+echo $this->__ ( 'Tag_Reset' );
+?></button>
+</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
+<button name="btn_submit" value="-1" class="emptbtn" type="button"
+	onlcick="javascript:history.go(-1);"><?php
+	echo $this->__ ( 'Tag_Back' );
+	?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Tag_Information' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Tag_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleTag" name="titleTag"
+			value="<?php
+			print $this->sanitized->titleTag->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleTag->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleTag->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+
+</div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab1--> <!--end conttab2--></div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

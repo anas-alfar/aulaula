@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body class="loginbg">
+<!--container-->
+<div class="container logincont">
+<div class="content">
+        <?php
+								include './html/header-login.phtml';
+								?>
+        <div class="boxtop"><span><span></span></span></div>
+<div class="boxdata"><!--login-->
+<div class="login"><!--box-->
+<div class="box">
+<h2 class="logtitle"><span><span><?php
+echo $this->__ ( 'Enter to Control Panel' );
+?></span></span></h2>
+<!--boxdata-->
+<div class="boxdata"><!--begin error-->
+<div class="error" style="<?php
+print $this->sanitized->general->errorMessageStyle;
+?>"><?php
+print $this->sanitized->general->errorMessage;
+?></div>
+<!--end error--> <!--begin success-->
+<div class="success" style="<?php
+print $this->sanitized->general->successMessageStyle;
+?>"><?php
+print $this->sanitized->general->successMessage;
+?></div>
+<!--end success--> <!--logform-->
+<form action="/admin/check-login" method="post">
+<ul class="logform">
+	<li class="cleaner margb1"><strong class="frstcol fl gray"><?php
+	echo $this->__ ( 'Username:' );
+	?></strong>
+	<input type="text" class="inpttxt fl" name="username"
+		value="<?php
+		print $this->sanitized->username->value;
+		?>" /></li>
+	<li>
+	<div class="error" style="<?php
+	print $this->sanitized->username->errorMessageStyle;
+	?>"><?php
+	print $this->sanitized->username->errorMessage;
+	?></div>
+	</li>
+	<li class="cleaner margb1"><strong class="frstcol fl gray"><?php
+	echo $this->__ ( 'Password:' );
+	?></strong>
+	<input type="password" class="inpttxt fl" name="password"
+		value="<?php
+		print $this->sanitized->password->value;
+		?>" /></li>
+	<li>
+	<div class="error" style="<?php
+	print $this->sanitized->password->errorMessageStyle;
+	?>"><?php
+	print $this->sanitized->password->errorMessage;
+	?></div>
+	</li>
+	<li class="cleaner"><strong class="frstcol fl gray">&nbsp;</strong>
+	<button name="btn_submit" value="tryingToLogin" type="submit"
+		class="inpt-btn nomarg"><span><em><?php
+		echo $this->__ ( 'Login' );
+		?></em></span></button>
+	</li>
+</ul>
+</form>
+<!--end logform--></div>
+<!--end boxdata--> <!--boxbotom-->
+<div class="boxbotom"><span><span></span></span></div>
+<!--end boxbotom--></div>
+<!--end box--></div>
+<!--end login--></div>
+<div class="boxbotom"><span><span></span></span></div>
+	<?php
+	include './html/footer.phtml';
+	?>
+    </div>
+</div>
+<!--end container-->
+</body>
+</html>

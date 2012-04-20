@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title><?php
+print $this->cleanHtml ( $this->pageTitle );
+?></title>
+<script
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>javascript/jquery-1.5.1.min.js"></script>
+<script
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>javascript/jquery.easing.1.3.js"></script>
+<link rel="stylesheet"
+	href="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/style.css" />
+<script language="javascript">	
+	var fboptions={pageWidth:388.07,pageHeight:596.47,totalPage:117,zoomPageDir:"<?php
+	print $this->defaultSkinImagesUrl;
+	?>files/mobile/",normalPageDir:"<?php
+	print $this->defaultSkinImagesUrl;
+	?>files/mobile/"};//{pageWidth:398,pageHeight:514,totalPage:12,zoomPageDir:'<?php
+	print $this->defaultSkinImagesUrl;
+	?>files/large/',normalPageDir:'<?php
+	print $this->defaultSkinImagesUrl;
+	?>files/page/'};		
+</script> <script
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>javascript/book.js"></script>
+
+</head>
+<body>
+<div id="main">
+<div class="fbStage">
+<div id="fbBook" class="fbBook">
+<div class="fbBookPages" id="fbBookPages"></div>
+</div>
+</div>
+</div>
+<div class="fbToolBar" id="fbToolBar">
+<div id="log" style="float: left; display: none">test book....</div>
+<div class="bottom right">
+<button id="btnLast" class="last"><img alt="&gt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/next.png"><img
+	alt="&gt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/next.png"></button>
+<button id="btnRight" class="next"><img alt="&gt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/next.png"></button>
+<button id="btnLeft" class="prev"><img alt="&lt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/prev.png"></button>
+<button id="btnFirst" class="first"><img alt="&lt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/prev.png"><img
+	alt="&lt;"
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>styles/prev.png"></button>
+<div class="numbering">Page:<span id="fbCurrentPageIndex">1</span>/<span
+	id="fbTotalPageCount">11</span></div>
+</div>
+</div>
+
+</body>
+</html>

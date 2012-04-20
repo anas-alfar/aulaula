@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+<!--content-->
+<form method="get" action="" id="frm">
+<div><input type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" /> <input
+	type="hidden" id="actionURI"
+	value="<?php
+	print $this->sanitized->actionURI->value;
+	?>" /></div>
+<div class="content">
+<div class="srch-rslt cleaner">
+<h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'User_User' );
+?></h3>
+<a href="<?php
+print $this->sanitized->actionURI->value . 'add';
+?>"
+	class="add-btn"><em><?php
+	echo $this->__ ( 'User_Add New User' );
+	?></em></a></div>
+
+<!--filtration-->
+<div class="filtration cleaner">
+<button type="button"
+	onclick="return changeFormAction('approve', 'post');" name="approve"
+	id="approve" class="inpt-btn fr"><span><em><?php
+	echo $this->__ ( 'User_Approve' );
+	?></em></span></button>
+<button type="button"
+	onclick="return changeFormAction('block', 'post');" name="block"
+	id="block" class="inpt-btn fr"><span><em><?php
+	echo $this->__ ( 'User_Block' );
+	?></em></span></button>
+<button type="button"
+	onclick="return changeFormAction('confirm', 'post');" name="confirm"
+	id="block" class="inpt-btn fr"><span><em><?php
+	echo $this->__ ( 'User_Confirm' );
+	?></em></span></button>
+<button type="button"
+	onclick="return changeFormAction('delete', 'post');" name="delete"
+	id="delete" class="inpt-btn fr"><span><em><?php
+	echo $this->__ ( 'User_Delete' );
+	?></em></span></button>
+<select style="float: left;" name="status">
+	<option
+		<?php
+		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
+		?>
+		value="Yes"><?php
+		echo $this->__ ( 'Yes Option' );
+		?></option>
+	<option
+		<?php
+		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
+		?>
+		value="No"><?php
+		echo $this->__ ( 'No Option' );
+		?></option>
+</select> <input type="hidden" id="redirectURI" name="redirectURI"
+	value="<?php
+	print $this->sanitized->redirectURI->value;
+	?>" /></div>
+<!--end filtration--> <!--srch-rsult-->
+<table class="srch-rsult">
+	<tr class="heading">
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
+			id="selectAll" /></th>
+		<th class="jstalgntop col1"><a
+			href="<?php
+			echo $this->sort->username->href;
+			?>"
+			class="<?php
+			echo $this->sort->username->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->username->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Username' );
+			?></span></a></th>
+		<th class="jstalgntop colyesno"><a
+			href="<?php
+			echo $this->sort->fullname->href;
+			?>"
+			class="<?php
+			echo $this->sort->fullname->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->fullname->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Full Name' );
+			?></span></a></th>
+		<th class="jstalgntop colyesno"><a
+			href="<?php
+			echo $this->sort->user_level_id->href;
+			?>"
+			class="<?php
+			echo $this->sort->user_level_id->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->user_level_id->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_User Level' );
+			?></span></a></th>
+		<th class="jstalgntop colyesno"><a
+			href="<?php
+			echo $this->sort->blocked->href;
+			?>"
+			class="<?php
+			echo $this->sort->blocked->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->blocked->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Blocked' );
+			?></span></a></th>
+		<th class="jstalgntop colyesno"><a
+			href="<?php
+			echo $this->sort->approved->href;
+			?>"
+			class="<?php
+			echo $this->sort->approved->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->approved->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Approved' );
+			?></span></a></th>
+		<th class="jstalgntop colyesno"><a
+			href="<?php
+			echo $this->sort->confirmed->href;
+			?>"
+			class="<?php
+			echo $this->sort->confirmed->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->confirmed->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Confirmed' );
+			?></span></a></th>
+		<th class="jstalgntop col6"><a
+			href="<?php
+			echo $this->sort->date_added->href;
+			?>"
+			class="<?php
+			echo $this->sort->date_added->cssClass;
+			?>"><span
+			class="<?php
+			echo $this->sort->date_added->cssClass;
+			?>"><?php
+			echo $this->__ ( 'User_Date Added' );
+			?></span></a></th>
+		<th class="jstalgntop tools last"><span><?php
+		echo $this->__ ( 'User_Tools' );
+		?></span></th>
+	</tr>
+	
+	<?php
+	if (! empty ( $this->userList )) {
+		foreach ( $this->userList as $key => $value ) {
+			echo '<tr>';
+			echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="userId[' . $value ['id'] . ']" id="check" value="Yes" /></td>';
+			echo '<td class="jstalgntop">' . $value ['username'] . '</td>';
+			echo '<td class="jstalgntop">' . $value ['fullname'] . '</td>';
+			echo '<td class="jstalgntop">' . $this->userLevelList [$value ['user_level_id']] . '</td>';
+			echo '<td class="jstalgntop">' . $this->__ ( $value ['blocked'] ) . '</td>';
+			echo '<td class="jstalgntop">' . $this->__ ( $value ['approved'] ) . '</td>';
+			echo '<td class="jstalgntop">' . $this->__ ( $value ['confirmed'] ) . '</td>';
+			echo '<td class="jstalgntop">' . $value ['date_added'] . '</td>';
+			echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/user/action/edit/s/1/id/' . $value ['id'] . '"
+						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
+			class="preview fl" title="Preview"></a></td>';
+			echo '</tr>';
+		}
+	}
+	?>
+
+</table>
+
+<!--begin paging-->
+<?php
+include './html/paging.phtml';
+?>
+<!--end paging--></div>
+<!--end content-->
+</form>
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

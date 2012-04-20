@@ -1,0 +1,88 @@
+
+<li class="hbpcboxlast">
+<div class="monasabatbox">
+<h3 class="domentitle"><span><a
+	href="/object-article/list/category/<?php
+	echo NEWS_OCCASIONS;
+	?>"
+	class="monasabat"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="مناسبات" title="مناسبات" width="104" height="21" /></a></span></h3>
+<div class="domendata">
+<ul class="newslst padritlft5">
+	<li class="cleaner">
+                            <?php
+																												$countOccasions = count ( $this->newsOccasionsList );
+																												for($k = 0; $k <= 1; $k ++) {
+																													?>                             
+                                <div class="hafwdth fl"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsOccasionsList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsOccasionsList [$k] ['title'];
+																													?>"><img
+		class="thumb fr"
+		alt="<?php
+																													echo $this->newsOccasionsList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsOccasionsList [$k] ['photo_alias'];
+																													?>"
+		src="<?php
+																													echo $this->newsOccasionsList [$k] ['imageUrl'];
+																													?>"></a>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsOccasionsList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsOccasionsList [$k] ['title'];
+																													?>"
+		class="blak"><?php
+																													echo $this->cleanHtml ( $this->newsOccasionsList [$k] ['title'] );
+																													?></a></h2>
+	</div>
+                             <?php
+																												}
+																												?>
+                            </li>
+	<li class="cleaner last">
+                            <?php
+																												$countOccasions = count ( $this->newsOccasionsList );
+																												for($k = 2; $k < $countOccasions; $k ++) {
+																													?> 
+                                <div class="hafwdth fl"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsOccasionsList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsOccasionsList [$k] ['title'];
+																													?>"><img
+		class="thumb fr"
+		alt="<?php
+																													echo $this->newsOccasionsList [$k] ['photo_alias'];
+																													?>"
+		title="<?php
+																													echo $this->newsOccasionsList [$k] ['photo_alias'];
+																													?>"
+		src="<?php
+																													echo $this->newsOccasionsList [$k] ['imageUrl'];
+																													?>"></a>
+	<h2 class="fnt11"><a
+		href="/object-article/view/id/<?php
+																													echo $this->newsOccasionsList [$k] ['id'];
+																													?>/title/<?php
+																													echo $this->newsOccasionsList [$k] ['title'];
+																													?>"
+		class="blak"><?php
+																													echo $this->cleanHtml ( $this->newsOccasionsList [$k] ['title'] );
+																													?></a></h2>
+	</div>
+                            <?php
+																												}
+																												?>
+                            </li>
+</ul>
+</div>
+</div>
+</li>

@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Package_Pakcage Information' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Package_Information' );
+	?></span></a></li>
+	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Package_Advanced' );
+	?></span></a></li>
+
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt">
+<h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Package_Add New Package' );
+?></h3>
+<a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Package_Save And Continue Edit' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Package_Save' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
+echo $this->__ ( 'Package_Reset' );
+?></button>
+</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
+<button name="btn_submit" value="-1" class="emptbtn" type="button"
+	onlcick="javascript:history.go(-1);"><?php
+	echo $this->__ ( 'Package_Back' );
+	?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Package_Information' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			name="title" id="title"
+			value="<?php
+			echo $this->sanitized->title->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->title->errorMessageStyle;
+		?>"><?php
+		print $this->sanitized->title->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Label' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			name="label" id="label"
+			value="<?php
+			echo $this->sanitized->label->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->label->errorMessageStyle;
+		?>"><?php
+		print $this->sanitized->label->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Deafult Action Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			name="deafultActionTitle" id="deafultActionTitle"
+			value="<?php
+			echo $this->sanitized->deafultActionTitle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->deafultActionTitle->errorMessageStyle;
+		?>"><?php
+		print $this->sanitized->deafultActionTitle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Deafult Action Name' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			name="deafultActionName" id="deafultActionName"
+			value="<?php
+			echo $this->sanitized->deafultActionName->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->deafultActionName->errorMessageStyle;
+		?>"><?php
+		print $this->sanitized->deafultActionName->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Version' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			name="version" id="version"
+			value="<?php
+			echo $this->sanitized->version->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->version->errorMessageStyle;
+		?>"><?php
+		print $this->sanitized->version->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	if (! empty ( $this->type )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Type' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="type"
+			name="type">
+		<?php
+		echo $this->type;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->type->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->type->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="type"
+			value="<?php
+		echo $this->sanitized->type->value;
+		?>" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+	if (! empty ( $this->prerequisiteList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Prerequisite' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="prerequisite" name="prerequisite">
+		<?php
+		echo $this->prerequisiteList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->prerequisite->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->prerequisite->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="prerequisite"
+			value="<?php
+		echo $this->sanitized->prerequisite->value;
+		?>" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<tr>
+		<td class="lable jstalgntop">&nbsp;</td>
+		<td class="lablvalue jstalgntop">
+		<ul class="lstsopt">
+			<li class="cleaner"><input type="checkbox" class="intchk fl"
+				id="showInMenu" name="showInMenu" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->showInMenu->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="showInList" class="inptlabl fl"><?php
+			echo $this->__ ( 'Package_Show in Menu' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->showInMenu->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->showInMenu->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" class="intchk fl"
+				id="published" name="published" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->published->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="published" class="inptlabl fl"><?php
+			echo $this->__ ( 'Package_Published' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->published->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->published->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" id="approved"
+				class="intchk fl" name="approved" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->approved->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="approved" class="inptlabl fl"><?php
+			echo $this->__ ( 'Package_Approved' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->approved->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->approved->errorMessage;
+		?></div>
+			</li>
+		</ul>
+		</td>
+	</tr>
+</table>
+
+</div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab1--> <!--conttab2-->
+<div class="mytabscont" id="conttab2" style="display: none">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Package_Advanced Settings' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Comments' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="comment" name="comment"
+			value="<?php
+			print $this->sanitized->comment->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->comment->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->comment->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Package_Options' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="option" name="option"
+			value="<?php
+			print $this->sanitized->option->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->option->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->option->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab2--></div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>

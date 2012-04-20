@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<default>
+	<block type="package" as="category" name="Default" template="category.phtml">
+		<block type="addTemplate" name="Add New Category">
+			<action method="addAdminAction">addCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Category">
+			<action method="editAdminAction">editCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Category">
+			<action method="deleteAdminAction">deleteCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Menu">
+			<action method="showInMenuAdminAction">showInMenuCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Categories">
+			<action method="orderAdminAction">orderCategory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Categories Listing">
+			<action method="listAdminAction">lsitCategory.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="category" name="Type" template="categoryType.phtml">
+		<block type="addTemplate" name="Add New Category Type">
+			<action method="addAdminAction">addCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Category Type">
+			<action method="editAdminAction">editCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Category Type">
+			<action method="deleteAdminAction">deleteCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Menu">
+			<action method="showInMenuAdminAction">showInMenuCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Category Types">
+			<action method="orderAdminAction">orderCategoryType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Category Types Listing">
+			<action method="listAdminAction">lsitCategoryType.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="locale" name="Default" template="locale.phtml">
+		<block type="addTemplate" name="Add New Locale">
+			<action method="addAdminAction">addLocaleType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Locale">
+			<action method="editAdminAction">editLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Locale">
+			<action method="deleteAdminAction">deleteLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Menu">
+			<action method="showInMenuAdminAction">showInMenuLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Locales">
+			<action method="orderAdminAction">orderLocale.phtml</action>
+		</block>
+		<block type="addTemplate" name="LocalesListing">
+			<action method="listAdminAction">lsitLocale.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="menu" name="Default" template="menu.phtml">
+		<block type="addTemplate" name="Add New Menu">
+			<action method="addAdminAction">addMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Menu">
+			<action method="editAdminAction">editMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Menu">
+			<action method="deleteAdminAction">deleteMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Menu">
+			<action method="showInMenuAdminAction">showInMenuMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Menus">
+			<action method="orderAdminAction">orderMenu.phtml</action>
+		</block>
+		<block type="addTemplate" name="Menus Listing">
+			<action method="listAdminAction">lsitMenu.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="menu" name="Type" template="menuType.phtml">
+		<block type="addTemplate" name="Add New Menu Type">
+			<action method="addAdminAction">addMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Menu Type">
+			<action method="editAdminAction">editMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Menu Type">
+			<action method="deleteAdminAction">deleteMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Menu">
+			<action method="showInMenuAdminAction">showInMenuMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Menu Types">
+			<action method="orderAdminAction">orderMenuType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Menu Types Listing">
+			<action method="listAdminAction">lsitMenuType.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Default" template="object.phtml">
+		<block type="addTemplate" name="Add New Object">
+			<action method="addAdminAction">addObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Object">
+			<action method="editAdminAction">editObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Object">
+			<action method="deleteAdminAction">deleteObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in List">
+			<action method="showInListAdminAction">showInListObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Objects">
+			<action method="orderAdminAction">orderObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Objects Listing">
+			<action method="listAdminAction">lsitObject.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Abuse" template="objectAbuse.phtml">
+		<block type="addTemplate" name="Edit Abuse">
+			<action method="editAdminAction">editObjectAbuse.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Abuse">
+			<action method="deleteAdminAction">deleteObjectAbuse.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in List">
+			<action method="showInListAdminAction">showInListObjectAbuse.phtml</action>
+		</block>
+		<block type="addTemplate" name="Abuse Status">
+			<action method="isAbuseAdminAction">isAbuseObjectAbuse.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectAbuse.phtml</action>
+		</block>
+		<block type="addTemplate" name="Abuses Listing">
+			<action method="listAdminAction">lsitObjectAbuse.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Article" template="objectArticle.phtml">
+		<block type="addTemplate" name="Add New Article">
+			<action method="addAdminAction">addObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Article">
+			<action method="editAdminAction">editObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Article">
+			<action method="deleteAdminAction">deleteObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Articles">
+			<action method="orderAdminAction">orderObjectArticle.phtml</action>
+		</block>
+		<block type="addTemplate" name="Articles Listing">
+			<action method="listAdminAction">lsitObjectArticle.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Comment" template="objectComment.phtml">
+		<block type="addTemplate" name="Edit Comment">
+			<action method="editAdminAction">editObjectComment.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Comment">
+			<action method="deleteAdminAction">deleteObjectComment.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectComment.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectComment.phtml</action>
+		</block>
+		<block type="addTemplate" name="Comments Listing">
+			<action method="listAdminAction">lsitObjectComment.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Directory" template="objectDirectory.phtml">
+		<block type="addTemplate" name="Add New Directory">
+			<action method="addAdminAction">addObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Directory">
+			<action method="editAdminAction">editObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Directory">
+			<action method="deleteAdminAction">deleteObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Directories">
+			<action method="orderAdminAction">orderObjectDirectory.phtml</action>
+		</block>
+		<block type="addTemplate" name="Directories Listing">
+			<action method="listAdminAction">lsitObjectDirectory.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="File" template="objectFile.phtml">
+		<block type="addTemplate" name="Add New File">
+			<action method="addAdminAction">addObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit File">
+			<action method="editAdminAction">editObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete File">
+			<action method="deleteAdminAction">deleteObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Files">
+			<action method="orderAdminAction">orderObjectFile.phtml</action>
+		</block>
+		<block type="addTemplate" name="Files Listing">
+			<action method="listAdminAction">lsitObjectFile.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Photo" template="objectPhoto.phtml">
+		<block type="addTemplate" name="Add New Photo">
+			<action method="addAdminAction">addObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Photo">
+			<action method="editAdminAction">editObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Photo">
+			<action method="deleteAdminAction">deleteObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Photos">
+			<action method="orderAdminAction">orderObjectPhoto.phtml</action>
+		</block>
+		<block type="addTemplate" name="Photos Listing">
+			<action method="listAdminAction">lsitObjectPhoto.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Video" template="objectVideo.phtml">
+		<block type="addTemplate" name="Add New Video">
+			<action method="addAdminAction">addObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Video">
+			<action method="editAdminAction">editObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Video">
+			<action method="deleteAdminAction">deleteObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Show in Object">
+			<action method="showInObjectAdminAction">showInObjectObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Videos">
+			<action method="orderAdminAction">orderObjectVideo.phtml</action>
+		</block>
+		<block type="addTemplate" name="Videos Listing">
+			<action method="listAdminAction">lsitObjectVideo.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Rating" template="objectRating.phtml">
+		<block type="addTemplate" name="Add New Rate">
+			<action method="addAdminAction">addObjectRating.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Rating">
+			<action method="editAdminAction">editObjectRating.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Rating">
+			<action method="deleteAdminAction">deleteObjectRating.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectRating.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Ratings">
+			<action method="orderAdminAction">orderObjectRating.phtml</action>
+		</block>
+		<block type="addTemplate" name="Ratings Listing">
+			<action method="listAdminAction">lsitObjectRating.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Source" template="objectSource.phtml">
+		<block type="addTemplate" name="Add New Source">
+			<action method="addAdminAction">addObjectSource.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Source">
+			<action method="editAdminAction">editObjectSource.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Source">
+			<action method="deleteAdminAction">deleteObjectSource.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectSource.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Sources">
+			<action method="orderAdminAction">orderObjectSource.phtml</action>
+		</block>
+		<block type="addTemplate" name="Sources Listing">
+			<action method="listAdminAction">lsitObjectSource.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Static" template="objectStatic.phtml">
+		<block type="addTemplate" name="Add New Static Page">
+			<action method="addAdminAction">addObjectStatic.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Static">
+			<action method="editAdminAction">editObjectStatic.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Static">
+			<action method="deleteAdminAction">deleteObjectStatic.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectStatic.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Statics">
+			<action method="orderAdminAction">orderObjectStatic.phtml</action>
+		</block>
+		<block type="addTemplate" name="Statics Listing">
+			<action method="listAdminAction">lsitObjectStatic.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Tag" template="objectTag.phtml">
+		<block type="addTemplate" name="Add New Tag">
+			<action method="addAdminAction">addObjectTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Tag">
+			<action method="editAdminAction">editObjectTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Tag">
+			<action method="deleteAdminAction">deleteObjectTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Tags Listing">
+			<action method="listAdminAction">lsitObjectTag.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Type" template="objectType.phtml">
+		<block type="addTemplate" name="Add New Object Type">
+			<action method="addAdminAction">addObjectType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Type">
+			<action method="editAdminAction">editObjectType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Type">
+			<action method="deleteAdminAction">deleteObjectType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectType.phtml</action>
+		</block>
+		<block type="addTemplate" name="Types Listing">
+			<action method="listAdminAction">lsitObjectType.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="Url" template="objectUrl.phtml">
+		<block type="addTemplate" name="Add New Url">
+			<action method="addAdminAction">addObjectUrl.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Url">
+			<action method="editAdminAction">editObjectUrl.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Url">
+			<action method="deleteAdminAction">deleteObjectUrl.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishObject.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveObjectUrl.phtml</action>
+		</block>
+		<block type="addTemplate" name="Urls Listing">
+			<action method="listAdminAction">lsitObjectUrl.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="object" name="UserFavourite"
+		template="objectUserFavourite.phtml">
+		<block type="addTemplate" name="Edit UserFavourite">
+			<action method="editAdminAction">editObjectUserFavourite.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete UserFavourite">
+			<action method="deleteAdminAction">deleteObjectUserFavourite.phtml</action>
+		</block>
+		<block type="addTemplate" name="UserFavourites Listing">
+			<action method="listAdminAction">lsitObjectUserFavourite.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="package" name="Default" template="package.phtml">
+	</block>
+	<block type="package" as="package" name="Class" template="packageClass.phtml">
+		<block type="addTemplate" name="Add New Class">
+			<action method="addAdminAction">addPackageClass.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Action">
+			<action method="editAdminAction">editPackageClass.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Action">
+			<action method="deleteAdminAction">deletePackageClass.phtml</action>
+		</block>
+		<block type="addTemplate" name="Classes Listing">
+			<action method="listAdminAction">lsitPackageClass.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="package" name="Action" template="packageAction.phtml">
+		<block type="addTemplate" name="Add New Action">
+			<action method="addAdminAction">addPackageAction.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Action">
+			<action method="editAdminAction">editPackageAction.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Action">
+			<action method="deleteAdminAction">deletePackageAction.phtml</action>
+		</block>
+		<block type="addTemplate" name="Actions Listing">
+			<action method="listAdminAction">lsitPackageAction.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="search" name="Default" template="search.phtml">
+		<block type="addTemplate" name="Add New Search">
+			<action method="addAdminAction">addSearch.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editSearch.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Search">
+			<action method="deleteAdminAction">deleteSearch.phtml</action>
+		</block>
+		<block type="addTemplate" name="Search Listing">
+			<action method="listAdminAction">lsitSearch.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="tag" name="Default" template="tag.phtml">
+		<block type="addTemplate" name="Add New Tag">
+			<action method="addAdminAction">addTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Tag">
+			<action method="editAdminAction">editTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Tag">
+			<action method="deleteAdminAction">deleteTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Tags">
+			<action method="approveAdminAction">orderTag.phtml</action>
+		</block>
+		<block type="addTemplate" name="Tags Listing">
+			<action method="listAdminAction">lsitTag.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="theme" name="Default" template="Theme.phtml">
+		<block type="addTemplate" name="Add New Themes">
+			<action method="addAdminAction">addTheme.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editTheme.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Theme">
+			<action method="deleteAdminAction">deleteTheme.phtml</action>
+		</block>
+		<block type="addTemplate" name="Themes Listing">
+			<action method="listAdminAction">lsitTheme.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="theme" name="Layout" template="themeLayout.phtml">
+		<block type="addTemplate" name="Add New Layout">
+			<action method="addAdminAction">addThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Layout">
+			<action method="editAdminAction">editThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Layout">
+			<action method="deleteAdminAction">deleteThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Layouts">
+			<action method="approveAdminAction">orderThemeLayout.phtml</action>
+		</block>
+		<block type="addTemplate" name="Layouts Listing">
+			<action method="listAdminAction">lsitThemeLayout.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="theme" name="Skin" template="themeSkin.phtml">
+		<block type="addTemplate" name="Add New Skin">
+			<action method="addAdminAction">addThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Skin">
+			<action method="editAdminAction">editThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Skin">
+			<action method="deleteAdminAction">deleteThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Skins">
+			<action method="approveAdminAction">orderThemeSkin.phtml</action>
+		</block>
+		<block type="addTemplate" name="Skins Listing">
+			<action method="listAdminAction">lsitThemeSkin.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="theme" name="Template" template="themeTemplate.phtml">
+		<block type="addTemplate" name="Add New Template">
+			<action method="addAdminAction">addThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Template">
+			<action method="editAdminAction">editThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Template">
+			<action method="deleteAdminAction">deleteThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Publish">
+			<action method="publishAdminAction">publishThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Approve">
+			<action method="approveAdminAction">approveThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Order Templates">
+			<action method="approveAdminAction">orderThemeTemplate.phtml</action>
+		</block>
+		<block type="addTemplate" name="Templates Listing">
+			<action method="listAdminAction">lsitThemeTemplate.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="translation" name="Default" template="translation.phtml">
+		<block type="addTemplate" name="Add New Translation">
+			<action method="addAdminAction">addTranslation.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editTranslation.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete Translation">
+			<action method="deleteAdminAction">deleteTranslation.phtml</action>
+		</block>
+		<block type="addTemplate" name="Translations Listing">
+			<action method="listAdminAction">lsitTranslation.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="user" name="Default" template="user.phtml">
+		<block type="addTemplate" name="Add New User">
+			<action method="addAdminAction">addUser.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editUser.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete User">
+			<action method="deleteAdminAction">deleteUser.phtml</action>
+		</block>
+		<block type="addTemplate" name="Users Listing">
+			<action method="listAdminAction">lsitUser.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="user" name="UserLevel" template="userUserLevel.phtml">
+		<block type="addTemplate" name="Add New User Level">
+			<action method="addAdminAction">addUserUserLevel.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editUserUserLevel.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete User">
+			<action method="deleteAdminAction">deleteUserUserLevel.phtml</action>
+		</block>
+		<block type="addTemplate" name="User Levels Listing">
+			<action method="listAdminAction">lsitUserUserLevel.phtml</action>
+		</block>
+	</block>
+	<block type="package" as="user" name="UserLevelPermission"
+		template="userUserLevelPermission.phtml">
+		<block type="addTemplate" name="Add New User Level Permission">
+			<action method="addAdminAction">addUserUserLevelPermission.phtml</action>
+		</block>
+		<block type="addTemplate" name="Edit Search">
+			<action method="editAdminAction">editUserUserLevelPermission.phtml</action>
+		</block>
+		<block type="addTemplate" name="Delete User">
+			<action method="deleteAdminAction">deleteUserUserLevelPermission.phtml</action>
+		</block>
+		<block type="addTemplate" name="User Level Permissions Listing">
+			<action method="listAdminAction">lsitUserUserLevelPermission.phtml</action>
+		</block>
+	</block>
+</default>

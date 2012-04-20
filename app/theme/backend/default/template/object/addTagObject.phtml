@@ -1,0 +1,1874 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Object_Catagory' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Article' );
+	?></span></a></li>
+	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Photo' );
+	?></span></a></li>
+	<li class="tab" title="conttab3"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Video' );
+	?></span></a></li>
+	<li class="tab" title="conttab4"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Source' );
+	?></span></a></li>
+	<li class="tab" title="conttab5"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_URL' );
+	?></span></a></li>
+	<li class="tab" title="conttab6"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Static Pages' );
+	?></span></a></li>
+	<li class="tab" title="conttab7"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Tag' );
+	?></span></a></li>
+	<li class="tab" title="conttab8"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Abuse' );
+	?></span></a></li>
+	<li class="tab" title="conttab9"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Folders' );
+	?></span></a></li>
+	<li class="tab" title="conttab10"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Files' );
+	?></span></a></li>
+	<li class="tab" title="conttab11"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Advanced' );
+	?></span></a></li>
+	<li class="tab" title="conttab12"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Meta Data' );
+	?></span></a></li>
+	<li class="tab" title="conttab13"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Design' );
+	?></span></a></li>
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt">
+<h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Object_Add New Object' );
+?></h3>
+<a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save And Continue Edit' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Reset' );
+?></button>
+</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
+<button name="btn_submit" value="-1" class="emptbtn" type="button"
+	onlcick="javascript:history.go(-1);"><?php
+	echo $this->__ ( 'Object_Back' );
+	?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab1-->
+<div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_Page Information' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleArticle" name="titleArticle"
+			value="<?php
+			print $this->sanitized->titleArticle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasArticle" name="aliasArticle"
+			value="<?php
+			print $this->sanitized->aliasArticle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextArticle" name="introTextArticle"><?php
+			print $this->sanitized->introTextArticle->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Full Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="fullTextArticle" name="fullTextArticle"><?php
+			print $this->sanitized->fullTextArticle->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->fullTextArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->fullTextArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourceArticle" name="sourceArticle">
+		<?php
+		echo $this->sourceArticleList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourceArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourceArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Created Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date1"
+			name="createdDateArticle"
+			value="<?php
+			print $this->sanitized->createdDateArticle->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->createdDateArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->createdDateArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date2"
+			name="publishFromArticle"
+			value="<?php
+			print $this->sanitized->publishFromArticle->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFromArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFromArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date3"
+			name="publishToArticle"
+			value="<?php
+			print $this->sanitized->publishToArticle->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishToArticle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishToArticle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+
+</div>
+</div>
+</div>
+<!--end entrdata--></div>
+<!--end conttab1--> <!--conttab2  Photo -->
+<div class="mytabscont" id="conttab2" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titlePhoto" name="titlePhoto"
+			value="<?php
+			print $this->sanitized->titlePhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titlePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titlePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasPhoto" name="aliasPhoto"
+			value="<?php
+			print $this->sanitized->aliasPhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextPhoto" name="introTextPhoto"><?php
+			print $this->sanitized->introTextPhoto->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourcePhoto" name="sourcePhoto">
+		<?php
+		echo $this->sourcePhotoList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourcePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourcePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="takenDatePhoto" name="takenDatePhoto"
+			value="<?php
+			print $this->sanitized->takenDatePhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenDatePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenDatePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Location' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="takenLocationPhoto" name="takenLocationPhoto"
+			value="<?php
+			print $this->sanitized->takenLocationPhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenLocationPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenLocationPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Upload' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
+			name="filePhoto" />
+		<div class="validat" style="<?php
+		print $this->sanitized->filePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->filePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date2"
+			name="publishFromPhoto"
+			value="<?php
+			print $this->sanitized->publishFromPhoto->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFromPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFromPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date3" name="publishToPhoto"
+			value="<?php
+			print $this->sanitized->publishToPhoto->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishToPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishToPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab2--> <!--conttab3 Video -->
+<div class="mytabscont" id="conttab3" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleVideo" name="titleVideo"
+			value="<?php
+			print $this->sanitized->titleVideo->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasVideo" name="aliasVideo"
+			value="<?php
+			print $this->sanitized->aliasVideo->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextVideo" name="introTextVideo"><?php
+			print $this->sanitized->introTextVideo->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourceVideo" name="sourceVideo">
+		<?php
+		echo $this->sourceVideoList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourceVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourceVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="taeknDateVideo" name="takenDateVideo"
+			value="<?php
+			print $this->sanitized->takenDateVideo->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenDateVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenDateVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Location' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="takenLocationVideo" name="takenLocationVideo"
+			value="<?php
+			print $this->sanitized->takenLocationVideo->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenLocationVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenLocationVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Encoded' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="encodedVideo" name="encodedVideo">
+		<?php
+		echo $this->encodedVideoList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->encodedVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->encodedVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Upload' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
+			name="fileVideo" />
+		<div class="validat" style="<?php
+		print $this->sanitized->fileVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->fileVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date2"
+			name="publishFromVideo"
+			value="<?php
+			print $this->sanitized->publishFromVideo->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFromVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFromVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date3" name="publishToVideo"
+			value="<?php
+			print $this->sanitized->publishToVideo->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishToVideo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishToVideo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab3--> <!--conttab4 Source -->
+<div class="mytabscont" id="conttab4" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleSource" name="titleSource"
+			value="<?php
+			print $this->sanitized->titleSource->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleSource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleSource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="descriptionSource" name="descriptionSource"
+			value="<?php
+			print $this->sanitized->descriptionSource->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->descriptionSource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->descriptionSource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source Type' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="typeSource" name="typeSource"
+			value="<?php
+			print $this->sanitized->typeSource->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->typeSource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->typeSource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="urlSource" name="urlSource"
+			value="<?php
+			print $this->sanitized->urlSource->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->urlSource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->urlSource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Locale' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="localeSource" name="localeSource">
+		<?php
+		echo $this->localeSourceList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->localeSource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->localeSource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Country' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="countrySource" name="countrySource">
+		<?php
+		echo $this->countrySourceList;
+		?>
+			<option>Select Country</option>
+			<option value="AF">Afghanistan</option>
+			<option value="AL">Albania</option>
+			<option value="DZ"">Algeria</option>
+			<option value="AS">American Samoa</option>
+			<option value="AO">Angola</option>
+			<option value="AI">Anguilla</option>
+			<option value="AQ">Antartica</option>
+			<option value="AG">Antigua and Barbuda</option>
+			<option value="AR">Argentina</option>
+			<option value="AM">Armenia</option>
+			<option value="AW">Aruba</option>
+			<option value="AU">Australia</option>
+			<option value="AT">Austria</option>
+			<option value="AZ">Azerbaijan</option>
+			<option value="BS">Bahamas</option>
+			<option value="BH">Bahrain</option>
+			<option value="BD">Bangladesh</option>
+			<option value="BB">Barbados</option>
+			<option value="BY">Belarus</option>
+			<option value="BE">Belgium</option>
+			<option value="BZ">Belize</option>
+			<option value="BJ">Benin</option>
+			<option value="BM">Bermuda</option>
+			<option value="BT">Bhutan</option>
+			<option value="BO">Bolivia</option>
+			<option value="BA">Bosnia-Hercegovina</option>
+			<option value="BW">Botswana</option>
+			<option value="BR">Brazil</option>
+			<option value="BN">Brunai Darussalam</option>
+			<option value="BG">Bulgaria</option>
+			<option value="BF">Burkina Faso</option>
+			<option value="BU">Burma</option>
+			<option value="BI">Burundi</option>
+			<option value="KH">Cambodia</option>
+			<option value="CM">Cameroon</option>
+			<option value="CA">Canada</option>
+			<option value="CV">Cape Verde</option>
+			<option value="KY">Cayman Islands</option>
+			<option value="CF">Central African Republic</option>
+			<option value="TD">Chad</option>
+			<option value="CL">Chile</option>
+			<option value="CN">China</option>
+			<option value="CX">Christmas Islands</option>
+			<option value="CC">Cocos (Keeling) Islands</option>
+			<option value="CO">Colombia</option>
+			<option value="KM">Comoros</option>
+			<option value="CG">Congo</option>
+			<option value="CD">Congo, Dem. Rep. of</option>
+			<option value="CK">Cook Islands</option>
+			<option value="CR">Costa Rica</option>
+			<option value="CI">Cote D'Ivoire</option>
+			<option value="HR">Croatia</option>
+			<option value="CU">Cuba</option>
+			<option value="CY">Cyprus</option>
+			<option value="CZ">Czech Republic</option>
+			<option value="DK">Denmark</option>
+			<option value="DJ">Djibouti</option>
+			<option value="DM">Dominica</option>
+			<option value="DO">Dominican Republic</option>
+			<option value="TP">East Timor</option>
+			<option value="EC">Ecuador</option>
+			<option value="EG">Egypt</option>
+			<option value="SV">El Salvador</option>
+			<option value="GQ">Equatorial Guinea</option>
+			<option value="ER">Eritrea</option>
+			<option value="EE">Estonia</option>
+			<option value="ET">Ethiopia</option>
+			<option value="EU">European Union</option>
+			<option value="FO">Faero Islands</option>
+			<option value="FK">Falkland Islands (Malvinas)</option>
+			<option value="FM">Fed. States of Micronesia</option>
+			<option value="FJ">Fiji</option>
+			<option value="FI">Finland</option>
+			<option value="FR">France</option>
+			<option value="GF">French Guiana</option>
+			<option value="PF">French Polynesia</option>
+			<option value="GA">Gabon</option>
+			<option value="GM">Gambia</option>
+			<option value="GE">Georgia</option>
+			<option value="DE">Germany, Fed. Republic of</option>
+			<option value="GH">Ghana</option>
+			<option value="GI">Gibraltar</option>
+			<option value="GR">Greece</option>
+			<option value="GL">Greenland</option>
+			<option value="GD">Grenada</option>
+			<option value="GP">Guadeloupe</option>
+			<option value="GU">Guam</option>
+			<option value="GT">Guatemala</option>
+			<option value="GN">Guinea</option>
+			<option value="GW">Guinea-Bissau</option>
+			<option value="GY">Guyana</option>
+			<option value="HT">Haiti</option>
+			<option value="HN">Honduras</option>
+			<option value="HK">Hong Kong</option>
+			<option value="HU">Hungary</option>
+			<option value="IS">Iceland</option>
+			<option value="IN">India</option>
+			<option value="IO">Indian Ocean Territory</option>
+			<option value="ID">Indonesia</option>
+			<option value="XZ">International Zone</option>
+			<option value="IR">Iran, Islamic Republic of</option>
+			<option value="IQ">Iraq</option>
+			<option value="IE">Ireland</option>
+			<option value="IL">Israel</option>
+			<option value="IT">Italy</option>
+			<option value="JM">Jamaica</option>
+			<option value="JP">Japan</option>
+			<option value="JO">Jordan</option>
+			<option value="KZ">Kazakstan</option>
+			<option value="KE">Kenya</option>
+			<option value="KI">Kiribati</option>
+			<option value="KP">Korea, Dem. People's Rep.</option>
+			<option value="KR">Korea, Republic of</option>
+			<option value="KW">Kuwait</option>
+			<option value="KG">Kyrgyzstan</option>
+			<option value="LA">Lao People's Democratic Rep.</option>
+			<option value="LV">Latvia</option>
+			<option value="LB">Lebanon</option>
+			<option value="LS">Lesotho</option>
+			<option value="LR">Liberia</option>
+			<option value="LY">Libyan Arab Jamahiriya</option>
+			<option value="LI">Liechtenstein</option>
+			<option value="LT">Lithuania</option>
+			<option value="LU">Luxembourg</option>
+			<option value="MO">Macau</option>
+			<option value="MK">Macedonia, F.Y.R.</option>
+			<option value="MG">Madagascar</option>
+			<option value="MW">Malawi</option>
+			<option value="MY">Malaysia</option>
+			<option value="MV">Maldives</option>
+			<option value="ML">Mali</option>
+			<option value="MT">Malta</option>
+			<option value="MH">Marshal Islands</option>
+			<option value="MQ">Martinique</option>
+			<option value="MR">Mauritania</option>
+			<option value="MU">Mauritius</option>
+			<option value="YT">Mayotte</option>
+			<option value="MX">Mexico</option>
+			<option value="MD">Moldova</option>
+			<option value="MC">Monaco</option>
+			<option value="MN">Mongolia</option>
+			<option value="MS">Montserrat</option>
+			<option value="MA">Morocco</option>
+			<option value="MZ">Mozambique</option>
+			<option value="MM">Myanmar</option>
+			<option value="NAFTA">N. America (CA, US, MX)</option>
+			<option value="NA">Namibia</option>
+			<option value="NR">Nauru</option>
+			<option value="NP">Nepal</option>
+			<option value="NL">Netherlands</option>
+			<option value="AN">Netherlands Antilles</option>
+			<option value="NC">New Caledonia</option>
+			<option value="NZ">New Zealand</option>
+			<option value="NI">Nicaragua</option>
+			<option value="NE">Niger</option>
+			<option value="NG">Nigeria</option>
+			<option value="NU">Niue</option>
+			<option value="NF">Norfolk Island</option>
+			<option value="MP">Northern Marianas</option>
+			<option value="NO">Norway</option>
+			<option value="OM">Oman</option>
+			<option value="PK">Pakistan</option>
+			<option value="PW">Palau</option>
+			<option value="PA">Panama</option>
+			<option value="PG">Papua New Guinea</option>
+			<option value="PY">Paraguay</option>
+			<option value="PE">Peru</option>
+			<option value="PH">Philippines</option>
+			<option value="PN">Pitcairn</option>
+			<option value="PL">Poland</option>
+			<option value="PT">Portugal</option>
+			<option value="PR">Puerto Rico</option>
+			<option value="QA">Qatar</option>
+			<option value="RE">Reunion</option>
+			<option value="RO">Romania</option>
+			<option value="RU">Russian Federation</option>
+			<option value="RW">Rwanda</option>
+			<option value="GS">S. Georgia &amp; S. Sandwich Islan--</option>
+			<option value="LC">Saint Lucia</option>
+			<option value="WS">Samoa</option>
+			<option value="SM">San Marino</option>
+			<option value="ST">Sao Tome and Principe</option>
+			<option value="SA">Saudi Arabia</option>
+			<option value="SN">Senegal</option>
+			<option value="SC">Seychelles</option>
+			<option value="SL">Sierra Leone</option>
+			<option value="SG">Singapore</option>
+			<option value="SK">Slovakia</option>
+			<option value="SI">Slovenia</option>
+			<option value="SB">Solomon Islands</option>
+			<option value="SO">Somalia</option>
+			<option value="ZA">South Africa</option>
+			<option value="ES">Spain</option>
+			<option value="LK">Sri Lanka</option>
+			<option value="KN">St Kitts-Nevis</option>
+			<option value="VC">St Vincent and Grenadines</option>
+			<option value="SH">St. Helena</option>
+			<option value="PM">St. Pierre and Miquelon</option>
+			<option value="SD">Sudan</option>
+			<option value="SR">Suriname</option>
+			<option value="SJ">Svalbard and Jan Mayen</option>
+			<option value="SZ">Swaziland</option>
+			<option value="SE">Sweden</option>
+			<option value="CH">Switzerland</option>
+			<option value="SY">Syrian Arab Republic</option>
+			<option value="TW">Taiwan, Republic of China</option>
+			<option value="TJ">Tajikistan</option>
+			<option value="TZ">Tanzania, United Republic of</option>
+			<option value="TH">Thailand</option>
+			<option value="TG">Togo</option>
+			<option value="TK">Tokelau</option>
+			<option value="TO">Tonga</option>
+			<option value="TT">Trinidad and Tobago</option>
+			<option value="TN">Tunisia</option>
+			<option value="TR">Turkey</option>
+			<option value="TM">Turkmenistan</option>
+			<option value="TC">Turks and Caicos Islands</option>
+			<option value="TV">Tuvalu</option>
+			<option value="UG">Uganda</option>
+			<option value="UA">Ukraine</option>
+			<option value="AE">United Arab Emirates</option>
+			<option value="GB">United Kingdom</option>
+			<option value="US">United States</option>
+			<option value="VI">United States Virgin Islands</option>
+			<option value="UY">Uruguay</option>
+			<option value="UM">US Minor Outlying Islands</option>
+			<option value="UZ">Uzbekistan</option>
+			<option value="VU">Vanuatu</option>
+			<option value="VA">Vatican (Holy City, State)</option>
+			<option value="VE">Venezuela</option>
+			<option value="VN">Viet Nam</option>
+			<option value="VG">Virgin Islands, British</option>
+			<option value="WF">Wallis and Futuna Islands</option>
+			<option value="EH">Western Sahara</option>
+			<option value="YE">Yemen</option>
+			<option value="YU">Yugoslavia (Fed. Rep. of)</option>
+			<option value="ZR">Zaire = Congo Dem. (CD)</option>
+			<option value="ZM">Zambia</option>
+			<option value="ZW">Zimbabwe</option>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->countrySource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->countrySource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Time Delay' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="timeDelay" name="timeDelay"
+			value="<?php
+			print $this->sanitized->timeDelaySource->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->timeDelaySource->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->timeDelaySource->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab4--> <!--conttab5 Url -->
+<div class="mytabscont" id="conttab5" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleUrl" name="titleUrl"
+			value="<?php
+			print $this->sanitized->titleUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasUrl" name="aliasUrl"
+			value="<?php
+			print $this->sanitized->aliasUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextUrl" name="introTextUrl"><?php
+			print $this->sanitized->introTextUrl->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="urlUrl" name="urlUrl"
+			value="<?php
+			print $this->sanitized->urlUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->urlUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->urlUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Styel' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="styleUrl" name="styleUrl"
+			value="<?php
+			print $this->sanitized->styleUrl->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->styleUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->styleUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourceUrl" name="sourceUrl">
+		<?php
+		echo $this->sourceUrlList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourceUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourceUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL Type' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="urlTypeUrl" name="urlTypeUrl">
+		<?php
+		echo $this->urlTypeUrlList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->urlTypeUrl->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->urlTypeUrl->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab5--> <!--conttab6 Static Page -->
+<div class="mytabscont" id="conttab6" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleStatic" name="titleStatic"
+			value="<?php
+			print $this->sanitized->titleStatic->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasStatic" name="aliasStatic"
+			value="<?php
+			print $this->sanitized->aliasStatic->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextStatic" name="introTextStatic"><?php
+			print $this->sanitized->introTextStatic->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Full Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="fullTextStatic" name="fullTextStatic"><?php
+			print $this->sanitized->fullTextStatic->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->fullTextStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->fullTextStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_URL' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="UrlStatic" name="UrlStatic"
+			value="<?php
+			print $this->sanitized->UrlStatic->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->UrlStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->UrlStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Created Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date1"
+			name="createdDateStatic"
+			value="<?php
+			print $this->sanitized->createdDateStatic->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->createdDateStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->createdDateStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date2"
+			name="publishFromStatic"
+			value="<?php
+			print $this->sanitized->publishFromStatic->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFromStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFromStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date3"
+			name="publishToStatic"
+			value="<?php
+			print $this->sanitized->publishToStatic->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishToStatic->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishToStatic->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab6--> <!--conttab7-->
+<div class="mytabscont" id="conttab7" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleTag" name="titleTag"
+			value="<?php
+			print $this->sanitized->titleTag->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleTag->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleTag->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab7--> <!--conttab8 Abuse-->
+<div class="mytabscont" id="conttab8" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleAbuse" name="titleAbuse"
+			value="<?php
+			print $this->sanitized->titleAbuse->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleAbuse->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleAbuse->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Label' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="labelAbuse" name="labelAbuse"
+			value="<?php
+			print $this->sanitized->labelAbuse->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->labelAbuse->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->labelAbuse->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="descriptionAbuse" name="descriptionAbuse"
+			value="<?php
+			print $this->sanitized->descriptionAbuse->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->descriptionAbuse->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->descriptionAbuse->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab8--> <!--conttab9 Directory -->
+<div class="mytabscont" id="conttab9" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleDirectory" name="titleDirectory"
+			value="<?php
+			print $this->sanitized->titleDirectory->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleDirectory->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleDirectory->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Label' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="labelDirectory" name="labelDirectory"
+			value="<?php
+			print $this->sanitized->labelDirectory->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->labelDirectory->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->labelDirectory->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="descriptionDirectory" name="descriptionDirectory"
+			value="<?php
+			print $this->sanitized->descriptionDirectory->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->descriptionDirectory->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->descriptionDirectory->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Parent' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="parentDirectory" name="parentDirectory">
+		<?php
+		echo $this->parentDirectoryList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->parentDirectory->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->parentDirectory->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab9--> <!--conttab10 File -->
+<div class="mytabscont" id="conttab10" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titleFile" name="titleFile"
+			value="<?php
+			print $this->sanitized->titleFile->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titleFile->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titleFile->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Name' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="nameFile" name="nameFile"
+			value="<?php
+			print $this->sanitized->nameFile->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->nameFile->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->nameFile->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="descriptionFile" name="descriptionFile"
+			value="<?php
+			print $this->sanitized->descriptionFile->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->descriptionFile->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->descriptionFile->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Following to Folder' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="directoryFile" name="directoryFile">
+		<?php
+		echo $this->directoryFileList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->directoryFile->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->directoryFile->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab10--> <!--conttab11 Advanced -->
+<div class="mytabscont" id="conttab11" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Category' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="category" name="category">
+		<?php
+		echo $this->categoryList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->category->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->category->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Locale' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="locale"
+			name="locale">
+		<?php
+		echo $this->localeList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->locale->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->locale->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Tag' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="tag" name="tag"
+			value="<?php
+			print $this->sanitized->tag->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->tag->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->tag->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Page Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="pageTitle" name="pageTitle"
+			value="<?php
+			print $this->sanitized->pageTitle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->pageTitle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->pageTitle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Original Author' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="originalAuthor" name="originalAuthor"
+			value="<?php
+			print $this->sanitized->originalAuthor->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->originalAuthor->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->originalAuthor->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop">&nbsp;</td>
+		<td class="lablvalue jstalgntop">
+		<ul class="lstsopt">
+			<li class="cleaner"><input type="checkbox" class="intchk fl"
+				id="showInList" name="showInList" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->showInList->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="showInList" class="inptlabl fl"><?php
+			echo $this->__ ( 'Object_Show in List' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->showInList->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->showInList->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" class="intchk fl"
+				id="published" name="published" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->published->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="published" class="inptlabl fl"><?php
+			echo $this->__ ( 'Object_Published' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->published->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->published->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" id="approved"
+				class="intchk fl" name="approved" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->approved->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="approved" class="inptlabl fl"><?php
+			echo $this->__ ( 'Object_Approved' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->approved->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->approved->errorMessage;
+		?></div>
+			</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Comments' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="comment" name="comment"
+			value="<?php
+			print $this->sanitized->comment->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->comment->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->comment->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Options' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="option" name="option"
+			value="<?php
+			print $this->sanitized->option->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->option->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->option->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Created Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date1" name="createdDate"
+			value="<?php
+			print $this->sanitized->createdDate->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->createdDate->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->createdDate->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab11--> <!--conttab12 Meta -->
+<div class="mytabscont" id="conttab12" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaTitle" name="metaTitle"
+			value="<?php
+			print $this->sanitized->metaTitle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaTitle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaTitle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Keywords' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaKey" name="metaKey"
+			value="<?php
+			print $this->sanitized->metaKey->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaKey->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaKey->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaDesc" name="metaDesc"
+			value="<?php
+			print $this->sanitized->metaDesc->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaDesc->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaDesc->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Data' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaData" name="metaData"
+			value="<?php
+			print $this->sanitized->metaData->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaData->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaData->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab12--> <!--conttab13-->
+<div class="mytabscont" id="conttab13" style="display: none">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Layout' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="layout"
+			name="layout">
+		<?php
+		echo $this->layoutList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->layout->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->layout->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Template' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="template" name="template">
+		<?php
+		echo $this->templateList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->template->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->template->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_skin' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="skin"
+			name="skin">
+		<?php
+		echo $this->skinList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->skin->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->skin->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Created Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date1" name="createdDate"
+			value="<?php
+			print $this->sanitized->createdDate->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->createdDate->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->createdDate->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date2" name="publishFrom"
+			value="<?php
+			print $this->sanitized->publishFrom->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFrom->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFrom->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date3" name="publishTo"
+			value="<?php
+			print $this->sanitized->publishTo->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishTo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishTo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+<!--end conttab13--></div>
+<!--end ritcont-->
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml'; ?>
+</div>
+<!--end container-->
+</body>
+</html>

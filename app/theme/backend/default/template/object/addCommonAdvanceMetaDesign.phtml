@@ -1,0 +1,410 @@
+
+<!--conttab11 Advanced -->
+<div class="mytabscont" id="conttab11" style="display: none">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_Advanced' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Tag' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="tag" name="tag"
+			value="<?php
+			print $this->sanitized->tag->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->tag->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->tag->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Comments' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="comment" name="comment"
+			value="<?php
+			print $this->sanitized->comment->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->comment->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->comment->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Options' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="option" name="option" dir="ltr"><?php
+			print $this->sanitized->option->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->option->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->option->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Created Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date11" name="createdDate"
+			value="<?php
+			print $this->sanitized->createdDate->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->createdDate->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->createdDate->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date12" name="publishFrom"
+			value="<?php
+			print $this->sanitized->publishFrom->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishFrom->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishFrom->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date13" name="publishTo"
+			value="<?php
+			print $this->sanitized->publishTo->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->publishTo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->publishTo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop">&nbsp;</td>
+		<td class="lablvalue jstalgntop">
+		<ul class="lstsopt">
+			<li class="cleaner"><input type="checkbox" class="intchk fl"
+				id="published" name="published" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->published->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="published" class="inptlabl fl"><?php
+			echo $this->__ ( 'Object_Published' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->published->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->published->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" id="approved"
+				class="intchk fl" name="approved" value="Yes"
+				<?php
+				echo ('Yes' == $this->sanitized->approved->value) ? 'checked="checked"' : '';
+				?> />
+			<label for="approved" class="inptlabl fl"><?php
+			echo $this->__ ( 'Object_Approved' );
+			?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->approved->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->approved->errorMessage;
+		?></div>
+			</li>
+			<li class="cleaner"><input type="checkbox" id="updateDate"
+				class="intchk fl" name="updateDate" value="Yes" /> <label
+				for="updateDate" class="inptlabl fl"><?php
+				echo $this->__ ( 'Object_Update article date' );
+				?></label><br />
+			<div class="validat" style="<?php
+			print $this->sanitized->approved->errorMessageStyle;
+			?>">
+		<?php
+		print $this->sanitized->approved->errorMessage;
+		?></div>
+			</li>
+		</ul>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!--end conttab11-->
+<!--conttab12 Meta -->
+<div class="mytabscont" id="conttab12" style="display: none">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_Meta Data' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Page Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="pageTitle" name="pageTitle"
+			value="<?php
+			print $this->sanitized->pageTitle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->pageTitle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->pageTitle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaTitle" name="metaTitle"
+			value="<?php
+			print $this->sanitized->metaTitle->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaTitle->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaTitle->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Keywords' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaKey" name="metaKey"
+			value="<?php
+			print $this->sanitized->metaKey->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaKey->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaKey->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Description' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaDesc" name="metaDesc"
+			value="<?php
+			print $this->sanitized->metaDesc->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaDesc->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaDesc->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Meta Data' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="metaData" name="metaData"
+			value="<?php
+			print $this->sanitized->metaData->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->metaData->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->metaData->errorMessage;
+		?></div>
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!--end conttab12-->
+<!-- conttab13 
+<div class="mytabscont" id="conttab13" style="display: none">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_Design' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto">
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish From' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date14" name="themePublishFrom"
+			value="<?php
+			print $this->sanitized->themePublishFrom->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->themePublishFrom->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->themePublishFrom->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Publish To' );
+		?>:</td>
+		<td class="lablvalue jstalgntop">
+		<div class="calen_beside"><input type="text"
+			class="inpttxt wdth70 slctdate" id="slct_date15" name="themePublishTo"
+			value="<?php
+			print $this->sanitized->themePublishTo->value;
+			?>" /></div>
+		<div class="validat" style="<?php
+		print $this->sanitized->themePublishTo->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->themePublishTo->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	if (! empty ( $this->layoutList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Layout' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="layout"
+			name="layout">
+		<?php
+		echo $this->layoutList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->layout->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->layout->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="layout" value="1" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+	if (! empty ( $this->templateList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Template' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="template" name="template">
+		<?php
+		echo $this->templateList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->template->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->template->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="layout" value="1" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+	if (! empty ( $this->skinList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_skin' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="skin"
+			name="skin">
+		<?php
+		echo $this->skinList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->skin->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->skin->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="layout" value="1" /></td>
+	</tr>
+	<?php
+	}
+	?>
+</table>
+</div>
+</div>
+</div>
+</div>
+ end conttab13 -->

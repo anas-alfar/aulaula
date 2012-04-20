@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './header/meta.phtml';
+?>
+</head>
+<body class="nobg">
+<div class="email-page">
+<fieldset class="feldset"><legend>أخـبـر أصـدقـائـك</legend>
+<table class="email-frind" id="tellTable">
+	<tr>
+		<td>إسمك:</td>
+		<td><input type="text" class="inpttxt" /></td>
+		<td>بريدك الإلكتروني:</td>
+		<td><input type="text" class="inpttxt" /></td>
+	</tr>
+	<tr>
+		<td>إسم صديقك:</td>
+		<td><input type="text" class="inpttxt" /></td>
+		<td>بريد صديقك اللإلكتروني:</td>
+		<td><input type="text" class="inpttxt" /></td>
+	</tr>
+	<tr>
+		<td colspan="4"><a href="javascript:addFriend()">[+] أضـف صـديـق</a></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td colspan="3">
+		<div class="cleaner fl"><input type="submit" class="inptbtn sndbtn fr"
+			value="" />
+		<p class="fr margthalf"><strong>&nbsp;أو </strong><a
+			href="javascript:window.close();">إلـغـاء</a></p>
+		</div>
+		</td>
+	</tr>
+</table>
+</fieldset>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+<li class="lastbox">
+<div class="hashembox">
+<h3 class="domentitle"><span><a
+	href="/object-article/list/category/<?php
+	echo NEWS_HASHIM_CORNER;
+	?>"
+	class="hashemcorn"><img
+	src="<?php
+	print $this->defaultSkinImagesUrl;
+	?>spacer.gif"
+	alt="زاوية هاشم الخالدي" title="زاوية هاشم الخالدي" width="144"
+	height="22" /></a></span></h3>
+<div class="domendata minheght"><!--cleaner-->
+<div class="cleaner padritlft5"><a
+	href="/object-article/view/id/<?php
+	echo $this->newsHashimCornerList [0] ['id'];
+	?>/title/<?php
+	echo $this->newsHashimCornerList [0] ['title'];
+	?>"><img
+	src="<?php
+	echo $this->newsHashimCornerList [0] ['imageUrl'];
+	?>"
+	alt="<?php
+	echo $this->newsHashimCornerList [0] ['photo_alias'];
+	?>"
+	title="<?php
+	echo $this->newsHashimCornerList [0] ['photo_alias'];
+	?>"
+	class="thumb fr" /></a>
+<h2 class="fnt11"><a
+	href="/object-article/view/id/<?php
+	echo $this->newsHashimCornerList [0] ['id'];
+	?>/title/<?php
+	echo $this->newsHashimCornerList [0] ['title'];
+	?>"><?php
+	echo $this->cleanHtml ( $this->newsHashimCornerList [0] ['title'] );
+	?></a></h2>
+<cite class="date"><?php
+echo $this->newsHashimCornerList [0] ['date_added'];
+?></cite>
+<p><?php
+echo $this->subString ( $this->cleanHtml ( $this->newsHashimCornerList [0] ['intro_text'] ), $this->start, 400 ) . '...';
+?></p>
+</div>
+<!--end cleaner-->
+<h3 class="prevtitle"><a href="/object-article/list/category/18">مقالات
+سابقة للكاتب</a></h3>
+<!--
+                        <ul class="writrs marglftrit">
+                          <?php
+																										/*
+            							$countHashimCorner= count($this->newsHashimCornerList);
+            							for($k=1; $k< $countHashimCorner; $k++ ){ 
+            							?>
+                            <li><h2 class="fnt11"><a href="/object-article/view/id/<?php echo $this->newsHashimCornerList[$k]['id']; ?>/title/<?php echo $this->newsHashimCornerList[$k]['title']; ?>"><?php echo $this->cleanHtml ( $this->newsHashimCornerList[$k]['title'] ); ?></a></h2></li>
+                        	<?php  
+                        	} 
+                        	*/
+																										?>
+                        </ul>
+                        --></div>
+</div>
+</li>

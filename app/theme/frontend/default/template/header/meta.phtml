@@ -1,0 +1,62 @@
+<title><?php
+print $this->cleanHtml ( $this->pageTitle );
+?></title>
+<meta content="<?php
+print $this->cleanHtml ( $this->metaKeywords );
+?>"
+	name="Keywords" />
+<meta
+	content="<?php
+	print $this->cleanHtml ( $this->metaDescription );
+	?>"
+	name="Description" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link href="<?php
+print $this->defaultSkinCssUrl;
+?>mutshabeh.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>jquery.js"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>index.js"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>jquery.timers-1.2.js.txt"></script>
+<script type="text/javascript"
+	src="<?php
+	print $this->defaultSkinJsUrl;
+	?>jquery.cycle.all.min.js"></script>
+<script type="text/javascript">
+<!--//---------------------------------+
+//  Developed by Roshan Bhattarai 
+//  Visit http://roshanbh.com.np for this script and more.
+//  This notice MUST stay intact for legal use
+// --------------------------------->
+$(document).ready(function()
+{	//slides the element with class "menu_body" when mouse is over the paragraph
+	$("span.circlbg").click(function()
+    {
+	     $(this).next("div.lst").slideToggle(500).siblings("div.lst").slideUp("slow");
+	});
+});
+</script>
+<style type="text/css">
+.menu_list {
+	width: 150px;
+}
+
+.menu_head {
+	background: url(../images/boxtitlebg.gif) no-repeat 0 0;
+	padding: 0 0 0 12px;
+}
+
+div.lst {
+	display: none;
+}
+</style>

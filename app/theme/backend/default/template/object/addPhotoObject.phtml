@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php
+include './html/meta.phtml';
+?>
+<script>
+function getSubCategories() {
+	$.ajax({
+	      url: "/admin/handle/pkg/object-photo/action/listSubCatAjax",
+	      type: "POST",
+	      data: ({category : $('#category').val()}),
+	      success: function(msg){
+	         $('#actionsList').html(msg);
+	      }
+	   }
+	).responseText;
+}
+</script>
+</head>
+<body>
+
+<!--container-->
+<div class="container">
+<?php
+include './html/header.phtml';
+?>
+<?php
+
+include './html/menu.phtml';
+?>
+<?php
+
+include './html/notification.phtml';
+?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<div class="lftnav">
+<h3 class="margb1"><?php
+echo $this->__ ( 'Object_Add New Photo' );
+?></h3>
+<ul>
+	<li class="tab active" title="conttab2"><a href="javascript:void(0);"><span><?php
+	echo $this->__ ( 'Object_Photo' );
+	?></span></a></li>
+
+	<?php
+	include './object/addCommonObjectTab.phtml';
+	?>
+
+</ul>
+</div>
+<!--end lftnav--> <!--ritcont-->
+<form action="" method="post" enctype="multipart/form-data">
+<div class="ritcont"><!--srch-rslt-->
+<div class="srch-rslt"><!-- <h3 class="fl pagetitle margthaf"><?php
+echo $this->__ ( 'Object_Add New Photo' );
+?></h3> -->
+<a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save And Continue Edit' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Save' );
+?></button>
+</em></a> <a href="javascript:void(0);" class="save-btn"><em>
+<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
+echo $this->__ ( 'Object_Reset' );
+?></button>
+</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
+<button name="btn_submit" value="-1" class="emptbtn" type="button"
+	onlcick="javascript:history.go(-1);"><?php
+	echo $this->__ ( 'Object_Back' );
+	?></button>
+</em></a></div>
+<!--end srch-rslt--> <!--conttab2  Photo -->
+<div class="mytabscont" id="conttab2" style="display: block">
+<div class="entrdata">
+<h2 class="datatitle"><?php
+echo $this->__ ( 'Object_Photo' );
+?></h2>
+<div class="entrdcont">
+<div class="wdthauto"><input type="hidden" id="Id" name="Id"
+	value="<?php
+	print $this->sanitized->Id->value;
+	?>" /> <input
+	type="hidden" id="token" name="token"
+	value="<?php
+	print $this->sanitized->token->value;
+	?>" />
+<table class="formlist">
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Title' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="titlePhoto" name="titlePhoto"
+			value="<?php
+			print $this->sanitized->titlePhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->titlePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->titlePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Alias' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="aliasPhoto" name="aliasPhoto"
+			value="<?php
+			print $this->sanitized->aliasPhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->aliasPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->aliasPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Intro Text' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
+			cols="" id="introTextPhoto" name="introTextPhoto"><?php
+			print $this->sanitized->introTextPhoto->value;
+			?></textarea>
+		<div class="validat" style="<?php
+		print $this->sanitized->introTextPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->introTextPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Upload' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
+			name="filePhoto" />
+		<div class="validat" style="<?php
+		print $this->sanitized->filePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->filePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Date' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="takenDatePhoto" name="takenDatePhoto"
+			value="<?php
+			print $this->sanitized->takenDatePhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenDatePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenDatePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Taken Location' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
+			id="takenLocationPhoto" name="takenLocationPhoto"
+			value="<?php
+			print $this->sanitized->takenLocationPhoto->value;
+			?>" />
+		<div class="validat" style="<?php
+		print $this->sanitized->takenLocationPhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->takenLocationPhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	if (! empty ( $this->sourcePhotoList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Source' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="sourcePhoto" name="sourcePhoto">
+		<?php
+		echo $this->sourcePhotoList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->sourcePhoto->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->sourcePhoto->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="sourcePhoto" value="1" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+	if (! empty ( $this->categoryList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Category' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			onchange="getSubCategories();" id="category" name="category">
+		<?php
+		echo $this->categoryList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->category->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->category->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Object_Subcategory' );
+		?>:</td>
+		<td class="lablvalue jstalgntop" id="actionsList"><input
+			class="inptflx" type="text" value="0" name="subCategoryId"
+			disabled="disabled" readonly="readonly" />
+		<div class="validat" style="<?php
+		print $this->sanitized->subCategoryId->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->subCategoryId->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="category" value="1" /></td>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+	if (! empty ( $this->photoEssaysList )) {
+		?>
+	<tr>
+		<td class="lable jstalgntop"><?php
+		echo $this->__ ( 'Photo Essays Topics' );
+		?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct"
+			id="category" name="photoEssays">
+			<option value="0"><?php
+		echo $this->__ ( '-- Please Select One --' );
+		?></option>
+			<?php
+		echo $this->photoEssaysList;
+		?>
+		</select>
+		<div class="validat" style="<?php
+		print $this->sanitized->photoEssays->errorMessageStyle;
+		?>">
+		<?php
+		print $this->sanitized->photoEssays->errorMessage;
+		?></div>
+		</td>
+	</tr>
+	<?php
+	} else {
+		?>
+	<tr>
+		<td><input type="hidden" name="photoEssays" value="0" /></td>
+	</tr>
+	<?php
+	}
+	?>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<?php
+include './object/addCommonAdvanceMetaDesign.phtml';
+?>
+
+
+<!--end ritcont--></div>
+</form>
+</div>
+<!--end maincont--></div>
+<!--end content-->
+<?php
+include './html/footer.phtml';
+?>
+</div>
+<!--end container-->
+</body>
+</html>
