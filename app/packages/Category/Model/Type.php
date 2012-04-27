@@ -16,9 +16,9 @@ class Category_Model_Type extends Aula_Model_DbTable {
 	public $order = 1;
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'description', 'author_id', 'package_id', 'show_in_menu', 'published', 'approved', 'order', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `show_in_menu`, `published`, `approved`, `order`, `date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'package_id', 'show_in_menu', 'published', 'approved', 'order', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `show_in_menu`, `published`, `approved`, `order`, `date_added` ';
+		parent::__construct();
 	}
 
 }

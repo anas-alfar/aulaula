@@ -12,23 +12,15 @@
     Learn more about Flex at http://flex.org 
     // -->
 <head>
-<title><?php
-print $this->cleanHtml ( $this->pageTitle );
-?></title>
-<meta content="<?php
-print $this->cleanHtml ( $this->metaKeywords );
-?>"
-	name="Keywords" />
-<meta
-	content="<?php
-	print $this->cleanHtml ( $this->metaDescription );
-	?>"
-	name="Description" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php print $this->cleanHtml ( $this->pageTitle ); ?></title>
+<meta content="<?php print $this->cleanHtml ( $this->metaKeywords ); ?>" name="Keywords" />
+<meta content="<?php print $this->cleanHtml ( $this->metaDescription ); ?>" name="Description" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
-<meta name="Generator"
-	content="[Flip PDF version 3.0] at http://flipbuilder.com/" />
+<meta name="Generator" content=
+"[Flip PDF version 3.0] at http://flipbuilder.com/" />
 <title>dabt</title>
 <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and 
        the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as 
@@ -38,20 +30,24 @@ print $this->cleanHtml ( $this->metaKeywords );
 
 <style type="text/css" media="screen">
 /*<![CDATA[*/
-html,body {
-	height: 100%;
+html,
+body
+{
+ height:100%;
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	overflow: auto;
-	text-align: center;
-	background-color: #ffffff;
+body
+{
+ margin:0;
+ padding:0;
+ overflow:auto;
+ text-align:center;
+ background-color: #ffffff;
 }
 
-#flashContent {
-	display: none;
+#flashContent
+{
+ display:none;
 }
 /*]]>*/
 </style>
@@ -938,9 +934,7 @@ var swfobject = function() {
             attributes.name = "FlipBookBuilder";
             attributes.align = "middle";
             swfobject.embedSWF(
-                "<?php
-																print $this->defaultSkinImagesUrl;
-																?>book.swf", "flashContent", 
+                "<?php print $this->defaultSkinImagesUrl; ?>book.swf", "flashContent", 
                 "100%", "100%", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
@@ -955,8 +949,8 @@ var swfobject = function() {
     when JavaScript is disabled.
   -->
 <div id="flashContent">
-<p>To view this page ensure that Adobe Flash Player version 9.0.0 or
-greater is installed.</p>
+<p>To view this page ensure that Adobe Flash Player version 9.0.0
+or greater is installed.</p>
 <script type="text/javascript">
 //<![CDATA[
  
@@ -964,25 +958,26 @@ greater is installed.</p>
     document.write("<a href='http://www.adobe.com/go/getflashplayer'>Get Adobe Flash Player<\/a>" ); 
 //]]>
 </script></div>
-<noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-	width="100%" height="100%" id="FlipBookBuilder">
-	<param name="movie" value="book.swf" />
-	<param name="quality" value="high" />
-	<param name="bgcolor" value="#ffffff" />
-	<param name="allowScriptAccess" value="always" />
-	<param name="allowFullScreen" value="true" />
-	<!--[if !IE]>--> <object type="application/x-shockwave-flash"
-		data="book.swf" width="100%" height="100%">
-		<param name="quality" value="high" />
-		<param name="bgcolor" value="#ffffff" />
-		<param name="allowScriptAccess" value="always" />
-		<param name="allowFullScreen" value="true" />
-		<param name="wmode" value="transparent2" />
-		<!--<![endif]--><!--[if gte IE 6]>-->
-		<p>Either scripts and active content are not permitted to run or Adobe
-		Flash Player version 9.0.0 or greater is not installed.</p>
-		<!--<![endif]--> <a href="http://www.adobe.com/go/getflashplayer">Get
-		Adobe Flash Player</a> <!--[if !IE]>--></object> <!--<![endif]--></object></noscript>
+<noscript><object classid=
+"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height=
+"100%" id="FlipBookBuilder"><param name="movie" value="book.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="allowScriptAccess" value="always" />
+<param name="allowFullScreen" value="true" />
+<!--[if !IE]>-->
+<object type="application/x-shockwave-flash" data="book.swf" width=
+"100%" height="100%"><param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="allowScriptAccess" value="always" />
+<param name="allowFullScreen" value="true" />
+<param name="wmode" value="transparent2" />
+<!--<![endif]--><!--[if gte IE 6]>-->
+<p>Either scripts and active content are not permitted to run or
+Adobe Flash Player version 9.0.0 or greater is not installed.</p>
+<!--<![endif]--> <a href=
+"http://www.adobe.com/go/getflashplayer">Get Adobe Flash Player</a>
+<!--[if !IE]>--></object> <!--<![endif]--></object></noscript>
 
 
 </body>

@@ -25,14 +25,14 @@
  *
  */
 class Object_Model_Info extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_info';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -50,9 +50,9 @@ class Object_Model_Info extends Aula_Model_DbTable {
 	public $themePublishTo = '0000-00-00';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'object_id', 'total_views', 'total_comments', 'total_rating', 'layout_id', 'template_id', 'skin_id', 'theme_publish_from', 'theme_publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `object_id`, `total_views`, `total_comments`, `total_rating`, `layout_id`, `template_id`, `skin_id`, `theme_publish_from`, `theme_publish_to`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'object_id', 'total_views', 'total_comments', 'total_rating', 'layout_id', 'template_id', 'skin_id', 'theme_publish_from', 'theme_publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `object_id`, `total_views`, `total_comments`, `total_rating`, `layout_id`, `template_id`, `skin_id`, `theme_publish_from`, `theme_publish_to`, `comments`, `options` ';
+		parent::__construct();
 	}
-
+	
 }

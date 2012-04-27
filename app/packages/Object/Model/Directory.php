@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Directory extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_directory';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -52,11 +52,11 @@ class Object_Model_Directory extends Aula_Model_DbTable {
 	public $fullPath = '/';
 	public $parentId = 0;
 	public $objectId = 0;
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'name', 'label', 'description', 'parent_id', 'author_id', 'size', 'files_count', 'full_path', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'comments', 'options', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `label`, `description`, `parent_id`, `author_id`, `size`, `files_count`, `full_path`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `comments`, `options` ,`date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'name', 'label', 'description', 'parent_id', 'author_id', 'size', 'files_count', 'full_path', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'comments', 'options' , 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `label`, `description`, `parent_id`, `author_id`, `size`, `files_count`, `full_path`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `comments`, `options` ,`date_added` ';
+		parent::__construct();
 	}
 
 }

@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -47,11 +47,11 @@ class Object_Model_Default extends Aula_Model_DbTable {
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 	public $createdDate = '0000-00-00';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'created_date', 'author_id', 'source_id', 'tags', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'type_id', 'category_id', 'locale_id', 'guid_url', 'original_author', 'parent_id', 'show_in_list', 'published', 'approved' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `created_date`, `author_id`, `source_id`, `tags`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `type_id`, `category_id`, `locale_id`, `guid_url`, `original_author`, `parent_id`, `show_in_list`, `published`, `approved` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'created_date', 'author_id', 'source_id', 'tags', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'type_id', 'category_id', 'locale_id', 'guid_url', 'original_author', 'parent_id', 'show_in_list', 'published', 'approved');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `created_date`, `author_id`, `source_id`, `tags`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `type_id`, `category_id`, `locale_id`, `guid_url`, `original_author`, `parent_id`, `show_in_list`, `published`, `approved` ';
+		parent::__construct();
 	}
 
 }

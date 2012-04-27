@@ -25,10 +25,10 @@
  *
  */
 class Translation_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'translation';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -46,11 +46,11 @@ class Translation_Model_Default extends Aula_Model_DbTable {
 	public $lockedTime = '0000-00-00';
 	public $modifiedBy = 0;
 	public $modifiedTime = '0000-00-00';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'label', 'translation', 'locale_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `label`, `translation`, `locale_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'label', 'translation', 'locale_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `label`, `translation`, `locale_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments` ';
+		parent::__construct();
 	}
 
 }

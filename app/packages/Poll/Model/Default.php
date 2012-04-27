@@ -25,10 +25,10 @@
  *
  */
 class Poll_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'poll';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -48,10 +48,10 @@ class Poll_Model_Default extends Aula_Model_DbTable {
 	public $modifiedTime = '0000-00-00';
 	public $publishFrom = '0000-00-00';
 	public $publishTo = '0000-00-00';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'votes_count', 'published', 'approved', 'author_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'publish_from', 'publish_to', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `votes_count`, `published`, `approved`, `author_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `publish_from`, `publish_to`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'votes_count', 'published', 'approved', 'author_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'publish_from', 'publish_to', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `votes_count`, `published`, `approved`, `author_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `publish_from`, `publish_to`, `comments`, `options` ';
+		parent::__construct();
 	}
 }

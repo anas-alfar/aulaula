@@ -1,309 +1,147 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
     <!--content-->
-<div class="content">
-<ul class="dashboard cleaner">
-	<li><a href="/admin/handle/pkg/breaknews/action/edit"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>BreakingNews.jpg"
-		alt="<?php
-		echo $this->__ ( 'Break News Ticker' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Break News Ticker' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Break News Ticker' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-article/action/add"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>add_article.png"
-		alt="<?php
-		echo $this->__ ( 'Add New Article' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Add New Article' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Add New Article' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-article/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>form_Builder.jpg"
-		alt="<?php
-		echo $this->__ ( 'Articles Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Articles Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Articles Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/feature/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>favorite-article.png"
-		alt="<?php
-		echo $this->__ ( 'Feature Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Feature Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Feature Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-article/action/list/category/26">
-	<span><img src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>news.jpg"
-		alt="<?php
-		echo $this->__ ( 'Send Article' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Send Article' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Send Article' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-article/action/list/category/25">
-	<span><img src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>news.jpg"
-		alt="<?php
-		echo $this->__ ( 'Send News' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Send News' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Send News' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-comment/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>comments-4.png"
-		alt="<?php
-		echo $this->__ ( 'All Comments' );
-		?>"
-		title="<?php
-		echo $this->__ ( ' All Comments' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'All Comments' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/tag/action/blackList"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>bad-tags.png"
-		alt="<?php
-		echo $this->__ ( 'Tag_Black List' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Tag_Black List' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Tag_Black List' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-static/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>add_article2.jpg"
-		alt="<?php
-		echo $this->__ ( 'Pages Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Pages Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Pages Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/category/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>categories.jpg"
-		alt="<?php
-		echo $this->__ ( 'Categories Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Categories Management' );
-		?>" /></span>
-	<label><?php
-	echo $this->__ ( 'Categories Management' );
-	?></label> </a>
-	</li>
-	<li><a href="/admin/handle/pkg/object-photo/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>banner.jpg"
-		alt="<?php
-		echo $this->__ ( 'Photos Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Photos Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Photos Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/object-photo/action/list/category/27"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>talasem.png"
-		alt="<?php
-		echo $this->__ ( 'Talasem' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Talasem' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Talasem' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/banner-area/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>banners.png"
-		alt="<?php
-		echo $this->__ ( 'Banners Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Banners Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Banners Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/secrets/action/edit"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>top-secret.jpg"
-		alt="<?php
-		echo $this->__ ( 'Secrets' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Secrets' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Secrets' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/classifieds/action/edit"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>classifieds.gif"
-		alt="<?php
-		echo $this->__ ( 'Quick Classifieds Ticker' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Quick Classifieds Ticker' );
-		?>" /></span>
-	<label><?php
-	echo $this->__ ( 'Quick Classifieds Ticker' );
-	?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/user/action/list"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>users-manag.png"
-		alt="<?php
-		echo $this->__ ( 'Users Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Users Management' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Users Management' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/user/action/list/id/2"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>groups.gif"
-		alt="<?php
-		echo $this->__ ( 'Customer Care Team' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Customer Care Team' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Customer Care Team' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/user/action/list/id/3"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>groups.gif"
-		alt="<?php
-		echo $this->__ ( 'Writers' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Writers' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'Writers' );
-		?></label>
-	</a></li>
-	<li><a href="/admin/handle/pkg/user/action/add"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>users.jpg"
-		alt="<?php
-		echo $this->__ ( 'User_Add New User' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'User_Add New User' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'User_Add New User' );
-		?></label>
-	</a></li>
-	<li><a href="#"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>Settings.jpg"
-		alt="<?php
-		echo $this->__ ( 'Configuration Management' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'Configuration Management' );
-		?>" /></span>
-	<label><?php
-	echo $this->__ ( 'Configuration Management' );
-	?></label>
-	</a></li>
-	<li><a href="/admin/logout"> <span><img
-		src="<?php
-		print $this->defaultSkinImagesUrl;
-		?>logout.png"
-		alt="<?php
-		echo $this->__ ( 'aula_Logout' );
-		?>"
-		title="<?php
-		echo $this->__ ( 'aula_Logout' );
-		?>" /></span> <label><?php
-		echo $this->__ ( 'aula_Logout' );
-		?></label>
-	</a></li>
-</ul>
-</div>
-<!--end content-->
-	<?php
-	include './html/footer.phtml';
-	?>
+    <div class="content">
+    	<ul class="dashboard cleaner">
+    		<li>
+            	<a href="/admin/handle/pkg/breaknews/action/edit">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>BreakingNews.jpg" alt="<?php echo $this->__ ( 'Break News Ticker' ); ?>" title="<?php echo $this->__ ( 'Break News Ticker' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Break News Ticker' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-article/action/add">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>add_article.png" alt="<?php echo $this->__ ( 'Add New Article' ); ?>" title="<?php echo $this->__ ( 'Add New Article' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Add New Article' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-article/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>form_Builder.jpg" alt="<?php echo $this->__ ( 'Articles Management' ); ?>" title="<?php echo $this->__ ( 'Articles Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Articles Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/feature/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>favorite-article.png" alt="<?php echo $this->__ ( 'Feature Management' ); ?>" title="<?php echo $this->__ ( 'Feature Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Feature Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-article/action/list/category/26">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>news.jpg" alt="<?php echo $this->__ ( 'Send Article' ); ?>" title="<?php echo $this->__ ( 'Send Article' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Send Article' ); ?></label>
+                </a>
+            </li>
+             <li>
+            	<a href="/admin/handle/pkg/object-article/action/list/category/25">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>news.jpg" alt="<?php echo $this->__ ( 'Send News' ); ?>" title="<?php echo $this->__ ( 'Send News' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Send News' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-comment/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>comments-4.png" alt="<?php echo $this->__ ( 'All Comments' ); ?>" title="<?php echo $this->__ ( ' All Comments' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'All Comments' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/tag/action/blackList">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>bad-tags.png" alt="<?php echo $this->__ ( 'Tag_Black List' ); ?>" title="<?php echo $this->__ ( 'Tag_Black List' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Tag_Black List' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-static/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>add_article2.jpg" alt="<?php echo $this->__ ( 'Pages Management' ); ?>" title="<?php echo $this->__ ( 'Pages Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Pages Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/category/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>categories.jpg" alt="<?php echo $this->__ ( 'Categories Management' ); ?>" title="<?php echo $this->__ ( 'Categories Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Categories Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-photo/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>banner.jpg" alt="<?php echo $this->__ ( 'Photos Management' ); ?>" title="<?php echo $this->__ ( 'Photos Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Photos Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/object-photo/action/list/category/27">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>talasem.png" alt="<?php echo $this->__ ( 'Talasem' ); ?>" title="<?php echo $this->__ ( 'Talasem' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Talasem' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/banner-area/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>banners.png" alt="<?php echo $this->__ ( 'Banners Management' ); ?>" title="<?php echo $this->__ ( 'Banners Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Banners Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/secrets/action/edit">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>top-secret.jpg" alt="<?php echo $this->__ ( 'Secrets' ); ?>" title="<?php echo $this->__ ( 'Secrets' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Secrets' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/classifieds/action/edit">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>classifieds.gif" alt="<?php echo $this->__ ( 'Quick Classifieds Ticker' ); ?>" title="<?php echo $this->__ ( 'Quick Classifieds Ticker' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Quick Classifieds Ticker' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/handle/pkg/user/action/list">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>users-manag.png" alt="<?php echo $this->__ ( 'Users Management' ); ?>" title="<?php echo $this->__ ( 'Users Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Users Management' ); ?></label>
+                </a>
+            </li>
+	   		<li>
+            	<a href="/admin/handle/pkg/user/action/list/id/2">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>groups.gif" alt="<?php echo $this->__ ( 'Customer Care Team' ); ?>" title="<?php echo $this->__ ( 'Customer Care Team' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Customer Care Team' ); ?></label>
+                </a>
+            </li>
+	    	<li>
+            	<a href="/admin/handle/pkg/user/action/list/id/3">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>groups.gif" alt="<?php echo $this->__ ( 'Writers' ); ?>" title="<?php echo $this->__ ( 'Writers' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Writers' ); ?></label>
+                </a>
+            </li>
+	   		<li>
+            	<a href="/admin/handle/pkg/user/action/add">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>users.jpg" alt="<?php echo $this->__ ( 'User_Add New User' ); ?>" title="<?php echo $this->__ ( 'User_Add New User' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'User_Add New User' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="#">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>Settings.jpg" alt="<?php echo $this->__ ( 'Configuration Management' ); ?>" title="<?php echo $this->__ ( 'Configuration Management' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'Configuration Management' ); ?></label>
+                </a>
+            </li>
+            <li>
+            	<a href="/admin/logout">
+                	<span><img src="<?php print $this->defaultSkinImagesUrl; ?>logout.png" alt="<?php echo $this->__ ( 'aula_Logout' ); ?>" title="<?php echo $this->__ ( 'aula_Logout' ); ?>" /></span>
+                    <label><?php echo $this->__ ( 'aula_Logout' ); ?></label>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--end content-->
+	<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

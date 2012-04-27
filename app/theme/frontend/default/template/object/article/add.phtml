@@ -1,160 +1,114 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './header/meta.phtml';
-?>
-<link href="<?php
-print $this->defaultSkinCssUrl;
-?>keyboard.css"
-	rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-var KEYBOARD_ICON = '<?php
-print $this->defaultSkinImagesUrl;
-?>keyboard.gif';
+<?php include './header/meta.phtml'; ?>
+<link href="<?php print $this->defaultSkinCssUrl; ?>keyboard.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" >
+var KEYBOARD_ICON = '<?php print $this->defaultSkinImagesUrl; ?>keyboard.gif';
 function icon(symbol){
 	var oldVal = $("#contentComment").val();
 	$("#contentComment").val(oldVal + ' ' + symbol + ' ');
 	return;
 }
 </script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>keyboard.js"></script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>swfobject.js"></script>
+<script type="text/javascript" src="<?php print $this->defaultSkinJsUrl; ?>keyboard.js"></script>
+<script type="text/javascript" src="<?php print $this->defaultSkinJsUrl; ?>swfobject.js"></script>
 </head>
 <body>
 <div class="ramadanpatrn">
-<div class="ramadanrit"><!--containcont-->
-<div class="containcont"><!--container-->
-<div class="container"><!--logoarea-->
-		<?php
-		include './header/logo.phtml';
-		?>
-		<!--end logoarea--> <!--mainnav-->
-        <?php
-								include './header/topMenu.phtml';
-								?>
-        <!--end mainnav--> <!--stats-->
-        <?php
-								include './header/status.phtml';
-								?>
-        <!--end stats--> <!--ticker-->
-		<?php
-		include './header/ticker.phtml';
-		?>
-        <!--end ticker--> <!--Breaknews ticker-->
-        <?php
-								include './header/Breaknews-ticker.phtml';
-								?>
-        <!--end Breaknews ticker--> <!--content-->
-<div class="content cleaner"><!--contrit-->
-<div class="contrit"><!--tree-->
-<ul class="tree cleaner">
-	<li><a href="/">الصفحة الرئيسية</a></li>
-	<li><?php
-	print $this->addArticleTitle;
-	?></li>
-</ul>
-<!--end tree--> <!--addcomform-->
-<div class="addcomform"><!--boxbg-->
-<div class="boxbg"><span class="boxcornrs"><span></span></span>
-<h3 class="boxtitle"><label
-	class="<?php
-	print $this->addArticleClass;
-	?>"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>spacer.gif"
-	alt="<?php
-	print $this->addArticleTitle;
-	?>"
-	title="<?php
-	print $this->addArticleTitle;
-	?>" width="90" height="24" /></label></h3>
-<div class="boxdatapx"><!--success-->
-<div class="success" style="<?php
-print $this->successMessageStyle;
-?>" ><?php
-print $this->successMessage;
-?></div>
-<!--end success--> <!--error-->
-<div class="error" style="<?php
-print $this->errorMessageStyle;
-?>" ><?php
-print $this->errorMessage;
-?></div>
-<!--end error-->
-<form action="" method="post" enctype="multipart/form-data">
-<ul class="addcomlst">
-	<li class="cleaner posrel"><label class="frstcolless fr">الإسم:</label>
-	<input type="text" class="keyboardInput inpttxt fr" name="userId"
-		id="userId"
-		value="<?php
-		print $this->cleanHtml ( $this->sanitized->userId->value );
-		?>" />
-	<div class="validat" style="<?php
-	print $this->sanitized->userId->errorMessageStyle;
-	?>"><?php
-	print $this->sanitized->userId->errorMessage;
-	?></div>
-	<input type="hidden" name="token"
-		value="<?php
-		print $this->sanitized->token->value;
-		?>" /></li>
-	<li class="cleaner"><label class="frstcolless fr"><?php
-	print $this->addArticleTitleLabel;
-	?>:</label>
-	<input type="text" name="title" class="inpttxt fr"
-		value="<?php
-		print $this->cleanHtml ( $this->sanitized->title->value );
-		?>" />
-	<div class="validat" style="<?php
-	print $this->sanitized->title->errorMessageStyle;
-	?>"><?php
-	print $this->sanitized->title->errorMessage;
-	?></div>
-	</li>
-	<li class="cleaner"><label class="frstcolless fr">تحميل المرفقات:</label>
-	<input type="file" name="filePhoto" class="inptfile fr" /></li>
-	<li class="cleaner posrel"><label class="frstcolless fr"><?php
-	print $this->cleanHtml ( $this->addArticleTitleBody );
-	?>:</label>
-	<div class="validat" style="<?php
-	print $this->sanitized->contentComment->errorMessageStyle;
-	?>"><?php
-	print $this->sanitized->contentComment->errorMessage;
-	?></div>
-	<textarea class="keyboardInput txtarea fr" rows="40" cols="87"
-		name="contentComment" id="contentComment"><?php
-		print $this->sanitized->contentComment->value;
-		?></textarea>
-	</li>
-	<li class="cleaner"><label class="frstcolless fr">&nbsp;</label> <input
-		type="submit" class="inptbtn addbtn fr" name="btn_submit" value=" " />
-	</li>
-</ul>
-</form>
+<div class="ramadanrit">
+<!--containcont-->
+<div class="containcont">
+    <!--container-->
+    <div class="container">
+		<!--logoarea-->
+		<?php include './header/logo.phtml';?>
+		<!--end logoarea-->
+        <!--mainnav-->
+        <?php include './header/topMenu.phtml'; ?>
+        <!--end mainnav-->
+        <!--stats-->
+        <?php include './header/status.phtml'; ?>
+        <!--end stats-->
+        <!--ticker-->
+		<?php include './header/ticker.phtml'; ?>
+        <!--end ticker-->
+        <!--Breaknews ticker-->
+        <?php include './header/Breaknews-ticker.phtml'; ?>
+        <!--end Breaknews ticker-->
+        <!--content-->
+        <div class="content cleaner">
+        	<!--contrit-->
+            <div class="contrit">
+            	<!--tree-->
+				 <ul class="tree cleaner">
+                    <li><a href="/">الصفحة الرئيسية</a></li>
+                    <li><?php print $this->addArticleTitle; ?></li>
+                </ul>
+                <!--end tree-->
+
+                <!--addcomform-->
+                <div class="addcomform">
+                	<!--boxbg-->
+                    <div class="boxbg">
+                        <span class="boxcornrs"><span></span></span>
+                        <h3 class="boxtitle"><label class="<?php print $this->addArticleClass; ?>"><img src="<?php print $this->defaultSkinImagesUrl; ?>spacer.gif" alt="<?php print $this->addArticleTitle; ?>" title="<?php print $this->addArticleTitle; ?>" width="90" height="24" /></label></h3>
+                        <div class="boxdatapx">
+                        	<!--success-->
+							<div class="success" style="<?php print $this->successMessageStyle; ?>" ><?php print $this->successMessage; ?></div>
+							<!--end success-->
+							<!--error-->
+							<div class="error" style="<?php print $this->errorMessageStyle; ?>" ><?php print $this->errorMessage; ?></div>
+							<!--end error-->
+                            <form action="" method="post" enctype="multipart/form-data">
+                            <ul class="addcomlst">
+                                <li class="cleaner posrel">
+                                    <label class="frstcolless fr">الإسم:</label>
+                                    <input type="text" class="keyboardInput inpttxt fr" name="userId" id="userId" value="<?php print $this->cleanHtml ( $this->sanitized->userId->value ); ?>" />
+                                    <div class="validat" style="<?php print $this->sanitized->userId->errorMessageStyle; ?>"><?php print $this->sanitized->userId->errorMessage; ?></div>
+                                    <input type="hidden" name="token" value="<?php print $this->sanitized->token->value; ?>"/>
+                                </li>
+                                <li class="cleaner">
+                                    <label class="frstcolless fr"><?php print $this->addArticleTitleLabel; ?>:</label>
+                                    <input type="text" name="title" class="inpttxt fr" value="<?php print $this->cleanHtml ( $this->sanitized->title->value ); ?>" />
+                                    <div class="validat" style="<?php print $this->sanitized->title->errorMessageStyle; ?>"><?php print $this->sanitized->title->errorMessage; ?></div>
+                                </li>
+                                <li class="cleaner">
+                                    <label class="frstcolless fr">تحميل المرفقات:</label>
+                                    <input type="file" name="filePhoto" class="inptfile fr" />
+                                </li>
+                                <li class="cleaner posrel">
+                                    <label class="frstcolless fr"><?php print $this->cleanHtml ( $this->addArticleTitleBody ); ?>:</label>
+                                    <div class="validat" style="<?php print $this->sanitized->contentComment->errorMessageStyle; ?>"><?php print $this->sanitized->contentComment->errorMessage; ?></div>
+                                    <textarea class="keyboardInput txtarea fr" rows="40" cols="87" name="contentComment" id="contentComment"><?php print $this->sanitized->contentComment->value; ?></textarea>
+                                </li>
+                                <li class="cleaner">
+                                    <label class="frstcolless fr">&nbsp;</label>
+                                    <input type="submit" class="inptbtn addbtn fr" name="btn_submit" value=" " />
+                                </li>
+                            </ul>
+                            </form>
+                        </div>
+                    </div>
+                    <!--end boxbg-->
+                </div>
+                <!--end addcomform-->
+
+            </div>
+            <!--end contrit-->
+            <!--lftpanel-->
+			<?php include './object/leftColumn.phtml'; ?>
+            <!--end lftpanel-->
+        </div>
+        <!--end content-->
+    </div>
+    <!--end container-->
 </div>
+<!--end containcont-->
+<!--footer-->
+<?php include './footer/footer.phtml'; ?>
+<!--end footer-->
 </div>
-<!--end boxbg--></div>
-<!--end addcomform--></div>
-<!--end contrit--> <!--lftpanel-->
-			<?php
-			include './object/leftColumn.phtml';
-			?>
-            <!--end lftpanel--></div>
-<!--end content--></div>
-<!--end container--></div>
-<!--end containcont--> <!--footer-->
-<?php
-include './footer/footer.phtml';
-?>
-<!--end footer--></div>
 </div>
 </body>
 </html>

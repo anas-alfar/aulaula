@@ -1,186 +1,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->title->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->title->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
 <div class="content">
 <div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Object_Object' );
-?></h3>
-<a href="<?php
-print $this->sanitized->actionURI->value;
-?>add"
-	class="add-btn"><em><?php
-	echo $this->__ ( 'Object_Add New Object' );
-	?></em></a></div>
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Object_Object' ); ?></h3>
+<a href="<?php print $this->sanitized->actionURI->value; ?>add" class="add-btn"><em><?php echo $this->__ ( 'Object_Add New Object' ); ?></em></a></div>
 <!--filtration-->
 <div class="filtration cleaner">
 <button type="button"
 	onclick="return changeFormAction('approve', 'post');" name="approve"
-	id="approve" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Approve' );
-	?></em></span></button>
+	id="approve" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Approve' ); ?></em></span></button>
 <button type="button"
 	onclick="return changeFormAction('publish', 'post');" name="publish"
-	id="publish" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Publish' );
-	?></em></span></button>
+	id="publish" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Publish' ); ?></em></span></button>
 <button type="button"
 	onclick="return changeFormAction('showInList', 'post');"
-	name="showInList" id="showInList" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Show In List' );
-	?></em></span></button>
+	name="showInList" id="showInList" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Show In List' ); ?></em></span></button>
 <button type="button"
 	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Delete' );
-	?></em></span></button>
-<select style="float: left;" name="status">
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
-		?>
-		value="Yes"><?php
-		echo $this->__ ( 'Yes Option' );
-		?></option>
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
-		?>
-		value="No"><?php
-		echo $this->__ ( 'No Option' );
-		?></option>
-</select> <input type="hidden" id="redirectURI" name="redirectURI"
-	value="<?php
-	print $this->sanitized->redirectURI->value;
-	?>" /></div>
-<!--end filtration--> <!--srch-rsult-->
+	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Delete' ); ?></em></span></button>
+	<select style="float: left;" name="status">
+	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this->__('No Option'); ?></option>
+	</select>
+	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
+</div>
+<!--end filtration-->
+
+<!--srch-rsult-->
 <table class="srch-rsult">
 	<tr class="heading">
-		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a
-			href="<?php
-			echo $this->sort->category->href;
-			?>"
-			class="<?php
-			echo $this->sort->category->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->category->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Category' );
-			?></span></a></th>
+			href="<?php echo $this->sort->category->href; ?>"
+			class="<?php echo $this->sort->category->cssClass; ?>"><span
+			class="<?php echo $this->sort->category->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
 		<th class="jstalgntop col1"><a
-			href="<?php
-			echo $this->sort->title->href;
-			?>"
-			class="<?php
-			echo $this->sort->title->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->title->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Title' );
-			?></span></a></th>
+			href="<?php echo $this->sort->title->href; ?>"
+			class="<?php echo $this->sort->title->cssClass; ?>"><span
+			class="<?php echo $this->sort->title->cssClass; ?>"><?php echo $this->__ ( 'Object_Title' ); ?></span></a></th>
 		<th class="jstalgntop col4"><a
-			href="<?php
-			echo $this->sort->showInList->href;
-			?>"
-			class="<?php
-			echo $this->sort->showInList->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->showInList->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Show In List' );
-			?></span></a></th>
+			href="<?php echo $this->sort->showInList->href; ?>"
+			class="<?php echo $this->sort->showInList->cssClass; ?>"><span
+			class="<?php echo $this->sort->showInList->cssClass; ?>"><?php echo $this->__ ( 'Object_Show In List' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a
-			href="<?php
-			echo $this->sort->published->href;
-			?>"
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Publish' );
-			?></span></a></th>
+			href="<?php echo $this->sort->published->href; ?>"
+			class="<?php echo $this->sort->published->cssClass; ?>"><span
+			class="<?php echo $this->sort->published->cssClass; ?>"><?php echo $this->__ ( 'Object_Publish' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a
-			href="<?php
-			echo $this->sort->approved->href;
-			?>"
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Aprrove' );
-			?></span></a></th>
+			href="<?php echo $this->sort->approved->href; ?>"
+			class="<?php echo $this->sort->approved->cssClass; ?>"><span
+			class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Object_Aprrove' ); ?></span></a></th>
 		<th class="jstalgntop col5"><a
-			href="<?php
-			echo $this->sort->dateAdded->href;
-			?>"
-			class="<?php
-			echo $this->sort->dateAdded->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->dateAdded->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Date Added' );
-			?></span></a></th>
-		<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'Object_Tools' );
-		?></span></th>
+			href="<?php echo $this->sort->dateAdded->href; ?>"
+			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><span
+			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th>
 	</tr>
 	
-	<?php
-	if (! empty ( $this->objectList )) {
-		echo $this->objectList;
+	<?php 
+	if (!empty($this->objectList)) {
+		echo $this->objectList; 
 	}
 	?>
 
 </table>
 
 <!--begin paging-->
-<?php
-include './html/paging.phtml';
-?>
-<!--end paging--></div>
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
+
+</div>
 <!--end content-->
 </form>
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

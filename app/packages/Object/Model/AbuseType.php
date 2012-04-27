@@ -25,14 +25,14 @@
  *
  */
 class Object_Model_AbuseType extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_abuse_type';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -50,9 +50,9 @@ class Object_Model_AbuseType extends Aula_Model_DbTable {
 	public $modifiedTime = '0000-00-00';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'order', 'package_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `order`, `package_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'order', 'package_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `order`, `package_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time` ';
+		parent::__construct();  
 	}
-
+	
 }

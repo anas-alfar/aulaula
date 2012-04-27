@@ -25,7 +25,7 @@
  *
  */
 class Theme_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'theme';
 	protected $_primary = 'id';
 	/**
@@ -50,11 +50,11 @@ class Theme_Model_Default extends Aula_Model_DbTable {
 	public $actionId = 1;
 	public $publishFrom = '0000-00-00';
 	public $publishTo = '0000-00-00';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'layout_id', 'template_id', 'skin_id', 'package_id', 'class_id', 'action_id', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `layout_id`, `template_id`, `skin_id`, `package_id`, `class_id`, `action_id`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'layout_id', 'template_id', 'skin_id', 'package_id', 'class_id', 'action_id', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `layout_id`, `template_id`, `skin_id`, `package_id`, `class_id`, `action_id`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 
 }

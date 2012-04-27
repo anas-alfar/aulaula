@@ -1,108 +1,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
 <div class="content">
 <div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Feature_Tag' );
-?></h3>
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Feature_Tag' ); ?></h3>
 <!--filtration-->
 <div class="filtration cleaner">
 <button type="button"
 	onclick="return changeFormAction('order', 'post');" name="edit"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Feature_Edit' );
-	?></em></span></button>
+	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Feature_Edit' ); ?></em></span></button>
 <button type="button"
 	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Feature_Delete' );
-	?></em></span></button>
+	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Feature_Delete' ); ?></em></span></button>
 </div>
-<!--end filtration--> <!--srch-rsult-->
+<!--end filtration-->
+
+<!--srch-rsult-->
 <table class="srch-rsult">
 	<tr class="heading">
-		<th class="jstalgntop"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
-		<th class="jstalgntop tools"><span><?php
-		echo $this->__ ( 'Feature_Id' );
-		?></span></th>
-		<th class="jstalgntop col6"><span><?php
-		echo $this->__ ( 'Feature_Title' );
-		?></span></th>
-		<th class="jstalgntop col1"><span><?php
-		echo $this->__ ( 'Feature_Order' );
-		?></span></th>
-		<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'Object_Tools' );
-		?></span></th>
+		<th class="jstalgntop"><input type="checkbox" name="selectAll" id="selectAll" /></th>
+		<th class="jstalgntop tools"><span><?php echo $this->__ ( 'Feature_Id' ); ?></span></th>
+		<th class="jstalgntop col6"><span><?php echo $this->__ ( 'Feature_Title' ); ?></span></th>
+		<th class="jstalgntop col1"><span><?php echo $this->__ ( 'Feature_Order' ); ?></span></th>
+		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th>
 	</tr>
 	
-	<?php
-	if (! empty ( $this->featureList )) {
+	<?php 
+	if (!empty($this->featureList)) {
 		foreach ( $this->featureList as $key => $value ) {
-			$value = explode ( '||', $value );
-			echo '<tr>';
-			echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="featureId[' . $key . ']" id="check" value="Yes" /></td>';
-			echo '<td class="jstalgntop"><input type="text" class="inptflxFeature"
+				$value = explode ( '||', $value );
+				echo '<tr>';
+				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="featureId[' . $key . ']" id="check" value="Yes" /></td>';
+				echo '<td class="jstalgntop"><input type="text" class="inptflxFeature"
 			id="id[' . $key . ']" name="id[' . $key . ']"
 			value="' . $value [0] . '" style="background-color: white; border:0; cursor: default;" READONLY /></td>';
-			echo '<td class="jstalgntop"><input type="text" class="inptflx"
+				echo '<td class="jstalgntop"><input type="text" class="inptflx"
 			id="title[' . $key . ']" name="title[' . $key . ']"
-			value="' . $this->cleanHtml ( $value [1] ) . '" style="background-color: white; border:0; cursor: default;" READONLY /></td>';
-			$order = explode ( '-', $key );
-			echo '<td class="jstalgntop"><input type="text" class="inptflxFeature"
+			value="' . $this -> cleanHtml ( $value [1] ) . '" style="background-color: white; border:0; cursor: default;" READONLY /></td>';
+				$order = explode ( '-', $key );
+				echo '<td class="jstalgntop"><input type="text" class="inptflxFeature"
 			id="order[' . $key . ']" name="order[' . $key . ']"
 			value="' . $order [1] . '" /></td>';
-			echo '<td class="jstalgntop last">
-				<a href="/admin/handle/pkg/object-article/action/edit/id/' . $value [0] . '" class="modify fl" title="Edit"></a>
+				echo '<td class="jstalgntop last">
+				<a href="/admin/handle/pkg/object-article/action/edit/id/' . $value [0]	 . '" class="modify fl" title="Edit"></a>
 				</td>';
-			echo '</tr>';
-		}
+				echo '</tr>';
+			}
 	}
 	?>
 
 </table>
 
 <!--begin paging-->
-<?php
-include './html/paging.phtml';
-?>
-<!--end paging--></div>
-<!--end content-->
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
 
+</div>
+<!--end content-->
 </form>
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

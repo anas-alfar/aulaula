@@ -1,93 +1,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './header/meta.phtml';
-?>
+<?php include './header/meta.phtml'; ?>
 </head>
 <body>
 <!--header-->
 <!--logoarea-->
-		<?php
-		include './header/logo.phtml';
-		?>
+		<?php include './header/logo.phtml';?>
 <!--end logoarea-->
 <!--end header-->
 <!--containcont-->
-<div class="containcont"><!--containrit-->
-<div class="containrit"><!--container-->
-<div class="container cleaner"><!--data-->
-<div class="data cleaner"><!--ritpanel-->
-            		<?php
-														include './right/right.phtml';
-														?>
-                <!--end ritpanel--> <!--middledata-->
-<div class="middledata"><!--tree-->
-<ul class="tree cleaner">
-	<li><a href="/">الصفحة الرئيسية</a></li>
-	<li><?php
-	echo $this->cleanHtml ( $this->categoryDetails ['title'] );
-	?></li>
-</ul>
-<!--end tree--> <!--boxwite-->
-<div class="boxwite"><span class="boxwtop"><span><em></em></span></span>
-<div class="boxwdata">
-<h2 class="title"><?php
-echo $this->cleanHtml ( $this->categoryDetails ['title'] );
-?></h2>
-<!--newslst-->
-<ul class="newslstsep">
-                            <?php
-																												$countFileList = count ( $this->fileList );
-																												for($i = 0; $i < $countFileList; $i ++) {
-																													?>
+<div class="containcont">
+	<!--containrit-->
+	<div class="containrit">
+        <!--container-->
+        <div class="container cleaner">
+        	<!--data-->
+            <div class="data cleaner">
+            	<!--ritpanel-->
+            		<?php include './right/right.phtml'; ?>
+                <!--end ritpanel-->
+                <!--middledata-->
+                <div class="middledata">
+					<!--tree-->
+		                <ul class="tree cleaner">
+		                    <li><a href="/">الصفحة الرئيسية</a></li>
+		                    <li><?php echo $this->cleanHtml ( $this->categoryDetails['title'] ); ?></li>
+		               </ul>
+		              <!--end tree-->
+                	<!--boxwite-->
+                    <div class="boxwite">
+                    	<span class="boxwtop"><span><em></em></span></span>
+                        <div class="boxwdata">
+                        	<h2 class="title"><?php echo $this->cleanHtml ( $this->categoryDetails['title'] ); ?></h2>
+                            <!--newslst-->
+                            <ul class="newslstsep">
+                            <?php 
+			                	$countFileList  = count($this->fileList );
+			                	for($i=0; $i<$countFileList  ; $i++) {
+		                	?>
                                 <li class="cleaner">
-	<div>
-	<h2><a
-		href="/object-file/download/id/<?php
-																													echo $this->fileList [$i] ['id'];
-																													?>/name/<?php
-																													echo $this->fileList [$i] ['name'];
-																													?>/download/<?php
-																													echo $this->v [$i] ['extension'];
-																													?>"><?php
-																													echo $this->cleanHtml ( $this->fileList [$i] ['name'] );
-																													?></a></h2>
-	<p style="color: gray;"><?php
-																													echo $this->cleanHTml ( $this->fileList [$i] ['total_views'] . ' ' . $this->__ ( 'download' ) );
-																													?></p>
-	<p><?php
-																													echo $this->fileList [$i] ['description'];
-																													?></p>
-	<cite class="date"><?php
-																													echo $this->fileList [$i] ['date_added'];
-																													?></cite>
-	</div>
-	</li>
-                               <?php
-																												}
-																												?>
+                                    <div>
+                                         <h2><a href="/object-file/download/id/<?php echo $this->fileList[$i]['id']; ?>/name/<?php echo $this->fileList[$i]['name']; ?>/download/<?php echo $this->v[$i]['extension']; ?>"><?php echo $this->cleanHtml ( $this->fileList[$i]['name'] ); ?></a></h2> 
+                                         <p style="color: gray;"><?php echo $this->cleanHTml($this->fileList[$i]['total_views'].' '. $this->__ ( 'download')); ?></p>
+                                        <p><?php echo $this->fileList[$i]['description']; ?></p>
+                                        <cite class="date"><?php echo $this->fileList[$i]['date_added']; ?></cite>
+                                    </div>
+                                </li>
+                               <?php } ?>
                             </ul>
-<!--end newslst--> <!--begin paging-->
-								<?php
-								include './paging.phtml';
-								?>
+                            <!--end newslst-->
+                            <!--begin paging-->
+								<?php include './paging.phtml';?>
 								<br />
-<!--end paging--></div>
-<span class="boxwbotom"><span><em></em></span></span></div>
-<!--end boxwite--></div>
-<!--end middledata--></div>
-<!--end data--> <!--left-->
-            <?php
-												include './left/left.phtml'?>
-            <!--end left--></div>
-<!--end container--></div>
-<!--end containrit--></div>
+                            <!--end paging-->
+                        </div>
+                        <span class="boxwbotom"><span><em></em></span></span>
+                    </div>
+                    <!--end boxwite-->
+                </div>
+                <!--end middledata-->
+            </div>
+            <!--end data-->
+           <!--left-->
+            <?php include './left/left.phtml'?>
+            <!--end left-->
+        </div>
+        <!--end container-->
+    </div>
+    <!--end containrit-->
+</div>
 <!--end containcont-->
 <!-- footer -->
-<?php
-include './footer/footer.phtml';
-?>
+<?php include './footer/footer.phtml'; ?>
 <!-- end footer -->
 </body>
 </html>

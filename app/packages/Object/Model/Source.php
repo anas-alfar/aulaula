@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Source extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_source';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -43,22 +43,22 @@ class Object_Model_Source extends Aula_Model_DbTable {
 	public $approved = 'No';
 	public $order = 1;
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'name', 'description', 'source_type', 'url', 'author_id', 'locale_id', 'country_id', 'package_id', 'time_delay', 'published', 'approved', 'order', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `description`, `source_type`, `url`, `author_id`, `locale_id`, `country_id`, `package_id`, `time_delay`, `published`, `approved`, `order`,`date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'name', 'description', 'source_type', 'url', 'author_id', 'locale_id', 'country_id', 'package_id', 'time_delay', 'published', 'approved', 'order' , 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `description`, `source_type`, `url`, `author_id`, `locale_id`, `country_id`, `package_id`, `time_delay`, `published`, `approved`, `order`,`date_added` ';
+		parent::__construct();
 	}
 	
-	public function getAllObject_SourceOrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+	public function getAllObject_SourceOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 

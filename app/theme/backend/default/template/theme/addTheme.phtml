@@ -1,172 +1,99 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 
 <!--content-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'Theme_Themes' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'Theme_Themes' ); ?></h3>
 <ul>
-	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Theme_Information' );
-	?></span></a></li>
-	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Theme_Advanced' );
-	?></span></a></li>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Theme_Information' ); ?></span></a></li>
+	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Theme_Advanced' ); ?></span></a></li>
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav-->
+
+<!--ritcont-->
 <form action="" method="post">
-<div class="ritcont"><!--srch-rslt-->
+<div class="ritcont">
+
+<!--srch-rslt-->
 <div class="srch-rslt">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Theme_Add New Theme' );
-?></h3>
-<a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Theme_Save And Continue Edit' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Theme_Save' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
-echo $this->__ ( 'Theme_Reset' );
-?></button>
-</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="button"
-	onlcick="javascript:history.go(-1);"><?php
-	echo $this->__ ( 'Theme_Back' );
-	?></button>
-</em></a></div>
-<!--end srch-rslt--> <!--conttab1-->
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Theme_Add New Theme' ); ?></h3>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'Theme_Save And Continue Edit' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Theme_Save' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="0" class="emptbtn" type="reset"><?php echo $this->__ ( 'Theme_Reset' ); ?></button></em></a>
+<a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Theme_Back' ); ?></button></em></a>
+</div>
+<!--end srch-rslt-->
+
+
+<!--conttab1-->
 <div class="mytabscont" id="conttab1"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Theme_Information' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Theme_Information' ); ?></h2>
 <div class="entrdcont">
-<div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
-	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+<div class="wdthauto">
+	<input type="hidden" id="Id" name="Id" value="<?php print $this->sanitized->Id->value; ?>" /> 
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
-	<?php
-	if (! empty ( $this->layoutList )) {
-		?>
+	<?php if (!empty($this->layoutList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Layout' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Layout' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct" id="layout"
 			name="layout">
-		<?php
-		echo $this->layoutList;
-		?>
+		<?php echo $this->layoutList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->layout->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->layout->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->layout->errorMessageStyle; ?>">
+		<?php print $this->sanitized->layout->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="layout" value="0" /></td>
 	</tr>
-	<?php
-	}
-	?>
-	<?php
-	if (! empty ( $this->templateList )) {
-		?>
+	<?php }?>
+	<?php if (!empty($this->templateList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Template' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Template' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct"
 			id="template" name="template">
-		<?php
-		echo $this->templateList;
-		?>
+		<?php echo $this->templateList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->template->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->template->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->template->errorMessageStyle; ?>">
+		<?php print $this->sanitized->template->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="template" value="0" /></td>
 	</tr>
-	<?php
-	}
-	?>
-	<?php
-	if (! empty ( $this->skinList )) {
-		?>
+	<?php }?>
+	<?php if (!empty($this->skinList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Skin' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Skin' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct" id="skin"
 			name="skin">
-			<?php
-		echo $this->skinList;
-		?>
+			<?php echo $this->skinList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->skin->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->skin->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->skin->errorMessageStyle; ?>">
+		<?php print $this->sanitized->skin->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="skin" value="0" /></td>
 	</tr>
-	<?php
-	}
-	?>
+	<?php }?>
 </table>
 
 </div>
@@ -176,96 +103,63 @@ echo $this->__ ( 'Theme_Information' );
 <!--end conttab1--> <!--conttab2-->
 <div class="mytabscont" id="conttab2" style="display: none"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Theme_Advanced' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Theme_Advanced' ); ?></h2>
 <div class="entrdcont">
 <div class="wdthauto">
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Publish From' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Publish From' ); ?>:</td>
 		<td class="lablvalue jstalgntop">
 		<div class="calen_beside"><input type="text"
 			class="inpttxt wdth70 slctdate" id="slct_date2" name="publishFrom"
-			value="<?php
-			print $this->sanitized->publishFrom->value;
-			?>" /></div>
-		<div class="validat" style="<?php
-		print $this->sanitized->publishFrom->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->publishFrom->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->publishFrom->value; ?>" /></div>
+		<div class="validat" style="<?php print $this->sanitized->publishFrom->errorMessageStyle; ?>">
+		<?php print $this->sanitized->publishFrom->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Publish To' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Publish To' ); ?>:</td>
 		<td class="lablvalue jstalgntop">
 		<div class="calen_beside"><input type="text"
 			class="inpttxt wdth70 slctdate" id="slct_date3" name="publishTo"
-			value="<?php
-			print $this->sanitized->publishTo->value;
-			?>" /></div>
-		<div class="validat" style="<?php
-		print $this->sanitized->publishTo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->publishTo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->publishTo->value; ?>" /></div>
+		<div class="validat" style="<?php print $this->sanitized->publishTo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->publishTo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Comments' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Comments' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="comment" name="comment"
-			value="<?php
-			print $this->sanitized->comment->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->comment->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->comment->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->comment->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->comment->errorMessageStyle; ?>">
+		<?php print $this->sanitized->comment->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Theme_Options' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Theme_Options' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="option" name="option"
-			value="<?php
-			print $this->sanitized->option->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->option->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->option->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->option->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->option->errorMessageStyle; ?>">
+		<?php print $this->sanitized->option->errorMessage; ?></div>
 		</td>
 	</tr>
 </table>
 </div>
 </div>
 </div>
-<!--end entrdata--></div>
-<!--end conttab2--></div>
+<!--end entrdata-->
+</div>
+<!--end conttab2-->
+</div>
 <!--end ritcont-->
 </form>
 </div>
-<!--end maincont--></div>
+<!--end maincont-->
+</div>
 <!--end content-->
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

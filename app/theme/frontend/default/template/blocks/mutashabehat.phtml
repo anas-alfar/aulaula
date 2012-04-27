@@ -1,7 +1,5 @@
 <!--                	<div class="box">
-                    	<h2 class="boxtitle"><span><img src="<?php
-																					print $this->defaultSkinImagesUrl;
-																					?>title1.gif" alt="المتشابهات" width="78" height="16" /></span></h2>
+                    	<h2 class="boxtitle"><span><img src="<?php print $this->defaultSkinImagesUrl; ?>title1.gif" alt="المتشابهات" width="78" height="16" /></span></h2>
                         <div class="boxdata">
                         	<ul class="lst">
                             	<li><span class="circlbg"><a href="#er">كتب (منظومات – مؤلفات )</a></span></li>
@@ -14,17 +12,12 @@
                         </div>
                         <span class="boxbotom"><span></span></span>
                     </div>-->
-<div class="box">
-<h2 class="boxtitle"><span><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>title1.gif"
-	alt="المتشابهات" width="78" height="16" /></span></h2>
-<div class="boxdata">
-<ul class="lst">
-                            <?php
-																												$this->drawMenu ( $this->menuList ['mutashbehat'] );
-																												?>
+                    <div class="box">
+                    	<h2 class="boxtitle"><span><img src="<?php print $this->defaultSkinImagesUrl; ?>title1.gif" alt="المتشابهات" width="78" height="16" /></span></h2>
+                        <div class="boxdata">
+                        <ul class="lst">
+                            <?php $this->drawMenu($this->menuList['mutashbehat']); ?>
 				        </ul>
-</div>
-<span class="boxbotom"><span></span></span></div>
+                        </div>
+                        <span class="boxbotom"><span></span></span>
+                    </div>

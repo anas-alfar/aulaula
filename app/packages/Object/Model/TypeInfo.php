@@ -25,14 +25,14 @@
  *
  */
 class Object_Model_TypeInfo extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_type_info';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -48,8 +48,8 @@ class Object_Model_TypeInfo extends Aula_Model_DbTable {
 	public $publishTo = '0000-00-00';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'type_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `type_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'type_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `type_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 }

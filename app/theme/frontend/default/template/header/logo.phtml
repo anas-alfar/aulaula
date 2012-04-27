@@ -20,9 +20,7 @@
 		</td>
 		<td id="clock"><script>
 <!--
-var Digital2 = <?php
-echo time () * 1000;
-?>;
+var Digital2 = <?php echo time()*1000; ?>;
 function show(){
 	var Digital=new Date(Digital2 );
 	Digital2 = Digital2  +1000; 
@@ -46,7 +44,8 @@ setTimeout("show()",1000);
 }
 show();
 //-->
-</script></td>
+</script>
+</td>
 	</tr>
 	<tr>
 		<td>
@@ -56,9 +55,7 @@ show();
 			?>datelabel.png"
 			alt="التاريخ" width="44" height="13" /></p>
 		</td>
-		<td><strong><?php
-		echo date ( 'd-m-Y' );
-		?></strong></td>
+		<td><strong><?php echo date('d-m-Y'); ?></strong></td>
 	</tr>
 </table>
 </div>

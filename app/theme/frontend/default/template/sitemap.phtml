@@ -1,76 +1,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include 'header/meta.phtml';
-?>
+<?php include 'header/meta.phtml'; ?>
 </head>
 <body>
 <div class="ramadanpatrn">
-<div class="ramadanrit"><!--containcont-->
-<div class="containcont"><!--container-->
-<div class="container"><!--logoarea-->
-		<?php
-		include 'header/logo.phtml';
-		?>
-		<!--end logoarea--> <!--mainnav-->
-        <?php
-								include 'header/topMenu.phtml';
-								?>
-        <!--end mainnav--> <!--stats-->
-        <?php
-								include './header/status.phtml';
-								?>
-        <!--end stats--> <!--ticker-->
-		<?php
-		include './header/ticker.phtml';
-		?>
-        <!--end ticker--> <!--content-->
-<div class="content cleaner"><!--contrit-->
-<div class="contrit"><!--tree-->
-				<?php
-				include './object/treeNav.phtml';
-				?>
-                <!--end tree--> <!--cleaner-->
-<div class="cleaner margt1">
-<ul class="sitemap">
-	<li><a href="#er">الصفحة الرئيسية</a></li>
-	<li><a href="#er">أخبار محلية</a></li>
-	<li><a href="#er">أخبار عربية و دولية</a></li>
-	<li><a href="#er">أخبار رياضية</a></li>
-	<li><a href="#er">أخبار فنية</a></li>
-	<li><a href="#er">إعلانات مبوبة</a></li>
-	<li><a href="#er">خفايا و أسرار</a></li>
-	<li><a href="#er">حديث المدينة</a></li>
-	<li><a href="#er">منوعات من العالم</a></li>
-</ul>
-<ul class="sitemap">
-	<li><a href="#er">كتاب سرايا</a></li>
-	<li><a href="#er">مقالات</a></li>
-	<li><a href="#er">مشاركات</a></li>
-	<li><a href="#er">زاوية هاشم الخالدي</a></li>
-	<li><a href="#er">شكاوى</a></li>
-	<li><a href="#er">وفيات الاردن</a></li>
-	<li><a href="#er">مناسبات</a></li>
-	<li><a href="#er">أريد حلا</a></li>
-	<li><a href="#er">قضية للنقاش</a></li>
-	<li><a href="#er">صحة و جمال</a></li>
-</ul>
+<div class="ramadanrit">
+<!--containcont-->
+<div class="containcont">
+    <!--container-->
+    <div class="container">
+		<!--logoarea-->
+		<?php include 'header/logo.phtml';?>
+		<!--end logoarea-->
+        <!--mainnav-->
+        <?php include 'header/topMenu.phtml'; ?>
+        <!--end mainnav-->
+        <!--stats-->
+        <?php include './header/status.phtml'; ?>
+        <!--end stats-->
+        <!--ticker-->
+		<?php include './header/ticker.phtml'; ?>
+        <!--end ticker-->
+        <!--content-->
+        <div class="content cleaner">
+        	<!--contrit-->
+            <div class="contrit">
+            	<!--tree-->
+				<?php include './object/treeNav.phtml'; ?>
+                <!--end tree-->
+                <!--cleaner-->
+                <div class="cleaner margt1">
+                    <ul class="sitemap">
+                        <li><a href="#er">الصفحة الرئيسية</a></li>
+                        <li><a href="#er">أخبار محلية</a></li>
+                        <li><a href="#er">أخبار عربية و دولية</a></li>
+                        <li><a href="#er">أخبار رياضية</a></li>
+                        <li><a href="#er">أخبار فنية</a></li>
+                        <li><a href="#er">إعلانات مبوبة</a></li>
+                        <li><a href="#er">خفايا و أسرار</a></li>
+                        <li><a href="#er">حديث المدينة</a></li>
+                        <li><a href="#er">منوعات من العالم</a></li>
+                    </ul>
+                    <ul class="sitemap">
+                    	<li><a href="#er">كتاب سرايا</a></li>
+                        <li><a href="#er">مقالات</a></li>
+                        <li><a href="#er">مشاركات</a></li>
+                        <li><a href="#er">زاوية هاشم الخالدي</a></li>
+                        <li><a href="#er">شكاوى</a></li>
+                        <li><a href="#er">وفيات الاردن</a></li>
+                        <li><a href="#er">مناسبات</a></li>
+                        <li><a href="#er">أريد حلا</a></li>
+                        <li><a href="#er">قضية للنقاش</a></li>
+                        <li><a href="#er">صحة و جمال</a></li>
+                    </ul>
+                </div>
+                <!--end cleaner-->
+            </div>
+          
+            <!--end contrit-->
+            <!--lftpanel-->
+			<?php include './object/leftColumn.phtml'; ?>
+            <!--end lftpanel-->
+        </div>
+        <!--end content-->
+    </div>
+    <!--end container-->
+      </div>
+<!--end containcont-->
+<!--footer-->
+<?php include './footer/footer.phtml'; ?>
+<!--end footer-->
 </div>
-<!--end cleaner--></div>
-
-<!--end contrit--> <!--lftpanel-->
-			<?php
-			include './object/leftColumn.phtml';
-			?>
-            <!--end lftpanel--></div>
-<!--end content--></div>
-<!--end container--></div>
-<!--end containcont--> <!--footer-->
-<?php
-include './footer/footer.phtml';
-?>
-<!--end footer--></div>
 </div>
 </body>
 </html>

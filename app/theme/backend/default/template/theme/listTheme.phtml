@@ -1,148 +1,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->title->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->title->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
 <div class="content">
 <div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Theme_Theme' );
-?></h3>
-<a href="<?php
-print $this->sanitized->actionURI->value;
-?>add"
-	class="add-btn"><em><?php
-	echo $this->__ ( 'Theme_Add New Theme' );
-	?></em></a></div>
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Theme_Theme' ); ?></h3>
+<a href="<?php print $this->sanitized->actionURI->value; ?>add" class="add-btn"><em><?php echo $this->__ ( 'Theme_Add New Theme' ); ?></em></a></div>
 
 <!--filtration-->
 <div class="filtration cleaner">
 <button type="button"
 	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Theme_Delete' );
-	?></em></span></button>
-<select style="float: left;" name="status">
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
-		?>
-		value="Yes"><?php
-		echo $this->__ ( 'Yes Option' );
-		?></option>
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
-		?>
-		value="No"><?php
-		echo $this->__ ( 'No Option' );
-		?></option>
-</select> <input type="hidden" id="redirectURI" name="redirectURI"
-	value="<?php
-	print $this->sanitized->redirectURI->value;
-	?>" /></div>
-<!--end filtration--> <!--srch-rsult-->
+	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Theme_Delete' ); ?></em></span></button>
+	<select style="float: left;" name="status">
+	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this->__('No Option'); ?></option>
+	</select>
+	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
+</div>
+<!--end filtration-->
+<!--srch-rsult-->
 <table class="srch-rsult">
 	<tr class="heading">
-		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a
-			href="<?php
-			echo $this->sort->layout->href;
-			?>"
-			class="<?php
-			echo $this->sort->layout->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->layout->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Theme_Layout' );
-			?></span></a></th>
+			href="<?php echo $this->sort->layout->href; ?>"
+			class="<?php echo $this->sort->layout->cssClass; ?>"><span
+			class="<?php echo $this->sort->layout->cssClass; ?>"><?php echo $this->__ ( 'Theme_Layout' ); ?></span></a></th>
 		<th class="jstalgntop col6"><a
-			href="<?php
-			echo $this->sort->template->href;
-			?>"
-			class="<?php
-			echo $this->sort->template->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->template->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Theme_Template' );
-			?></span></a></th>
-		<th class="jstalgntop col6"><a
-			href="<?php
-			echo $this->sort->skin->href;
-			?>"
-			class="<?php
-			echo $this->sort->skin->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->skin->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Theme_Skin' );
-			?></span></a></th>
-		<th class="jstalgntop col6"><a
-			href="<?php
-			echo $this->sort->dateAdded->href;
-			?>"
-			class="<?php
-			echo $this->sort->dateAdded->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->dateAdded->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Theme_Date Added' );
-			?></span></a></th>
-		<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'Theme_Tools' );
-		?></span></th>
+			href="<?php echo $this->sort->template->href; ?>"
+			class="<?php echo $this->sort->template->cssClass; ?>"><span
+			class="<?php echo $this->sort->template->cssClass; ?>"><?php echo $this->__ ( 'Theme_Template' ); ?></span></a></th>
+<th class="jstalgntop col6"><a
+			href="<?php echo $this->sort->skin->href; ?>"
+			class="<?php echo $this->sort->skin->cssClass; ?>"><span
+			class="<?php echo $this->sort->skin->cssClass; ?>"><?php echo $this->__ ( 'Theme_Skin' ); ?></span></a></th>		<th class="jstalgntop col6"><a
+			href="<?php echo $this->sort->dateAdded->href; ?>"
+			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><span
+			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><?php echo $this->__ ( 'Theme_Date Added' ); ?></span></a></th>
+		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Theme_Tools' ); ?></span></th>
 	</tr>
 	
-	<?php
-	if (! empty ( $this->themeList )) {
-		echo $this->themeList;
-	}
+	<?php 
+	if (!empty($this->themeList)) {
+		echo $this->themeList; 
+	} 
 	?>
 
 </table>
 
 <!--begin paging-->
-<?php
-include './html/paging.phtml';
-?>
-<!--end paging--></div>
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
+
+</div>
 <!--end content-->
 </form>
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

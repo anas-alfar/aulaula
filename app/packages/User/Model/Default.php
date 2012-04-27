@@ -25,10 +25,10 @@
  *
  */
 class User_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'user';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -39,35 +39,35 @@ class User_Model_Default extends Aula_Model_DbTable {
 	public $sorting = 'DESC';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 	public $userLevelId = 1;
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'username', 'password', 'fullname', 'email', 'user_level_id', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `username`, `password`, `fullname`, `email`, `user_level_id`, `date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'username', 'password', 'fullname', 'email', 'user_level_id', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `username`, `password`, `fullname`, `email`, `user_level_id`, `date_added` ';
+		parent::__construct();
 	}
 	
 	public function getUserAndUser_infoOrderByColumnWithLimit($column = '`id`', $sorting = 'DESC', $start = 0, $limit = 10) {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
+
+		$start = (int)($start);
+		$limit = (int)($limit);
 		$sorting = mysql_escape_string ( $sorting );
 		$column = mysql_escape_string ( $column );
-		if (in_array ( $column, $this->_cols )) {
+		if (in_array($column, $this->_cols)) {
 			$column = 'u.' . $column;
 		} else {
 			$column = 'ui.' . $column;
 		}
 		
-		$this->_selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS  u.`id`,u.`username`, u.`fullname`, u.`email`,u.`user_level_id`, 
+		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS  u.`id`,u.`username`, u.`fullname`, u.`email`,u.`user_level_id`, 
 							u.`date_added` , ui.`blocked`,ui.`approved`,ui.`confirmed`
-							FROM   `' . $this->_name . '` AS u
-							INNER JOIN  `' . $this->_name . '_info` AS ui ON ui.`user_id` = u.`id`';
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+							FROM   `'.$this->_name.'` AS u
+							INNER JOIN  `'.$this->_name.'_info` AS ui ON ui.`user_id` = u.`id`';
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
-	
+
 	}
 
 }

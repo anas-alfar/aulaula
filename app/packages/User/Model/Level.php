@@ -25,7 +25,7 @@
  *
  */
 class User_Model_Level extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'user_level';
 	protected $_primary = 'id';
 	/**
@@ -38,22 +38,22 @@ class User_Model_Level extends Aula_Model_DbTable {
 	public $sorting = 'DESC';
 	public $comments = '';
 	public $options = '';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'description', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 	
-	public function getAllUser_levelOrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+	public function getAllUser_levelOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 

@@ -25,10 +25,10 @@
  *
  */
 class Theme_Model_Skin extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'theme_skin';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -44,11 +44,11 @@ class Theme_Model_Skin extends Aula_Model_DbTable {
 	public $comments = '';
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'layout_id', 'template_id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'default', 'order', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `layout_id`, `template_id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `default`, `order`, `date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'layout_id', 'template_id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'default', 'order', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `layout_id`, `template_id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `default`, `order`, `date_added` ';
+		parent::__construct();
 	}
 
 }

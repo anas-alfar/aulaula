@@ -25,14 +25,14 @@
  *
  */
 class Object_Model_Video extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_video';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -54,11 +54,11 @@ class Object_Model_Video extends Aula_Model_DbTable {
 	public $objectType = 3;
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'alias', 'intro_text', 'author_id', 'source_id', 'object_id', 'category_id', 'size', 'height', 'width', 'extension', 'taken_date', 'taken_location', 'meta_data', 'show_in_object', 'published', 'approved', 'encoded', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `author_id`, `source_id`, `object_id`, `category_id`, `size`, `height`, `width`, `extension`, `taken_date`, `taken_location`, `meta_data`, `show_in_object`, `published`, `approved`, `encoded`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'alias', 'intro_text', 'author_id', 'object_source_id', 'object_id', 'category_id', 'size', 'height', 'width', 'extension', 'taken_date', 'taken_location', 'meta_data', 'show_in_object', 'published', 'approved', 'encoded', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `author_id`, `object_source_id`, `object_id`, `category_id`, `size`, `height`, `width`, `extension`, `taken_date`, `taken_location`, `meta_data`, `show_in_object`, `published`, `approved`, `encoded`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
-	
+		
 	public function GetListingCleanObjectAndInfoAndVideoByCategoryIdsOrderByColumnWithLimit($CategoryIds, $start = 0, $limit = 10, $Column = 'ov.`date_added`', $sorting = 'DESC') {
 		
 		$start = ( int ) ($start);
@@ -67,7 +67,8 @@ class Object_Model_Video extends Aula_Model_DbTable {
 		$sorting = mysql_escape_string ( $sorting );
 		$CategoryIds = mysql_escape_string ( $CategoryIds );
 		
-		$this->_selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
+		
+		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
   ov.`object_id`, ov.`category_id`, ov.`size`, ov.`height`, ov.`width`, ov.`extension`, ov.`taken_date`, ov.`taken_location`, ov.`meta_data`,
   ov.`show_in_object`, ov.`published`, ov.`approved`, ov.`encoded`, ov.`order`, ov.`locked_by`, ov.`locked_time`, 
   ov.`modified_by`, ov.`modified_time`, ov.`publish_from`, ov.`publish_to`, ov.`date_added`, ov.`comments`, ov.`options`, 
@@ -78,20 +79,19 @@ class Object_Model_Video extends Aula_Model_DbTable {
 FROM   `object_video` AS ov  
 INNER JOIN  `object` AS o ON ov.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_groupBy = "ov.`id`";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'ov.`category_id` IN (?) AND ov.`published` = ? AND ov.`approved` = ? ', array ($CategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _groupBy = "ov.`id`";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('ov.`category_id` IN (?) AND ov.`published` = ? AND ov.`approved` = ? ', array($CategoryIds, 'Yes', 'Yes'));
 		return $result;
 	} //GetListingCleanObjectAndInfoAndVideoByCategoryIdsOrderByColumnWithLimit
 	
-
-	public function GetListingCleanObjectAndInfoAndVideoById($Id) {
+	public function GetListingCleanObjectAndInfoAndVideoById ($Id) {
 		
 		$Id = mysql_escape_string ( $Id );
 		
-		$this->_selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
+		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
   ov.`object_id`, ov.`category_id`, ov.`size`, ov.`height`, ov.`width`, ov.`extension`, ov.`taken_date`, ov.`taken_location`, ov.`meta_data`,
   ov.`show_in_object`, ov.`published`, ov.`approved`, ov.`encoded`, ov.`order`, ov.`locked_by`, ov.`locked_time`, 
   ov.`modified_by`, ov.`modified_time`, ov.`publish_from`, ov.`publish_to`, ov.`date_added`, ov.`comments`, ov.`options`, 
@@ -102,21 +102,20 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
 FROM   `object_video` AS ov  
 INNER JOIN  `object` AS o ON ov.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` ';
-		
-		$result = $this->read ( 'ov.`id` = ? AND ov.`published` = ? AND ov.`approved` = ? ', array ($Id, 'Yes', 'Yes' ) );
+
+		$result = $this -> read('ov.`id` = ? AND ov.`published` = ? AND ov.`approved` = ? ', array($Id, 'Yes', 'Yes'));
 		return $result;
 	} //GetListingCleanObjectAndInfoAndVideoById
 	
+	public function getAllObject_VideoOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
 
-	public function getAllObject_VideoOrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 }

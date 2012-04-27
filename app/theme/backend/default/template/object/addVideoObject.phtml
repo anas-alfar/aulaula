@@ -1,278 +1,151 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 
 <!--content-->
 <div class="content"><!--maincont-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'Object_Add New Video' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'Object_Add New Video' ); ?></h3>
 <ul>
-	<li class="tab active" title="conttab3"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Object_Video' );
-	?></span></a></li>
+	<li class="tab active" title="conttab3"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Object_Video' ); ?></span></a></li>
 	
-	<?php
-	include './object/addCommonObjectTab.phtml';
-	?>
+	<?php include './object/addCommonObjectTab.phtml'; ?>
 
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav-->
+<!--ritcont-->
 <form action="" method="post" enctype="multipart/form-data">
-<div class="ritcont"><!--srch-rslt-->
-<div class="srch-rslt"><!--  <h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Object_Add New Video' );
-?></h3> -->
-<a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save And Continue Edit' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Reset' );
-?></button>
-</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="button"
-	onlcick="javascript:history.go(-1);"><?php
-	echo $this->__ ( 'Object_Back' );
-	?></button>
-</em></a></div>
-<!--end srch-rslt--> <!--conttab3  Video -->
+<div class="ritcont">
+
+<!--srch-rslt-->
+<div class="srch-rslt">
+<!--  <h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Object_Add New Video' ); ?></h3> -->
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save And Continue Edit' ); ?></button></em></a> <a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save' ); ?></button></em></a> <a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="0" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Reset' ); ?></button></em></a> <a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Object_Back' ); ?></button></em></a></div>
+<!--end srch-rslt-->
+
+<!--conttab3  Video -->
 <div class="mytabscont" id="conttab3" style="display: block">
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Object_Video' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Object_Video' ); ?></h2>
 <div class="entrdcont">
-<div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
-	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+<div class="wdthauto">
+	<input type="hidden" id="Id" name="Id" value="<?php print $this->sanitized->Id->value; ?>" /> 
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Title' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Title' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="titleVideo" name="titleVideo"
-			value="<?php
-			print $this->sanitized->titleVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->titleVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->titleVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->titleVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->titleVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->titleVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Alias' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Alias' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="aliasVideo" name="aliasVideo"
-			value="<?php
-			print $this->sanitized->aliasVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->aliasVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->aliasVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->aliasVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->aliasVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->aliasVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Intro Text' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Intro Text' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
-			cols="" id="introTextVideo" name="introTextVideo"><?php
-			print $this->sanitized->introTextVideo->value;
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->introTextVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->introTextVideo->errorMessage;
-		?></div>
+			cols="" id="introTextVideo" name="introTextVideo"><?php print $this->sanitized->introTextVideo->value; ?></textarea>
+		<div class="validat" style="<?php print $this->sanitized->introTextVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->introTextVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Photo' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Photo' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
 			name="filePhoto" />
-		<div class="validat" style="<?php
-		print $this->sanitized->filePhoto->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->filePhoto->errorMessage;
-		?></div>
-		<br />
-		<br />
-		<?php
-		echo $this->photosList;
-		?>
+		<div class="validat" style="<?php print $this->sanitized->filePhoto->errorMessageStyle; ?>">
+		<?php print $this->sanitized->filePhoto->errorMessage; ?></div>
+		<br /><br />
+		<?php echo $this->photosList; ?>
 		</td>
 	</tr>
-	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Video YouTube' );
-		?>:</td>
+		<tr>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Video YouTube' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="youTubeVideo" name="youTubeVideo"
-			value="<?php
-			print $this->sanitized->youTubeVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->youTubeVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->youTubeVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->youTubeVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->youTubeVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->youTubeVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Upload' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Upload' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
 			name="fileVideo" />
-		<div class="validat" style="<?php
-		print $this->sanitized->fileVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->fileVideo->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->fileVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->fileVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Taken Date' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Taken Date' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="takenDateVideo" name="takenDateVideo"
-			value="<?php
-			print $this->sanitized->takenDateVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->takenDateVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->takenDateVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->takenDateVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->takenDateVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->takenDateVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Taken Location' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Taken Location' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="takenLocationVideo" name="takenLocationVideo"
-			value="<?php
-			print $this->sanitized->takenLocationVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->takenLocationVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->takenLocationVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->takenLocationVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->takenLocationVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->takenLocationVideo->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	if (! empty ( $this->sourceVideoList )) {
-		?>
+	<?php if (!empty($this->sourceVideoList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Source' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><select class="inptslct"
-			id="sourceVideo" name="sourceVideo">
-		<?php
-		echo $this->sourceVideoList;
-		?>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Source' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="sourceVideo"
+			name="sourceVideo">
+		<?php echo $this->sourceVideoList ; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->sourcePhoto->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->sourcePhoto->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->sourcePhoto->errorMessageStyle; ?>">
+		<?php print $this->sanitized->sourcePhoto->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="sourceVideo" value="1" /></td>
 	</tr>
-	<?php
-	}
-	?>
-	<?php
-	if (! empty ( $this->categoryList )) {
-		?>
+	<?php }?>
+	<?php if (!empty($this->categoryList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Category' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Category' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct"
 			id="category" name="category">
-		<?php
-		echo $this->categoryList;
-		?>
+		<?php echo $this->categoryList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->category->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->category->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->category->errorMessageStyle; ?>">
+		<?php print $this->sanitized->category->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="category" value="1" /></td>
 	</tr>
-	<?php
-	}
-	?>
+	<?php }?>
 </table>
 </div>
 </div>
@@ -280,18 +153,13 @@ echo $this->__ ( 'Object_Video' );
 </div>
 <!-- end conttab3 -->
 
-<?php
-include './object/addCommonAdvanceMetaDesign.phtml';
-?>
+<?php include './object/addCommonAdvanceMetaDesign.phtml'; ?>
 
 <!--end ritcont--></div>
-</form>
-</div>
+</form></div>
 <!--end maincont--></div>
 <!--end content-->
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

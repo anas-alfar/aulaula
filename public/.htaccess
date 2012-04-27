@@ -1,11 +1,11 @@
 # public/.htaccess
 
 # set application environment [development-testing-staging-production]
-SetEnv AULA_APP_ENV 	'development'
-# set physical application path
-SetEnv AULA_APP_PATH 	'/var/www/html/www.mutashabih.local/'
-# set domain name 
-SetEnv AULA_APP_DOMAIN 	'mutashabih.local'
+SetEnv AULA_APP_ENV 	"development"
+# set physical application path '/var/www/htmll/www.mutashabih.local/'
+SetEnv AULA_APP_PATH 	"D:\wamp\www\www.mutashabih.clean\\"
+# set domain name 'mutashabih.local'
+SetEnv AULA_APP_DOMAIN 	"mutashabih.clean"
 
 # define default re-write rules
 RewriteEngine On

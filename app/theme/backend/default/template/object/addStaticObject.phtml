@@ -1,16 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('textarea.tinymce').tinymce({
 		// Location of TinyMCE script
-		script_url : '<?php
-		print $this->defaultSkinJsUrl;
-		?>tiny_mce/tiny_mce.js',
+		script_url : '<?php print $this->defaultSkinJsUrl; ?>tiny_mce/tiny_mce.js',
 		
 		// General options
 		theme : "advanced",
@@ -26,17 +22,11 @@ $(document).ready(function() {
 		theme_advanced_resizing : true,
 		
 		// Example content CSS (should be your site CSS)
-		content_css : "<?php
-		print $this->defaultSkinJsUrl;
-		?>tiny_mce/themes/advanced/skins/default/content.css",
+		content_css : "<?php print $this->defaultSkinJsUrl; ?>tiny_mce/themes/advanced/skins/default/content.css",
 		
 		// Drop lists for link/image/media/template dialogs
-		external_image_list_url : "<?php
-		print $this->photo_list;
-		?>",
-		media_external_list_url : "<?php
-		print $this->media_list;
-		?>",
+		external_image_list_url : "<?php print $this->photo_list; ?>",
+		media_external_list_url : "<?php print $this->media_list; ?>",
 		
 		// Replace values for the template plugin
 		template_replace_values : {
@@ -51,189 +41,100 @@ $(document).ready(function() {
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 
 <!--content-->
 <div class="content"><!--maincont-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'Object_Add New Static Page' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'Object_Add New Static Page' ); ?></h3>
 <ul>
-	<li class="tab active" title="conttab6"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Object_Static Pages' );
-	?></span></a></li>
+	<li class="tab active" title="conttab6"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Object_Static Pages' ); ?></span></a></li>
 
-	<?php
-	include './object/addCommonObjectTab.phtml';
-	?>	
+	<?php include './object/addCommonObjectTab.phtml'; ?>	
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav-->
+<!--ritcont-->
 <form action="" method="post">
-<div class="ritcont"><!--srch-rslt-->
-<div class="srch-rslt"><!-- <h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Object_Add New Static Page' );
-?></h3> -->
-<a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save And Continue Edit' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Reset' );
-?></button>
-</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="button"
-	onlcick="javascript:history.go(-1);"><?php
-	echo $this->__ ( 'Object_Back' );
-	?></button>
-</em></a></div>
-<!--end srch-rslt--> <!--conttab6 Static-->
+<div class="ritcont">
+
+<!--srch-rslt-->
+<div class="srch-rslt">
+<!-- <h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Object_Add New Static Page' ); ?></h3> -->
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save And Continue Edit' ); ?></button></em></a> <a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save' ); ?></button></em></a> <a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="0" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Reset' ); ?></button></em></a> <a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Object_Back' ); ?></button></em></a></div>
+<!--end srch-rslt-->
+
+<!--conttab6 Static-->
 <div class="mytabscont" id="conttab6" style="display: block"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Object_Page Information' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Object_Page Information' ); ?></h2>
 <div class="entrdcont">
 <div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
+	value="<?php print $this->sanitized->Id->value; ?>" /> <input
 	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+	value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Title' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Title' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="titleStatic" name="titleStatic"
-			value="<?php
-			print $this->sanitized->titleStatic->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->titleStatic->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->titleStatic->errorMessage;
-		?></div>
+			id="titleStatic" name="titleStatic" value="<?php print $this->sanitized->titleStatic->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->titleStatic->errorMessageStyle; ?>">
+		<?php print $this->sanitized->titleStatic->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Alias' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Alias' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="aliasStatic" name="aliasStatic"
-			value="<?php
-			print $this->sanitized->aliasStatic->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->aliasStatic->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->aliasStatic->errorMessage;
-		?></div>
+			id="aliasStatic" name="aliasStatic" value="<?php print $this->sanitized->aliasStatic->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->aliasStatic->errorMessageStyle; ?>">
+		<?php print $this->sanitized->aliasStatic->errorMessage; ?></div>
 		</td>
 	</tr>
 	<!-- 
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_URL' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_URL' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="urlStatic" name="urlStatic" value="<?php
-			print $this->sanitized->urlStatic->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->urlStaticaliasStatic->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->urlStatic->errorMessage;
-		?></div>
+			id="urlStatic" name="urlStatic" value="<?php print $this->sanitized->urlStatic->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->urlStaticaliasStatic->errorMessageStyle; ?>">
+		<?php print $this->sanitized->urlStatic->errorMessage; ?></div>
 		</td>
 	</tr>
 	 -->
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Intro Text' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Intro Text' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
-			cols="" id="introTextStatic" name="introTextStatic"><?php
-			print $this->sanitized->introTextStatic->value;
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->introTextStatic->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->introTextStatic->errorMessage;
-		?></div>
+			cols="" id="introTextStatic" name="introTextStatic"><?php print $this->sanitized->introTextStatic->value; ?></textarea>
+		<div class="validat" style="<?php print $this->sanitized->introTextStatic->errorMessageStyle; ?>">
+		<?php print $this->sanitized->introTextStatic->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Full Text' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><textarea class="txtarea tinymce"
-			rows="50" id="fullTextStatic" name="fullTextStatic"><?php
-			print $this->sanitized->fullTextStatic->value;
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->fullTextStatic->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->fullTextStatic->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Full Text' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><textarea class="txtarea tinymce" rows="50" 
+			id="fullTextStatic" name="fullTextStatic"><?php print $this->sanitized->fullTextStatic->value; ?></textarea>
+		<div class="validat" style="<?php print $this->sanitized->fullTextStatic->errorMessageStyle; ?>">
+		<?php print $this->sanitized->fullTextStatic->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	if (! empty ( $this->categoryList )) {
-		?>
+	<?php if (! empty ( $this->categoryList )) { ?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Category' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Category' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct"
 			id="category" name="category">
-		<?php
-		echo $this->categoryList;
-		?>
+		<?php echo $this->categoryList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->category->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->category->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->category->errorMessageStyle; ?>">
+		<?php print $this->sanitized->category->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="category" value="1" /></td>
 	</tr>
-	<?php
-	}
-	?>
+	<?php } ?>
 </table>
 </div>
 </div>
@@ -241,19 +142,14 @@ echo $this->__ ( 'Object_Page Information' );
 <!--end entrdata--></div>
 <!--end conttab6-->
 
-<?php
-include './object/addCommonAdvanceMetaDesign.phtml';
-?>
+<?php include './object/addCommonAdvanceMetaDesign.phtml'; ?>
 
 </div>
 <!--end ritcont-->
-</form>
-</div>
+</form></div>
 <!--end maincont--></div>
 <!--end content-->
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

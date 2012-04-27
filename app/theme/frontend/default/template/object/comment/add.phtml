@@ -1,35 +1,33 @@
-
-<form method="post"
-	action="/object-comment/add/article-id/<?php
-	echo ( int ) $_GET ['id'];
-	?>">
-<div class="boxwitegray margt1haf"><span class="boxwtop"><span><em></em></span></span>
-<div class="boxwdata">
-<h2 class="title">أضــف تعـلـيـق</h2>
-<!--begin error-->
-<div  class="error" style="<?php
-echo $this->commentErrorMessageStyle;
-?>" id="commentErrorMessage" ><?php
-echo $this->commentErrorMessage;
-?></div>
-<!--end error--> <!--begin success-->
-<div class="success" style="display: none;">تم إرسال التعليق بنجاح، سيتم
-نشر التعليق قريباَ</div>
-<!--end success-->
-<ul class="addcomlst">
-	<li class="cleaner posrel"><label class="frstcol fr">الإسم:</label> <input
-		type="text" class="keyboardInput inpttxt fr" name="userId" id="userId" />
-	</li>
-	<li class="cleaner"><label class="frstcol fr"> البريد
-	اللإلكتروني(إختياري):</label> <input type="text" class="inpttxt fr"
-		name="emailComment" id="emailComment" /></li>
-	<li class="cleaner posrel"><label class="frstcol fr">التعليق:</label> <textarea
-		class="keyboardInput" rows="10" cols="70" name="contentComment"
-		id="contentComment"></textarea></li>
-	<li class="cleaner"><label class="frstcol fr">&nbsp;</label> <input
-		type="submit" class="inptbtn addbtn fr" value="أرسل" name="btn_submit"
-		id="btn_submit" /></li>
-</ul>
-</div>
-<span class="boxwbotom"><span><em></em></span></span></div>
-</form>
+							<form method="post" action="/object-comment/add/article-id/<?php echo (int) $_GET['id']; ?>">
+							<div class="boxwitegray margt1haf">
+                                    <span class="boxwtop"><span><em></em></span></span>
+                                    <div class="boxwdata">
+                                    	<h2 class="title">أضــف تعـلـيـق</h2>
+                                        <!--begin error-->
+                                        <div  class="error" style="<?php echo $this->commentErrorMessageStyle; ?>" id="commentErrorMessage" ><?php echo $this->commentErrorMessage; ?></div>
+                                        <!--end error-->
+                                        <!--begin success-->
+                                        <div class="success" style="display:none;">تم إرسال التعليق بنجاح، سيتم نشر التعليق قريباَ</div>
+                                        <!--end success-->
+                                        <ul class="addcomlst">
+                                            <li class="cleaner posrel">
+                                                <label class="frstcol fr">الإسم:</label>
+                                                <input type="text" class="keyboardInput inpttxt fr" name="userId" id="userId" />
+                                            </li>
+                                            <li class="cleaner">
+                                                <label class="frstcol fr"> البريد اللإلكتروني(إختياري):</label>
+                                                <input type="text" class="inpttxt fr" name="emailComment" id="emailComment" />
+                                            </li>
+                                            <li class="cleaner posrel">
+                                                <label class="frstcol fr">التعليق:</label>
+                                                <textarea class="keyboardInput" rows="10" cols="70" name="contentComment" id="contentComment"></textarea>
+                                            </li>
+                                            <li class="cleaner">
+                                                <label class="frstcol fr">&nbsp;</label>
+                                                <input type="submit" class="inptbtn addbtn fr" value="أرسل"  name="btn_submit" id="btn_submit" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <span class="boxwbotom"><span><em></em></span></span>
+                                </div>
+               					</form>

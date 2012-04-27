@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Article extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_article';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -51,32 +51,32 @@ class Object_Model_Article extends Aula_Model_DbTable {
 	public $publishFrom = '0000-00-00';
 	public $publishTo = '0000-00-00';
 	public $objectType = 1;
-	
+
 	private $_2weeksEarlier = '';
 	private $_4weeksEarlier = '';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'alias', 'intro_text', 'full_text', 'created_date', 'author_id', 'source_id', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `full_text`, `created_date`, `author_id`, `source_id`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
-		$this->_2weeksEarlier = date ( 'Y-m-d', (time () - 1209600) );
-		$this->_4weeksEarlier = date ( 'Y-m-d', (time () - 2419200) );
+		$this -> cols = $this -> _cols = array('id', 'alias', 'intro_text', 'full_text', 'created_date', 'author_id', 'source_id', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `full_text`, `created_date`, `author_id`, `source_id`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		parent::__construct();
+		$this -> _2weeksEarlier = date('Y-m-d', (time() - 1209600));
+		$this -> _4weeksEarlier = date('Y-m-d', (time() - 2419200));
 	}
-	
+
 	public function GetCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit($CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -88,23 +88,22 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id` ";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? ', array ($CategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? ', array($CategoryIds, 'Yes', 'Yes'));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
 
 	public function GetListingCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit($CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		$this->_selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -114,29 +113,28 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id` ";
 FROM   `object_article` AS oa  
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? ', array ($CategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? ', array($CategoryIds, 'Yes', 'Yes'));
 		return $result;
-	} //GetListingCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
-	
+	}//GetListingCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
 
 	public function GetHPCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit($CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -148,29 +146,28 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array ($CategoryIds, 'Yes', 'Yes', $this->_2weeksEarlier ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array($CategoryIds, 'Yes', 'Yes', $this -> _2weeksEarlier));
 		return $result;
-	} //End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
-	
+	}//End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleByKeywordOrderByColumnWithLimit($Keyword, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$Keyword = mysql_escape_string ( $Keyword );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$Keyword = mysql_escape_string($Keyword);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -182,28 +179,27 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( '(o.`title` LIKE "%?%" OR oa.`alias` LIKE "%?%" ) AND oa.`published` = ? AND oa.`approved` = ?', array ($Keyword, $Keyword, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('(o.`title` LIKE "%?%" OR oa.`alias` LIKE "%?%" ) AND oa.`published` = ? AND oa.`approved` = ?', array($Keyword, $Keyword, 'Yes', 'Yes'));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByKeywordOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByKeywordOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleBySubCategoryIdsOrderByColumnWithLimit($SubCategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$SubCategoryIds = mysql_escape_string ( $SubCategoryIds );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$SubCategoryIds = mysql_escape_string($SubCategoryIds);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -215,36 +211,35 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'o.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ?', array ($SubCategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('o.`category_id` IN (?) AND oa.`published` = ? AND oa.`approved` = ?', array($SubCategoryIds, 'Yes', 'Yes' ));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleBySubCategoryIdsOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleBySubCategoryIdsOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit($featureList, $CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$featureList = mysql_escape_string ( $featureList );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		if (empty ( $featureList )) {
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		if (empty($featureList)) {
 			$featureCondition = '';
 		} else {
-			$featureList = str_replace ( ',', ' AND oa.`id` != ', $featureList );
+			$featureList = str_replace(',', ' AND oa.`id` != ', $featureList);
 			$featureCondition = 'AND (oa.`id` != ' . $featureList . ') ';
 		}
-		
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -256,37 +251,36 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array ($CategoryIds, $featureCondition, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array($CategoryIds , $featureCondition, 'Yes', 'Yes' ));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit($featureList, $CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$featureList = mysql_escape_string ( $featureList );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		if (empty ( $featureList )) {
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		if (empty($featureList)) {
 			$featureCondition = '';
 		} else {
-			$featureList = str_replace ( ',', ' AND oa.`id` != ', $featureList );
+			$featureList = str_replace(',', ' AND oa.`id` != ', $featureList);
 			$featureCondition = 'AND (oa.`id` != ' . $featureList . ') ';
 		}
-		
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -298,37 +292,36 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array ($CategoryIds, $featureCondition, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array($CategoryIds , $featureCondition, 'Yes', 'Yes' ));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleBySubCategoryIdsAndNotFeatureOrderByColumnWithLimit($featureList, $SubCategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$Column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$featureList = mysql_escape_string ( $featureList );
-		$SubCategoryIds = mysql_escape_string ( $SubCategoryIds );
-		
-		if (empty ( $featureList )) {
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$Column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$SubCategoryIds = mysql_escape_string($SubCategoryIds);
+
+		if (empty($featureList)) {
 			$featureCondition = '';
 		} else {
-			$featureList = str_replace ( ',', ' AND oa.`id` != ', $featureList );
+			$featureList = str_replace(',', ' AND oa.`id` != ', $featureList);
 			$featureCondition = 'AND (oa.`id` != ' . $featureList . ') ';
 		}
-		
+
 		$forceIndex = '';
 		if ($Column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -340,33 +333,32 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'o.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array ($SubCategoryIds, $featureCondition, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('o.`category_id` IN (?) ? AND oa.`published` = ? AND oa.`approved` = ?', array($SubCategoryIds , $featureCondition, 'Yes', 'Yes' ));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleBySubCategoryIdsAndNotFeatureOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleBySubCategoryIdsAndNotFeatureOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit($IdsList, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$IdsList = mysql_escape_string ( $IdsList );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
+
 		if ($limit == 1) {
 			$forceIndex = '';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`id` AS `object_info_id`, oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -378,24 +370,23 @@ FROM   `object_article` AS oa $forceIndex
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ?', array ($IdsList, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ?', array($IdsList , 'Yes', 'Yes' ));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit
 
 	public function GetHPCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit($IdsList, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$IdsList = mysql_escape_string ( $IdsList );
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -407,31 +398,30 @@ FROM   `object_article` AS oa FORCE INDEX (date_id_idx)
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array ($IdsList, 'Yes', 'Yes', $this->_2weeksEarlier ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array($IdsList , 'Yes', 'Yes' , $this->_2weeksEarlier));
 		return $result;
-	} //End Function GetHPCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit
-	
+	}//End Function GetHPCleanObjectAndInfoAndArticleByIdsListOrderByColumnWithLimit
 
 	public function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit($featureList, $CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$featureList = mysql_escape_string ( $featureList );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		if (empty ( $featureList )) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		if (empty($featureList)) {
 			$featureCondition = '';
 		} else {
-			$featureList = str_replace ( ',', ' AND oa.`id` != ', $featureList );
+			$featureList = str_replace(',', ' AND oa.`id` != ', $featureList);
 			$featureCondition = 'AND (oa.`id` != ' . $featureList . ') ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -443,32 +433,31 @@ FROM   `object_article` AS oa FORCE INDEX (date_id_idx)
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array ($CategoryIds, $featureCondition, 'Yes', 'Yes', $this->_2weeksEarlier ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array($CategoryIds  , $featureCondition , 'Yes', 'Yes' , $this->_2weeksEarlier));
 		return $result;
-	} //End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit
-	
+	}//End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit
 
 	public function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit($featureList, $CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$featureList = mysql_escape_string ( $featureList );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		if (empty ( $featureList )) {
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		if (empty($featureList)) {
 			$featureCondition = '';
 		} else {
-			$featureList = str_replace ( ',', ' AND oa.`id` != ', $featureList );
+			$featureList = str_replace(',', ' AND oa.`id` != ', $featureList);
 			$featureCondition = 'AND (oa.`id` != ' . $featureList . ') ';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -480,33 +469,32 @@ FROM   `object_article` AS oa FORCE INDEX (date_id_idx)
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` 
 Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$this->_groupBy = "oa.`id`";
-		$result = $this->read ( 'oa.`category_id` IN (?) ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array ($CategoryIds, $featureCondition, 'Yes', 'Yes', $this->_2weeksEarlier ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$this -> _groupBy = "oa.`id`";
+		$result = $this -> read('oa.`category_id` IN (?) ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`date_added` > ? ', array($CategoryIds  , $featureCondition , 'Yes', 'Yes' , $this->_2weeksEarlier));
 		return $result;
-	} //End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit
-	
+	}//End Function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderByColumnWithLimit
 
 	public function GetCleanObjectAndInfoAndArticleByIdsListWoPhotoOrderByColumnWithLimit($IdsList, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$IdsList = mysql_escape_string ( $IdsList );
-		
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
+
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
 			$forceIndex = ' FORCE INDEX (date_id_idx) ';
 		}
-		
+
 		if ($limit == 1) {
 			$forceIndex = '';
 		}
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+			$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`id` AS `object_info_id`, oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -516,22 +504,21 @@ Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 FROM   `object_article` AS oa $forceIndex 
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ? ', array ($CategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('oa.`id` IN (?)  AND oa.`published` = ? AND oa.`approved` = ? ', array($CategoryIds , 'Yes', 'Yes'));
 		return $result;
-	} //End Function GetCleanObjectAndInfoAndArticleByIdsListWoPhotoOrderByColumnWithLimit
-	
+	}//End Function GetCleanObjectAndInfoAndArticleByIdsListWoPhotoOrderByColumnWithLimit
 
 	public function GetLatestCleanObjectAndInfoAndArticleWoPhotoOrderByColumnWithLimit($start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -541,23 +528,22 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 FROM   `object_article` AS oa FORCE INDEX (date_id_idx)
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? ', array ($this->_2weeksEarlier, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? ', array($this->_2weeksEarlier , 'Yes', 'Yes'));
 		return $result;
-	} //End Function GetLatestCleanObjectAndInfoAndArticleWoPhotoOrderByColumnWithLimit
-	
+	}//End Function GetLatestCleanObjectAndInfoAndArticleWoPhotoOrderByColumnWithLimit
 
 	public function GetLatestObjectAndrticleAndInfoByAuthor_idOrderByColumnWithLimit($Author_id, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$Author_id = ( int ) ($Author_id);
-		$sorting = mysql_escape_string ( $sorting );
-		$column = mysql_escape_string ( $Column );
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$Author_id = ( int )($Author_id);
+		$sorting = mysql_escape_string($sorting);
+		$column = mysql_escape_string($Column);
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -567,23 +553,22 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 FROM   `object_article` AS oa FORCE INDEX (date_id_idx) 
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`author_id` = ? ', array ($this->_2weeksEarlier, 'Yes', 'Yes', $Author_id ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`author_id` = ? ', array($this->_2weeksEarlier , 'Yes', 'Yes' , $Author_id));
 		return $result;
-	} //End Function GetLatestObjectAndrticleAndInfoByAuthor_idOrderByColumnWithLimit
-	
+	}//End Function GetLatestObjectAndrticleAndInfoByAuthor_idOrderByColumnWithLimit
 
 	public function GetLatestObjectAndrticleAndInfoOrderByColumnWithLimit($start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$Author_id = ( int ) ($Author_id);
-		$sorting = mysql_escape_string ( $sorting );
-		$column = mysql_escape_string ( $Column );
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$Author_id = ( int )($Author_id);
+		$sorting = mysql_escape_string($sorting);
+		$column = mysql_escape_string($Column);
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -593,23 +578,22 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 FROM   `object_article` AS oa FORCE INDEX (date_id_idx) 
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`author_id` = ? ', array ($this->_2weeksEarlier, 'Yes', 'Yes', $Author_id ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('oa.`date_added` > ?  AND oa.`published` = ? AND oa.`approved` = ? AND oa.`author_id` = ? ', array($this->_2weeksEarlier , 'Yes', 'Yes' , $Author_id));
 		return $result;
-	} //End Function GetLatestObjectAndrticleAndInfoOrderByColumnWithLimit
-	
+	}//End Function GetLatestObjectAndrticleAndInfoOrderByColumnWithLimit
 
 	public function GetListingCleanObjectAndInfoAndArticleByUserIdsOrderByColumnWithLimit($UserIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$UserIds = mysql_escape_string ( $UserIds );
-		
-		$this->_selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$UserIds = mysql_escape_string($UserIds);
+
+		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
   oa.`modified_by`, oa.`modified_time`, oa.`publish_from`, oa.`publish_to`, oa.`date_added`, oa.`comments`, oa.`options`, 
   oi.`total_views`, oi.`total_comments`, oi.`total_rating`, oi.`layout_id`, oi.`template_id`, oi.`skin_id`, oi.`theme_publish_from`, 
@@ -619,12 +603,12 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 FROM   `object_article` AS oa FORCE INDEX (date_id_idx) 
 INNER JOIN  `object` AS o ON oa.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'o.`original_author` = ?  AND oa.`published` = ? AND oa.`approved` = ? ', array ($UserIds, 'Yes', 'Yes' ) );
-		return $result;
-	} //GetListingCleanObjectAndInfoAndArticleByUserIdsOrderByColumnWithLimit
 
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('o.`original_author` = ?  AND oa.`published` = ? AND oa.`approved` = ? ',
+		 array($UserIds , 'Yes', 'Yes' ));
+		return $result;
+	}//GetListingCleanObjectAndInfoAndArticleByUserIdsOrderByColumnWithLimit
 
 }

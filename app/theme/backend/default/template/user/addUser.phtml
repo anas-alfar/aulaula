@@ -1,177 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <div class="content"><!--maincont-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'User_Add New User' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'User_Add New User' ); ?></h3>
 <ul>
-	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'User_Information' );
-	?></span></a></li>
-	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'User_Advanced' );
-	?></span></a></li>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'User_Information' ); ?></span></a></li>
+	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'User_Advanced' ); ?></span></a></li>
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav-->
+
+<!--ritcont-->
 <form action="" method="post">
-<div class="ritcont"><!--srch-rslt-->
-<div class="srch-rslt"><!--<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'User_User' );
-?></h3>-->
-<a href="#er" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'User_Save And Continue Edit' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'User_Save' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
-echo $this->__ ( 'User_Reset' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="button"
-	onclick="javascript:history.go(-1);"><?php
-	echo $this->__ ( 'User_Back' );
-	?></button>
-</em></a></div>
-<!--end srch-rslt--> <!--conttab1-->
+<div class="ritcont">
+
+<!--srch-rslt-->
+<div class="srch-rslt">
+<!--<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'User_User' ); ?></h3>-->
+<a href="#er" class="save-btn"><em><button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'User_Save And Continue Edit' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'User_Save' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="0" class="emptbtn" type="reset"><?php echo $this->__ ( 'User_Reset' ); ?></button></em></a>
+<a href="javascript:void(0);" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onclick="javascript:history.go(-1);"><?php echo $this->__ ( 'User_Back' ); ?></button></em></a>
+</div>
+<!--end srch-rslt-->
+
+<!--conttab1-->
 <div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'User_Information' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'User_Information' ); ?></h2>
 <div class="entrdcont">
-<div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
-	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+<div class="wdthauto">
+	<input type="hidden" id="Id" name="Id" value="<?php print $this->sanitized->Id->value; ?>" /> 
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Username' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="username" name="username"
-			value="<?php
-			print $this->sanitized->username->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->username->errorMessageStyle;
-		?>"><?php
-		print $this->sanitized->username->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Username' ); ?>:</td>
+		<td class="lablvalue jstalgntop">
+			<input type="text" class="inptflx" id="username" name="username" value="<?php print $this->sanitized->username->value; ?>" />
+			<div class="validat" style="<?php print $this->sanitized->username->errorMessageStyle; ?>"><?php print $this->sanitized->username->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Password' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="password"
-			class="inptflx" id="password" name="password"
-			value="<?php
-			print $this->sanitized->password->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->password->errorMessageStyle;
-		?>"> <?php
-		print $this->sanitized->password->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Password' ); ?>:</td>
+		<td class="lablvalue jstalgntop">
+			<input type="password" class="inptflx" id="password" name="password" value="<?php print $this->sanitized->password->value; ?>" />
+			<div class="validat" style="<?php print $this->sanitized->password->errorMessageStyle; ?>"> <?php print $this->sanitized->password->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Confirm Password' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="password"
-			class="inptflx" id="confirmPassword" name="confirmPassword"
-			value="<?php
-			print $this->sanitized->confirmPassword->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->confirmPassword->errorMessageStyle;
-		?>"> <?php
-		print $this->sanitized->confirmPassword->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Confirm Password' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><input type="password" class="inptflx" id="confirmPassword" name="confirmPassword" value="<?php print $this->sanitized->confirmPassword->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->confirmPassword->errorMessageStyle; ?>"> <?php print $this->sanitized->confirmPassword->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Full Name' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="fullname" name="fullname"
-			value="<?php
-			print $this->sanitized->fullname->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->fullname->errorMessageStyle;
-		?>"> <?php
-		print $this->sanitized->fullname->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Full Name' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx" id="fullname" name="fullname" value="<?php print $this->sanitized->fullname->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->fullname->errorMessageStyle; ?>"> <?php print $this->sanitized->fullname->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Email' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="email" name="email"
-			value="<?php
-			print $this->sanitized->email->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->email->errorMessageStyle;
-		?>"> <?php
-		print $this->sanitized->email->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Email' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx" id="email" name="email" value="<?php print $this->sanitized->email->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->email->errorMessageStyle; ?>"> <?php print $this->sanitized->email->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_User Level' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><select class="inptslct"
-			id="userLevel" name="userLevel">
-			<?php
-			echo $this->userLevelList;
-			?>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_User Level' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" id="userLevel" name="userLevel">
+			<?php echo $this->userLevelList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->userLevel->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->userLevel->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->userLevel->errorMessageStyle; ?>">
+		<?php print $this->sanitized->userLevel->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
@@ -179,49 +91,22 @@ echo $this->__ ( 'User_Information' );
 		<td class="lablvalue jstalgntop">
 		<ul class="lstsopt">
 			<li class="cleaner"><input type="checkbox" class="intchk fl"
-				id="blocked" name="blocked" value="Yes"
-				<?php
-				echo ('Yes' == $this->sanitized->blocked->value) ? 'checked="checked"' : '';
-				?> />
-			<label for="blocked" class="inptlabl fl"><?php
-			echo $this->__ ( 'User_Blocked' );
-			?></label><br />
-			<div class="validat" style="<?php
-			print $this->sanitized->blocked->errorMessageStyle;
-			?>">
-		<?php
-		print $this->sanitized->blocked->errorMessage;
-		?></div>
+				id="blocked" name="blocked" value="Yes" 
+				<?php echo ('Yes' == $this->sanitized->blocked->value) ? 'checked="checked"' : ''; ?> /> <label for="blocked" class="inptlabl fl"><?php echo $this->__ ( 'User_Blocked' ); ?></label><br />
+			<div class="validat" style="<?php print $this->sanitized->blocked->errorMessageStyle; ?>">
+		<?php print $this->sanitized->blocked->errorMessage; ?></div>
 			</li>
 			<li class="cleaner"><input type="checkbox" class="intchk fl"
-				id="confirmed" name="confirmed" value="Yes"
-				<?php
-				echo ('Yes' == $this->sanitized->confirmed->value) ? 'checked="checked"' : '';
-				?> />
-			<label for="confirmed" class="inptlabl fl"><?php
-			echo $this->__ ( 'User_Confirmed' );
-			?></label><br />
-			<div class="validat" style="<?php
-			print $this->sanitized->confirmed->errorMessageStyle;
-			?>">
-		<?php
-		print $this->sanitized->confirmed->errorMessage;
-		?></div>
+				id="confirmed" name="confirmed" value="Yes" 
+				<?php echo ('Yes' == $this->sanitized->confirmed->value) ? 'checked="checked"' : ''; ?> /> <label for="confirmed" class="inptlabl fl"><?php echo $this->__ ( 'User_Confirmed' ); ?></label><br />
+			<div class="validat" style="<?php print $this->sanitized->confirmed->errorMessageStyle; ?>">
+		<?php print $this->sanitized->confirmed->errorMessage; ?></div>
 			</li>
 			<li class="cleaner"><input type="checkbox" id="approved"
-				class="intchk fl" name="approved" value="Yes"
-				<?php
-				echo ('Yes' == $this->sanitized->approved->value) ? 'checked="checked"' : '';
-				?> />
-			<label for="approved" class="inptlabl fl"><?php
-			echo $this->__ ( 'User_Approved' );
-			?></label><br />
-			<div class="validat" style="<?php
-			print $this->sanitized->approved->errorMessageStyle;
-			?>">
-		<?php
-		print $this->sanitized->approved->errorMessage;
-		?></div>
+				class="intchk fl" name="approved" value="Yes" 
+				<?php echo ('Yes' == $this->sanitized->approved->value) ? 'checked="checked"' : ''; ?> /> <label for="approved" class="inptlabl fl"><?php echo $this->__ ( 'User_Approved' ); ?></label><br />
+			<div class="validat" style="<?php print $this->sanitized->approved->errorMessageStyle; ?>">
+		<?php print $this->sanitized->approved->errorMessage; ?></div>
 			</li>
 		</ul>
 		</td>
@@ -232,217 +117,127 @@ echo $this->__ ( 'User_Information' );
 </div>
 </div>
 <!--end entrdata--></div>
-<!--end conttab1--> <!--conttab2-->
+<!--end conttab1-->
+<!--conttab2-->
 <div class="mytabscont" id="conttab2" style="display: none">
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'User_Advanced Settings' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'User_Advanced Settings' ); ?></h2>
 <div class="entrdcont">
 <div class="wdthauto">
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Date of Birth' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Date of Birth' ); ?>:</td>
 		<td class="lablvalue jstalgntop">
 		<div class="calen_beside"><input type="text"
 			class="inpttxt wdth70 slctdate" id="slct_date12" name="dateOfBirth"
-			value="<?php
-			print $this->sanitized->dateOfBirth->value;
-			?>" /></div>
-		<div class="validat" style="<?php
-		print $this->sanitized->dateOfBirth->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->dateOfBirth->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->dateOfBirth->value; ?>" /></div>
+		<div class="validat" style="<?php print $this->sanitized->dateOfBirth->errorMessageStyle; ?>">
+		<?php print $this->sanitized->dateOfBirth->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Registration Date' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Registration Date' ); ?>:</td>
 		<td class="lablvalue jstalgntop">
 		<div class="calen_beside"><input type="text"
-			class="inpttxt wdth70 slctdate" id="registrationDate"
-			name="registrationDate"
-			value="<?php
-			print $this->sanitized->registrationDate->value;
-			?>" /></div>
-		<div class="validat" style="<?php
-		print $this->sanitized->registrationDate->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->registrationDate->errorMessage;
-		?></div>
+			class="inpttxt wdth70 slctdate" id="registrationDate" name="registrationDate"
+			value="<?php print $this->sanitized->registrationDate->value; ?>" /></div>
+		<div class="validat" style="<?php print $this->sanitized->registrationDate->errorMessageStyle; ?>">
+		<?php print $this->sanitized->registrationDate->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Company' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Company' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="company" name="company"
-			value="<?php
-			print $this->sanitized->company->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->company->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->company->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->company->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->company->errorMessageStyle; ?>">
+		<?php print $this->sanitized->company->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Department' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Department' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="department" name="department"
-			value="<?php
-			print $this->sanitized->department->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->department->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->department->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->department->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->department->errorMessageStyle; ?>">
+		<?php print $this->sanitized->department->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Position' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Position' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="position" name="position"
-			value="<?php
-			print $this->sanitized->position->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->position->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->position->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->position->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->position->errorMessageStyle; ?>">
+		<?php print $this->sanitized->position->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Home Phone' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Home Phone' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="homePhone" name="homePhone"
-			value="<?php
-			print $this->sanitized->homePhone->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->homePhone->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->homePhone->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->homePhone->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->homePhone->errorMessageStyle; ?>">
+		<?php print $this->sanitized->homePhone->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Work Phone' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Work Phone' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="workPhone" name="workPhone"
-			value="<?php
-			print $this->sanitized->workPhone->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->workPhone->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->workPhone->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->workPhone->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->workPhone->errorMessageStyle; ?>">
+		<?php print $this->sanitized->workPhone->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Work Fax' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Work Fax' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="workFax" name="workFax"
-			value="<?php
-			print $this->sanitized->workFax->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->workFax->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->workFax->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->workFax->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->workFax->errorMessageStyle; ?>">
+		<?php print $this->sanitized->workFax->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Mobile' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
-			id="mobile" name="mobile"
-			value="<?php
-			print $this->sanitized->mobile->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->mobile->errorMessageStyle;
-		?>"> <?php
-		print $this->sanitized->mobile->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Mobile' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><input type="text" class="inptflx" id="mobile" name="mobile" value="<?php print $this->sanitized->mobile->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->mobile->errorMessageStyle; ?>"> <?php print $this->sanitized->mobile->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Comments' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Comments' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="comment" name="comment"
-			value="<?php
-			print $this->sanitized->comment->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->comment->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->comment->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->comment->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->comment->errorMessageStyle; ?>">
+		<?php print $this->sanitized->comment->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'User_Options' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'User_Options' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="option" name="option"
-			value="<?php
-			print $this->sanitized->option->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->option->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->option->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->option->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->option->errorMessageStyle; ?>">
+		<?php print $this->sanitized->option->errorMessage; ?></div>
 		</td>
 	</tr>
 </table>
 </div>
 </div>
 </div>
-<!--end entrdata--></div>
-<!--end conttab2--></div>
+<!--end entrdata-->
+</div>
+<!--end conttab2-->
+</div>
 <!--end ritcont-->
 </form>
 </div>
-<!--end maincont--></div>
+<!--end maincont-->
+</div>
 <!--end content-->
-<?php
-include './html/footer.phtml'; ?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

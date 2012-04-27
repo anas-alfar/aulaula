@@ -1,41 +1,26 @@
-
-<li class="libox">
-<div class="contribbox">
-<h3 class="domentitle"><span><a
-	href="/object-article/list/category/<?php
-	echo NEWS_CONTRIBUTIONS;
-	?>"
-	class="contrib"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>spacer.gif"
-	alt="مشاركات" title="مشاركات" width="79" height="21" /></a></span></h3>
-<div class="domendata autoheigt">
-<ul class="writrs padritlft5">
+		 <li class="libox">
+            	<div class="contribbox">
+                    <h3 class="domentitle">
+                        <span><a href="/object-article/list/category/<?php echo NEWS_CONTRIBUTIONS; ?>" class="contrib"><img src="<?php print $this->defaultSkinImagesUrl; ?>spacer.gif" alt="مشاركات" title="مشاركات" width="79" height="21" /></a></span>
+                    </h3>
+                    <div class="domendata autoheigt">
+                        <ul class="writrs padritlft5">
                             <?php
-																												$countContributions = count ( $this->newsContributionsList );
-																												for($k = 0; $k < $countContributions; $k ++) {
-																													?>
+							$countContributions= count($this->newsContributionsList);
+							for($k=0; $k< $countContributions; $k++ ){ 
+							?>
                             <li>
-	<h2 class="fnt11"><a
-		href="/object-article/view/id/<?php
-																													echo $this->newsContributionsList [$k] ['id'];
-																													?>/title/<?php
-																													echo $this->newsContributionsList [$k] ['title'];
-																													?>"><?php
-																													echo $this->cleanHtml ( $this->newsContributionsList [$k] ['title'] );
-																													?></a></h2>
-	<cite class="date">
+                                <h2 class="fnt11"><a href="/object-article/view/id/<?php echo $this->newsContributionsList[$k]['id']; ?>/title/<?php echo $this->newsContributionsList[$k]['title']; ?>"><?php echo $this->cleanHtml ( $this->newsContributionsList[$k]['title'] ); ?></a></h2>
+                                <cite class="date">
                                     <?php
-																													if (! empty ( $this->newsContributionsList [$k] ['original_author'] ) and ! is_numeric ( $this->newsContributionsList [$k] ['original_author'] )) {
-																														echo $this->cleanHtml ( $this->newsContributionsList [$k] ['original_author'] );
-																													}
-																													?>
-                                </cite></li>
-							<?php
-																												}
-																												?>
+                                    if (!empty ($this->newsContributionsList[$k]['original_author']) and !is_numeric($this->newsContributionsList[$k]['original_author'])) {
+	                    				echo $this->cleanHtml ( $this->newsContributionsList[$k]['original_author'] );
+	                    			}
+                                    ?>
+                                </cite>
+                            </li>
+							<?php } ?>
                         </ul>
-</div>
-</div>
-</li>
+                    </div>
+                </div>
+            </li>

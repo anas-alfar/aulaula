@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Type extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_type';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -44,11 +44,11 @@ class Object_Model_Type extends Aula_Model_DbTable {
 	public $comments = '';
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'description', 'author_id', 'package_id', 'published', 'approved' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `published`, `approved` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'package_id', 'published', 'approved');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `published`, `approved` ';
+		parent::__construct();
 	}
 
 }

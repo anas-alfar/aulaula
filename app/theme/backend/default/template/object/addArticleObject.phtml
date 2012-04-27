@@ -1,9 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 <script type="text/javascript">
 function getSubCategories() {
 	$.ajax({
@@ -35,9 +33,7 @@ function setAuthor() {
 $(document).ready(function() {
 	$('textarea.tinymce').tinymce({
 		// Location of TinyMCE script
-		script_url : '<?php
-		print $this->defaultSkinJsUrl;
-		?>tiny_mce/tiny_mce.js',
+		script_url : '<?php print $this->defaultSkinJsUrl; ?>tiny_mce/tiny_mce.js',
 		
 		// General options
 		theme : "advanced",
@@ -53,17 +49,11 @@ $(document).ready(function() {
 		theme_advanced_resizing : true,
 		
 		// Example content CSS (should be your site CSS)
-		content_css : "<?php
-		print $this->defaultSkinJsUrl;
-		?>tiny_mce/themes/advanced/skins/default/content.css",
+		content_css : "<?php print $this->defaultSkinJsUrl; ?>tiny_mce/themes/advanced/skins/default/content.css",
 		
 		// Drop lists for link/image/media/template dialogs
-		external_image_list_url : "<?php
-		print $this->photo_list;
-		?>",
-		media_external_list_url : "<?php
-		print $this->media_list;
-		?>",
+		external_image_list_url : "<?php print $this->photo_list; ?>",
+		media_external_list_url : "<?php print $this->media_list; ?>",
 		
 		// Replace values for the template plugin
 		template_replace_values : {
@@ -78,323 +68,180 @@ $(document).ready(function() {
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 
 <!--content-->
 <div class="content"><!--maincont-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'Object_Add New Article' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'Object_Add New Article' );?></h3>
 <ul>
-	<li class="tab <?php
-	echo $this->articleTabClass;
-	?>" title="conttab1"><a
-		href="javascript:void(0);"><span><?php
-		echo $this->__ ( 'Object_Article' );
-		?></span></a></li>
-	<?php
-	include './object/addCommonObjectTab.phtml';
-	?>
+	<li class="tab <?php echo $this->articleTabClass; ?>" title="conttab1"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Object_Article' ); ?></span></a></li>
+	<?php include './object/addCommonObjectTab.phtml'; ?>
 	
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav--> 
+<!--ritcont-->
 <form action="" method="post" enctype="multipart/form-data">
 <div class="ritcont"><!--srch-rslt-->
-<div class="srch-rslt"><!-- <h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Object_Add New Article' );
-?></h3>  -->
+<div class="srch-rslt">
+<!-- <h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Object_Add New Article' ); ?></h3>  -->
 <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save And Continue Edit' );
-?></button>
+<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save And Continue Edit' ); ?></button>
 </em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Save' );
-?></button>
+<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Save' ); ?></button>
 </em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Reset' );
-?></button>
+<button name="btn_submit" value="0" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Reset' ); ?></button>
 </em></a> <a href="javascript:void(0);" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Object_Back' );
-?></button>
+<button name="btn_submit" value="-1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Object_Back' ); ?></button>
 </em></a></div>
-<!--end srch-rslt--> <!--conttab1 Article-->
-<div class="mytabscont" id="conttab1" style="<?php
-echo $this->articleTabStyle;
-?>"><!--entrdata-->
+<!--end srch-rslt--> 
+
+<!--conttab1 Article-->
+<div class="mytabscont" id="conttab1" style="<?php echo $this->articleTabStyle; ?>"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Object_Page Information' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Object_Page Information' ); ?></h2>
 <div class="entrdcont">
-<div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
-	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+<div class="wdthauto">
+<input type="hidden" id="Id" name="Id" value="<?php print $this->sanitized->Id->value; ?>" /> 
+<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Title' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Title' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="titleArticle" name="titleArticle"
-			value="<?php
-			print $this->cleanHtml ( $this->sanitized->titleArticle->value );
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->titleArticle->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->titleArticle->errorMessage;
-		?></div>
+			value="<?php print $this->cleanHtml ( $this->sanitized->titleArticle->value ); ?>" />
+		<div class="validat" style="<?php print $this->sanitized->titleArticle->errorMessageStyle; ?>">
+		<?php print $this->sanitized->titleArticle->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Intro Text' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Intro Text' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
-			cols="" id="introTextArticle" name="introTextArticle"><?php
-			print $this->cleanHtml ( $this->sanitized->introTextArticle->value );
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->introTextArticle->errorMessageStyle;
-		?>">
-		<?php
-		print $this->cleanHtml ( $this->sanitized->introTextArticle->errorMessage );
-		?></div>
+			cols="" id="introTextArticle" name="introTextArticle"><?php print $this->cleanHtml ( $this->sanitized->introTextArticle->value ); ?></textarea>
+		<div class="validat" style="<?php print $this->sanitized->introTextArticle->errorMessageStyle; ?>">
+		<?php print $this->cleanHtml($this->sanitized->introTextArticle->errorMessage); ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Video YouTube' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Video YouTube' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="youTubeVideo" name="youTubeVideo"
-			value="<?php
-			print $this->sanitized->youTubeVideo->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->youTubeVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->youTubeVideo->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->youTubeVideo->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->youTubeVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->youTubeVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Video' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Video' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
 			name="fileVideo" />
-		<div class="validat" style="<?php
-		print $this->sanitized->fileVideo->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->fileVideo->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->fileVideo->errorMessageStyle; ?>">
+		<?php print $this->sanitized->fileVideo->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Photo' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Photo' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="file" class="inptfile"
 			name="filePhoto" />
-		<div class="validat" style="<?php
-		print $this->sanitized->filePhoto->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->filePhoto->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->filePhoto->errorMessageStyle; ?>">
+		<?php print $this->sanitized->filePhoto->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Full Text' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><textarea class="txtarea tinymce"
-			rows="50" id="fullTextArticle" name="fullTextArticle"><?php
-			print $this->cleanHtml ( $this->sanitized->fullTextArticle->value );
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->fullTextArticle->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->fullTextArticle->errorMessage;
-		?></div>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Full Text' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><textarea  class="txtarea tinymce" rows="50"
+		id="fullTextArticle" name="fullTextArticle"><?php print $this->cleanHtml($this->sanitized->fullTextArticle->value); ?></textarea>
+		<div class="validat" style="<?php print $this->sanitized->fullTextArticle->errorMessageStyle; ?>">
+		<?php print $this->sanitized->fullTextArticle->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	if (! empty ( $this->sourceArticleList )) {
-		?>
+	<?php if (! empty ( $this->sourceArticleList )) { ?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Source' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Source' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct"
 			id="sourceArticle" name="sourceArticle">
-		<?php
-		echo $this->sourceArticleList;
-		?>
+		<?php echo $this->sourceArticleList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->sourceArticle->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->sourceArticle->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->sourceArticle->errorMessageStyle; ?>">
+		<?php print $this->sanitized->sourceArticle->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="sourceArticle" value="1" /></td>
 	</tr>
-	<?php
-	}
-	?>
-	<?php
-	if (! empty ( $this->categoryList )) {
-		?>
+	<?php } ?>
+	<?php if (!empty($this->categoryList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Category' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><select class="inptslct"
-			onchange="getSubCategories();" id="category" name="category">
-		<?php
-		echo $this->categoryList;
-		?>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Category' ); ?>:</td>
+		<td class="lablvalue jstalgntop"><select class="inptslct" onchange="getSubCategories();" 
+			id="category" name="category">
+		<?php echo $this->categoryList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->category->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->category->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->category->errorMessageStyle; ?>">
+		<?php print $this->sanitized->category->errorMessage; ?></div>
 		</td>
 	</tr>
 	<!--
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Subcategory' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Subcategory' ); ?>:</td>
 		<td class="lablvalue jstalgntop" id="actionsList">
 			<input class="inptflx" type="text" value="0" name="subCategoryId" disabled="disabled" readonly="readonly" />
-		<div class="validat" style="<?php
-		print $this->sanitized->subCategoryId->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->subCategoryId->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->subCategoryId->errorMessageStyle; ?>">
+		<?php print $this->sanitized->subCategoryId->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="category" value="1" /></td>
 	</tr>
-	<?php
-	}
-	?>
+	<?php } ?>
 	-->
 	<tr>
 		<td class="lable jstalgntop">&nbsp;</td>
 		<td class="lablvalue jstalgntop">
 		<ul class="lstsopt">
 			<li class="cleaner"><input type="checkbox" id="featured"
-				class="intchk fl" name="featured" value="Yes"
-				<?php
-				echo ('Yes' == $this->sanitized->featured->value) ? 'checked="checked"' : '';
-				?> />
-			<label for="featured" class="inptlabl fl"><?php
-			echo $this->__ ( 'Feature_Add' );
-			?></label><br />
-			<div class="validat" style="<?php
-			print $this->sanitized->featured->errorMessageStyle;
-			?>">
-		<?php
-		print $this->sanitized->featured->errorMessage;
-		?></div>
+				class="intchk fl" name="featured" value="Yes" 
+				<?php echo ('Yes' == $this->sanitized->featured->value) ? 'checked="checked"' : ''; ?> /> <label for="featured" class="inptlabl fl"><?php echo $this->__ ( 'Feature_Add' ); ?></label><br />
+			<div class="validat" style="<?php print $this->sanitized->featured->errorMessageStyle; ?>">
+		<?php print $this->sanitized->featured->errorMessage; ?></div>
 			</li>
 		</ul>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Object_Original Author' );
-		?>:</td>
-		<td class="lablvalue jstalgntop"><select class="inptslct"
-			id="author_id" name="author_id" onchange="setAuthor();">
-			<option value="-1"><?php
-			echo $this->__ ( 'Please Select Author' );
-			?></option>
-			<option value="0"><?php
-			echo $this->__ ( 'New Author' );
-			?></option>
-			<?php
-			echo $this->authorsList;
-			?>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Object_Original Author' ); ?>:</td>
+		<td class="lablvalue jstalgntop">
+		<select class="inptslct" id="author_id" name="author_id" onchange="setAuthor();">
+			<option value="-1"><?php echo $this->__ ('Please Select Author'); ?></option>
+			<option value="0"><?php echo $this->__ ('New Author'); ?></option>
+			<?php echo $this->authorsList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->originalAuthor->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->originalAuthor->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->originalAuthor->errorMessageStyle; ?>">
+		<?php print $this->sanitized->originalAuthor->errorMessage; ?></div>
 		</td>
 	</tr>
-	<tr id="authorTR" style="visibility: hidden;">
+	<tr id="authorTR" style="visibility:hidden;" >
 		<td class="lable jstalgntop">
-			<?php
-			echo $this->__ ( 'Object_Original New Author' );
-			?>:<br />
-		<br />
-			<?php
-			echo $this->__ ( 'Object_Original Author Photo' );
-			?>:
+			<?php echo $this->__ ( 'Object_Original New Author' ); ?>:<br /><br />
+			<?php echo $this->__ ( 'Object_Original Author Photo' ); ?>:
 		</td>
-		<td class="lablvalue jstalgntop"><input class="inptflx" type="text"
-			id="originalAuthor" name="originalAuthor"
-			value="<?php
-			print $this->sanitized->originalAuthor->value;
-			?>" /><br />
-		<br />
-		<input type="file" class="inptfile" name="fileAuthor" /></td>
+		<td class="lablvalue jstalgntop">
+			<input class="inptflx" type="text" id="originalAuthor" name="originalAuthor" value="<?php print $this->sanitized->originalAuthor->value; ?>" /><br /><br />
+			<input type="file" class="inptfile" name="fileAuthor" />
+		</td>
 	</tr>
 	<tr>
 		<td class="lable jstalgntop">
-			<?php
-			echo $this->authorPhoto;
-			?>
+			<?php echo $this->authorPhoto; ?>
 		</td>
 		<td class="lablvalue jstalgntop">
-			<?php
-			echo $this->photosList;
-			?>
+			<?php echo $this->photosList; ?>
 		</td>
 	</tr>
 </table>
@@ -404,9 +251,7 @@ echo $this->__ ( 'Object_Page Information' );
 <!--end entrdata--></div>
 <!--end conttab1-->
 
-<?php
-include './object/addCommonAdvanceMetaDesign.phtml';
-?>
+<?php include './object/addCommonAdvanceMetaDesign.phtml'; ?>
 
 </div>
 <!--end ritcont-->
@@ -414,9 +259,7 @@ include './object/addCommonAdvanceMetaDesign.phtml';
 </div>
 <!--end maincont--></div>
 <!--end content-->
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

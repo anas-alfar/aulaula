@@ -1,57 +1,21 @@
-
-<!--domenbox-->
-<div class="domenbox">
-<h3 class="domentitle"><span><a
-	href="/object-article/list/category/<?php
-	echo NEWS_SPORTS;
-	?>"
-	class="sport"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>spacer.gif"
-	alt="أخبار رياضية" title="أخبار رياضية" width="99" height="22" /></a></span>
-</h3>
-<div class="domendata">
-<ul class="newslst2 cleaner">
+                    	<!--domenbox-->
+                    	<div class="domenbox">
+                            <h3 class="domentitle">
+                                <span><a href="/object-article/list/category/<?php echo NEWS_SPORTS; ?>" class="sport"><img src="<?php print $this->defaultSkinImagesUrl; ?>spacer.gif" alt="أخبار رياضية" title="أخبار رياضية" width="99" height="22" /></a></span>
+                            </h3>
+                            <div class="domendata">
+                            	<ul class="newslst2 cleaner">
                                 	<?php
-																																	$countSports = count ( $this->newsSportsList );
-																																	for($k = 0; $k < $countSports; $k ++) {
-																																		?>
+									$countSports = count($this->newsSportsList);
+									for($k=0; $k< $countSports; $k++ ){ 
+									?>
                                     <li>
-	<p class="algnmid"><a
-		href="/object-article/view/id/<?php
-																																		echo $this->newsSportsList [$k] ['id'];
-																																		?>/title/<?php
-																																		echo $this->newsSportsList [$k] ['title'];
-																																		?>"><img
-		src="<?php
-																																		echo $this->newsSportsList [$k] ['imageUrl'];
-																																		?>"
-		alt="<?php
-																																		echo $this->newsSportsList [$k] ['photo_alias'];
-																																		?>"
-		title="<?php
-																																		echo $this->newsSportsList [$k] ['photo_alias'];
-																																		?>"
-		class="thumb" /></a></p>
-	<p><a
-		href="/object-article/view/id/<?php
-																																		echo $this->newsSportsList [$k] ['id'];
-																																		?>/title/<?php
-																																		echo $this->newsSportsList [$k] ['title'];
-																																		?>"><?php
-																																		echo $this->cleanHtml ( $this->newsSportsList [$k] ['title'] );
-																																		?></a></p>
-	</li>
-                                    <?php
-																																	}
-																																	?>
+                                        <p class="algnmid"><a href="/object-article/view/id/<?php echo $this->newsSportsList[$k]['id']; ?>/title/<?php echo $this->newsSportsList[$k]['title']; ?>"><img src="<?php echo $this->newsSportsList[$k]['imageUrl']; ?>" alt="<?php echo $this->newsSportsList[$k]['photo_alias']; ?>" title="<?php echo $this->newsSportsList[$k]['photo_alias']; ?>" class="thumb" /></a></p>
+                                        <p><a href="/object-article/view/id/<?php echo $this->newsSportsList[$k]['id']; ?>/title/<?php echo $this->newsSportsList[$k]['title']; ?>"><?php echo $this->cleanHtml($this->newsSportsList[$k]['title']); ?></a></p>
+                                    </li>
+                                    <?php } ?>
                                 </ul>
-<p class="morelnk"><a
-	href="/object-article/list/category/<?php
-	echo NEWS_SPORTS;
-	?>"
-	class="more">المزيد</a></p>
-</div>
-</div>
-<!--end domenbox-->
+                        		<p class="morelnk"><a href="/object-article/list/category/<?php echo NEWS_SPORTS; ?>" class="more">المزيد</a></p>
+                            </div>
+                        </div>
+                        <!--end domenbox-->

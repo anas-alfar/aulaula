@@ -1,179 +1,101 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 
 <!--content-->
 <div class="content"><!--maincont-->
 <div class="maincont cleaner"><!--lftnav-->
 <div class="lftnav">
-<h3 class="margb1"><?php
-echo $this->__ ( 'Package_Package Class' );
-?></h3>
+<h3 class="margb1"><?php echo $this->__ ( 'Package_Package Class' ); ?></h3>
 <ul>
-	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Package_Information' );
-	?></span></a></li>
-	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php
-	echo $this->__ ( 'Package_Advanced' );
-	?></span></a></li>
+	<li class="tab active" title="conttab1"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Package_Information' ); ?></span></a></li>
+	<li class="tab" title="conttab2"><a href="javascript:void(0);"><span><?php echo $this->__ ( 'Package_Advanced' ); ?></span></a></li>
 </ul>
 </div>
-<!--end lftnav--> <!--ritcont-->
+<!--end lftnav-->
+
+<!--ritcont-->
 <form action="" method="post">
-<div class="ritcont"><!--srch-rslt-->
+<div class="ritcont">
+
+<!--srch-rslt-->
 <div class="srch-rslt">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Package_Add New Class' );
-?></h3>
-<a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="2" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Package_Save And Continue Edit' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="1" class="emptbtn" type="submit"><?php
-echo $this->__ ( 'Package_Save' );
-?></button>
-</em></a> <a href="javascript:void(0);" class="save-btn"><em>
-<button name="btn_submit" value="0" class="emptbtn" type="reset"><?php
-echo $this->__ ( 'Package_Reset' );
-?></button>
-</em></a> <a href="javascript:history.go(-1)" class="backbtn"><em>
-<button name="btn_submit" value="-1" class="emptbtn" type="button"
-	onlcick="javascript:history.go(-1);"><?php
-	echo $this->__ ( 'Package_Back' );
-	?></button>
-</em></a></div>
-<!--end srch-rslt--> <!--conttab1-->
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Package_Add New Class' ); ?></h3>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="2" class="emptbtn" type="submit"><?php echo $this->__ ( 'Package_Save And Continue Edit' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="1" class="emptbtn" type="submit"><?php echo $this->__ ( 'Package_Save' ); ?></button></em></a>
+<a href="javascript:void(0);" class="save-btn"><em><button name="btn_submit" value="0" class="emptbtn" type="reset"><?php echo $this->__ ( 'Package_Reset' ); ?></button></em></a>
+<a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Package_Back' ); ?></button></em></a>
+</div>
+<!--end srch-rslt-->
+
+<!--conttab1-->
 <div class="mytabscont" id="conttab1" style="display: block"><!--entrdata-->
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Package_Information' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Package_Information' ); ?></h2>
 <div class="entrdcont">
-<div class="wdthauto"><input type="hidden" id="Id" name="Id"
-	value="<?php
-	print $this->sanitized->Id->value;
-	?>" /> <input
-	type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" />
+<div class="wdthauto">
+	<input type="hidden" id="Id" name="Id" value="<?php print $this->sanitized->Id->value; ?>" /> 
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Class Title' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Class Title' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="classTitle" name="classTitle"
-			value="<?php
-			print $this->sanitized->classTitle->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->classTitle->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->classTitle->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->classTitle->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->classTitle->errorMessageStyle; ?>">
+		<?php print $this->sanitized->classTitle->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Class Name' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Class Name' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			name="className" id="className"
-			value="<?php
-			echo $this->sanitized->className->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->className->errorMessageStyle;
-		?>"><?php
-		print $this->sanitized->className->errorMessage;
-		?></div>
+			value="<?php echo $this->sanitized->className->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->className->errorMessageStyle; ?>"><?php print $this->sanitized->className->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Class Description' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Class Description' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><textarea class="txtarea" rows="5"
-			cols="" name="classDescription"><?php
-			echo $this->sanitized->classDescription->value;
-			?></textarea>
-		<div class="validat" style="<?php
-		print $this->sanitized->classDescription->errorMessageStyle;
-		?>">
-				<?php
-				print $this->sanitized->classDescription->errorMessage;
-				?>
+			cols="" name="classDescription"><?php echo $this->sanitized->classDescription->value; ?></textarea>
+			<div class="validat" style="<?php print $this->sanitized->classDescription->errorMessageStyle; ?>">
+				<?php print $this->sanitized->classDescription->errorMessage; ?>
 			</div>
-		</td>
+			</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_File Name' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_File Name' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			name="fileName" id="fileName"
-			value="<?php
-			echo $this->sanitized->fileName->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->fileName->errorMessageStyle;
-		?>"><?php
-		print $this->sanitized->fileName->errorMessage;
-		?></div>
+			value="<?php echo $this->sanitized->fileName->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->fileName->errorMessageStyle; ?>"><?php print $this->sanitized->fileName->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	if (! empty ( $this->packageList )) {
-		?>
+	<?php if (!empty($this->packageList)) {?>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Package' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Package' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><select class="inptslct" id="package"
 			name="package">
-		<?php
-		echo $this->packageList;
-		?>
+		<?php echo $this->packageList; ?>
 		</select>
-		<div class="validat" style="<?php
-		print $this->sanitized->package->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->package->errorMessage;
-		?></div>
+		<div class="validat" style="<?php print $this->sanitized->package->errorMessageStyle; ?>">
+		<?php print $this->sanitized->package->errorMessage; ?></div>
 		</td>
 	</tr>
-	<?php
-	} else {
-		?>
+	<?php } else { ?>
 	<tr>
 		<td><input type="hidden" name="package" value="0" /></td>
 	</tr>
-	<?php
-	}
-	?>
+	<?php }?>
 </table>
 
 </div>
@@ -183,60 +105,43 @@ echo $this->__ ( 'Package_Information' );
 <!--end conttab1--> <!--conttab2-->
 <div class="mytabscont" id="conttab2" style="display: none">
 <div class="entrdata">
-<h2 class="datatitle"><?php
-echo $this->__ ( 'Package_Advanced Settings' );
-?></h2>
+<h2 class="datatitle"><?php echo $this->__ ( 'Package_Advanced Settings' ); ?></h2>
 <div class="entrdcont">
 <div class="wdthauto">
 <table class="formlist">
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Comments' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Comments' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="comment" name="comment"
-			value="<?php
-			print $this->sanitized->comment->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->comment->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->comment->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->comment->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->comment->errorMessageStyle; ?>">
+		<?php print $this->sanitized->comment->errorMessage; ?></div>
 		</td>
 	</tr>
 	<tr>
-		<td class="lable jstalgntop"><?php
-		echo $this->__ ( 'Package_Options' );
-		?>:</td>
+		<td class="lable jstalgntop"><?php echo $this->__ ( 'Package_Options' ); ?>:</td>
 		<td class="lablvalue jstalgntop"><input type="text" class="inptflx"
 			id="option" name="option"
-			value="<?php
-			print $this->sanitized->option->value;
-			?>" />
-		<div class="validat" style="<?php
-		print $this->sanitized->option->errorMessageStyle;
-		?>">
-		<?php
-		print $this->sanitized->option->errorMessage;
-		?></div>
+			value="<?php print $this->sanitized->option->value; ?>" />
+		<div class="validat" style="<?php print $this->sanitized->option->errorMessageStyle; ?>">
+		<?php print $this->sanitized->option->errorMessage; ?></div>
 		</td>
-	</tr>
+		</tr>
 </table>
 </div>
 </div>
 </div>
-<!--end entrdata--></div>
-<!--end conttab2--></div>
+<!--end entrdata-->
+</div>
+<!--end conttab2-->
+</div>
 <!--end ritcont-->
 </form>
 </div>
-<!--end maincont--></div>
+<!--end maincont-->
+</div>
 <!--end content-->
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

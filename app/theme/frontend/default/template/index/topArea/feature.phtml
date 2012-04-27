@@ -1,115 +1,47 @@
-				<?php
-				if (! empty ( $this->featureList )) {
-					?>
-<div class="slider"><span class="btop"><span><em></em></span></span>
-<div class="boxdata cleaner">
-<div class="main_image"><!--titletip-->
-<div class="titletip">
-<h2 class="redtitle"><a
-	href="/object-article/view/id/<?php
-					echo $this->featureList [0] ['id'];
-					?>/title/<?php
-					echo $this->featureList [0] ['title'];
-					?>"><?php
-					echo $this->cleanHtml ( $this->featureList [0] ['title'] );
-					?></a></h2>
-</div>
-<!--end titletip--> <a
-	href="/object-article/view/id/<?php
-					echo $this->featureList [0] ['id'];
-					?>/title/<?php
-					echo $this->featureList [0] ['title'];
-					?>"><img
-	src="<?php
-					echo $this->featureList [0] ['photo-large'];
-					?>"
-	alt="<?php
-					echo $this->featureList [0] ['title'];
-					?>" title="" /></a>
-<div class="overdesc">
-<div class="desc">
-<p class="brief"><a
-	href="/object-article/view/id/<?php
-					echo $this->featureList [0] ['id'];
-					?>/title/<?php
-					echo $this->featureList [0] ['title'];
-					?>"><?php
-					echo $this->subString ( $this->cleanHtml ( $this->featureList [0] ['intro_text'] ), $this->start, $this->length ) . '.....';
-					?></a></p>
-<ul class="readnum cleaner">
-	<li class="last">التعليقات: <strong class="red"><?php
-					echo $this->featureList [0] ['total_comments'];
-					?></strong></li>
-	<li>المشاهدات: <strong class="red"><?php
-					echo $this->featureList [0] ['total_views'];
-					?></strong></li>
-</ul>
-</div>
-</div>
-</div>
-<!--image_thumb-->
-<div class="image_thumb">
-<ul>
+				<?php if (!empty($this->featureList)) { ?>
+				<div class="slider">
+                    <span class="btop"><span><em></em></span></span>
+                    <div class="boxdata cleaner">
+                        <div class="main_image">
+	                        <!--titletip-->
+	                        <div class="titletip">
+	                        	<h2 class="redtitle"><a href="/object-article/view/id/<?php echo $this->featureList[0]['id']; ?>/title/<?php echo $this->featureList[0]['title']; ?>"><?php echo $this->cleanHtml ( $this->featureList[0]['title'] ); ?></a></h2>
+	                        </div>
+	                        <!--end titletip-->
+                            <a href="/object-article/view/id/<?php echo $this->featureList[0]['id']; ?>/title/<?php echo $this->featureList[0]['title']; ?>"><img src="<?php echo $this->featureList[0]['photo-large']; ?>" alt="<?php echo $this->featureList[0]['title']; ?>" title="" /></a>
+                            <div class="overdesc">
+                                <div class="desc">
+                                    <p class="brief"><a href="/object-article/view/id/<?php echo $this->featureList[0]['id']; ?>/title/<?php echo $this->featureList[0]['title']; ?>"><?php echo  $this->subString ( $this->cleanHtml ( $this->featureList[0] ['intro_text'] ), $this->start, $this->length ) . '.....'; ?></a></p>
+                                    <ul class="readnum cleaner">
+                                    	<li class="last">التعليقات: <strong class="red"><?php echo $this->featureList[0]['total_comments']; ?></strong></li>
+                                        <li>المشاهدات: <strong class="red"><?php echo $this->featureList[0]['total_views']; ?></strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--image_thumb-->
+                        <div class="image_thumb">
+                            <ul>
 								<?php
-					$countFeatureList = count ( $this->featureList );
-					for($k = 0; $k < $countFeatureList; $k ++) {
-						?>
-                                <li id="feature-<?php
-						echo $k;
-						?>"
-		class="cleaner <?php
-						echo ($k == 0) ? 'on' : '';
-						?>"><a
-		alt="<?php
-						echo $this->featureList [$k] ['photo-large'];
-						?>"
-		href="/object-article/view/id/<?php
-						echo $this->featureList [$k] ['id'];
-						?>/title/<?php
-						echo $this->featureList [$k] ['title'];
-						?>"><img
-		src="<?php
-						echo $this->featureList [$k] ['photo-thumb'];
-						?>"
-		alt="<?php
-						echo $this->featureList [$k] ['title'];
-						?>"
-		class="thumblft fl" /></a>
-	<div class="desc">
-	<h2 class="lititle"><a
-		href="/object-article/view/id/<?php
-						echo $this->featureList [$k] ['id'];
-						?>/title/<?php
-						echo $this->featureList [$k] ['title'];
-						?>"
-		class="blak"><?php
-						echo $this->cleanHtml ( $this->featureList [$k] ['title'] );
-						?></a></h2>
-	<p class="brief"><a
-		href="/object-article/view/id/<?php
-						echo $this->featureList [$k] ['id'];
-						?>/title/<?php
-						echo $this->featureList [$k] ['title'];
-						?>"><?php
-						echo $this->subString ( $this->cleanHtml ( $this->featureList [$k] ['intro_text'] ), $this->start, $this->length ) . '.....';
-						?></a></p>
-	<ul class="readnum cleaner">
-		<li class="last">التعليقات: <strong class="red"><?php
-						echo $this->featureList [$k] ['total_comments'];
-						?></strong></li>
-		<li>المشاهدات: <strong class="red"><?php
-						echo $this->featureList [$k] ['total_views'];
-						?></strong></li>
-	</ul>
-	</div>
-	</li>
-                                <?php
-					}
-					?>
+								$countFeatureList = count($this->featureList ); 
+								for($k=0; $k<$countFeatureList; $k++) {
+								?>
+                                <li id="feature-<?php echo $k; ?>" class="cleaner <?php echo ($k == 0) ? 'on' : ''; ?>">
+                                    <a alt="<?php echo $this->featureList[$k]['photo-large']; ?>" href="/object-article/view/id/<?php echo $this->featureList[$k]['id']; ?>/title/<?php echo $this->featureList[$k]['title']; ?>"><img src="<?php echo $this->featureList[$k]['photo-thumb']; ?>" alt="<?php echo $this->featureList[$k]['title']; ?>" class="thumblft fl" /></a>
+                                    <div class="desc">
+                                        <h2 class="lititle"><a href="/object-article/view/id/<?php echo $this->featureList[$k]['id']; ?>/title/<?php echo $this->featureList[$k]['title']; ?>" class="blak"><?php echo $this->cleanHtml ( $this->featureList[$k]['title'] ); ?></a></h2>
+                                        <p class="brief"><a href="/object-article/view/id/<?php echo $this->featureList[$k]['id']; ?>/title/<?php echo $this->featureList[$k]['title']; ?>"><?php echo  $this->subString ( $this->cleanHtml ( $this->featureList[$k] ['intro_text']  ), $this->start, $this->length ) . '.....'; ?></a></p>
+                                        <ul class="readnum cleaner">
+                                            <li class="last">التعليقات: <strong class="red"><?php echo $this->featureList[$k]['total_comments']; ?></strong></li>
+                                            <li>المشاهدات: <strong class="red"><?php echo $this->featureList[$k]['total_views']; ?></strong></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <?php } ?>
                             </ul>
-</div>
-<!--end image_thumb--></div>
-<span class="bbotom"><span><em></em></span></span></div>
-<?php
-				}
-				?>
+                        </div>
+                        <!--end image_thumb-->
+                    </div>
+                    <span class="bbotom"><span><em></em></span></span>
+                </div>
+                <?php } ?>

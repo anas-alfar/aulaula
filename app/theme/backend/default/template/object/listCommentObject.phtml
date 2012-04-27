@@ -1,16 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('textarea.tinymce').tinymce({
 			// Location of TinyMCE script
-			script_url : '<?php
-			print $this->defaultSkinJsUrl;
-			?>tiny_mce/tiny_mce.js',
+			script_url : '<?php print $this->defaultSkinJsUrl; ?>tiny_mce/tiny_mce.js',
 			
 			// General options
 			theme : "simple",
@@ -25,9 +21,7 @@ $(document).ready(function() {
 			theme_advanced_source_editor_wrap : true,
 
 			// Example content CSS (should be your site CSS)
-			content_css : "<?php
-			print $this->defaultSkinJsUrl;
-			?>tiny_mce/themes/simple/skins/default/content.css",
+			content_css : "<?php print $this->defaultSkinJsUrl; ?>tiny_mce/themes/simple/skins/default/content.css",
 		});
 });
 </script>
@@ -36,295 +30,128 @@ $(document).ready(function() {
 
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
 <div class="content">
 <div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Object_Object' );
-?></h3>
-<a href="<?php
-print $this->sanitized->actionURI->value;
-?>add"
-	class="add-btn"><em><?php
-	echo $this->__ ( 'Object_Add New Object' );
-	?></em></a></div>
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Object_Object' ); ?></h3>
+<a href="<?php print $this->sanitized->actionURI->value; ?>add" class="add-btn"><em><?php echo $this->__ ( 'Object_Add New Object' ); ?></em></a></div>
 <!--filtration-->
 <div class="filtration cleaner">
-<button type="button" onclick="return changeFormAction('list', 'post');"
-	name="resetFilter" id="resetFilter" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Reset Filter' );
-	?></em></span></button>
+<button type="button"
+		onclick="return changeFormAction('list', 'post');" name="resetFilter"
+		id="resetFilter" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Reset Filter' ); ?></em></span></button>
 <!--<button type="button"
 		onclick="return changeFormAction('approve', 'post');" name="approve"
-		id="approve" class="inpt-btn fr"><span><em><?php
-		echo $this->__ ( 'Object_Approve' );
-		?></em></span></button>-->
-<button type="button"
-	onclick="return changeFormAction('publish', 'post');" name="publish"
-	id="publish" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Publish' );
-	?></em></span></button>
-<button type="button"
-	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Delete' );
-	?></em></span></button>
-<button type="button"
-	onclick="return changeFormAction('list/filter/1/', 'post', 'search');"
-	name="btn_search" id="search" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Object_Search' );
-	?></em></span></button>
-<select style="float: left;" name="status">
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
-		?>
-		value="Yes"><?php
-		echo $this->__ ( 'Yes Option' );
-		?></option>
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
-		?>
-		value="No"><?php
-		echo $this->__ ( 'No Option' );
-		?></option>
-</select> <input type="hidden" id="redirectURI" name="redirectURI"
-	value="<?php
-	print $this->sanitized->redirectURI->value;
-	?>" /></div>
-<!--end filtration--> <!--srch-rsult-->
+		id="approve" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Approve' ); ?></em></span></button>-->
+	<button type="button"
+		onclick="return changeFormAction('publish', 'post');" name="publish"
+		id="publish" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Publish' ); ?></em></span></button>
+	<button type="button" onclick="return changeFormAction('delete', 'post');" name="delete" id="delete"
+		class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Delete' ); ?></em></span></button>
+	<button type="button" onclick="return changeFormAction('list/filter/1/', 'post', 'search');" name="btn_search"
+		id="search"  class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Object_Search' ); ?></em></span></button>
+	<select style="float: left;" name="status">
+	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this->__('No Option'); ?></option>
+	</select>
+	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
+</div>
+<!--end filtration-->
+
+<!--srch-rsult-->
 <table class="srch-rsult">
 	<tr class="heading">
-		<th class="jstalgntop tools"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
+		<th class="jstalgntop tools"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->webpage->href;
-			?>"
-			class="<?php
-			echo $this->sort->webpage->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->webpage->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_IP' );
-			?></span></a></th>
+			href="<?php echo $this->sort->webpage->href; ?>"
+			class="<?php echo $this->sort->webpage->cssClass; ?>"><span
+			class="<?php echo $this->sort->webpage->cssClass; ?>"><?php echo $this->__ ( 'Object_IP' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->email->href;
-			?>"
-			class="<?php
-			echo $this->sort->email->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->email->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Author Name' );
-			?></span></a></th>
+			href="<?php echo $this->sort->email->href; ?>"
+			class="<?php echo $this->sort->email->cssClass; ?>"><span
+			class="<?php echo $this->sort->email->cssClass; ?>"><?php echo $this->__ ( 'Object_Author Name' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->title->href;
-			?>"
-			class="<?php
-			echo $this->sort->title->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->title->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Article Title' );
-			?></span></a></th>
+			href="<?php echo $this->sort->title->href; ?>"
+			class="<?php echo $this->sort->title->cssClass; ?>"><span
+			class="<?php echo $this->sort->title->cssClass; ?>"><?php echo $this->__ ( 'Object_Article Title' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->user_id->href;
-			?>"
-			class="<?php
-			echo $this->sort->user_id->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->user_id->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Writer' );
-			?></span></a></th>
+			href="<?php echo $this->sort->user_id->href; ?>"
+			class="<?php echo $this->sort->user_id->cssClass; ?>"><span
+			class="<?php echo $this->sort->user_id->cssClass; ?>"><?php echo $this->__ ( 'Object_Writer' ); ?></span></a></th>
 		<th class="jstalgntop col6"><a
-			href="<?php
-			echo $this->sort->content->href;
-			?>"
-			class="<?php
-			echo $this->sort->content->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->content->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Content' );
-			?></span></a></th>
+			href="<?php echo $this->sort->content->href; ?>"
+			class="<?php echo $this->sort->content->cssClass; ?>"><span
+			class="<?php echo $this->sort->content->cssClass; ?>"><?php echo $this->__ ( 'Object_Content' ); ?></span></a></th>
 		<!--<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->content->href;
-			?>"
-			class="<?php
-			echo $this->sort->content->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->content->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Content' );
-			?></span></a></th>
+			href="<?php echo $this->sort->content->href; ?>"
+			class="<?php echo $this->sort->content->cssClass; ?>"><span
+			class="<?php echo $this->sort->content->cssClass; ?>"><?php echo $this->__ ( 'Object_Content' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->approved->href;
-			?>"
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Approved' );
-			?></span></a></th>-->
-		<th class="jstalgntop tools"><a
-			href="<?php
-			echo $this->sort->published->href;
-			?>"
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Published' );
-			?></span></a></th>
+			href="<?php echo $this->sort->approved->href; ?>"
+			class="<?php echo $this->sort->approved->cssClass; ?>"><span
+			class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Object_Approved' ); ?></span></a></th>-->
+		<th class="jstalgntop tools">
+		<a href="<?php echo $this->sort->published->href; ?>"
+			class="<?php echo $this->sort->published->cssClass; ?>"><span
+			class="<?php echo $this->sort->published->cssClass; ?>"><?php echo $this->__ ( 'Object_Published' ); ?></span></a></th>
 		<th class="jstalgntop last" style="width: 200px;"><a
-			href="<?php
-			echo $this->sort->date_added->href;
-			?>"
-			class="<?php
-			echo $this->sort->date_added->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->date_added->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Object_Date Added' );
-			?></span></a></th>
-		<!--<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'Object_Tools' );
-		?></span></th> -->
+			href="<?php echo $this->sort->date_added->href; ?>"
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><span
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+		<!--<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th> -->
 	</tr>
 	<tr class="filtration">
-		<th class="jstalgntop">&nbsp;</th>
-		<th class="jstalgntop"><input type="text" class="inptflxFilterShort"
-			id="webpageSearch" search="1" name="webpageSearch"
-			value="<?php
-			print $this->webpageSearch;
-			?>" /></th>
-		<th class="jstalgntop"><input type="text" class="inptflxFilterShort"
-			id="emailSearch" search="1" name="emailSearch"
-			value="<?php
-			print $this->sanitized->emailSearch->value;
-			?>" /></th>
-		<th class="jstalgntop"><input type="text" class="inptflxFilterShort"
-			id="articleTitleSearch" search="1" name="articleTitleSearch"
-			value="<?php
-			print $this->sanitized->articleTitleSearch->value;
-			?>" /></th>
-		<th class="jstalgntop"><input type="text" class="inptflxFilterShort"
-			id="userId" search="1" name="userIdSearch"
-			value="<?php
-			print $this->sanitized->userIdSearch->value;
-			?>" /></th>
-		<th class="jstalgntop"><input type="text" class="inptflxFilterLong"
-			id="contentSearch" search="1" name="contentSearch"
-			value="<?php
-			print $this->sanitized->contentSearch->value;
-			?>" /></th>
-		<!--<th class="jstalgntop">&nbsp;</th>
+                <th class="jstalgntop">&nbsp;</th>
+                <th class="jstalgntop"><input type="text" class="inptflxFilterShort" id="webpageSearch" search="1" name="webpageSearch"  value="<?php print $this->webpageSearch; ?>" /></th>
+                <th class="jstalgntop"><input type="text" class="inptflxFilterShort" id="emailSearch" search="1" name="emailSearch" value="<?php print $this->sanitized->emailSearch->value; ?>" /></th>
+                <th class="jstalgntop"><input type="text" class="inptflxFilterShort" id="articleTitleSearch" search="1" name="articleTitleSearch" value="<?php print $this->sanitized->articleTitleSearch->value; ?>" /></th>
+                <th class="jstalgntop"><input type="text" class="inptflxFilterShort" id="userId" search="1" name="userIdSearch" value="<?php print $this->sanitized->userIdSearch->value; ?>" /></th>
+                <th class="jstalgntop"><input type="text" class="inptflxFilterLong" id="contentSearch" search="1"  name="contentSearch" value="<?php print $this->sanitized->contentSearch->value; ?>" /></th>
+                <!--<th class="jstalgntop">&nbsp;</th>
                 <th class="jstalgntop">
                 	<select class="inptslct"  id="approvedSearch" search="1" name="approvedSearch" >
-                    	<option value="-1" ><?php
-																					echo $this->__ ( 'Object_Any' );
-																					?></option>
-                    	<option value="Yes" <?php
-																					echo $this->sanitized->approvedSearch->value == 'Yes' ? 'selected="selected"' : '';
-																					?> ><?php
-																					echo $this->__ ( 'Object_Yes' );
-																					?></option>
-                        <option value="No" <?php
-																								echo $this->sanitized->approvedSearch->value == 'No' ? 'selected="selected"' : '';
-																								?>><?php
-																								echo $this->__ ( 'Object_No' );
-																								?></option>
+                    	<option value="-1" ><?php echo $this->__ ( 'Object_Any' ); ?></option>
+                    	<option value="Yes" <?php echo $this->sanitized->approvedSearch->value == 'Yes' ?'selected="selected"':''; ?> ><?php echo $this->__ ( 'Object_Yes' ); ?></option>
+                        <option value="No" <?php echo $this->sanitized->approvedSearch->value == 'No' ?'selected="selected"':'';  ?>><?php echo $this->__ ( 'Object_No' ); ?></option>
                     </select>
                 </th>-->
-		<th class="jstalgntop"><select class="inptslct" id="publishedSearch"
-			search="1" name="publishedSearch">
-			<option value="-1"><?php
-			echo $this->__ ( 'Object_Any' );
-			?></option>
-			<option value="Yes"
-				<?php
-				echo $this->sanitized->publishedSearch->value == 'Yes' ? 'selected="selected"' : '';
-				?>><?php
-				echo $this->__ ( 'Object_Yes' );
-				?></option>
-			<option value="No"
-				<?php
-				echo $this->sanitized->publishedSearch->value == 'No' ? 'selected="selected"' : '';
-				?>><?php
-				echo $this->__ ( 'Object_No' );
-				?></option>
-		</select></th>
-		<th class="jstalgntop">
-		<div class="fl marglft"><?php
-		echo $this->__ ( 'Object_From' );
-		?>: <input
-			type="text" class="inpttxt wdth70 slctdate" search="1"
-			id="slct_date1" name="dateAddedFromSearch" /></div>
-		<div class="fl marglft"><?php
-		echo $this->__ ( 'Object_To' );
-		?>: <input
-			type="text" class="inpttxt wdth70 slctdate" search="1"
-			id="slct_date2" name="dateAddedToSearch" /></div>
-		</th>
-	</tr>
+                <th class="jstalgntop">
+                	<select class="inptslct" id="publishedSearch" search="1" name="publishedSearch">
+                   <option value="-1" ><?php echo $this->__ ( 'Object_Any' ); ?></option>
+                    	<option value="Yes" <?php echo $this->sanitized->publishedSearch->value == 'Yes'? 'selected="selected"':'';  ?> ><?php echo $this->__ ( 'Object_Yes' ); ?></option>
+                        <option value="No" <?php echo $this->sanitized->publishedSearch->value == 'No' ?'selected="selected"':'';  ?>><?php echo $this->__ ( 'Object_No' ); ?></option>
+                    </select>
+                </th>
+                <th class="jstalgntop">
+                	<div class="fl marglft"><?php echo $this->__ ( 'Object_From' ); ?>: <input type="text" class="inpttxt wdth70 slctdate" search="1"   id="slct_date1" name="dateAddedFromSearch"/></div>
+                    <div class="fl marglft"><?php echo $this->__ ( 'Object_To' ); ?>: <input type="text" class="inpttxt wdth70 slctdate" search="1"  id="slct_date2"  name="dateAddedToSearch"/></div>
+                </th>
+            </tr>
 	
-	<?php
-	if (! empty ( $this->objectList )) {
-		echo $this->objectList;
+	<?php 
+	if (!empty($this->objectList)) {
+		echo $this->objectList; 
 	}
 	?>
 
 </table>
 
 <!--begin paging-->
-<?php
-include './html/paging.phtml';
-?>
-<!--end paging--></div>
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
+
+</div>
 <!--end content-->
 </form>
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

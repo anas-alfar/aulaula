@@ -24,11 +24,11 @@
  * @access public
  *
  */
-class Object_Model_Url extends Aula_Model_DbTable {
-	
+class Object_Model_Url extends  Aula_Model_DbTable {
+
 	protected $_name = 'object_url';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -51,22 +51,22 @@ class Object_Model_Url extends Aula_Model_DbTable {
 	public $modifiedTime = '0000-00-00';
 	public $publishFrom = '0000-00-00';
 	public $publishTo = '0000-00-00';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'alias', 'intro_text', 'url', 'style', 'author_id', 'source_id', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'url_type', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `url`, `style`, `author_id`, `source_id`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `url_type`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'alias', 'intro_text', 'url', 'style', 'author_id', 'object_source_id', 'object_id', 'category_id', 'show_in_object', 'published', 'approved', 'url_type', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `url`, `style`, `author_id`, `object_source_id`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `url_type`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
-	
+
 	public function GetListingCleanObjectAndInfoAndUrlByCategoryIdsOrderByColumnWithLimit($CategoryIds, $start = 0, $limit = 10, $Column = 'ou.`date_added`', $sorting = 'DESC') {
-		
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
-		
-		$this->_selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ou.`id`, ou.`alias`, ou.`intro_text`, ou.`url`, ou.`style`, 
+
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
+
+		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ou.`id`, ou.`alias`, ou.`intro_text`, ou.`url`, ou.`style`, 
   ou.`author_id`, ou.`source_id`, ou.`object_id`, ou.`category_id`, ou.`show_in_object`, ou.`published`, ou.`approved`, ou.`url_type`,
   ou.`order`, ou.`locked_by`, ou.`locked_time`, ou.`modified_by`, ou.`modified_time`, ou.`publish_from`, ou.`publish_to`, 
   ou.`date_added`, ou.`comments`, ou.`options`, ou.`publish_to`,
@@ -77,25 +77,24 @@ class Object_Model_Url extends Aula_Model_DbTable {
 FROM   `object_url` AS ou  
 INNER JOIN  `object` AS o ON ou.`object_id` = o.`id` 
 INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_groupBy = "ou.`id`";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ( 'ou.`category_id` IN (?) AND ou.`published` = ? AND ou.`approved` = ? ', array ($CategoryIds, 'Yes', 'Yes' ) );
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _groupBy = "ou.`id`";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read('ou.`category_id` IN (?) AND ou.`published` = ? AND ou.`approved` = ? ', array($CategoryIds, 'Yes', 'Yes'));
 		return $result;
-	
+
 	} //GetListingCleanObjectAndInfoAndVideoByCategoryIdsOrderByColumnWithLimit
 	
+	public function getAllObject_urlOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
 
-	public function getAllObject_urlOrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 

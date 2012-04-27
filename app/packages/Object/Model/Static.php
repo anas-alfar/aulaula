@@ -25,10 +25,10 @@
  *
  */
 class Object_Model_Static extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_static';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -50,22 +50,22 @@ class Object_Model_Static extends Aula_Model_DbTable {
 	public $publishTo = '0000-00-00';
 	public $objectType = '4';
 	public $url = 'http://www.sarayanews.org/';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'alias', 'url', 'intro_text', 'full_text', 'created_date', 'author_id', 'object_id', 'category_id', 'published', 'approved', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `url`, `intro_text`, `full_text`, `created_date`, `author_id`, `object_id`, `category_id`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `comments`, `options`,`date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'alias', 'url', 'intro_text', 'full_text', 'created_date', 'author_id', 'object_id', 'category_id', 'published', 'approved', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' , 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `url`, `intro_text`, `full_text`, `created_date`, `author_id`, `object_id`, `category_id`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `comments`, `options`,`date_added` ';
+		parent::__construct();
 	}
 	
-	public function getAllStatic_OrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+	public function getAllStatic_OrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 

@@ -121,7 +121,7 @@ class Aula_Model_Paging extends Aula_Model_Default {
 		if (empty ( $totalRecordsCount )) {
 			return;
 		}
-		
+
 		if (is_null ( $pageURI )) {
 			$pageURI = $_SERVER ['REQUEST_URI'];
 		}

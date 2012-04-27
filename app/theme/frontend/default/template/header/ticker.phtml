@@ -1,15 +1,12 @@
-<?php
-if (! empty ( $this->election ) and is_array ( $this->election )) {
-	?>
-<div class="ticker cleaner"><span class="tickerlbl"></span> <marquee
-	class="marquee" direction="right" scrolldelay="50" scrollamount="3"
-	onmouseout="this.start()" onmouseover="this.stop()">
-            <?php
-	foreach ( $this->election as $election ) {
-		echo '<a href="#er">' . $election . '</a>';
-	}
-	?>
-            </marquee> <span class="makehome"></span></div>
-<?php
-}
-?>
+<?php if (!empty($this->election) and is_array($this->election)) { ?>
+        <div class="ticker cleaner">
+            <span class="tickerlbl"></span>
+            <marquee class="marquee" direction="right" scrolldelay="50" scrollamount="3" onmouseout="this.start()" onmouseover="this.stop()">
+            <?php foreach ($this->election as $election) {
+            	 echo '<a href="#er">' . $election . '</a>';
+            }
+            ?>
+            </marquee>
+            <span class="makehome"></span>
+        </div>
+<?php } ?>

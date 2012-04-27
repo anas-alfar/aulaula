@@ -1,69 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './header/meta.phtml';
-?>
+<?php include './header/meta.phtml'; ?>
 </head>
 <body>
 <div class="ramadanpatrn">
-<div class="ramadanrit"><!--containcont-->
-<div class="containcont"><!--container-->
-<div class="container"><!--logoarea-->
-		<?php
-		include './header/logo.phtml';
-		?>
-		<!--end logoarea--> <!--mainnav-->
-        <?php
-								include './header/topMenu.phtml';
-								?>
-        <!--end mainnav--> <!--stats-->
-        <?php
-								include './header/status.phtml';
-								?>
-        <!--end stats--> <!--ticker-->
-		<?php
-		include './header/ticker.phtml';
-		?>
-        <!--end ticker--> <!--content-->
-<div class="content cleaner"><!--contrit-->
-<div class="contrit"><!--tree-->
-				<?php
-				include './object/treeNav.phtml';
-				?>
-                <!--end tree--> <!--cleaner-->
-<div class="cleaner margt1">
-<div class="wdth70per fr"><!--boxbg-->
-<div class="boxbg"><span class="boxcornrs"><span></span></span>
-<h3 class="boxtitle"><label class="dirctcont"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>spacer.gif"
-	alt="للإتصال المباشـر" title="للإتصال المباشـر" width="139" height="21" /></label></h3>
-<div class="boxdatapx">
-<ul class="addcomlst">
-	<li class="cleaner"><label class="wdth100 fr">الشخص المسؤول:</label> <strong
-		class="red">محمد</strong></li>
-	<li class="cleaner"><label class="wdth100 fr">هـاتـف رقـم:</label> <strong
-		class="red">0795155090</strong></li>
-</ul>
+<div class="ramadanrit">
+<!--containcont-->
+<div class="containcont">
+    <!--container-->
+    <div class="container">
+		<!--logoarea-->
+		<?php include './header/logo.phtml';?>
+		<!--end logoarea-->
+        <!--mainnav-->
+        <?php include './header/topMenu.phtml'; ?>
+        <!--end mainnav-->
+        <!--stats-->
+        <?php include './header/status.phtml'; ?>
+        <!--end stats-->
+        <!--ticker-->
+		<?php include './header/ticker.phtml'; ?>
+        <!--end ticker-->
+        <!--content-->
+        <div class="content cleaner">
+        	<!--contrit-->
+            <div class="contrit">
+            	<!--tree-->
+				<?php include './object/treeNav.phtml'; ?>
+                <!--end tree-->
+                <!--cleaner-->
+                <div class="cleaner margt1">
+                    <div class="wdth70per fr">
+                        <!--boxbg-->
+                        <div class="boxbg">
+                            <span class="boxcornrs"><span></span></span>
+                            <h3 class="boxtitle"><label class="dirctcont"><img src="<?php print $this->defaultSkinImagesUrl; ?>spacer.gif" alt="للإتصال المباشـر" title="للإتصال المباشـر" width="139" height="21" /></label></h3>
+                            <div class="boxdatapx">
+                                <ul class="addcomlst">
+                                    <li class="cleaner">
+                                        <label class="wdth100 fr">الشخص المسؤول:</label>
+                                        <strong class="red">محمد</strong>
+                                    </li>
+                                    <li class="cleaner">
+                                        <label class="wdth100 fr">هـاتـف رقـم:</label>
+                                        <strong class="red">0795155090</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end boxbg-->
+                    </div>
+                </div>
+                <!--end cleaner-->
+        </div>
+            <!--end contrit-->
+            <!--lftpanel-->
+			<?php include './object/leftColumn.phtml'; ?>
+            <!--end lftpanel-->
+        </div>
+        <!--end content-->
+    </div>
+    <!--end container-->
 </div>
+<!--end containcont-->
+<!--footer-->
+<?php include './footer/footer.phtml'; ?>
+<!--end footer-->
 </div>
-<!--end boxbg--></div>
-</div>
-<!--end cleaner--></div>
-<!--end contrit--> <!--lftpanel-->
-			<?php
-			include './object/leftColumn.phtml';
-			?>
-            <!--end lftpanel--></div>
-<!--end content--></div>
-<!--end container--></div>
-<!--end containcont--> <!--footer-->
-<?php
-include './footer/footer.phtml';
-?>
-<!--end footer--></div>
 </div>
 </body>
 </html>

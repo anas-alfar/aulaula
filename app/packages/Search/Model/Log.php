@@ -25,10 +25,10 @@
  *
  */
 class Search_Model_Log extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'search_log';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -38,11 +38,11 @@ class Search_Model_Log extends Aula_Model_DbTable {
 	public $sorting = 'DESC';
 	public $Search_term = '';
 	public $Hits = '0';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = $this->columns = array ('search_term', 'hits' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `search_term`, `hits` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = $this -> columns = array('search_term', 'hits');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `search_term`, `hits` ';
+		parent::__construct();
 	}
 
 }

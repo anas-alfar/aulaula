@@ -16,9 +16,9 @@ class Category_Model_TypeInfo extends Aula_Model_DbTable {
 	public $options = '';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'category_type_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'direct_cat_count', 'indirect_cat_count', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `category_type_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `direct_cat_count`, `indirect_cat_count`, `date_added`, `comments`, `options` ';
-		$this->_name = 'category_type_info';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'category_type_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'direct_cat_count', 'indirect_cat_count', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `category_type_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `direct_cat_count`, `indirect_cat_count`, `date_added`, `comments`, `options` ';
+		$this -> _name = 'category_type_info';
+		parent::__construct();
 	}
 }

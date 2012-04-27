@@ -1,89 +1,33 @@
-
-<li class="hbpcbox">
-<div class="deathbox">
-<h3 class="domentitle"><span><a
-	href="/object-article/list/category/<?php
-	echo NEWS_DIES;
-	?>"
-	class="death"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>spacer.gif"
-	alt="وفيات الاردن" title="وفيات الاردن" width="68" height="21" /></a></span>
-</h3>
-<div class="domendata">
-<ul class="newslst padritlft5">
-	<li class="cleaner">
+            <li class="hbpcbox">
+                <div class="deathbox">
+                    <h3 class="domentitle">
+                        <span><a href="/object-article/list/category/<?php echo NEWS_DIES; ?>" class="death"><img src="<?php print $this->defaultSkinImagesUrl; ?>spacer.gif" alt="وفيات الاردن" title="وفيات الاردن" width="68" height="21" /></a></span>
+                    </h3>
+                    <div class="domendata">
+                        <ul class="newslst padritlft5">
+                            <li class="cleaner">
                             <?php
-																												$countDies = count ( $this->newsDiesList );
-																												for($k = 0; $k <= 1; $k ++) {
-																													?>                              
-                                <div class="hafwdth fr"><a
-		href="/object-article/view/id/<?php
-																													echo $this->newsDiesList [$k] ['id'];
-																													?>/title/<?php
-																													echo $this->newsDiesList [$k] ['title'];
-																													?>"><img
-		class="thumb fr"
-		alt="<?php
-																													echo $this->newsDiesList [$k] ['photo_alias'];
-																													?>"
-		title="<?php
-																													echo $this->newsDiesList [$k] ['photo_alias'];
-																													?>"
-		src="<?php
-																													echo $this->newsDiesList [$k] ['imageUrl'];
-																													?>"></a>
-	<h2 class="fnt11"><a
-		href="/object-article/view/id/<?php
-																													echo $this->newsDiesList [$k] ['id'];
-																													?>/title/<?php
-																													echo $this->newsDiesList [$k] ['title'];
-																													?>"
-		class="blak"><?php
-																													echo $this->cleanHtml ( $this->newsDiesList [$k] ['title'] );
-																													?></a></h2>
-	</div>
-                            <?php
-																												}
-																												?>
+							$countDies= count($this->newsDiesList);
+							for($k=0; $k<= 1; $k++ ){ 
+							?>                              
+                                <div class="hafwdth fr">
+                                	<a href="/object-article/view/id/<?php echo $this->newsDiesList[$k]['id']; ?>/title/<?php echo $this->newsDiesList[$k]['title']; ?>"><img class="thumb fr" alt="<?php echo $this->newsDiesList[$k]['photo_alias']; ?>" title="<?php echo $this->newsDiesList[$k]['photo_alias']; ?>" src="<?php echo $this->newsDiesList[$k]['imageUrl']; ?>"></a>
+                                    <h2 class="fnt11"><a href="/object-article/view/id/<?php echo $this->newsDiesList[$k]['id']; ?>/title/<?php echo $this->newsDiesList[$k]['title']; ?>" class="blak"><?php echo $this->cleanHtml ( $this->newsDiesList[$k]['title'] ); ?></a></h2>
+                                </div>
+                            <?php } ?>
                             </li>
-	<li class="cleaner last">
+                            <li class="cleaner last">
                             <?php
-																												$countDies = count ( $this->newsDiesList );
-																												for($k = 2; $k < $countDies; $k ++) {
-																													?>  
-                                <div class="hafwdth fl"><a
-		href="/object-article/view/id/<?php
-																													echo $this->newsDiesList [$k] ['id'];
-																													?>/title/<?php
-																													echo $this->newsDiesList [$k] ['title'];
-																													?>"><img
-		class="thumb fr"
-		alt="<?php
-																													echo $this->newsDiesList [$k] ['photo_alias'];
-																													?>"
-		title="<?php
-																													echo $this->newsDiesList [$k] ['photo_alias'];
-																													?>"
-		src="<?php
-																													echo $this->newsDiesList [$k] ['imageUrl'];
-																													?>"></a>
-	<h2 class="fnt11"><a
-		href="/object-article/view/id/<?php
-																													echo $this->newsDiesList [$k] ['id'];
-																													?>/title/<?php
-																													echo $this->newsDiesList [$k] ['title'];
-																													?>"
-		class="blak"><?php
-																													echo $this->cleanHtml ( $this->newsDiesList [$k] ['title'] );
-																													?></a></h2>
-	</div>
-							<?php
-																												}
-																												?>
+							$countDies= count($this->newsDiesList);
+							for($k=2; $k< $countDies; $k++ ){ 
+							?>  
+                                <div class="hafwdth fl">
+                                	<a href="/object-article/view/id/<?php echo $this->newsDiesList[$k]['id']; ?>/title/<?php echo $this->newsDiesList[$k]['title']; ?>"><img class="thumb fr" alt="<?php echo $this->newsDiesList[$k]['photo_alias']; ?>" title="<?php echo $this->newsDiesList[$k]['photo_alias']; ?>" src="<?php echo $this->newsDiesList[$k]['imageUrl']; ?>"></a>
+                                    <h2 class="fnt11"><a href="/object-article/view/id/<?php echo $this->newsDiesList[$k]['id']; ?>/title/<?php echo $this->newsDiesList[$k]['title']; ?>" class="blak"><?php echo $this->cleanHtml ( $this->newsDiesList[$k]['title'] ); ?></a></h2>
+                                </div>
+							<?php } ?>
                             </li>
-</ul>
-</div>
-</div>
-</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>

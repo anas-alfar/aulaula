@@ -25,10 +25,10 @@
  *
  */
 class Theme_Model_Template extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'theme_template';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -43,11 +43,11 @@ class Theme_Model_Template extends Aula_Model_DbTable {
 	public $order = 1;
 	public $comments = '';
 	public $options = '';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'default', 'order', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `default`, `order`, `date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'published', 'approved', 'default', 'order', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `default`, `order`, `date_added` ';
+		parent::__construct();
 	}
 
 }

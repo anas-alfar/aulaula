@@ -261,7 +261,7 @@ div.dijitArrowButton {
 .dijitTextBox {
 	border: solid black 1px;
 	#overflow: hidden; 
-	width: 15em;	
+	/*width: 15em;*/	
 	vertical-align: middle;
 }
 .dijitTextBoxReadOnly,

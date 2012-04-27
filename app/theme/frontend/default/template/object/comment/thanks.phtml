@@ -1,79 +1,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './header/meta.phtml';
-?>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>keyboard.js"></script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>swfobject.js"></script>
+<?php include './header/meta.phtml'; ?>
+<script type="text/javascript" src="<?php print $this->defaultSkinJsUrl; ?>keyboard.js"></script>
+<script type="text/javascript" src="<?php print $this->defaultSkinJsUrl; ?>swfobject.js"></script>
 </head>
 <body>
 <!--header-->
 <!--logoarea-->
-		<?php
-		include './header/logo.phtml';
-		?>
+		<?php include './header/logo.phtml';?>
 <!--end logoarea-->
 <!--end header-->
 <!--containcont-->
-<div class="containcont"><!--containrit-->
-<div class="containrit"><!--container-->
-<div class="container cleaner"><!--data-->
-<div class="data cleaner"><!--tree-->
-<ul class="tree cleaner">
-	<li><a href="/">الصفحة الرئيسية</a></li>
-	<li>شكرًا لك</li>
-</ul>
-<!--end tree--> <!--boxwite-->
-<div class="boxwite"><span class="boxwtop"><span><em></em></span></span>
-<div class="boxwdata"><!--artcl-->
-<div class="artcl">
-<div class="cleaner">
-<div id="description">
-<h2 class="title"><span class="titleiner">شكرأ لمشاركتكم في التعليق</span>
-</h2>
-<h2><a href="<?php
-echo $this->articleUrl;
-?>">للعودة للمقال</a></h2>
+<div class="containcont">
+	<!--containrit-->
+	<div class="containrit">
+        <!--container-->
+        <div class="container cleaner">
+        	<!--data-->
+            <div class="data cleaner">
+                <!--tree-->
+                <ul class="tree cleaner">
+                    <li><a href="/">الصفحة الرئيسية</a></li>
+                    <li>شكرًا لك</li>
+                </ul>
+                <!--end tree-->
+                <!--boxwite-->
+                <div class="boxwite">
+                    <span class="boxwtop"><span><em></em></span></span>
+                    <div class="boxwdata">
+                        <!--artcl-->
+                        <div class="artcl">
+                            <div class="cleaner">
+                                <div id="description">
+									<h2 class="title">
+                                		<span class="titleiner">شكرأ لمشاركتكم في التعليق</span>
+                            		</h2>
+	        						<h2><a href="<?php echo $this->articleUrl;?>">للعودة للمقال</a></h2>
+                                </div>
+                              
+                        <!--end artcl-->
+                            </div>
+                        </div>
+                    </div>
+                    <span class="boxwbotom"><span><em></em></span></span>
+                </div>
+                <!--end boxwite-->
+            </div>
+            <!--end data-->
+            <!--lftpanel-->
+            <div class="lftpanel">
+            	<!--mutashabehat block-->
+						<?php include './blocks/mutashabehat.phtml'; ?>
+                    <!--end mutashabehat block-->
+                    <!--dabt block-->
+                    	<?php include './blocks/dabt.phtml'; ?>
+                    <!--end dabt block-->    
+                <!--Quraan block-->
+					<?php include './blocks/quraan.phtml'; ?>
+                <!--end Quraan block-->
+                <!--musharakat block-->
+					<?php include './blocks/musharakat.phtml'; ?>
+                <!--end musharakat block-->
+            </div>
+            <!--end lftpanel-->
+        </div>
+        <!--end container-->
+    </div>
+    <!--end containrit-->
 </div>
-
-<!--end artcl--></div>
-</div>
-</div>
-<span class="boxwbotom"><span><em></em></span></span></div>
-<!--end boxwite--></div>
-<!--end data--> <!--lftpanel-->
-<div class="lftpanel"><!--mutashabehat block-->
-						<?php
-						include './blocks/mutashabehat.phtml';
-						?>
-                    <!--end mutashabehat block--> <!--dabt block-->
-                    	<?php
-																					include './blocks/dabt.phtml';
-																					?>
-                    <!--end dabt block--> <!--Quraan block-->
-					<?php
-					include './blocks/quraan.phtml';
-					?>
-                <!--end Quraan block--> <!--musharakat block-->
-					<?php
-					include './blocks/musharakat.phtml';
-					?>
-                <!--end musharakat block--></div>
-<!--end lftpanel--></div>
-<!--end container--></div>
-<!--end containrit--></div>
 <!--end containcont-->
 <!-- footer -->
-<?php
-include './footer/footer.phtml';
-?>
+<?php include './footer/footer.phtml'; ?>
 <!-- end footer -->
 </body>
 </html>

@@ -15,7 +15,7 @@ class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this->authObj = new Aula_Model_Auth ();
 		$this->authObj->_init ( $this->fc->settings->default_storage );
 		
-		$this->fields = array ('redirectURI' => array ('uri', 0, '' ), 'status' => array ('text', 0 ), 'username' => array ('nickName', 1 ), 'password' => array ('password', 1 ), 'btn_submit' => array ('', 0 ), 'general' => array ('', 0 ), 'success' => array ('', 0 ), 'error' => array ('', 0 ) );
+		$this->fields = array ('redirectURI' => array('uri', 0, ''), 'status' => array ('text', 0 ), 'username' => array ('nickName', 1 ), 'password' => array ('password', 1 ), 'btn_submit' => array ('', 0 ), 'general' => array ('', 0 ), 'success' => array ('', 0 ), 'error' => array ('', 0 ) );
 		$this->view->sanitized = $this->filterObj->initData ( $this->fields, $this->view->sanitized );
 		$this->view->sanitized ['token'] ['value'] = md5 ( time () . 'qwiedkhjsafg' );
 		$this->view->sanitized ['locale'] ['value'] = 1;
@@ -50,7 +50,7 @@ class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 			exit ();
 		}
 		//$this->view->render ( );
-		$this->view->render ( 'dashboard.phtml' );
+                $this->view->render ( 'dashboard.phtml' );
 		exit ();
 	}
 	
@@ -61,8 +61,8 @@ class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 			$this->errorMessage = $this->validationObj->validator ( $this->fields, $this->view->sanitized );
 			$this->view->arrayToObject ( $this->view->sanitized );
 			if (empty ( $this->errorMessage )) {
-				$result = $this->usersObj->read ( '`username` = ? AND `password` =? ', array ($this->view->sanitized->username->value, md5 ( $this->fc->settings->encryption->hash . $this->view->sanitized->password->value ) ) );
-				//	$result = $this->usersObj->getUserDetailsByUsernameAndPassword ( $this->view->sanitized->username->value, md5 ( $this->fc->settings->encryption->hash . $this->view->sanitized->password->value ) );
+				$result = $this->usersObj -> read('`username` = ? AND `password` =? ', array($this->view->sanitized->username->value, md5 ( $this->fc->settings->encryption->hash . $this->view->sanitized->password->value )));
+			//	$result = $this->usersObj->getUserDetailsByUsernameAndPassword ( $this->view->sanitized->username->value, md5 ( $this->fc->settings->encryption->hash . $this->view->sanitized->password->value ) );
 				if ($result !== false) {
 					$this->authObj->getStorage ()->write ( 'isLoggedIn', 1 );
 					$this->authObj->getStorage ()->write ( 'username', $this->view->sanitized->username->value );
@@ -91,7 +91,7 @@ class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 	
 	public function handle() {
 		if (true !== $this->authObj->hasIdentity () or true !== $this->isAdminLoggedIn) {
-			header ( 'Location: /admin/login' );
+		        header ( 'Location: /admin/login' );
 			exit ();
 		}
 		
@@ -100,11 +100,11 @@ class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 		}
 		
 		if (isset ( $_GET ['pkg'] ) && ! empty ( $_GET ['pkg'] )) {
-			$this->fc->request->controller = $_GET ['pkg'];
-			$this->fc->request->action = $_GET ['action'];
-			$this->fc->request->mapRequest ();
-			$this->fc->request->controller .= 'Admin';
-			//loadController
+                        $this->fc->request->controller = $_GET ['pkg'];
+                        $this->fc->request->action = $_GET ['action'];
+                        $this->fc->request->mapRequest ();
+                        $this->fc->request->controller .= 'Admin';
+                        //loadController
 			$this->fc->request = $this->fc->request->loadController ( $this->fc );
 		}
 		header ( 'Location: /admin/dashboard' );

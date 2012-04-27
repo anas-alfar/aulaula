@@ -25,10 +25,10 @@
  *
  */
 class Poll_Model_Vote extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'poll_vote';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -40,11 +40,11 @@ class Poll_Model_Vote extends Aula_Model_DbTable {
 	public $comments = '';
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'poll_id', 'answer_id', 'ip_address', 'user_id', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `poll_id`, `answer_id`, `ip_address`, `user_id`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'poll_id', 'answer_id', 'ip_address', 'user_id', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `poll_id`, `answer_id`, `ip_address`, `user_id`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 
 }

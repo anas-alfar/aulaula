@@ -25,10 +25,10 @@
  *
  */
 class User_Model_Info extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'user_info';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -47,11 +47,11 @@ class User_Model_Info extends Aula_Model_DbTable {
 	public $modifiedTime = '0000-00-00';
 	public $comments = '';
 	public $options = '';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'user_id', 'date_of_birth', 'registration_date', 'last_login_date', 'company', 'department', 'position', 'home_phone', 'work_phone', 'work_fax', 'mobile', 'blocked', 'approved', 'confirmed', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `user_id`, `date_of_birth`, `registration_date`, `last_login_date`, `company`, `department`, `position`, `home_phone`, `work_phone`, `work_fax`, `mobile`, `blocked`, `approved`, `confirmed`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'user_id', 'date_of_birth', 'registration_date', 'last_login_date', 'company', 'department', 'position', 'home_phone', 'work_phone', 'work_fax', 'mobile', 'blocked', 'approved', 'confirmed', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `user_id`, `date_of_birth`, `registration_date`, `last_login_date`, `company`, `department`, `position`, `home_phone`, `work_phone`, `work_fax`, `mobile`, `blocked`, `approved`, `confirmed`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 
 }

@@ -1,9 +1,10 @@
-<?php
+<?php 
 
 class Aula_Model_Validator_NumericUnsigned extends Zend_Validate_Abstract {
+	
 	const NOT_NUMERIC_UNSIGNED = 'valueIsNotNumericUnsigned';
 	
-	protected $_messageTemplates = array (self::NOT_NUMERIC_UNSIGNED => 'Value is not Numeric Unsigned' );
+	protected $_messageTemplates = array(self::NOT_NUMERIC_UNSIGNED => 'Value is not Numeric Unsigned');
 	
 	/**
 	 * Check if the element using this validator is valid
@@ -16,17 +17,17 @@ class Aula_Model_Validator_NumericUnsigned extends Zend_Validate_Abstract {
 	 * @return boolean Returns true if the element is valid
 	 */
 	public function isValid($value, $context = null) {
-		$value = ( string ) $value;
-		$this->_setValue ( $value );
-		
+		$value = (string)$value;
+		$this -> _setValue($value);
+
 		$error = false;
-		
-		if (! is_numeric ( $value ) || $value < 0) {
+
+		if (!is_numeric($value) || $value < 0) {
 			$error = true;
-			$this->_error ( self::NOT_NUMERIC_UNSIGNED );
+			$this -> _error(self::NOT_NUMERIC_UNSIGNED);
 		}
-		
-		return ! $error;
+
+		return !$error;
 	}
 
 }

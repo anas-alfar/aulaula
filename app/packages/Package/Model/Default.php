@@ -25,10 +25,10 @@
  *
  */
 class Package_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'package';
 	protected $_primary = 'id';
-	
+
 	/**
 	 * @Table Columns
 	 */
@@ -46,11 +46,11 @@ class Package_Model_Default extends Aula_Model_DbTable {
 	public $comments = '';
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'label', 'show_in_menu', 'published', 'approved', 'type', 'prerequisite_id', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `show_in_menu`, `published`, `approved`, `type`, `prerequisite_id`, `date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'show_in_menu', 'published', 'approved', 'type', 'prerequisite_id', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `show_in_menu`, `published`, `approved`, `type`, `prerequisite_id`, `date_added` ';
+		parent::__construct();
 	}
 
 }

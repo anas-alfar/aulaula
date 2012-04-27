@@ -3,7 +3,7 @@
 
 if (isset ( $this->paging->pages ) and ! empty ( $this->paging->pages )) {
 	echo '<div class="paging">' . PHP_EOL;
-	if (isset ( $this->paging->previous ) and ! is_null ( $this->paging->previous )) {
+	if (isset($this->paging->previous) and ! is_null ( $this->paging->previous )) {
 		if (! empty ( $this->paging->previous->class )) {
 			echo '<span class="' . $this->paging->previous->class . '">&laquo;&nbsp;' . $this->__ ( 'Previous' ) . '</span>';
 		} else {
@@ -19,7 +19,7 @@ if (isset ( $this->paging->pages ) and ! empty ( $this->paging->pages )) {
 			echo '<a href="' . $page->uri . '">' . $page->id . '</a>';
 		}
 	}
-	if (isset ( $this->paging->next ) and ! is_null ( $this->paging->next )) {
+	if (isset($this->paging->next) and ! is_null ( $this->paging->next )) {
 		if (! empty ( $this->paging->next->class )) {
 			echo '<span class="' . $this->paging->next->class . '">' . $this->__ ( 'next' ) . '&nbsp;&raquo;</span>';
 		} else {

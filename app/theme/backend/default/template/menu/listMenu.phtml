@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+	<head>
 		<?php
 		include './html/meta.phtml';
 		?>
 	</head>
-<body>
-<!--container-->
-<div class="container">
+	<body>
+		<!--container-->
+		<div class="container">
 			<?php
 			include './html/header.phtml';
 			?>
@@ -18,163 +18,82 @@
 			include './html/notification.phtml';
 			?>
 			<!--content-->
-<form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->token->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
-<div class="content">
-<div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'Menu_Menu' );
-?></h3>
-<a href="<?php
-print $this->sanitized->actionURI->value;
-?>add"
-	class="add-btn"><em><?php
-	echo $this->__ ( 'Menu_Add New Menu' );
-	?></em></a>
-</div>
-<!--filtration-->
-<div class="filtration cleaner">
-<button type="button"
-	onclick="return changeFormAction('approve', 'post');" name="approve"
-	id="approve" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Menu_Approve' );
-	?></em></span>
-</button>
-<button type="button"
-	onclick="return changeFormAction('publish', 'post');" name="publish"
-	id="publish" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Menu_Publish' );
-	?></em></span>
-</button>
-<button type="button"
-	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'Menu_Delete' );
-	?></em></span>
-</button>
-<select style="float: left;" name="status">
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
-		?>
-		value="Yes"><?php
-		echo $this->__ ( 'Yes Option' );
-		?></option>
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
-		?>
-		value="No"><?php
-		echo $this->__ ( 'No Option' );
-		?></option>
-</select> <input type="hidden" id="redirectURI" name="redirectURI"
-	value="<?php
-	print $this->sanitized->redirectURI->value;
-	?>" /></div>
-<!--end filtration--> <!--srch-rsult-->
-<table class="srch-rsult">
-	<tr class="heading">
-		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
-		<th class="jstalgntop col3"><a
-			href="<?php
-			echo $this->sort->label->href;
-			?>"
-			class="<?php
-			echo $this->sort->label->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->label->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Label' );
-			?></span></a></th>
-		<th class="jstalgntop col7"><a
-			href="<?php
-			echo $this->sort->link->href;
-			?>"
-			class="<?php
-			echo $this->sort->link->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->link->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Link' );
-			?></span></a></th>
-		<th class="jstalgntop col2"><a
-			href="<?php
-			echo $this->sort->type_id->href;
-			?>"
-			class="<?php
-			echo $this->sort->type_id->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->type_id->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Type' );
-			?></span></a></th>
-		<th class="jstalgntop col2"><a
-			href="<?php
-			echo $this->sort->published->href;
-			?>"
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->published->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Publish' );
-			?></span></a></th>
-		<th class="jstalgntop col2"><a
-			href="<?php
-			echo $this->sort->approved->href;
-			?>"
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->approved->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Aprrove' );
-			?></span></a></th>
-		<th class="jstalgntop col3"><a
-			href="<?php
-			echo $this->sort->date_added->href;
-			?>"
-			class="<?php
-			echo $this->sort->date_added->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->date_added->cssClass;
-			?>"><?php
-			echo $this->__ ( 'Menu_Date Added' );
-			?></span></a></th>
-		<th class="jstalgntop col4"><span><?php
-		echo $this->__ ( 'Menu_Options' );
-		?></span></th>
-		<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'Menu_Tools' );
-		?></span></th>
-	</tr>
+			<form method="get" action="" id="frm">
+				<div>
+					<input type="hidden" id="token" name="token" value="<?php print $this -> sanitized -> token -> value;?>" />
+					<input type="hidden" id="actionURI" value="<?php print $this -> sanitized -> actionURI -> value;?>" />
+				</div>
+				<div class="content">
+					<div class="srch-rslt cleaner">
+						<h3 class="fl pagetitle margthaf"><?php echo $this -> __('Menu_Menu');?></h3>
+						<a href="<?php print $this -> sanitized -> actionURI -> value;?>add" class="add-btn"><em><?php echo $this -> __('Menu_Add New Menu');?></em></a>
+					</div>
+					<!--filtration-->
+					<div class="filtration cleaner">
+						<button type="button" onclick="return changeFormAction('approve', 'post');" name="approve" id="approve"
+						class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Menu_Approve');?></em></span>
+						</button>
+						<button type="button" onclick="return changeFormAction('publish', 'post');" name="publish" id="publish"
+						class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Menu_Publish');?></em></span>
+						</button>
+						<button type="button" onclick="return changeFormAction('delete', 'post');" name="delete" id="delete"
+						class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Menu_Delete');?></em></span>
+						</button>
+						<select style="float: left;" name="status">
+							<option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this -> __('Yes Option');?></option>
+							<option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this -> __('No Option');?></option>
+						</select>
+						<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this -> sanitized -> redirectURI -> value;?>" />
+					</div>
+					<!--end filtration-->
+					<!--srch-rsult-->
+					<table class="srch-rsult">
+						<tr class="heading">
+							<th class="jstalgntop col1">
+							<input type="checkbox" name="selectAll" id="selectAll" />
+							</th>
+							<th class="jstalgntop col3"><a
+							href="<?php echo $this -> sort -> label -> href;?>"
+							class="<?php echo $this -> sort -> label -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> label -> cssClass;?>"><?php echo $this -> __('Menu_Label');?></span></a></th>
+							<th class="jstalgntop col7"><a
+							href="<?php echo $this -> sort -> link -> href;?>"
+							class="<?php echo $this -> sort -> link -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> link -> cssClass;?>"><?php echo $this -> __('Menu_Link');?></span></a></th>
+							<th class="jstalgntop col2"><a
+							href="<?php echo $this -> sort -> type_id -> href;?>"
+							class="<?php echo $this -> sort -> type_id -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> type_id -> cssClass;?>"><?php echo $this -> __('Menu_Type');?></span></a></th>
+							<th class="jstalgntop col2"><a
+							href="<?php echo $this -> sort -> published -> href;?>"
+							class="<?php echo $this -> sort -> published -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> published -> cssClass;?>"><?php echo $this -> __('Menu_Publish');?></span></a></th>
+							<th class="jstalgntop col2"><a
+							href="<?php echo $this -> sort -> approved -> href;?>"
+							class="<?php echo $this -> sort -> approved -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> approved -> cssClass;?>"><?php echo $this -> __('Menu_Aprrove');?></span></a></th>
+							<th class="jstalgntop col3"><a	href="<?php echo $this -> sort -> date_added -> href;?>"
+							class="<?php echo $this -> sort -> date_added -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> date_added -> cssClass;?>"><?php echo $this -> __('Menu_Date Added');?></span></a></th>
+							<th class="jstalgntop col4"><span><?php echo $this -> __('Menu_Options');?></span></th>
+							<th class="jstalgntop tools last"><span><?php echo $this -> __('Menu_Tools');?></span></th>
+						</tr>
 						<?php
-						if (! empty ( $this->menuList )) {
-							foreach ( $this->menuList as $key => $value ) {
+						if (!empty($this -> menuList)) {
+							foreach ($this -> menuList as $key => $value) {
 								echo '<tr>';
-								echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="menuId[' . $value ['id'] . ']" id="check" value="Yes" /></td>';
-								echo '<td class="jstalgntop">' . $value ['label'] . '</td>';
-								echo '<td class="jstalgntop">' . $value ['link'] . '</td>';
-								echo '<td class="jstalgntop">' . $value ['type_title'] . '</td>';
-								echo '<td class="jstalgntop">' . $this->__ ( $value ['published'] ) . '</td>';
-								echo '<td class="jstalgntop">' . $this->__ ( $value ['approved'] ) . '</td>';
-								echo '<td class="jstalgntop">' . $value ['date_added'] . '</td>';
-								echo '<td class="jstalgntop">' . $value ['options'] . '</td>';
-								echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/menu/action/edit/s/1/id/' . $value ['id'] . '"
+								echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="menuId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
+								echo '<td class="jstalgntop">' . $value['label'] . '</td>';
+								echo '<td class="jstalgntop">' . $value['link'] . '</td>';
+								echo '<td class="jstalgntop">' . $value['type_title'] . '</td>';
+								echo '<td class="jstalgntop">' . $this ->  __($value['published']) . '</td>';
+								echo '<td class="jstalgntop">' . $this ->  __($value['approved']) . '</td>';
+								echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
+								echo '<td class="jstalgntop">' . $value['options'] . '</td>';
+								echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/menu/action/edit/s/1/id/' . $value['id'] . '"
 class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
 class="preview fl" title="Preview"></a></td>';
 								echo '</tr>';
@@ -182,17 +101,18 @@ class="preview fl" title="Preview"></a></td>';
 						}
 						?>
 					</table>
-<!--begin paging-->
+					<!--begin paging-->
 					<?php
 					include './html/paging.phtml';
 					?>
-					<!--end paging--></div>
-<!--end content-->
-</form>
+					<!--end paging-->
+				</div>
+				<!--end content-->
+			</form>
 			<?php
 			include './html/footer.phtml';
 			?>
 		</div>
-<!--end container-->
-</body>
+		<!--end container-->
+	</body>
 </html>

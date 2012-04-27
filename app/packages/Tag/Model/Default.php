@@ -25,14 +25,14 @@
  *
  */
 class Tag_Model_Default extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'tag';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -45,20 +45,20 @@ class Tag_Model_Default extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = $this->columns = array ('id', 'title', 'locale_id', 'published', 'approved', 'order', 'date_added', 'comments', 'date_added' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `locale_id`, `published`, `approved`, `order`, `date_added`, `comments`,`date_added` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = $this -> columns = array( 'id', 'title', 'locale_id', 'published', 'approved', 'order', 'date_added', 'comments','date_added' );
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `locale_id`, `published`, `approved`, `order`, `date_added`, `comments`,`date_added` ';
+		parent::__construct();
 	}
 	
-	public function getAllTagsOrderByColumnWithLimit($column, $sorting, $start, $limit) {
-		$start = ( int ) ($start);
-		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
-		
-		$this->_orderBy = "$column $sorting";
-		$this->_limit = "$start, $limit";
-		$result = $this->read ();
+	public function getAllTagsOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
 		return $result;
 	}
 }

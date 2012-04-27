@@ -25,7 +25,7 @@
  *
  */
 class Package_Model_Action extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'package_action';
 	protected $_primary = 'id';
 	/**
@@ -39,11 +39,11 @@ class Package_Model_Action extends Aula_Model_DbTable {
 	public $comments = '';
 	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
-	
+
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'action_title', 'action_name', 'action_description', 'file_name', 'package_id', 'class_id', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `action_title`, `action_name`, `action_description`, `file_name`, `package_id`, `class_id`, `date_added`, `comments`, `options` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'action_title', 'action_name', 'action_description', 'file_name', 'package_id', 'class_id', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `action_title`, `action_name`, `action_description`, `file_name`, `package_id`, `class_id`, `date_added`, `comments`, `options` ';
+		parent::__construct();
 	}
 
 }

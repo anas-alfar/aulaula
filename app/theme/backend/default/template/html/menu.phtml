@@ -1,6 +1,4 @@
-<?php
-if (1 != $this->userLevel) {
-	?>
+<?php if (1 != $this->userLevel) { ?>
 <!--mainnav-->
 <div class="mainnav">
 <ul class="navlst cleaner">
@@ -8,97 +6,76 @@ if (1 != $this->userLevel) {
 </ul>
 </div>
 <!--end mainnav-->
-<?php
-} else {
-	?>
+<?php 
+} else { ?>
 <!--mainnav-->
 <div class="mainnav">
 <ul class="navlst cleaner">
 	<li><a href="/admin">الرئيسية</a>
-	
-	
 	<li><a href="/admin/handle/pkg/menu/action/add">إدارة القوائم</a>
 	<ul>
 		<li><a href="/admin/handle/pkg/menu/action/add">إضافة قائمة</a></li>
 		<li><a href="/admin/handle/pkg/menu/action/list">عرض القوائم</a></li>
-		<li><a href="/admin/handle/pkg/menu-type/action/add">إضافة نوع قوائم
-		جديد</a></li>
-		<li class="last"><a href="/admin/handle/pkg/menu-type/action/list">عرض
-		أنواع القوائم</a></li>
+		<li><a href="/admin/handle/pkg/menu-type/action/add">إضافة نوع قوائم جديد</a></li>
+		<li class="last"><a href="/admin/handle/pkg/menu-type/action/list">عرض أنواع القوائم</a></li>
 	</ul>
 	</li>
 	<li><a href="/admin/handle/pkg/category/action/add">إدارة التصنيفات</a>
 	<ul>
 		<li><a href="/admin/handle/pkg/category/action/add">إضافة تصنيف</a></li>
-		<li><a href="/admin/handle/pkg/category-type/action/add">إضافة نوع
-		تصنيف جديد</a></li>
+		<li><a href="/admin/handle/pkg/category-type/action/add">إضافة نوع تصنيف جديد</a></li>
 		<li><a href="/admin/handle/pkg/category/action/list">قائمة التصنيفات</a></li>
-		<li class="last"><a href="/admin/handle/pkg/category-type/action/list">قائمة
-		أنواع التصنيفات</a></li>
+		<li class="last"><a href="/admin/handle/pkg/category-type/action/list">قائمة أنواع التصنيفات</a></li>
 	</ul>
 	</li>
 	<li><a href="#">إدارة المواضيع</a>
 	<ul>
 		<li><a class="hassub" href="#">إضافة موضوع جديد</a>
 		<ul>
-			<li><a href="/admin/handle/pkg/object-article/action/add">إضافة مقالة</a></li>
-			<li><a href="/admin/handle/pkg/object-photo/action/add">إضافة صورة</a></li>
-			<li><a href="/admin/handle/pkg/object-video/action/add">إضافة فيديو</a></li>
-			<li><a href="/admin/handle/pkg/object-static/action/add">إضافة صفحة
-			للموقع</a></li>
-			<li><a href="/admin/handle/pkg/object-directory/action/add">إنشاء
-			مجلد</a></li>
-			<li><a href="/admin/handle/pkg/object-file/action/add">تحميل ملف</a></li>
-			<li class="last"><a href="/admin/handle/pkg/object-url/action/add">إضافة
-			رابط</a></li>
+				<li><a href="/admin/handle/pkg/object-article/action/add">إضافة مقالة</a></li>
+				<li><a href="/admin/handle/pkg/object-photo/action/add">إضافة صورة</a></li>
+				<li><a href="/admin/handle/pkg/object-video/action/add">إضافة فيديو</a></li>
+				<li><a href="/admin/handle/pkg/object-static/action/add">إضافة صفحة للموقع</a></li>
+				<li><a href="/admin/handle/pkg/object-directory/action/add">إنشاء مجلد</a></li>
+				<li><a href="/admin/handle/pkg/object-file/action/add">تحميل ملف</a></li>
+				<li class="last"><a href="/admin/handle/pkg/object-url/action/add">إضافة رابط</a></li>
 		</ul>
 		</li>
 		<li><a class="hassub" href="#">عرض المواضيع</a>
-		<ul>
-			<li><a href="/admin/handle/pkg/object-article/action/list">عرض
-			المقالات</a></li>
-			<li><a href="/admin/handle/pkg/object-photo/action/list">عرض الصور</a></li>
-			<li><a href="/admin/handle/pkg/object-video/action/list">عرض الفيديو</a></li>
-			<li><a href="/admin/handle/pkg/object-static/action/list">عرض صفحات
-			الموقع</a></li>
-			<li><a href="/admin/handle/pkg/object-directory/action/list">عرض
-			المجلدات</a></li>
-			<li><a href="/admin/handle/pkg/object-file/action/list">عرض الملفات</a></li>
-			<li class="last"><a href="/admin/handle/pkg/object-url/action/list">عرض
-			الروابط</a></li>
-		</ul>
+			<ul>
+				<li><a href="/admin/handle/pkg/object-article/action/list">عرض المقالات</a></li>
+				<li><a href="/admin/handle/pkg/object-photo/action/list">عرض الصور</a></li>
+				<li><a href="/admin/handle/pkg/object-video/action/list">عرض الفيديو</a></li>
+				<li><a href="/admin/handle/pkg/object-static/action/list">عرض صفحات الموقع</a></li>
+				<li><a href="/admin/handle/pkg/object-directory/action/list">عرض المجلدات</a></li>
+				<li><a href="/admin/handle/pkg/object-file/action/list">عرض الملفات</a></li>
+				<li class="last"><a href="/admin/handle/pkg/object-url/action/list">عرض الروابط</a></li>
+			</ul>
 		</li>
 		<li><a href="/admin/handle/pkg/feature/action/list">عرض مقالات مهمة</a></li>
-		<li><a href="/admin/handle/pkg/object-comment/action/list">عرض
-		التعليقات</a></li>
+		<li><a href="/admin/handle/pkg/object-comment/action/list">عرض التعليقات</a></li>
 		<li><a href="/admin/handle/pkg/object-source/action/add">إضافة مصدر</a></li>
-		<li class="last"><a href="/admin/handle/pkg/object-source/action/list">عرض
-		المصادر</a></li>
+		<li class="last"><a href="/admin/handle/pkg/object-source/action/list">عرض المصادر</a></li>
 	</ul>
 	</li>
 	<li><a href="/admin/handle/pkg/poll/action/add">الاستطلاعات</a>
-	<ul>
-		<li><a href="/admin/handle/pkg/poll/action/add">إضافة استطلاع</a></li>
-		<li class="last"><a href="/admin/handle/pkg/poll/action/list">عرض
-		الاستطلاعات</a></li>
-	</ul>
+		<ul>
+			<li><a href="/admin/handle/pkg/poll/action/add">إضافة استطلاع</a></li>
+			<li class="last"><a href="/admin/handle/pkg/poll/action/list">عرض الاستطلاعات</a></li>
+		</ul>
 	</li>
 	<li><a href="/admin/handle/pkg/banner/action/add">إدارة الإعلانات</a>
-	<ul>
-		<li><a href="/admin/handle/pkg/banner/action/add">إضافة إعلان</a></li>
-		<li><a href="/admin/handle/pkg/banner/action/list">عرض الإعلانات</a></li>
-		<li><a href="/admin/handle/pkg/banner-area/action/add">إضافة منطفة
-		جديدة للإعلان</a></li>
-		<li class="last"><a href="/admin/handle/pkg/banner-area/action/list">عرض
-		مناطق الإعلانات</a></li>
-	</ul>
+		<ul>
+			<li><a href="/admin/handle/pkg/banner/action/add">إضافة إعلان</a></li>
+			<li><a href="/admin/handle/pkg/banner/action/list">عرض الإعلانات</a></li>
+			<li><a href="/admin/handle/pkg/banner-area/action/add">إضافة منطفة جديدة للإعلان</a></li>
+			<li class="last"><a href="/admin/handle/pkg/banner-area/action/list">عرض مناطق الإعلانات</a></li>
+		</ul>
 	</li>
 	<li><a href="/admin/handle/pkg/tag/action/add">إدارة السمات</a>
 	<ul>
-		<li><a href="/admin/handle/pkg/tag/action/addBlackTag">إضافة سمة
-		مشبوهة</a></li>
-		<li class="last"><a href="/admin/handle/pkg/tag/action/blackList">عرض
-		السمات المشبوهة</a></li>
+		<li><a href="/admin/handle/pkg/tag/action/addBlackTag">إضافة سمة مشبوهة</a></li>
+		<li class="last"><a href="/admin/handle/pkg/tag/action/blackList">عرض السمات المشبوهة</a></li>
 	</ul>
 	</li>
 	<li><a href="/admin/handle/pkg/user/action/add">إدارة المستخدمين</a>
@@ -107,8 +84,7 @@ if (1 != $this->userLevel) {
 		<li><a href="/admin/handle/pkg/user-level/action/add">إضافة نوع مستخدم</a></li>
 		<!--<li><a href="/admin/handle/pkg/user-level-permission/action/add">إضافة الصلاحيات</a></li>-->
 		<li><a href="/admin/handle/pkg/user/action/list">عرض المستخدمين</a></li>
-		<li><a href="/admin/handle/pkg/user-level/action/list">عرض أنواع
-		المستخدمين</a></li>
+		<li ><a href="/admin/handle/pkg/user-level/action/list">عرض أنواع المستخدمين</a></li>
 		<!--<li class="last"><a href="/admin/handle/pkg/user-level-permission/action/list">عرض صلاحيات المستخدمين</a></li>-->
 	</ul>
 	</li>
@@ -118,8 +94,7 @@ if (1 != $this->userLevel) {
 		<li><a href="/admin/handle/pkg/election/action/edit">بورصة المشرحين</a></li>
 		<li><a href="/admin/handle/pkg/classifieds/action/edit">إعلانات مبوبة</a></li>
 		<li><a href="/admin/handle/pkg/secrets/action/edit">خفايا وأسرار</a></li>
-		<li class="last"><a href="/admin/handle/pkg/live/action/edit">البث
-		المباشر</a></li>
+		<li class="last"><a href="/admin/handle/pkg/live/action/edit">البث المباشر</a></li>
 		<!--
 		<li><a class="hassub" href="#">الترجمة</a>
 		<ul>

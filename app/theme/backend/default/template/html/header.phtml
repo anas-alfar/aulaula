@@ -1,29 +1,21 @@
 <!--header-->
 <div class="header cleaner">
-<h1 class="logo"><a href="/admin"><img
-	src="<?php
-	print $this->defaultSkinImagesUrl;
-	?>logo.png"
-	alt="Back to home page" title="Back to home page" /></a></h1>
+<h1 class="logo">
+	<a href="/admin"><img src="<?php print $this->defaultSkinImagesUrl; ?>logo.png" alt="Back to home page" title="Back to home page" /></a>
+</h1>
 <ul class="logininfo">
-	<li><a href="/admin/logout"><?php
-	echo $this->__ ( 'aula_Logout' );
-	?></a>
+	<li>
+		<a href="/admin/logout"><?php echo $this->__ ( 'aula_Logout' ); ?></a>
 	</li>
-	<li><?php
-	echo $this->today;
-	?></li>
-	<li><label><?php
-	echo $this->__ ( 'aula_welcome' );
-	?>:</label> <a
-		href="#"><?php
-		echo $this->userFullName;
-		?></a></li>
+	<li><?php echo $this->today; ?></li>
+	<li>
+		<label><?php echo $this->__ ( 'aula_welcome' ); ?>:</label> <a href="#"><?php echo $this->userFullName; ?></a>
+	</li>
 	<li class="nobg">
-	<form method="get"
-		action="/admin/handle/pkg/object-article/action/list/"><input
-		type="text" class="iptxttopn" name="keyword" value="" /> <input
-		type="submit" value="" class="ibtntop" /></form>
+		<form method="get" action="/admin/handle/pkg/object-article/action/list/">
+			<input type="text" class="iptxttopn" name="keyword" value="" />
+			<input type="submit" value="" class="ibtntop" />
+		</form>
 	</li>
 </ul>
 </div>

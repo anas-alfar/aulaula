@@ -25,14 +25,14 @@
  *
  */
 class Object_Model_Tag extends Aula_Model_DbTable {
-	
+
 	protected $_name = 'object_static';
 	protected $_primary = 'id';
 	
 	/**
 	 * @Table Columns
 	 */
-	public $_selectColumnsList = '';
+	public $_selectColumnsList = ''; 
 	public $Id = NULL;
 	public $start = 0;
 	public $limit = 10;
@@ -45,8 +45,8 @@ class Object_Model_Tag extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'title', 'object_id', 'published', 'approved', 'order', 'comments' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `object_id`, `published`, `approved`, `order`, `comments` ';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'title', 'object_id', 'published', 'approved', 'order', 'comments');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `object_id`, `published`, `approved`, `order`, `comments` ';
+		parent::__construct();
 	}
 }

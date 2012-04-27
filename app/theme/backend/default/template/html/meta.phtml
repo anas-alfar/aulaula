@@ -1,26 +1,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <title>Cotrol panel</title>
-<link href="<?php
-print $this->defaultSkinCssUrl;
-?>admin.css"
-	rel="stylesheet" type="text/css" />
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>jquery.js"></script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>superfish.js"></script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>jquery.datepicker.js"></script>
-<script type="text/javascript"
-	src="<?php
-	print $this->defaultSkinJsUrl;
-	?>tiny_mce/jquery.tinymce.js"></script>
+<link href="<?php print $this -> defaultSkinCssUrl;?>admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php print $this -> defaultSkinJsUrl;?>jquery.js"></script>
+<script type="text/javascript" src="<?php print $this -> defaultSkinJsUrl;?>superfish.js"></script>
+<script type="text/javascript" src="<?php print $this -> defaultSkinJsUrl;?>jquery.datepicker.js"></script>
+<script type="text/javascript" src="<?php print $this -> defaultSkinJsUrl;?>tiny_mce/jquery.tinymce.js"></script>
 <script type="text/javascript">
         $(document).ready(function() {
                 $('ul.navlst').superfish();
@@ -80,11 +65,40 @@ width:expression(((document.compatMode && document.compatMode=='CSS1Compat') ? d
 </style>
 <![endif]-->
 <?php
+/*$this-> jQuery()->enable();
+ZendX_JQuery::enableView($this);
+if ($this-> jQuery() -> isEnabled() ) {
+	$this-> jQuery() -> setLocalPath   ( $this->defaultSkinJsUrl . 'jquery/js/jquery-1.7.2.min.js' )
+					 -> setUiLocalPath ( $this->defaultSkinJsUrl . 'jquery/js/jquery-ui-1.8.19.custom.min.js' )
+					 -> addStylesheet  ( $this->defaultSkinJsUrl . 'jquery/css/hot-sneaks/jquery-ui-1.8.19.custom.css' );
+	echo $this-> jQuery();
+}
+echo $this-> accordionPane('spinner1-label', '111111111111111111', array('title' => '55555555555' ) );
+echo $this-> accordionPane('spinner1-label', '222222222222222222', array('title' => '66666666666' ) );
+echo $this-> accordionPane('spinner1-label', '333333333333333333', array('title' => '77777777777' ) );
+echo $this-> accordionPane('spinner1-label', '444444444444444444', array('title' => '88888888888' ) );
+echo $this-> accordionContainer('spinner1-label', array( 'active'=> 'none', 'collapsible' => 'false' ) );
+*/
+
+//$this->addHelperPath("ZendX/JQuery/View/Helper", "ZendX_JQuery_View_Helper");
+//ZendX_JQuery::enableView($this);
+//$viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
+//$viewRenderer->setView($this);
+//Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+
 Zend_Dojo::enableView ( $this );
 Zend_Dojo_View_Helper_Dojo::setUseDeclarative ();
-
-$this->dojo ()->setLocalPath ( $this->defaultSkinJsUrl . 'dojo/dojo/dojo.js' )->requireModule ( 'dijit.layout.ContentPane' )->requireModule ( 'dijit.layout.TabContainer' )->requireModule ( 'dijit.form.ComboBox' )->requireModule ( 'dijit.form.Form' )->requireModule ( 'dijit.form.TextBox' )->addStyleSheetModule ( 'dijit.themes.claro' );
-
 $this->dojo ()->enable ();
-echo $this->dojo();
+$this->dojo ()
+ ->setLocalPath ( $this -> defaultSkinJsUrl . 'dojo/dojo/dojo.js' )
+ ->setDjConfigOption  ( 'parseOnLoad', true )
+ ->setDjConfigOption  ( 'locale'	 , 'ar-JO' )
+ ->setDjConfigOption  ('usePlainJson', true)
+ ->addStyleSheetModule('dijit.themes.tundra');
+
+//Zend_Dojo::enableView($this);
+//Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
+//$this -> dojo() -> setLocalPath($this -> defaultSkinJsUrl . 'dojo/dojo/dojo.js') -> requireModule('dijit.layout.ContentPane') -> requireModule('dijit.layout.TabContainer') -> requireModule('dijit.form.ComboBox') -> requireModule('dijit.form.Form') -> requireModule('dijit.form.TextBox') -> requireModule('dijit.form.CheckBox') -> addStyleSheetModule('dijit.themes.claro');
+//$this -> dojo() -> enable();
+//echo $this -> dojo();
 ?>

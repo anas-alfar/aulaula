@@ -1,77 +1,68 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './header/meta.phtml';
-?>
+<?php include './header/meta.phtml'; ?>
 </head>
 <body>
 <div class="ramadanpatrn">
-<div class="ramadanrit"><!--containcont-->
-<div class="containcont"><!--container-->
-<div class="container"><!--logoarea-->
-		<?php
-		include './header/logo.phtml';
-		?>
-		<!--end logoarea--> <!--mainnav-->
-        <?php
-								include './header/topMenu.phtml';
-								?>
-        <!--end mainnav--> <!--stats-->
-        <?php
-								include './header/status.phtml';
-								?>
-        <!--end stats--> <!--ticker-->
-		<?php
-		include './header/ticker.phtml';
-		?>
-        <!--end ticker--> <!--Breaknews ticker-->
-        <?php
-								include './header/Breaknews-ticker.phtml';
-								?>
-        <!--end Breaknews ticker--> <!--content-->
-<div class="content cleaner"><!--contrit-->
-<div class="contrit"><!--tree-->
-				<?php
-				include './object/treeNav.phtml';
-				?>
-                <!--end tree--> <!--interactiv-->
-				<?php
-				include './object/tool.phtml';
-				?>
-                <!--end interactiv--> <!--article-->
-				<?php
-				include './content.phtml';
-				?>
-                <!--end article--> <!--interactiv-->
-				<?php
-				include './object/tool.phtml';
-				?>
+<div class="ramadanrit">
+<!--containcont-->
+<div class="containcont">
+    <!--container-->
+    <div class="container">
+		<!--logoarea-->
+		<?php include './header/logo.phtml';?>
+		<!--end logoarea-->
+        <!--mainnav-->
+        <?php include './header/topMenu.phtml'; ?>
+        <!--end mainnav-->
+        <!--stats-->
+        <?php include './header/status.phtml'; ?>
+        <!--end stats-->
+        <!--ticker-->
+		<?php include './header/ticker.phtml'; ?>
+        <!--end ticker-->
+        <!--Breaknews ticker-->
+        <?php include './header/Breaknews-ticker.phtml'; ?>
+        <!--end Breaknews ticker-->
+        <!--content-->
+        <div class="content cleaner">
+        	<!--contrit-->
+            <div class="contrit">
+            	<!--tree-->
+				<?php include './object/treeNav.phtml'; ?>
+                <!--end tree-->
+                <!--interactiv-->
+				<?php include './object/tool.phtml'; ?>
                 <!--end interactiv-->
-                <?php
-																include './banner/centerBanner.phtml';
-																?>
+                <!--article-->
+				<?php include './content.phtml'; ?>
+                <!--end article-->
+                <!--interactiv-->
+				<?php include './object/tool.phtml'; ?>
+                <!--end interactiv-->
+                <?php include './banner/centerBanner.phtml'; ?>
                 <!--usrscomnts-->
-				<?php
-				include './object/comment/list.phtml';
-				?>
-                <!--end usrscomnts--> <!--addcomform-->
-				<?php
-				include './object/comment/add.phtml';
-				?>
-                <!--end addcomform--></div>
-<!--end contrit--> <!--lftpanel-->
-			<?php
-			include './object/leftColumn.phtml';
-			?>
-            <!--end lftpanel--></div>
-<!--end content--></div>
-<!--end container--></div>
-<!--end containcont--> <!--footer-->
-<?php
-include './footer/footer.phtml';
-?>
-<!--end footer--></div>
+				<?php include './object/comment/list.phtml'; ?>
+                <!--end usrscomnts-->
+                <!--addcomform-->
+				<?php include './object/comment/add.phtml'; ?>
+                <!--end addcomform-->
+            </div>
+            <!--end contrit-->
+            <!--lftpanel-->
+			<?php include './object/leftColumn.phtml'; ?>
+            <!--end lftpanel-->
+        </div>
+        <!--end content-->
+    </div>
+    <!--end container-->
+</div>
+<!--end containcont-->
+<!--footer-->
+<?php include './footer/footer.phtml'; ?>
+<!--end footer-->
+</div>
 </div>
 </body>
 </html>

@@ -1,147 +1,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<?php
-include './html/meta.phtml';
-?>
+<?php include './html/meta.phtml'; ?>
 </head>
 <body>
 <!--container-->
 <div class="container">
-<?php
-include './html/header.phtml';
-?>
-<?php
-
-include './html/menu.phtml';
-?>
-<?php
-
-include './html/notification.phtml';
-?>
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
 <!--content-->
 <form method="get" action="" id="frm">
-<div><input type="hidden" id="token" name="token"
-	value="<?php
-	print $this->sanitized->title->value;
-	?>" /> <input
-	type="hidden" id="actionURI"
-	value="<?php
-	print $this->sanitized->actionURI->value;
-	?>" /></div>
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->title->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
 <div class="content">
 <div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php
-echo $this->__ ( 'User_User Level Permission' );
-?></h3>
-<a href="<?php
-print $this->sanitized->actionURI->value . 'add';
-?>"
-	class="add-btn"><em><?php
-	echo $this->__ ( 'User_Add New User Level Permission' );
-	?></em></a></div>
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'User_User Level Permission' ); ?></h3>
+<a href="<?php print $this->sanitized->actionURI->value.'add'; ?>" class="add-btn"><em><?php echo $this->__ ( 'User_Add New User Level Permission' ); ?></em></a></div>
 <!--filtration-->
 <div class="filtration cleaner">
 <button type="button"
 	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php
-	echo $this->__ ( 'User_Delete' );
-	?></em></span></button>
-<select style="float: left;" name="status">
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '';
-		?>
-		value="Yes"><?php
-		echo $this->__ ( 'Yes Option' );
-		?></option>
-	<option
-		<?php
-		echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '';
-		?>
-		value="No"><?php
-		echo $this->__ ( 'No Option' );
-		?></option>
-</select> <input type="hidden" id="redirectURI" name="redirectURI"
-	value="<?php
-	print $this->sanitized->redirectURI->value;
-	?>" /></div>
-<!--end filtration--> <!--srch-rsult-->
+	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'User_Delete' ); ?></em></span></button>
+	<select style="float: left;" name="status">
+	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this->__('No Option'); ?></option>
+	</select>
+	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
+</div>
+<!--end filtration-->
+<!--srch-rsult-->
 <table class="srch-rsult">
 	<tr class="heading">
-		<th class="jstalgntop col1"><input type="checkbox" name="selectAll"
-			id="selectAll" /></th>
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a
-			href="<?php
-			echo $this->sort->permission->href;
-			?>"
-			class="<?php
-			echo $this->sort->permission->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->permission->cssClass;
-			?>"><?php
-			echo $this->__ ( 'User_Permission' );
-			?></span></a></th>
+			href="<?php echo $this->sort->permission->href; ?>"
+			class="<?php echo $this->sort->permission->cssClass; ?>"><span
+			class="<?php echo $this->sort->permission->cssClass; ?>"><?php echo $this->__ ( 'User_Permission' ); ?></span></a></th>
 		<th class="jstalgntop col1"><a
-			href="<?php
-			echo $this->sort->userLevel->href;
-			?>"
-			class="<?php
-			echo $this->sort->userLevel->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->userLevel->cssClass;
-			?>"><?php
-			echo $this->__ ( 'User_User Level' );
-			?></span></a></th>
+			href="<?php echo $this->sort->userLevel->href; ?>"
+			class="<?php echo $this->sort->userLevel->cssClass; ?>"><span
+			class="<?php echo $this->sort->userLevel->cssClass; ?>"><?php echo $this->__ ( 'User_User Level' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a
-			href="<?php
-			echo $this->sort->class->href;
-			?>"
-			class="<?php
-			echo $this->sort->class->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->class->cssClass;
-			?>"><?php
-			echo $this->__ ( 'User_Class' );
-			?></span></a></th>
+			href="<?php echo $this->sort->class->href; ?>"
+			class="<?php echo $this->sort->class->cssClass; ?>"><span
+			class="<?php echo $this->sort->class->cssClass; ?>"><?php echo $this->__ ( 'User_Class' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a
-			href="<?php
-			echo $this->sort->action_id->href;
-			?>"
-			class="<?php
-			echo $this->sort->action_id->cssClass;
-			?>"><span
-			class="<?php
-			echo $this->sort->action_id->cssClass;
-			?>"><?php
-			echo $this->__ ( 'User_Action' );
-			?></span></a></th>
-		<th class="jstalgntop tools last"><span><?php
-		echo $this->__ ( 'User_Tools' );
-		?></span></th>
+			href="<?php echo $this->sort->action_id->href; ?>"
+			class="<?php echo $this->sort->action_id->cssClass; ?>"><span
+			class="<?php echo $this->sort->action_id->cssClass; ?>"><?php echo $this->__ ( 'User_Action' ); ?></span></a></th>
+		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'User_Tools' ); ?></span></th>
 	</tr>
 	
-	<?php
-	if (! empty ( $this->userLevelPermissionList )) {
-		echo $this->userLevelPermissionList;
+	<?php 
+	if (!empty($this->userLevelPermissionList)) {
+		echo $this->userLevelPermissionList; 
 	}
 	?>
 
 </table>
 
 <!--begin paging-->
-<?php
-include './html/paging.phtml';
-?>
-<!--end paging--></div>
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
+
+</div>
 <!--end content-->
 </form>
-<?php
-include './html/footer.phtml';
-?>
+<?php include './html/footer.phtml'; ?>
 </div>
 <!--end container-->
 </body>

@@ -29,9 +29,9 @@ class Category_Model_Info extends Aula_Model_DbTable {
 	public $metaData = '';
 	
 	public function __construct() {
-		$this->cols = $this->_cols = array ('id', 'category_id', 'subcat_count', 'direct_object_count', 'indirect_object_count', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options' );
-		$this->_selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `category_id`, `subcat_count`, `direct_object_count`, `indirect_object_count`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
-		$this->_name = 'category_info';
-		parent::__construct ();
+		$this -> cols = $this -> _cols = array('id', 'category_id', 'subcat_count', 'direct_object_count', 'indirect_object_count', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `category_id`, `subcat_count`, `direct_object_count`, `indirect_object_count`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		$this -> _name = 'category_info';
+		parent::__construct();
 	}
 }
