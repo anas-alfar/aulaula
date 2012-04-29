@@ -51,7 +51,8 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 
 		//locale list
 		$this -> afterIdList = '';
-		$this -> afterIdListResult = $this -> typeObj -> getAllObject_typeOrderById();
+		//$this -> afterIdListResult = $this -> typeObj -> getAllObject_typeOrderById();
+		$this -> afterIdListResult = $this -> typeObj -> select() -> query() -> fetchAll();
 		if (!empty($this -> afterIdListResult)) {
 			foreach ($this->afterIdListResult as $key => $value) {
 				$selectedItem = ($value['id'] == $this -> view -> sanitized['afterId']['value']) ? 'selected="selected"' : '';
@@ -63,12 +64,62 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$this -> view -> arrayToObject($this -> view -> sanitized);
-		$this -> view -> render('object/addObjectType.phtml');
+		$form = new Object_Form_Type($this -> view);
+		$form -> setView($this -> view);
+		 if (!empty($_POST) and $form -> isValid($_POST)) {
+		 	$_POST['mandatory']['author_id'] = $this-> userId;
+			$lastInsertId = $this -> typeObj -> insert($_POST['mandatory']);
+			if ($lastInsertId !== false) {
+				$_POST['optional']['object_type_id'] = $lastInsertId;
+				$_POST['optional']['options'] = json_encode( $_POST['optional']['options'] );
+				$this -> typeInfoObj -> insert($_POST['optional']);
+				header('Location: /admin/handle/pkg/object-type/action/list');
+				exit();
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('object/addType.phtml');
 		exit();
 	}
 
 	public function editAction() {
+		$form = new Object_Form_Type($this -> view);
+		$form -> setView($this -> view);
+		
+		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id']) ) {
+		 	$objectTypeId = (int) $_POST['mandatory']['id'];
+			
+			$_POST['optional']['options'] = json_encode( $_POST['optional']['options'] );
+			$dataType = array('title' => $_POST['mandatory']['title'], 'label' => $_POST['mandatory']['label'], 'description' => $_POST['mandatory']['description'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$dataTypeInfo = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], 'comments' => $_POST['optional']['comments'], 'options' => $_POST['optional']['options']);
+			$this -> typeObj -> update($dataType, '`id` = ' . $objectTypeId);
+			$this -> typeInfoObj -> update($dataTypeInfo, '`object_type_id` = ' . $objectTypeId);
+			header('Location: /admin/handle/pkg/object-type/action/list');
+			exit();
+		} else {
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$typeObjResult = $this -> typeObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				$typeInfoObjResult = $this -> typeInfoObj -> select() -> where('`object_type_id` = ?', $_GET['id']) -> query() -> fetch();
+				if ($typeObjResult !== false And $typeInfoObjResult !== false) {
+					unset($typeInfoObjResult['id']);
+					$publish_from = explode(' ', $typeInfoObjResult['publish_from']);
+					$publish_to = explode(' ', $typeInfoObjResult['publish_to']);
+					$typeInfoObjResult['publish_from'] = $publish_from[0];
+					$typeInfoObjResult['publish_to'] = $publish_to[0];
+					$typeInfoObjResult['options'] = json_decode($typeInfoObjResult['options']);
+
+					$form -> populate($typeObjResult);
+					$form -> populate($typeInfoObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/object-type/action/list');
+					exit();
+				}
+			}
+		}
+		
+		$this -> view -> form = $form;
+		$this -> view -> render('object/updateType.phtml');
+		exit();		
 	}
 
 	public function deleteAction() {

@@ -52,106 +52,80 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('actionURI' => array('uri', 0) , 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'sourceId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'nameSource' => array('text', 1), 'descriptionSource' => array('text', 0), 'sourceType' => array('numericUnsigned', 1), 'countrySource' => array('numericUnsigned', 1), 'urlSource' => array('url', 1), 'timeDelay' => array('numericUnsigned', 0, $this -> sourceObj -> timeDelay), 'package' => array('numericUnsigned', 0, $this -> sourceObj -> packageId), 'published' => array('text', 0, $this -> sourceObj -> published), 'approved' => array('text', 0, $this -> sourceObj -> approved), 'order' => array('numeric', 0, $this -> sourceObj -> order), 'afterId' => array('numeric', 0), 'publishFrom' => array('shortDateTime', 0, $this -> sourceInfoObj -> publishFrom), 'publishTo' => array('shortDateTime', 0, $this -> sourceInfoObj -> publishTo), 'comment' => array('text', 0, $this -> sourceInfoObj -> comments), 'option' => array('text', 0, $this -> sourceInfoObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'sourceId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'nameSource' => array('text', 1), 'descriptionSource' => array('text', 0), 'sourceType' => array('numericUnsigned', 1), 'countrySource' => array('numericUnsigned', 1), 'urlSource' => array('url', 1), 'timeDelay' => array('numericUnsigned', 0, $this -> sourceObj -> timeDelay), 'package' => array('numericUnsigned', 0, $this -> sourceObj -> packageId), 'published' => array('text', 0, $this -> sourceObj -> published), 'approved' => array('text', 0, $this -> sourceObj -> approved), 'order' => array('numeric', 0, $this -> sourceObj -> order), 'afterId' => array('numeric', 0), 'publishFrom' => array('shortDateTime', 0, $this -> sourceInfoObj -> publishFrom), 'publishTo' => array('shortDateTime', 0, $this -> sourceInfoObj -> publishTo), 'comment' => array('text', 0, $this -> sourceInfoObj -> comments), 'option' => array('text', 0, $this -> sourceInfoObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				//insertIntoObject_source ($Id , $Name , $Description , $Source_type , $Url , $Author_id , $Locale_id , $Country_id , $Package_id  = '0',
-				//$Time_delay  = '0', $Published  = 'No', $Approved  = 'No', $Order  = '0')
-				//insertIntoObject_source_info ($Id, $Comments , $Options, $Publish_from  = '0000-00-00 00:00:00', $Publish_to )
-				$result = $this -> sourceObj -> insertIntoObject_source(Null, $this -> view -> sanitized -> nameSource -> value, $this -> view -> sanitized -> descriptionSource -> value, $this -> view -> sanitized -> sourceType -> value, $this -> view -> sanitized -> urlSource -> value, $this -> userId, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> countrySource -> value, $this -> view -> sanitized -> package -> value, $this -> view -> sanitized -> timeDelay -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
+		$form = new Object_Form_Source($this -> view);
+		$form -> setView($this -> view);
 
-				$result = $this -> sourceInfoObj -> insertIntoObject_source_info(Null, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> save) and (1 === $this -> view -> sanitized -> save)) {
-						header('Location: /admin/handle/pkg/object-source/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/object-source/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on add record');
-				}
-			}
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$query = $this -> sourceObj -> getAdapter() -> query('UPDATE object_source SET `order`=`order`+1', array());
+			$query -> execute();
+
+			$_POST['mandatory']['locale_id'] = $this -> fc -> settings -> locale -> available -> lang -> _1 -> default;
+			$_POST['mandatory']['author_id'] = $this -> userId;
+
+			$lastInsertId = $this -> sourceObj -> insert($_POST['mandatory']);
+			if ($lastInsertId !== false) {
+				$_POST['optional']['object_source_id'] = $lastInsertId;
+				$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
+				$this -> sourceInfoObj -> insert($_POST['optional']);
+				header('Location: /admin/handle/pkg/object-source/action/list');
+				exit();
 			}
 		}
-
-		$this -> view -> render('object/addSourceObject.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('object/addSource.phtml');
 		exit();
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				$resultInfo = $this -> sourceInfoObj -> getAllObject_source_infoBySource_idOrderById($this -> view -> sanitized -> Id -> value);
-				$resultInfo = $resultInfo[0];
-				$resultInfoId = $resultInfo['id'];
+		$form = new Object_Form_Source($this -> view);
+		$form -> setView($this -> view);
 
-				$result = $this -> sourceObj -> updateObject_sourceById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> nameSource -> value, $this -> view -> sanitized -> descriptionSource -> value, $this -> view -> sanitized -> sourceType -> value, $this -> view -> sanitized -> urlSource -> value, $this -> userId, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> countrySource -> value, $this -> view -> sanitized -> package -> value, $this -> view -> sanitized -> timeDelay -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				$result = $this -> sourceInfoObj -> updateObject_source_infoById($resultInfoId, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/object-source/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/object-source/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-				}
+		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id'])) {
+			$objectSourceId = (int)$_POST['mandatory']['id'];
+			$sourceObjResult = $this -> sourceObj -> select() -> where('`id` = ?', $objectSourceId) -> query() -> fetch();
+			if ($sourceObjResult['order'] != $_POST['mandatory']['order']) {
+				$query = $this -> sourceObj -> getAdapter() -> query('UPDATE object_source SET `order`=1+`order`', array());
+				$query -> execute();
 			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> sourceObj -> getObject_sourceDetailsById(( int )$_GET['id']);
-			$result = $result[0];
-			$resultInfo = $this -> sourceInfoObj -> getAllObject_source_infoBySource_idOrderById(( int )$_GET['id']);
-			$resultInfo = $resultInfo[0];
-			$resultInfo['publish_from'] = substr($resultInfo['publish_from'], 0, 10);
-			$resultInfo['publish_to'] = substr($resultInfo['publish_to'], 0, 10);
+			$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
+			$dataSource = array('name' => $_POST['mandatory']['name'], 'description' => $_POST['mandatory']['description'], 'source_type' => $_POST['mandatory']['source_type'], 'url' => $_POST['mandatory']['url'], 'time_delay' => $_POST['mandatory']['time_delay'], 'order' => $_POST['mandatory']['order'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$dataSourceInfo = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], 'comments' => $_POST['optional']['comments'], 'options' => $_POST['optional']['options']);
 
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'sourceId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $result['author_id']), 'nameSource' => array('text', 1, $result['name']), 'descriptionSource' => array('text', 0, $result['description']), 'sourceType' => array('numericUnsigned', 1, $result['source_type']), 'countrySource' => array('numericUnsigned', 1, $result['country_id']), 'urlSource' => array('url', 1, $result['url']), 'timeDelay' => array('numericUnsigned', 0, $result['time_delay']), 'package' => array('numericUnsigned', 0, $result['package_id']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'order' => array('numeric', 0, $result['order']), 'afterId' => array('numeric', 0, $result['order']), 'publishFrom' => array('shortDateTime', 0, $resultInfo['publish_from']), 'publishTo' => array('shortDateTime', 0, $resultInfo['publish_to']), 'comment' => array('text', 0, $resultInfo['comments']), 'option' => array('text', 0, $resultInfo['options']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
+			$this -> sourceObj -> update($dataSource, '`id` = ' . $objectSourceId);
+			$this -> sourceInfoObj -> update($dataSourceInfo, '`object_source_id` = ' . $objectSourceId);
+
+			header('Location: /admin/handle/pkg/object-source/action/list');
+			exit();
 		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$sourceObjResult = $this -> sourceObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				$sourceInfoObjResult = $this -> sourceInfoObj -> select() -> where('`object_source_id` = ?', $_GET['id']) -> query() -> fetch();
+				if ($sourceObjResult !== false And $sourceInfoObjResult !== false) {
+					unset($sourceInfoObjResult['id']);
+					$publish_from = explode(' ', $sourceInfoObjResult['publish_from']);
+					$publish_to = explode(' ', $sourceInfoObjResult['publish_to']);
+					$sourceInfoObjResult['publish_from'] = $publish_from[0];
+					$sourceInfoObjResult['publish_to'] = $publish_to[0];
+					$sourceInfoObjResult['options'] = json_decode($sourceInfoObjResult['options']);
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+					$form -> populate($sourceObjResult);
+					$form -> populate($sourceInfoObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/object-source/action/list');
+					exit();
+				}
 			}
 		}
 
-		$this -> view -> render('object/addSourceObject.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('object/updateSource.phtml');
 		exit();
 	}
 
@@ -228,11 +202,11 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 					break;
 			}
 		}
-		
+
 		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
 			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
 		}
-		
+
 		$this -> view -> sort = (object)NULL;
 		foreach ($this->sourceObj->cols as $col) {
 			/**
@@ -259,7 +233,7 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 		} else {
 			$sourceListResult = $this -> sourceObj -> getAllObject_SourceOrderByColumnWithLimit('id', 'ASC', $this -> start, $this -> limit);
 		}
-		
+
 		$this -> pagingObj -> _init($this -> sourceObj -> totalRecordsFound);
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
