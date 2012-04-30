@@ -1,0 +1,9 @@
+- Use this as locale_id in DB (this is the only variable that return integer!!):
+$this -> fc -> settings -> locale -> available -> lang -> _1 -> default
+
+- Insert all redundant data in object_* into object and object_info
+like columns(comments/options/published/approved/meta_data/...) in object_photo
+
+- In the Packages/Object/Controller/PhotoAdmin (add/edit)
+* Undefined property: BootStrap::$_dateTodayVeryShortDate
+* Call to undefined method Object_Model_Photo::GetAllCleanPhotosOrderByColWithLimit()
