@@ -43,26 +43,26 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 		// $this -> photoObj = new Object_Model_Photo();
 		// $this -> sourceObj = new Object_Model_Source();
 		// $this -> commentObj = new Object_Model_Comment();
-// 
+		//
 		// //theme objects
 		// $this -> templateObj = new Theme_Model_Template();
 		// $this -> layoutObj = new Theme_Model_Layout();
 		// $this -> skinObj = new Theme_Model_Skin();
-// 
+		//
 		// //locale and category objects
 		// $this -> localeObj = new Locale_Model_Default();
-		 $this -> categoryObj = new Category_Model_Default();
-// 
+		$this -> categoryObj = new Category_Model_Default();
+		//
 		// //Upload Object
 		// $this -> uploadObj = new Aula_Model_Upload_Video('fileVideo');
-// 
+		//
 		// //object-photo controller and Object
 		// $this -> photo = new Object_Controller_Photo($this -> fc);
 
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('actionURI' => array('uri', 0),'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0),'aliasPhoto' => array('text', 0), 'introTextPhoto' => array('text', 0), 'takenDatePhoto' => array('shortDateTime', 0), 'takenLocationPhoto' => array('text', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'filePhoto' => array('fileUploaded', 0, (!empty($_FILES['filePhoto']['name']) ? $_FILES['filePhoto']['name'] : '')), 'status' => array('text', 0, 'Yes'), 'youTubeVideo' => array('text', 0), 'videoId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'titleVideo' => array('text', 1), 'aliasVideo' => array('text', 1), 'introTextVideo' => array('text', 0), 'sourceVideo' => array('numericUnsigned', 1), 'takenDateVideo' => array('shortDateTime', 0), 'takenLocationVideo' => array('text', 0), 'fileVideo' => array('fileUploaded', 0, (!empty($_FILES['fileVideo']['name']) ? $_FILES['fileVideo']['name'] : '')), 'encoded' => array('text', 0, $this -> videoObj -> encoded), 'category' => array('numericUnsigned', 1), 'tag' => array('text', 0), 'showInObject' => array('text', 0, $this -> videoObj -> showInObject), 'originalAuthor' => array('text', 0), 'createdDate' => array('shortDateTime', 0, $this -> objectObj -> createdDate), 'themePublishFrom' => array('shortDateTime', 0), 'themePublishTo' => array('shortDateTime', 0), 'publishFrom' => array('shortDateTime', 0), 'publishTo' => array('shortDateTime', 0), 'parent' => array('numericUnsigned', 0, $this -> objectObj -> parentId), 'objectType' => array('numericUnsigned', 0, $this -> videoObj -> objectType), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'published' => array('text', 0, $this -> videoObj -> published), 'approved' => array('text', 0, $this -> videoObj -> approved), 'comment' => array('', 0, $this -> videoObj -> comments), 'option' => array('', 0, $this -> videoObj -> options), 'pageTitle' => array('text', 0), 'metaTitle' => array('text', 0), 'metaKey' => array('text', 0), 'metaDesc' => array('text', 0), 'metaData' => array('text', 0), 'layout' => array('numericUnsigned', 0, $this -> objectInfoObj -> layoutId), 'template' => array('numericUnsigned', 0, $this -> objectInfoObj -> templateId), 'skin' => array('numericUnsigned', 0, $this -> objectInfoObj -> skinId), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $this -> videoObj -> order), 'afterId' => array('numeric', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'aliasPhoto' => array('text', 0), 'introTextPhoto' => array('text', 0), 'takenDatePhoto' => array('shortDateTime', 0), 'takenLocationPhoto' => array('text', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'filePhoto' => array('fileUploaded', 0, (!empty($_FILES['filePhoto']['name']) ? $_FILES['filePhoto']['name'] : '')), 'status' => array('text', 0, 'Yes'), 'youTubeVideo' => array('text', 0), 'videoId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'titleVideo' => array('text', 1), 'aliasVideo' => array('text', 1), 'introTextVideo' => array('text', 0), 'sourceVideo' => array('numericUnsigned', 1), 'takenDateVideo' => array('shortDateTime', 0), 'takenLocationVideo' => array('text', 0), 'fileVideo' => array('fileUploaded', 0, (!empty($_FILES['fileVideo']['name']) ? $_FILES['fileVideo']['name'] : '')), 'encoded' => array('text', 0, $this -> videoObj -> encoded), 'category' => array('numericUnsigned', 1), 'tag' => array('text', 0), 'showInObject' => array('text', 0, $this -> videoObj -> showInObject), 'originalAuthor' => array('text', 0), 'createdDate' => array('shortDateTime', 0, $this -> objectObj -> createdDate), 'themePublishFrom' => array('shortDateTime', 0), 'themePublishTo' => array('shortDateTime', 0), 'publishFrom' => array('shortDateTime', 0), 'publishTo' => array('shortDateTime', 0), 'parent' => array('numericUnsigned', 0, $this -> objectObj -> parentId), 'objectType' => array('numericUnsigned', 0, $this -> videoObj -> objectType), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'published' => array('text', 0, $this -> videoObj -> published), 'approved' => array('text', 0, $this -> videoObj -> approved), 'comment' => array('', 0, $this -> videoObj -> comments), 'option' => array('', 0, $this -> videoObj -> options), 'pageTitle' => array('text', 0), 'metaTitle' => array('text', 0), 'metaKey' => array('text', 0), 'metaDesc' => array('text', 0), 'metaData' => array('text', 0), 'layout' => array('numericUnsigned', 0, $this -> objectInfoObj -> layoutId), 'template' => array('numericUnsigned', 0, $this -> objectInfoObj -> templateId), 'skin' => array('numericUnsigned', 0, $this -> objectInfoObj -> skinId), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $this -> videoObj -> order), 'afterId' => array('numeric', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
@@ -70,7 +70,48 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
+		$form = new Object_Form_Video($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$query = $this -> videoObj -> getAdapter() -> query('UPDATE object_video SET `order`=`order`+1', array());
+			$query -> execute();
+
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$lastInsertId = $this -> objectObj -> insert($objectData);
+
+			$objectPhotoData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
+			$objectPhotoAdmin = new Object_Controller_PhotoAdmin( $this -> fc );
+			$objectPhotoAdmin -> importPhotoAction($objectPhotoData, 'filePhoto');
+
+			$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
+
+			$objectVideoData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'size' => 'NULL', 'width' => 'NULL', 'height' => 'NULL', 'extension' => 'NULL', 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
+			$lastInsertIdVideo = $this -> videoObj -> insert($objectVideoData);
+
+			$uploadObj = new Aula_Model_Upload_Video('fileVideo');
+			if ($uploadObj -> CheckIfThereIsFile() === TRUE) {
+				if ($uploadObj -> validatedMime()) {
+					if ($uploadObj -> validatedSize()) {
+						$objectData = array('size' => $uploadObj -> size, 'width' => $uploadObj -> width, 'height' => $uploadObj -> height, 'extension' => $uploadObj -> mime, );
+						$this -> videoObj -> update($objectData, '`id` = ' . $lastInsertIdVideo);
+						if (is_numeric($lastInsertIdVideo)) {
+							$uploadObj -> newFileName = parent::$encryptedDisk['video']['flv'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.flv';
+							$fileUploaded = $uploadObj -> uploadFile($uploadObj -> newFileName);
+						}
+					}
+				}
+			}
+			header('Location: /admin/handle/pkg/object-video/action/list/');
+			exit();
+		}
+
+		$this -> view -> form = $form;
+		$this -> view -> render('object/addVideo.phtml');
+		exit();
+
+		/*if ($this -> isPagePostBack) {
 			$this -> filterObj -> trimData($this -> view -> sanitized);
 			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
 			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
@@ -130,7 +171,7 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> photosList = "";
 		$this -> view -> render('object/addVideoObject.phtml');
-		exit();
+		exit();*/
 	}
 
 	public function importAction($sanitized, $objectId = 0) {
@@ -159,6 +200,111 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
+		$form = new Object_Form_Video($this -> view);
+		$form -> setView($this -> view);
+		
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+		
+			$objectVideoId  = (int)$_POST['mandatory']['id'];
+			$videoObjResult = $this -> videoObj -> select() -> where('`id` = ?', $objectVideoId) -> query() -> fetch();
+			if ($videoObjResult['order'] != $_POST['optional']['order']) {
+				$query = $this -> videoObj -> getAdapter() -> query('UPDATE object_video SET `order`=`order`+1', array());
+				$query -> execute();
+			}
+			
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$this -> objectObj -> update($objectData, '`id` = ' . $videoObjResult['object_id']);
+
+			$objecdInfoData = array('object_id' => $videoObjResult['object_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$this -> objectInfoObj -> update($objecdInfoData, '`object_id` = ' . $videoObjResult['object_id']);
+
+			$objectPhotoData  = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $videoObjResult['object_id'], 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
+			$objectPhotoAdmin = new Object_Controller_PhotoAdmin( $this -> fc );
+			$objectPhotoAdmin -> importPhotoAction($objectPhotoData, 'filePhoto', $videoObjResult['object_id']);
+
+
+			$objectVideoData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $videoObjResult['object_id'], 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], 'modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()") );
+			$this -> videoObj -> update($objectVideoData, '`id` = ' . $objectVideoId);
+			
+			$uploadObj = new Aula_Model_Upload_Video('fileVideo');
+			if ($uploadObj -> CheckIfThereIsFile() === TRUE) {
+				if ($uploadObj -> validatedMime()) {
+					if ($uploadObj -> validatedSize()) {
+						$objectData = array('size' => $uploadObj -> size, 'width' => $uploadObj -> width, 'height' => $uploadObj -> height, 'extension' => $uploadObj -> mime, );
+						$this -> videoObj -> update($objectData, '`id` = ' . $objectVideoId);
+						if (is_numeric($lastInsertIdVideo)) {
+							$uploadObj -> newFileName = parent::$encryptedDisk['video']['flv'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.flv';
+							$fileUploaded = $uploadObj -> uploadFile($uploadObj -> newFileName);
+						}
+					}
+				}
+			}
+			header('Location: /admin/handle/pkg/object-video/action/list/');
+			exit();
+			
+		} else {
+			
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				
+				$videoObjResult = $this -> videoObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				$objResult = $this -> objectObj -> select() -> where('`id` = ?', $videoObjResult['object_id']) -> query() -> fetch();
+				$objInfoObjResult = $this -> objectInfoObj -> select() -> where('`object_id` = ?', $videoObjResult['object_id']) -> query() -> fetch();
+
+				if ($videoObjResult !== false And $objResult !== false And $objInfoObjResult !== false) {
+					unset($objResult['id']);
+					unset($videoObjResult['published']);
+					unset($videoObjResult['approved']);
+					unset($videoObjResult['comments']);
+					unset($videoObjResult['options']);
+					unset($videoObjResult['meta_data']);
+					unset($videoObjResult['category_id']);
+					unset($videoObjResult['object_source_id']);
+					unset($videoObjResult['created_date']);
+					unset($objInfoObjResult['id']);
+
+					$publish_from = explode(' ', $videoObjResult['publish_from']);
+					$taken_date = explode(' ', $videoObjResult['taken_date']);
+					$publish_to = explode(' ', $videoObjResult['publish_to']);
+					$created_date = explode(' ', $objResult['created_date']);
+					$videoObjResult['taken_date'] = $taken_date[0];
+					$videoObjResult['publish_from'] = $publish_from[0];
+					$videoObjResult['publish_to'] = $publish_to[0];
+					$objResult['created_date'] = $created_date[0];
+					$objInfoObjResult['options'] = json_decode($objInfoObjResult['options']);
+
+					$form -> populate($objResult);
+					$form -> populate($videoObjResult);
+					$form -> populate($objInfoObjResult);
+					/*$photoObj = new Object_Model_Photo();
+					$resultObjectPhoto = $photoObj -> select() -> where('`object_id` = ?', 0) -> query() -> fetchAll();
+					if (!empty($resultObjectPhoto)) {
+						foreach ($resultObjectPhoto as $key => $value) {
+							$photosList .= '<img src="' . parent::$encryptedUrl['photo']['original'][substr($value['date_added'], 0, 7)] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg' . '" alt="" title="" width="125px" height="100px" />&nbsp;';
+						}
+					}*/
+				} else {
+					header('Location: /admin/handle/pkg/object-video/action/list');
+					exit();
+				}
+
+			}
+			
+		}
+		
+		
+		
+		$this -> view -> form = $form;
+		$this -> view -> render('object/updateVideo.phtml');
+		exit();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		if ($this -> isPagePostBack) {
 			$this -> filterObj -> trimData($this -> view -> sanitized);
 			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
@@ -348,11 +494,11 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 					break;
 			}
 		}
-		
+
 		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
 			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
 		}
-		
+
 		$this -> view -> sort = (object)NULL;
 		foreach ($this->videoObj->cols as $col) {
 			/**
@@ -379,12 +525,11 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 		} else {
 			$videoListResult = $this -> videoObj -> getAllObject_VideoOrderByColumnWithLimit('id', 'ASC', $this -> start, $this -> limit);
 		}
-		
+
 		$this -> pagingObj -> _init($this -> videoObj -> totalRecordsFound);
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
-		
-		
+
 		//listing
 		$categoryListResult = $this -> categoryObj -> read();
 		$countOfOCategoryListResult = count($categoryListResult);

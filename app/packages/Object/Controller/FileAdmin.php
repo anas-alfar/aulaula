@@ -52,54 +52,170 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('actionURI' => array('uri', 0),'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'fileId' => array('numeric', 0), 'objectType' => array('numericUnsigned', 0, $this -> fileObj -> objectType), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'nameFile' => array('text', 1), 'labelFile' => array('text', 1), 'descriptionFile' => array('text', 0), 'uploadFile' => array('fileUploaded', 1, (!empty($_FILES['uploadFile']['name']) ? $_FILES['uploadFile']['name'] : '')), 'directoryId' => array('numericUnsigned', 1), 'category' => array('numericUnsigned', 1), 'mime' => array('regualText', 1, $this -> fileObj -> mime), 'extension' => array('text', 1, $this -> fileObj -> extension), 'showInObject' => array('text', 0, $this -> fileObj -> showInObject), 'fullPath' => array('filePath', 0, $this -> fileObj -> fullPath), 'objectId' => array('numericUnsigned', 0, $this -> fileObj -> objectId), 'published' => array('text', 0, $this -> fileObj -> published), 'approved' => array('text', 0, $this -> fileObj -> approved), 'comment' => array('text', 0, $this -> fileObj -> comments), 'option' => array('text', 0, $this -> fileObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2), 'source' => array('numeric', 0), 'category' => array('numericUnsigned', 1), 'tag' => array('text', 0), 'originalAuthor' => array('text', 0, -1), 'createdDate' => array('shortDateTime', 0, $this -> objectObj -> createdDate), 'themePublishFrom' => array('shortDateTime', 0), 'themePublishTo' => array('shortDateTime', 0), 'publishFrom' => array('shortDateTime', 0), 'publishTo' => array('shortDateTime', 0), 'parent' => array('numericUnsigned', 0, $this -> objectObj -> parentId), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'pageTitle' => array('text', 0), 'metaTitle' => array('text', 0), 'metaKey' => array('text', 0), 'metaDesc' => array('text', 0), 'metaData' => array('text', 0), 'layout' => array('numericUnsigned', 0, $this -> objectInfoObj -> layoutId), 'template' => array('numericUnsigned', 0, $this -> objectInfoObj -> templateId), 'skin' => array('numericUnsigned', 0, $this -> objectInfoObj -> skinId), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $this -> fileObj -> order), 'afterId' => array('numeric', 0));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'fileId' => array('numeric', 0), 'objectType' => array('numericUnsigned', 0, $this -> fileObj -> objectType), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'author' => array('numericUnsigned', 0, $this -> userId), 'nameFile' => array('text', 1), 'labelFile' => array('text', 1), 'descriptionFile' => array('text', 0), 'uploadFile' => array('fileUploaded', 1, (!empty($_FILES['uploadFile']['name']) ? $_FILES['uploadFile']['name'] : '')), 'directoryId' => array('numericUnsigned', 1), 'category' => array('numericUnsigned', 1), 'mime' => array('regualText', 1, $this -> fileObj -> mime), 'extension' => array('text', 1, $this -> fileObj -> extension), 'showInObject' => array('text', 0, $this -> fileObj -> showInObject), 'fullPath' => array('filePath', 0, $this -> fileObj -> fullPath), 'objectId' => array('numericUnsigned', 0, $this -> fileObj -> objectId), 'published' => array('text', 0, $this -> fileObj -> published), 'approved' => array('text', 0, $this -> fileObj -> approved), 'comment' => array('text', 0, $this -> fileObj -> comments), 'option' => array('text', 0, $this -> fileObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2), 'source' => array('numeric', 0), 'category' => array('numericUnsigned', 1), 'tag' => array('text', 0), 'originalAuthor' => array('text', 0, -1), 'createdDate' => array('shortDateTime', 0, $this -> objectObj -> createdDate), 'themePublishFrom' => array('shortDateTime', 0), 'themePublishTo' => array('shortDateTime', 0), 'publishFrom' => array('shortDateTime', 0), 'publishTo' => array('shortDateTime', 0), 'parent' => array('numericUnsigned', 0, $this -> objectObj -> parentId), 'showInList' => array('text', 0, $this -> objectObj -> showInList), 'pageTitle' => array('text', 0), 'metaTitle' => array('text', 0), 'metaKey' => array('text', 0), 'metaDesc' => array('text', 0), 'metaData' => array('text', 0), 'layout' => array('numericUnsigned', 0, $this -> objectInfoObj -> layoutId), 'template' => array('numericUnsigned', 0, $this -> objectInfoObj -> templateId), 'skin' => array('numericUnsigned', 0, $this -> objectInfoObj -> skinId), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $this -> fileObj -> order), 'afterId' => array('numeric', 0));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
 		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> fileObj -> read('id = ? ' , array(( int )$_GET['id']));
+			$result = $this -> fileObj -> read('id = ? ', array(( int )$_GET['id']));
 			$result = $result[0];
 			if (empty($this -> view -> sanitized['category']['value'])) {
 				$this -> view -> sanitized['category']['value'] = $result['category_id'];
 			}
 			if (empty($this -> view -> sanitized['directoryId']['value'])) {
-				$this -> view -> sanitized['directoryId']['value'] = $result['directory_id'];
+				$this -> view -> sanitized['directoryId']['value'] = $result['object_directory_id'];
 			}
 		}
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
+		$form = new Object_Form_File($this -> view);
+		$form -> setView($this -> view);
 
-			if (empty($this -> errorMessage)) {
-				/**
-				 * @todo: full path is static like /home/saed/,,,, and this is wrong
-				 */
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$lastInsertId = $this -> objectObj -> insert($objectData);
 
-				/*if ($this->uploadObj->validatedMime ()) {*/
+			if ($lastInsertId !== false) {
+				$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+				$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
+				if ($lastInsertIdInfo !== false) {
+					$objectFileData = array('name' => $_POST['mandatory']['name'], 'label' => $_POST['mandatory']['label'], 'description' => $_POST['mandatory']['description'], 'object_directory_id' => $_POST['mandatory']['object_directory_id'], 'full_path' => $_POST['mandatory']['full_path'], 'author_id' => $_POST['mandatory']['author_id'], 'show_in_object' => $_POST['optional']['show_in_object'], 'object_id' => $lastInsertId, );
+					$lastInsertIdFile = $this -> fileObj -> insert($objectFileData);
+					if ($lastInsertIdFile !== false) {
+
+						/**
+						 * Begin Upload Section
+						 */
+						if ($this -> uploadObj -> validatedSize()) {
+							$this -> view -> sanitized -> size -> value = $this -> uploadObj -> size;
+							$this -> view -> sanitized -> extension -> value = $this -> uploadObj -> extension;
+							$this -> view -> sanitized -> mime -> value = $this -> uploadObj -> mime;
+
+							$result = $this -> objectObj -> insertIntoObject(NULL, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> source -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+							$this -> view -> sanitized -> Id -> value = $result[0];
+							$result = $this -> objectInfoObj -> insertIntoObject_info(NULL, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
+							$result = $this -> fileObj -> insertIntoObject_file(Null, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> labelFile -> value, $this -> view -> sanitized -> descriptionFile -> value, $this -> view -> sanitized -> directoryId -> value, $this -> userId, $this -> view -> sanitized -> mime -> value, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> extension -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+							$this -> view -> sanitized -> Id -> value = $result[0];
+							if (is_numeric($this -> view -> sanitized -> Id -> value)) {
+								$this -> uploadObj -> newFileName = parent::$encryptedDisk['file'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $this -> view -> sanitized -> Id -> value) . $this -> uploadObj -> extension;
+								$fileUploaded = $this -> uploadObj -> uploadFile($this -> uploadObj -> newFileName);
+								if (true === $fileUploaded) {
+									$this -> fileObj -> updateObject_fileSizeColumnById($this -> view -> sanitized -> Id -> value, $this -> uploadObj -> size -> value);
+									$relativePath = explode('disk' . DIRECTORY_SEPARATOR, $this -> uploadObj -> newFileName);
+									$this -> fileObj -> updateObject_fileFull_pathColumnById($this -> view -> sanitized -> Id -> value, $relativePath[1]);
+								}
+								if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value and (true === $fileUploaded))) {
+									header('Location: /admin/handle/pkg/object-file/action/list/s/1');
+									exit();
+								} else {
+									header('Location: /admin/handle/pkg/object-file/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+									exit();
+								}
+							}
+						} else {
+							$this -> errorMessage['uploadFile'] = $this -> view -> __('Invalid File Size');
+						}
+						/**
+						 * End Upload Section
+						 */
+
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('object/addFile.phtml');
+		exit();
+
+		/*if ($this -> isPagePostBack) {
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+
+		 if (empty($this -> errorMessage)) {
+		 if ($this -> uploadObj -> validatedSize()) {
+		 $this -> view -> sanitized -> size -> value = $this -> uploadObj -> size;
+		 $this -> view -> sanitized -> extension -> value = $this -> uploadObj -> extension;
+		 $this -> view -> sanitized -> mime -> value = $this -> uploadObj -> mime;
+
+		 $result = $this -> objectObj -> insertIntoObject(NULL, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> source -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+		 $result = $this -> objectInfoObj -> insertIntoObject_info(NULL, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
+		 $result = $this -> fileObj -> insertIntoObject_file(Null, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> labelFile -> value, $this -> view -> sanitized -> descriptionFile -> value, $this -> view -> sanitized -> directoryId -> value, $this -> userId, $this -> view -> sanitized -> mime -> value, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> extension -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+		 if (is_numeric($this -> view -> sanitized -> Id -> value)) {
+		 $this -> uploadObj -> newFileName = parent::$encryptedDisk['file'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $this -> view -> sanitized -> Id -> value) . $this -> uploadObj -> extension;
+		 $fileUploaded = $this -> uploadObj -> uploadFile($this -> uploadObj -> newFileName);
+		 if (true === $fileUploaded) {
+		 $this -> fileObj -> updateObject_fileSizeColumnById($this -> view -> sanitized -> Id -> value, $this -> uploadObj -> size -> value);
+		 $relativePath = explode('disk' . DIRECTORY_SEPARATOR, $this -> uploadObj -> newFileName);
+		 $this -> fileObj -> updateObject_fileFull_pathColumnById($this -> view -> sanitized -> Id -> value, $relativePath[1]);
+		 }
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value and (true === $fileUploaded))) {
+		 header('Location: /admin/handle/pkg/object-file/action/list/s/1');
+		 exit();
+		 } else {
+		 header('Location: /admin/handle/pkg/object-file/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 }
+		 }
+		 } else {
+		 $this -> errorMessage['uploadFile'] = $this -> view -> __('Invalid File Size');
+		 }
+		 }
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
+
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
+
+		 $this -> view -> render('object/addFileObject.phtml');
+		 exit();*/
+	}
+
+	public function editAction() {
+		$form = new Object_Form_File($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$objectFileId = (int)$_POST['mandatory']['id'];
+			$fileObjResult = $this -> fileObj -> select() -> where('`id` = ?', $objectFileId) -> query() -> fetch();
+
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$this -> objectObj -> update($objectData, '`id` = ' . $fileObjResult['object_id']);
+
+			$objecdInfoData = array('object_id' => $fileObjResult['object_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$this -> objectInfoObj -> update($objecdInfoData, '`object_id` = ' . $fileObjResult['object_id']);
+
+			$objectFileData = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'name' => $_POST['mandatory']['name'], 'label' => $_POST['mandatory']['label'], 'description' => $_POST['mandatory']['description'], 'object_directory_id' => $_POST['mandatory']['object_directory_id'], 'author_id' => $_POST['mandatory']['author_id'], 'object_id' => $fileObjResult['object_id'], 'show_in_object' => $_POST['optional']['show_in_object'], 'full_path' => $_POST['mandatory']['full_path'], );
+			$this -> fileObj -> update($objectFileData, '`id` = ' . $objectFileId);
+
+			/**
+			 * Begin Upload Section
+			 */
+			if ($this -> uploadObj -> CheckIfThereIsFile() and $this -> uploadObj -> CheckIfThereIsNoErrorInUpload()) {
 				if ($this -> uploadObj -> validatedSize()) {
 					$this -> view -> sanitized -> size -> value = $this -> uploadObj -> size;
 					$this -> view -> sanitized -> extension -> value = $this -> uploadObj -> extension;
 					$this -> view -> sanitized -> mime -> value = $this -> uploadObj -> mime;
-
-					$result = $this -> objectObj -> insertIntoObject(NULL, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> source -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-					$this -> view -> sanitized -> Id -> value = $result[0];
-					$result = $this -> objectInfoObj -> insertIntoObject_info(NULL, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
-					$result = $this -> fileObj -> insertIntoObject_file(Null, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> labelFile -> value, $this -> view -> sanitized -> descriptionFile -> value, $this -> view -> sanitized -> directoryId -> value, $this -> userId, $this -> view -> sanitized -> mime -> value, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> extension -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-					$this -> view -> sanitized -> Id -> value = $result[0];
+					$result = $this -> fileObj -> updateObject_fileById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> labelFile -> value, $this -> view -> sanitized -> descriptionFile -> value, $this -> view -> sanitized -> directoryId -> value, $this -> userId, $this -> view -> sanitized -> mime -> value, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> extension -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> objectId -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
 					if (is_numeric($this -> view -> sanitized -> Id -> value)) {
 						$this -> uploadObj -> newFileName = parent::$encryptedDisk['file'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $this -> view -> sanitized -> Id -> value) . $this -> uploadObj -> extension;
 						$fileUploaded = $this -> uploadObj -> uploadFile($this -> uploadObj -> newFileName);
+						$result = $this -> fileObj -> updateObject_fileById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> nameFile -> value, $this -> view -> sanitized -> labelFile -> value, $this -> view -> sanitized -> descriptionFile -> value, $this -> view -> sanitized -> directoryId -> value, $this -> userId, $this -> view -> sanitized -> mime -> value, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> extension -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> objectId -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
 						if (true === $fileUploaded) {
 							$this -> fileObj -> updateObject_fileSizeColumnById($this -> view -> sanitized -> Id -> value, $this -> uploadObj -> size -> value);
 							$relativePath = explode('disk' . DIRECTORY_SEPARATOR, $this -> uploadObj -> newFileName);
 							$this -> fileObj -> updateObject_fileFull_pathColumnById($this -> view -> sanitized -> Id -> value, $relativePath[1]);
 						}
-						if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value and (true === $fileUploaded))) {
+						if ((false != $result) and (1 == $this -> view -> sanitized -> btn_submit -> value) and (true === $fileUploaded)) {
 							header('Location: /admin/handle/pkg/object-file/action/list/s/1');
 							exit();
 						} else {
@@ -107,29 +223,48 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 							exit();
 						}
 					}
-				} else {
-					$this -> errorMessage['uploadFile'] = $this -> view -> __('Invalid File Size');
 				}
-				/*} else {
-				 $this->errorMessage ['uploadFile'] = $this->view->__ ( 'Invalid File Type' );
-				 }*/
 			}
+			/**
+			 * End Upload Section
+			 */
+
+			header('Location: /admin/handle/pkg/object-file/action/list/');
+			exit();
 		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$fileObjResult = $this -> fileObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				$objResult = $this -> objectObj -> select() -> where('`id` = ?', $fileObjResult['object_id']) -> query() -> fetch();
+				$objInfoObjResult = $this -> objectInfoObj -> select() -> where('`object_id` = ?', $fileObjResult['object_id']) -> query() -> fetch();
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+				if ($fileObjResult !== false And $objResult !== false And $objInfoObjResult !== false) {
+					unset($objResult['id']);
+					unset($fileObjResult['published']);
+					unset($fileObjResult['approved']);
+					unset($fileObjResult['comments']);
+					unset($fileObjResult['options']);
+					unset($fileObjResult['category_id']);
+					unset($fileObjResult['created_date']);
+					unset($fileObjResult['parent_id']);
+					unset($objInfoObjResult['id']);
+
+					$created_date = explode(' ', $objResult['created_date']);
+					$objResult['created_date'] = $created_date[0];
+					$objInfoObjResult['options'] = json_decode($objInfoObjResult['options']);
+
+					$form -> populate($objResult);
+					$form -> populate($fileObjResult);
+					$form -> populate($objInfoObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/object-file/action/list');
+					exit();
+				}
 			}
 		}
-
-		$this -> view -> render('object/addFileObject.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('object/updateFile.phtml');
 		exit();
-	}
 
-	public function editAction() {
 		$this -> fields['uploadFile'] = array('fileUploaded', 0);
 		if ($this -> isPagePostBack) {
 
@@ -292,7 +427,7 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 					break;
 			}
 		}
-		
+
 		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
 			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
 		}
@@ -324,7 +459,7 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 		} else {
 			$fileListResult = $this -> fileObj -> getAllFile_urlOrderByColumnWithLimit('id', 'ASC', $this -> start, $this -> limit);
 		}
-		
+
 		//listing
 		$categoryListResult = $this -> categoryObj -> read();
 		$countOfOCategoryListResult = count($categoryListResult);

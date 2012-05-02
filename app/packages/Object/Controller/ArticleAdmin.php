@@ -70,15 +70,15 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 		$this -> usersInfoObj = new User_Model_Info();
 
 		//object-photo controller and Object
-		$this -> photo = new Object_Controller_Photo($this -> fc);
+		$this -> photo = new Object_Controller_PhotoAdmin($this -> fc);
 
 		$this -> photoObj = new Object_Model_Photo();
 
 		//object-video controller and Object
-		$this -> video = new Object_Controller_Video($this -> fc);
+		$this -> video = new Object_Controller_VideoAdmin($this -> fc);
 
 		//Featured controller and Object
-		$this -> featureObj = new Feature_Controller_Default($this -> fc);
+		$this -> featureObj = new Feature_Controller_DefaultAdmin($this -> fc);
 
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
@@ -89,321 +89,410 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
 
-			}
+	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
+		$form = new Object_Form_Article($this -> view);
+		$form -> setView($this -> view);
 
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				if (empty($this -> view -> sanitized -> aliasVideo -> value)) {
-					$this -> view -> sanitized -> aliasVideo -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> aliasPhoto -> value)) {
-					$this -> view -> sanitized -> aliasPhoto -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> pageTitle -> value)) {
-					$this -> view -> sanitized -> pageTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaTitle -> value)) {
-					$this -> view -> sanitized -> metaTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaKey -> value)) {
-					$this -> view -> sanitized -> metaKey -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaDesc -> value)) {
-					$this -> view -> sanitized -> metaDesc -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> aliasArticle -> value)) {
-					$this -> view -> sanitized -> aliasArticle -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> introTextArticle -> value)) {
-					$this -> view -> sanitized -> introTextArticle -> value = $this -> view -> subString($this -> view -> sanitized -> fullTextArticle -> value, 0, 200) . '...';
-				}
-				if (isset($GLOBALS['AULA_BLACKLIST']['fullTextArticle'])) {
-					$this -> view -> sanitized -> fullTextArticle -> value = $GLOBALS['AULA_BLACKLIST']['fullTextArticle'];
-				}
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$query = $this -> articleObj -> getAdapter() -> query('UPDATE object_article SET `order`=`order`+1', array());
+			$query -> execute();
 
-				if (0 == $this -> view -> sanitized -> author_id -> value) {
-					$result = $this -> usersObj -> insertIntoUser(Null, $this -> view -> sanitized -> originalAuthor -> value, md5(md5(rand(9, 999999))), $this -> view -> sanitized -> originalAuthor -> value, "", "3");
-					$resultInfo = $this -> usersInfoObj -> insertIntoUser_info(NULL, $result[0], NULL, date('Y-m-d H:i:s'), NULL, NULL, NULL, NULL, NULL, NULL, NULL, "", "Yes", "No", "No", NULL, NULL, NULL, NULL, "", "");
-					//Upload Object
-					$authorUploadObj = new Aula_Model_Upload_Photo('fileAuthor');
-					if ($authorUploadObj -> CheckIfThereIsFile() === TRUE) {
-						if ($authorUploadObj -> validatedMime()) {
-							if ($authorUploadObj -> validatedSize()) {
-								if (is_numeric($result[0])) {
-									$thumbName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-thumb.jpg';
-									$mediumName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-medium.jpg';
-									$authorUploadObj -> newFileName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '.jpg';
-									$fileUploaded = $authorUploadObj -> uploadFile($authorUploadObj -> newFileName);
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$lastInsertId = $this -> objectObj -> insert($objectData);
 
-									copy($authorUploadObj -> newFileName, $thumbName);
-									$authorUploadObj -> newFileName = $thumbName;
-									$authorUploadObj -> resizeUploadImage(55, 40, parent::$encryptedDisk['users']);
-									copy($authorUploadObj -> newFileName, $mediumName);
-									$authorUploadObj -> newFileName = $mediumName;
-									$authorUploadObj -> resizeUploadImage(120, 90, parent::$encryptedDisk['users']);
-								}
-							} else {
-								$this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Size');
-							}
-						} else {
-							$this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Type');
-						}
-					}
-				}
-				$this -> view -> sanitized -> showInList -> value = $this -> view -> sanitized -> published -> value = $this -> view -> sanitized -> approved -> value = $this -> view -> sanitized -> showInObject -> value = 'Yes';
+			if ($lastInsertId !== false) {
+				$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+				$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
+				if ($lastInsertIdInfo !== false) {
+					$objectArticleData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'full_text' => $_POST['mandatory']['full_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
+					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
 
-				$objectId = $result = $this -> objectObj -> insertIntoObject(NULL, $this -> view -> sanitized -> titleArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-				$this -> photo -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-				$this -> video -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-
-				if (!empty($this -> view -> sanitized -> youTubeVideo -> value)) {
-					$this -> view -> sanitized -> option -> value .= PHP_EOL . 'YouTube=' . $this -> view -> sanitized -> youTubeVideo -> value;
-				}
-
-				$result = $this -> objectInfoObj -> insertIntoObject_info(NULL, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
-				$result = $this -> articleObj -> insertIntoObject_article(Null, $this -> view -> sanitized -> aliasArticle -> value, $this -> view -> sanitized -> introTextArticle -> value, $this -> view -> sanitized -> fullTextArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				$this -> view -> sanitized -> Id -> value = $objectArticleId = $result[0];
-				$_options = explode(PHP_EOL, $this -> view -> sanitized -> option -> value);
-				foreach ($_options as $value) {
-					if (FALSE !== strpos($value, 'specialArticle')) {
-						$this -> view -> specialArticle = substr($value, 15);
-						if ($this -> view -> specialArticle == 1) {
-							$updateSpecialArticle = $this -> articleObj -> insertIntoObject_article_special(NULL, $objectId, $objectArticleId);
-						} else {
-							$updateSpecialArticle = $this -> articleObj -> deleteFromObject_article_specialByObject_id($objectArticleId);
-						}
-					}
-				}
-
-				if (0 === strcmp('Yes', $this -> view -> sanitized -> featured -> value)) {
-					$this -> featureObj -> importAction($this -> view -> sanitized -> Id -> value);
-				}
-				$this -> view -> sanitized -> Id -> value = $objectArticleId;
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and ((1 == $this -> view -> sanitized -> btn_submit -> value) or (0 == strcmp($this -> view -> sanitized -> btn_submit -> value, $this -> view -> __('Object_Save'))))) {
-						header('Location: /admin/handle/pkg/object-article/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/object-article/action/edit/id/' . $this -> view -> sanitized -> Id -> value);
+					header('Location: /admin/handle/pkg/object-article/action/list/');
 					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on add record');
 				}
-			}
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
 			}
-		}
 
-		$this -> view -> render('object/addArticleObject.phtml');
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('object/addArticle.phtml');
 		exit();
+
+		/*if ($this -> isPagePostBack) {
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+
+		 if (empty($this -> errorMessage)) {
+		 if ($this -> view -> sanitized -> order -> value == -1) {
+		 $this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> aliasVideo -> value)) {
+		 $this -> view -> sanitized -> aliasVideo -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> aliasPhoto -> value)) {
+		 $this -> view -> sanitized -> aliasPhoto -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> pageTitle -> value)) {
+		 $this -> view -> sanitized -> pageTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaTitle -> value)) {
+		 $this -> view -> sanitized -> metaTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaKey -> value)) {
+		 $this -> view -> sanitized -> metaKey -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaDesc -> value)) {
+		 $this -> view -> sanitized -> metaDesc -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> aliasArticle -> value)) {
+		 $this -> view -> sanitized -> aliasArticle -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> introTextArticle -> value)) {
+		 $this -> view -> sanitized -> introTextArticle -> value = $this -> view -> subString($this -> view -> sanitized -> fullTextArticle -> value, 0, 200) . '...';
+		 }
+		 if (isset($GLOBALS['AULA_BLACKLIST']['fullTextArticle'])) {
+		 $this -> view -> sanitized -> fullTextArticle -> value = $GLOBALS['AULA_BLACKLIST']['fullTextArticle'];
+		 }
+
+		 if (0 == $this -> view -> sanitized -> author_id -> value) {
+		 $result = $this -> usersObj -> insertIntoUser(Null, $this -> view -> sanitized -> originalAuthor -> value, md5(md5(rand(9, 999999))), $this -> view -> sanitized -> originalAuthor -> value, "", "3");
+		 $resultInfo = $this -> usersInfoObj -> insertIntoUser_info(NULL, $result[0], NULL, date('Y-m-d H:i:s'), NULL, NULL, NULL, NULL, NULL, NULL, NULL, "", "Yes", "No", "No", NULL, NULL, NULL, NULL, "", "");
+		 //Upload Object
+		 $authorUploadObj = new Aula_Model_Upload_Photo('fileAuthor');
+		 if ($authorUploadObj -> CheckIfThereIsFile() === TRUE) {
+		 if ($authorUploadObj -> validatedMime()) {
+		 if ($authorUploadObj -> validatedSize()) {
+		 if (is_numeric($result[0])) {
+		 $thumbName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-thumb.jpg';
+		 $mediumName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-medium.jpg';
+		 $authorUploadObj -> newFileName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '.jpg';
+		 $fileUploaded = $authorUploadObj -> uploadFile($authorUploadObj -> newFileName);
+
+		 copy($authorUploadObj -> newFileName, $thumbName);
+		 $authorUploadObj -> newFileName = $thumbName;
+		 $authorUploadObj -> resizeUploadImage(55, 40, parent::$encryptedDisk['users']);
+		 copy($authorUploadObj -> newFileName, $mediumName);
+		 $authorUploadObj -> newFileName = $mediumName;
+		 $authorUploadObj -> resizeUploadImage(120, 90, parent::$encryptedDisk['users']);
+		 }
+		 } else {
+		 $this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Size');
+		 }
+		 } else {
+		 $this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Type');
+		 }
+		 }
+		 }
+		 $this -> view -> sanitized -> showInList -> value = $this -> view -> sanitized -> published -> value = $this -> view -> sanitized -> approved -> value = $this -> view -> sanitized -> showInObject -> value = 'Yes';
+
+		 $objectId = $result = $this -> objectObj -> insertIntoObject(NULL, $this -> view -> sanitized -> titleArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+		 $this -> photo -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+		 $this -> video -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+
+		 if (!empty($this -> view -> sanitized -> youTubeVideo -> value)) {
+		 $this -> view -> sanitized -> option -> value .= PHP_EOL . 'YouTube=' . $this -> view -> sanitized -> youTubeVideo -> value;
+		 }
+
+		 $result = $this -> objectInfoObj -> insertIntoObject_info(NULL, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
+		 $result = $this -> articleObj -> insertIntoObject_article(Null, $this -> view -> sanitized -> aliasArticle -> value, $this -> view -> sanitized -> introTextArticle -> value, $this -> view -> sanitized -> fullTextArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
+		 $this -> view -> sanitized -> Id -> value = $objectArticleId = $result[0];
+		 $_options = explode(PHP_EOL, $this -> view -> sanitized -> option -> value);
+		 foreach ($_options as $value) {
+		 if (FALSE !== strpos($value, 'specialArticle')) {
+		 $this -> view -> specialArticle = substr($value, 15);
+		 if ($this -> view -> specialArticle == 1) {
+		 $updateSpecialArticle = $this -> articleObj -> insertIntoObject_article_special(NULL, $objectId, $objectArticleId);
+		 } else {
+		 $updateSpecialArticle = $this -> articleObj -> deleteFromObject_article_specialByObject_id($objectArticleId);
+		 }
+		 }
+		 }
+
+		 if (0 === strcmp('Yes', $this -> view -> sanitized -> featured -> value)) {
+		 $this -> featureObj -> importAction($this -> view -> sanitized -> Id -> value);
+		 }
+		 $this -> view -> sanitized -> Id -> value = $objectArticleId;
+		 if ($result !== false) {
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and ((1 == $this -> view -> sanitized -> btn_submit -> value) or (0 == strcmp($this -> view -> sanitized -> btn_submit -> value, $this -> view -> __('Object_Save'))))) {
+		 header('Location: /admin/handle/pkg/object-article/action/list/s/1');
+		 exit();
+		 }
+		 header('Location: /admin/handle/pkg/object-article/action/edit/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 } else {
+		 $this -> errorMessage['general'] = $this -> view -> __('Error on add record');
+		 }
+		 }
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
+
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
+
+		 $this -> view -> render('object/addArticleObject.phtml');
+		 exit();*/
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
 
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				if (empty($this -> view -> sanitized -> pageTitle -> value)) {
-					$this -> view -> sanitized -> pageTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaTitle -> value)) {
-					$this -> view -> sanitized -> metaTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaKey -> value)) {
-					$this -> view -> sanitized -> metaKey -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (empty($this -> view -> sanitized -> metaDesc -> value)) {
-					$this -> view -> sanitized -> metaDesc -> value = $this -> view -> sanitized -> titleArticle -> value;
-				}
-				if (0 == $this -> view -> sanitized -> author_id -> value or empty($this -> view -> sanitized -> author_id -> value)) {
-					$result = $this -> usersObj -> insertIntoUser(Null, $this -> view -> sanitized -> originalAuthor -> value, md5(md5(rand(9, 999999))), $this -> view -> sanitized -> originalAuthor -> value, "", "3");
-					$resultInfo = $this -> usersInfoObj -> insertIntoUser_info(NULL, $result[0], NULL, date('Y-m-d H:i:s'), NULL, NULL, NULL, NULL, NULL, NULL, NULL, "", "Yes", "No", "No", NULL, NULL, NULL, NULL, "", "");
-					//Upload Object
-					$authorUploadObj = new Aula_Model_Upload_Photo('fileAuthor');
-					if ($authorUploadObj -> CheckIfThereIsFile() === TRUE) {
-						if ($authorUploadObj -> validatedMime()) {
-							if ($authorUploadObj -> validatedSize()) {
-								if (is_numeric($result[0])) {
-									$thumbName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-thumb.jpg';
-									$mediumName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-medium.jpg';
-									$authorUploadObj -> newFileName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '.jpg';
-									$fileUploaded = $authorUploadObj -> uploadFile($authorUploadObj -> newFileName);
-									copy($authorUploadObj -> newFileName, $thumbName);
-									$authorUploadObj -> newFileName = $thumbName;
-									$authorUploadObj -> resizeUploadImage(55, 40, parent::$encryptedDisk['users']);
-									copy($authorUploadObj -> newFileName, $mediumName);
-									$authorUploadObj -> newFileName = $mediumName;
-									$authorUploadObj -> resizeUploadImage(120, 90, parent::$encryptedDisk['users']);
-								}
-							} else {
-								$this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Size');
-							}
-						} else {
-							$this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Type');
-						}
-					}
-				}
-				$objectArticleId = ( int )$_GET['id'];
-				$result = $this -> articleObj -> getObject_articleDetailsById($objectArticleId);
-				$objectId = $result[0]['object_id'];
-				$objectInfoDetails = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($objectId);
-				$objectInfoId = $objectInfoDetails[0]['id'];
+		$form = new Object_Form_Article($this -> view);
+		$form -> setView($this -> view);
 
-				$resultObject = $this -> objectObj -> updateObjectById($objectId, $this -> view -> sanitized -> titleArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-
-				if (!empty($this -> view -> sanitized -> youTubeVideo -> value)) {
-					$this -> view -> sanitized -> option -> value .= PHP_EOL . "YouTube=" . $this -> view -> sanitized -> youTubeVideo -> value;
-				}
-				if (isset($GLOBALS['AULA_BLACKLIST']['fullTextArticle'])) {
-					$this -> view -> sanitized -> fullTextArticle -> value = $GLOBALS['AULA_BLACKLIST']['fullTextArticle'];
-				}
-
-				$_options = explode(PHP_EOL, $this -> view -> sanitized -> option -> value);
-				foreach ($_options as $value) {
-					if (FALSE !== strpos($value, 'specialArticle')) {
-						$this -> view -> specialArticle = substr($value, 15);
-						if ($this -> view -> specialArticle == 1) {
-							$updateSpecialArticle = $this -> articleObj -> insertIntoObject_article_special(NULL, $objectId, $objectArticleId);
-						} else {
-							$updateSpecialArticle = $this -> articleObj -> deleteFromObject_article_specialByObject_id($objectId);
-						}
-					}
-				}
-
-				$this -> view -> sanitized -> aliasArticle -> value = $this -> view -> sanitized -> titleArticle -> value;
-
-				$result = $this -> objectInfoObj -> updateObject_infoCommentsColumnById($objectInfoId, $this -> view -> sanitized -> comment -> value);
-				$result = $this -> objectInfoObj -> updateObject_infoOptionsColumnById($objectInfoId, $this -> view -> sanitized -> option -> value);
-				//$result = $this->objectInfoObj->updateObject_infoById($objectInfoId, $objectId, $this->view->sanitized->comment->value, $this->view->sanitized->option->value, $this->view->sanitized->layout->value, $this->view->sanitized->template->value, $this->view->sanitized->skin->value, $this->view->sanitized->themePublishFrom->value, $this->view->sanitized->themePublishTo->value);
-				$result = $this -> articleObj -> updateObject_articleById($objectArticleId, $this -> view -> sanitized -> aliasArticle -> value, $this -> view -> sanitized -> introTextArticle -> value, $this -> view -> sanitized -> fullTextArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $objectId, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				$this -> photo -> importAction($this -> view -> sanitized, $objectId);
-				$this -> view -> sanitized -> Id -> value = $objectId;
-				$this -> video -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
-				$this -> view -> sanitized -> Id -> value = $objectArticleId;
-				if ($this -> view -> sanitized -> updateDate -> value == 'Yes') {
-					$this -> objectObj -> updateObjectDate_addedColumnById($objectId);
-					$this -> objectInfoObj -> updateObject_infoDate_addedColumnById($objectInfoId);
-					$this -> articleObj -> updateObject_articleDate_addedColumnById($objectArticleId);
-				}
-
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/object-article/action/list/s/1');
-						exit();
-					} else {
-						if (isset($_GET['s']) and $_GET['s'] == -1) {
-							header('Location: /admin/handle/pkg/object-article/action/edit/s/-1/id/' . $this -> view -> sanitized -> Id -> value);
-							exit();
-						}
-						header('Location: /admin/handle/pkg/object-article/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-						exit();
-					}
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-				}
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$objectArticleId = (int)$_POST['mandatory']['id'];
+			$articleObjResult = $this -> articleObj -> select() -> where('`id` = ?', $objectArticleId) -> query() -> fetch();
+			if ($articleObjResult['order'] != $_POST['optional']['order']) {
+				$query = $this -> articleObj -> getAdapter() -> query('UPDATE object_article SET `order`=`order`+1', array());
+				$query -> execute();
 			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> articleObj -> getObject_articleDetailsById(( int )$_GET['id']);
+			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+			$this -> objectObj -> update($objectData, '`id` = ' . $articleObjResult['object_id']);
 
-			$result = $result[0];
-			$objectID = $result['object_id'];
+			$objecdInfoData = array('object_id' => $articleObjResult['object_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$this -> objectInfoObj -> update($objecdInfoData, '`object_id` = ' . $articleObjResult['object_id']);
 
-			$resultObject = $this -> objectObj -> getObjectDetailsById($objectID);
-			$resultObject = $resultObject[0];
+			$objectArticleData = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'full_text' => $_POST['mandatory']['full_text'], 'author_id' => $this -> userId, 'object_id' => $articleObjResult['object_id'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
+			$this -> articleObj -> update($objectArticleData, '`id` = ' . $objectArticleId);
 
-			$resultObjectInfo = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($resultObject['id']);
-			$resultObjectInfo = $resultObjectInfo[0];
-
-			$resultObjectPhoto = $this -> photoObj -> GetAllCleanPhotoByObjectIdOrderByColWithLimit($resultObject['id']);
-			$this -> view -> photosList = "";
-			if (!empty($resultObjectPhoto)) {
-				foreach ($resultObjectPhoto as $key => $value) {
-					$this -> view -> photosList .= '<img src="' . parent::$encryptedUrl['photo']['original'][substr($value['date_added'], 0, 7)] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg' . '" alt="" title="" width="125px" height="100px" />&nbsp;';
-				}
-			}
-
-			$result['publish_from'] = substr($result['publish_from'], 0, 10);
-			$result['publish_to'] = substr($result['publish_to'], 0, 10);
-			$result['created_date'] = substr($result['created_date'], 0, 10);
-			$resultObjectInfo['theme_publish_from'] = substr($resultObjectInfo['theme_publish_from'], 0, 10);
-			$resultObjectInfo['theme_publish_to'] = substr($resultObjectInfo['theme_publish_to'], 0, 10);
-			$_options = explode(PHP_EOL, $result['options']);
-			$_youTubeVideo = '';
-			$result['options'] = '';
-			foreach ($_options as $value) {
-				if (false !== strpos($value, 'YouTube')) {
-					$_youTubeVideo = substr($value, 8);
-					continue;
-				}
-				$result['options'] .= $value . PHP_EOL;
-			}
-			$result['options'] = substr($result['options'], 0, -1);
-
-			//Fill in writers list drop down menu
-			$selectedItem = '';
-			$this -> authorsList = '';
-			$this -> view -> authorsList = '';
-			$this -> view -> authorPhoto = '';
-
-			if (!empty($this -> authorsListResult)) {
-				foreach ($this->authorsListResult as $key => $value) {
-					if ($value['fullname'] == $resultObject['original_author']) {
-						$selectedItem = 'selected="selected"';
-						$this -> view -> authorPhoto = '<img title="" alt="" src="' . parent::$encryptedUrl['users'] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '-thumb.jpg' . '" />';
-					}
-					$this -> authorsList .= '<option value="' . $value['id'] . '"' . $selectedItem . '>' . $value['fullname'] . '</option>';
-					$selectedItem = '';
-				}
-				$this -> view -> authorsList = $this -> authorsList;
-			}
-			$featureList = $this -> featureObj -> getAllAction();
-
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'youTubeVideo' => array('codeConvention', 0, $_youTubeVideo), 'featured' => array('text', 0, array_key_exists($result['id'], $featureList) ? "Yes" : "No"), 'filePhoto' => array('fileUploaded', 0, (!empty($_FILES['filePhoto']['name']) ? $_FILES['filePhoto']['name'] : '')), 'fileAuthor' => array('fileUploaded', 0, (!empty($_FILES['fileAuthor']['name']) ? $_FILES['fileAuthor']['name'] : '')), 'fileVideo' => array('fileUploaded', 0, (!empty($_FILES['fileVideo']['name']) ? $_FILES['fileVideo']['name'] : '')), 'status' => array('text', 0), 'articleId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'author_id' => array('numericUnsigned', 0, $resultObject['author_id']), 'author' => array('numericUnsigned', 0, $resultObject['author_id']), 'titleArticle' => array('text', 1, $resultObject['title']), 'aliasArticle' => array('text', 0, $result['alias']), 'introTextArticle' => array('text', 0, $result['intro_text']), 'fullTextArticle' => array('text', 1, $result['full_text']), 'sourceArticle' => array('numeric', 1, $result['source_id']), 'category' => array('numericUnsigned', 1, $result['category_id']), 'tag' => array('text', 0, $resultObject['tags']), 'showInObject' => array('text', 0, $result['show_in_object']), 'originalAuthor' => array('text', 0, $resultObject['original_author']), 'createdDate' => array('shortDateTime', 0, $result['created_date']), 'themePublishFrom' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_from']), 'themePublishTo' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_to']), 'publishFrom' => array('shortDateTime', 0, $result['publish_from']), 'publishTo' => array('shortDateTime', 0, $result['publish_to']), 'parent' => array('numericUnsigned', 0, $resultObject['parent_id']), 'objectType' => array('numericUnsigned', 0, $resultObject['type_id']), 'showInList' => array('text', 0, 'Yes'/*$resultObject['show_in_list']*/
-			), 'published' => array('text', 0, 'Yes'/*$result['published']*/
-			), 'approved' => array('text', 0, 'Yes'/*$result['approved']*/
-			), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'pageTitle' => array('text', 0, $resultObject['page_title']), 'metaTitle' => array('text', 0, $resultObject['meta_title']), 'metaKey' => array('text', 0, $resultObject['meta_key']), 'metaDesc' => array('text', 0, $resultObject['meta_desc']), 'metaData' => array('text', 0, $resultObject['meta_data']), 'layout' => array('numericUnsigned', 0, $resultObjectInfo['layout_id']), 'template' => array('numericUnsigned', 0, $resultObjectInfo['template_id']), 'skin' => array('numericUnsigned', 0, $resultObjectInfo['skin_id']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $result['order']), 'afterId' => array('numeric', 0, $result['order']), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
+			header('Location: /admin/handle/pkg/object-article/action/list/');
+			exit();
 		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$articleObjResult = $this -> articleObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				$objResult = $this -> objectObj -> select() -> where('`id` = ?', $articleObjResult['object_id']) -> query() -> fetch();
+				$objInfoObjResult = $this -> objectInfoObj -> select() -> where('`object_id` = ?', $articleObjResult['object_id']) -> query() -> fetch();
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+				if ($articleObjResult !== false And $objResult !== false And $objInfoObjResult !== false) {
+					unset($objResult['id']);
+					unset($articleObjResult['published']);
+					unset($articleObjResult['approved']);
+					unset($articleObjResult['comments']);
+					unset($articleObjResult['options']);
+					unset($articleObjResult['meta_data']);
+					unset($articleObjResult['category_id']);
+					unset($articleObjResult['object_source_id']);
+					unset($articleObjResult['created_date']);
+					unset($objInfoObjResult['id']);
+
+					$publish_from = explode(' ', $articleObjResult['publish_from']);
+					$publish_to = explode(' ', $articleObjResult['publish_to']);
+					$created_date = explode(' ', $objResult['created_date']);
+					$articleObjResult['publish_from'] = $publish_from[0];
+					$articleObjResult['publish_to'] = $publish_to[0];
+					$objResult['created_date'] = $created_date[0];
+					$objInfoObjResult['options'] = json_decode($objInfoObjResult['options']);
+
+					$form -> populate($objResult);
+					$form -> populate($articleObjResult);
+					$form -> populate($objInfoObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/object-article/action/list');
+					exit();
+				}
 			}
 		}
-		$this -> view -> render('object/addArticleObject.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('object/updateArticle.phtml');
 		exit();
+
+		/*if ($this -> isPagePostBack) {
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+
+		 if (empty($this -> errorMessage)) {
+		 if ($this -> view -> sanitized -> order -> value == -1) {
+		 $this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> pageTitle -> value)) {
+		 $this -> view -> sanitized -> pageTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaTitle -> value)) {
+		 $this -> view -> sanitized -> metaTitle -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaKey -> value)) {
+		 $this -> view -> sanitized -> metaKey -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (empty($this -> view -> sanitized -> metaDesc -> value)) {
+		 $this -> view -> sanitized -> metaDesc -> value = $this -> view -> sanitized -> titleArticle -> value;
+		 }
+		 if (0 == $this -> view -> sanitized -> author_id -> value or empty($this -> view -> sanitized -> author_id -> value)) {
+		 $result = $this -> usersObj -> insertIntoUser(Null, $this -> view -> sanitized -> originalAuthor -> value, md5(md5(rand(9, 999999))), $this -> view -> sanitized -> originalAuthor -> value, "", "3");
+		 $resultInfo = $this -> usersInfoObj -> insertIntoUser_info(NULL, $result[0], NULL, date('Y-m-d H:i:s'), NULL, NULL, NULL, NULL, NULL, NULL, NULL, "", "Yes", "No", "No", NULL, NULL, NULL, NULL, "", "");
+		 //Upload Object
+		 $authorUploadObj = new Aula_Model_Upload_Photo('fileAuthor');
+		 if ($authorUploadObj -> CheckIfThereIsFile() === TRUE) {
+		 if ($authorUploadObj -> validatedMime()) {
+		 if ($authorUploadObj -> validatedSize()) {
+		 if (is_numeric($result[0])) {
+		 $thumbName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-thumb.jpg';
+		 $mediumName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '-medium.jpg';
+		 $authorUploadObj -> newFileName = parent::$encryptedDisk['users'] . md5($this -> fc -> settings -> encryption -> hash . $result[0]) . '.jpg';
+		 $fileUploaded = $authorUploadObj -> uploadFile($authorUploadObj -> newFileName);
+		 copy($authorUploadObj -> newFileName, $thumbName);
+		 $authorUploadObj -> newFileName = $thumbName;
+		 $authorUploadObj -> resizeUploadImage(55, 40, parent::$encryptedDisk['users']);
+		 copy($authorUploadObj -> newFileName, $mediumName);
+		 $authorUploadObj -> newFileName = $mediumName;
+		 $authorUploadObj -> resizeUploadImage(120, 90, parent::$encryptedDisk['users']);
+		 }
+		 } else {
+		 $this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Size');
+		 }
+		 } else {
+		 $this -> errorMessage['fileAuthor'] = $this -> view -> __('Invalid File Type');
+		 }
+		 }
+		 }
+		 $objectArticleId = ( int )$_GET['id'];
+		 $result = $this -> articleObj -> getObject_articleDetailsById($objectArticleId);
+		 $objectId = $result[0]['object_id'];
+		 $objectInfoDetails = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($objectId);
+		 $objectInfoId = $objectInfoDetails[0]['id'];
+
+		 $resultObject = $this -> objectObj -> updateObjectById($objectId, $this -> view -> sanitized -> titleArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+
+		 if (!empty($this -> view -> sanitized -> youTubeVideo -> value)) {
+		 $this -> view -> sanitized -> option -> value .= PHP_EOL . "YouTube=" . $this -> view -> sanitized -> youTubeVideo -> value;
+		 }
+		 if (isset($GLOBALS['AULA_BLACKLIST']['fullTextArticle'])) {
+		 $this -> view -> sanitized -> fullTextArticle -> value = $GLOBALS['AULA_BLACKLIST']['fullTextArticle'];
+		 }
+
+		 $_options = explode(PHP_EOL, $this -> view -> sanitized -> option -> value);
+		 foreach ($_options as $value) {
+		 if (FALSE !== strpos($value, 'specialArticle')) {
+		 $this -> view -> specialArticle = substr($value, 15);
+		 if ($this -> view -> specialArticle == 1) {
+		 $updateSpecialArticle = $this -> articleObj -> insertIntoObject_article_special(NULL, $objectId, $objectArticleId);
+		 } else {
+		 $updateSpecialArticle = $this -> articleObj -> deleteFromObject_article_specialByObject_id($objectId);
+		 }
+		 }
+		 }
+
+		 $this -> view -> sanitized -> aliasArticle -> value = $this -> view -> sanitized -> titleArticle -> value;
+
+		 $result = $this -> objectInfoObj -> updateObject_infoCommentsColumnById($objectInfoId, $this -> view -> sanitized -> comment -> value);
+		 $result = $this -> objectInfoObj -> updateObject_infoOptionsColumnById($objectInfoId, $this -> view -> sanitized -> option -> value);
+		 //$result = $this->objectInfoObj->updateObject_infoById($objectInfoId, $objectId, $this->view->sanitized->comment->value, $this->view->sanitized->option->value, $this->view->sanitized->layout->value, $this->view->sanitized->template->value, $this->view->sanitized->skin->value, $this->view->sanitized->themePublishFrom->value, $this->view->sanitized->themePublishTo->value);
+		 $result = $this -> articleObj -> updateObject_articleById($objectArticleId, $this -> view -> sanitized -> aliasArticle -> value, $this -> view -> sanitized -> introTextArticle -> value, $this -> view -> sanitized -> fullTextArticle -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceArticle -> value, $objectId, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
+		 $this -> photo -> importAction($this -> view -> sanitized, $objectId);
+		 $this -> view -> sanitized -> Id -> value = $objectId;
+		 $this -> video -> importAction($this -> view -> sanitized, $this -> view -> sanitized -> Id -> value);
+		 $this -> view -> sanitized -> Id -> value = $objectArticleId;
+		 if ($this -> view -> sanitized -> updateDate -> value == 'Yes') {
+		 $this -> objectObj -> updateObjectDate_addedColumnById($objectId);
+		 $this -> objectInfoObj -> updateObject_infoDate_addedColumnById($objectInfoId);
+		 $this -> articleObj -> updateObject_articleDate_addedColumnById($objectArticleId);
+		 }
+
+		 if ($result !== false) {
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
+		 header('Location: /admin/handle/pkg/object-article/action/list/s/1');
+		 exit();
+		 } else {
+		 if (isset($_GET['s']) and $_GET['s'] == -1) {
+		 header('Location: /admin/handle/pkg/object-article/action/edit/s/-1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 }
+		 header('Location: /admin/handle/pkg/object-article/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 }
+		 } else {
+		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
+		 }
+		 }
+		 } elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
+		 $result = $this -> articleObj -> getObject_articleDetailsById(( int )$_GET['id']);
+
+		 $result = $result[0];
+		 $objectID = $result['object_id'];
+
+		 $resultObject = $this -> objectObj -> getObjectDetailsById($objectID);
+		 $resultObject = $resultObject[0];
+
+		 $resultObjectInfo = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($resultObject['id']);
+		 $resultObjectInfo = $resultObjectInfo[0];
+
+		 $resultObjectPhoto = $this -> photoObj -> GetAllCleanPhotoByObjectIdOrderByColWithLimit($resultObject['id']);
+		 $this -> view -> photosList = "";
+		 if (!empty($resultObjectPhoto)) {
+		 foreach ($resultObjectPhoto as $key => $value) {
+		 $this -> view -> photosList .= '<img src="' . parent::$encryptedUrl['photo']['original'][substr($value['date_added'], 0, 7)] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg' . '" alt="" title="" width="125px" height="100px" />&nbsp;';
+		 }
+		 }
+
+		 $result['publish_from'] = substr($result['publish_from'], 0, 10);
+		 $result['publish_to'] = substr($result['publish_to'], 0, 10);
+		 $result['created_date'] = substr($result['created_date'], 0, 10);
+		 $resultObjectInfo['theme_publish_from'] = substr($resultObjectInfo['theme_publish_from'], 0, 10);
+		 $resultObjectInfo['theme_publish_to'] = substr($resultObjectInfo['theme_publish_to'], 0, 10);
+		 $_options = explode(PHP_EOL, $result['options']);
+		 $_youTubeVideo = '';
+		 $result['options'] = '';
+		 foreach ($_options as $value) {
+		 if (false !== strpos($value, 'YouTube')) {
+		 $_youTubeVideo = substr($value, 8);
+		 continue;
+		 }
+		 $result['options'] .= $value . PHP_EOL;
+		 }
+		 $result['options'] = substr($result['options'], 0, -1);
+
+		 //Fill in writers list drop down menu
+		 $selectedItem = '';
+		 $this -> authorsList = '';
+		 $this -> view -> authorsList = '';
+		 $this -> view -> authorPhoto = '';
+
+		 if (!empty($this -> authorsListResult)) {
+		 foreach ($this->authorsListResult as $key => $value) {
+		 if ($value['fullname'] == $resultObject['original_author']) {
+		 $selectedItem = 'selected="selected"';
+		 $this -> view -> authorPhoto = '<img title="" alt="" src="' . parent::$encryptedUrl['users'] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '-thumb.jpg' . '" />';
+		 }
+		 $this -> authorsList .= '<option value="' . $value['id'] . '"' . $selectedItem . '>' . $value['fullname'] . '</option>';
+		 $selectedItem = '';
+		 }
+		 $this -> view -> authorsList = $this -> authorsList;
+		 }
+		 $featureList = $this -> featureObj -> getAllAction();
+
+		 $this -> fields = array('redirectURI' => array('uri', 0, ''), 'youTubeVideo' => array('codeConvention', 0, $_youTubeVideo), 'featured' => array('text', 0, array_key_exists($result['id'], $featureList) ? "Yes" : "No"), 'filePhoto' => array('fileUploaded', 0, (!empty($_FILES['filePhoto']['name']) ? $_FILES['filePhoto']['name'] : '')), 'fileAuthor' => array('fileUploaded', 0, (!empty($_FILES['fileAuthor']['name']) ? $_FILES['fileAuthor']['name'] : '')), 'fileVideo' => array('fileUploaded', 0, (!empty($_FILES['fileVideo']['name']) ? $_FILES['fileVideo']['name'] : '')), 'status' => array('text', 0), 'articleId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'author_id' => array('numericUnsigned', 0, $resultObject['author_id']), 'author' => array('numericUnsigned', 0, $resultObject['author_id']), 'titleArticle' => array('text', 1, $resultObject['title']), 'aliasArticle' => array('text', 0, $result['alias']), 'introTextArticle' => array('text', 0, $result['intro_text']), 'fullTextArticle' => array('text', 1, $result['full_text']), 'sourceArticle' => array('numeric', 1, $result['source_id']), 'category' => array('numericUnsigned', 1, $result['category_id']), 'tag' => array('text', 0, $resultObject['tags']), 'showInObject' => array('text', 0, $result['show_in_object']), 'originalAuthor' => array('text', 0, $resultObject['original_author']), 'createdDate' => array('shortDateTime', 0, $result['created_date']), 'themePublishFrom' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_from']), 'themePublishTo' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_to']), 'publishFrom' => array('shortDateTime', 0, $result['publish_from']), 'publishTo' => array('shortDateTime', 0, $result['publish_to']), 'parent' => array('numericUnsigned', 0, $resultObject['parent_id']), 'objectType' => array('numericUnsigned', 0, $resultObject['type_id']), 'showInList' => array('text', 0, 'Yes'/*$resultObject['show_in_list']
+		 ), 'published' => array('text', 0, 'Yes'
+		 ), 'approved' => array('text', 0, 'Yes'
+		 ), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'pageTitle' => array('text', 0, $resultObject['page_title']), 'metaTitle' => array('text', 0, $resultObject['meta_title']), 'metaKey' => array('text', 0, $resultObject['meta_key']), 'metaDesc' => array('text', 0, $resultObject['meta_desc']), 'metaData' => array('text', 0, $resultObject['meta_data']), 'layout' => array('numericUnsigned', 0, $resultObjectInfo['layout_id']), 'template' => array('numericUnsigned', 0, $resultObjectInfo['template_id']), 'skin' => array('numericUnsigned', 0, $resultObjectInfo['skin_id']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $result['order']), 'afterId' => array('numeric', 0, $result['order']), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+
+		 $this -> view -> sanitized = array();
+		 $this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
+
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
+		 $this -> view -> render('object/addArticleObject.phtml');
+		 exit();*/
 	}
 
 	public function deleteAction() {

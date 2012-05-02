@@ -67,6 +67,61 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function importPhotoAction($photoData, $photoName, $objectId = 0) {
+		$uploadObj = new Aula_Model_Upload_Photo($photoName);
+		if ($uploadObj -> CheckIfThereIsFile() === TRUE) {
+			if ($uploadObj -> validatedMime()) {
+				if ($uploadObj -> validatedSize()) {
+					if (empty($photoData['taken_date'])) {
+						$photoData['taken_date'] = $uploadObj -> takenTime;
+					}
+
+					$photoData['size'] = $uploadObj -> size;
+					$photoData['width'] = $uploadObj -> width;
+					$photoData['height'] = $uploadObj -> height;
+					$photoData['extension'] = $uploadObj -> extension;
+
+					if ($objectId == 0) {
+						$query = $this -> photoObj -> getAdapter() -> query('UPDATE object_photo SET `order`=`order`+1', array());
+						$query -> execute();
+						$lastInsertIdPhoto = $this -> photoObj -> insert($photoData);
+					} else {
+						$this -> photoObj -> update($photoData, '`object_id` = ' . $objectId);
+						$lastInsertIdPhoto = true;
+					}
+
+					if ($lastInsertIdPhoto !== false) {
+						$uploadObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdPhoto) . '.jpg';
+						$fileUploaded = $uploadObj -> uploadFile($uploadObj -> newFileName);
+
+						$thumbUploaded = $uploadObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> _dateTodayVeryShortDate]);
+						$thumbLargeUploaded = $uploadObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> _dateTodayVeryShortDate]);
+						$mediumUploaded = $uploadObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+						$largeMiniUploaded = $uploadObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+						$largeUploaded = $uploadObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+
+						$photoListResult = $this -> photoObj -> GetAllCleanPhotosOrderByColWithLimit(0, 1000);
+
+						$photoListCache = 'var tinyMCEImageList = new Array(';
+						foreach ($photoListResult as $key => $value) {
+							$photoDate = explode('-', $value['date_added'], 3);
+							$photoSRC4 = parent::$encryptedUrl['photo']['large-mini'][$photoDate[0] . '-' . $photoDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg';
+							$photoListCache .= PHP_EOL . "\t" . '["' . addslashes($value['alias']) . '-large-mini", "' . $photoSRC4 . '"],';
+						}
+						$photoListCache = substr($photoListCache, 0, -1);
+						$photoListCache .= PHP_EOL . ');';
+						$settings = Zend_Registry::get('settings-cache');
+						file_put_contents($settings -> photo_list -> disk, $photoListCache);
+					}
+				} else {
+					$this -> errorMessage[$photoName] = $this -> view -> __('Invalid File Size');
+				}
+			} else {
+				$this -> errorMessage[$photoName] = $this -> view -> __('Invalid File Type');
+			}
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Photo($this -> view);
 		$form -> setView($this -> view);
@@ -121,10 +176,10 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 						}
 					}
 				} else {
-					$this -> errorMessage['filePhoto'] = $this -> view -> __('Invalid File Size');
+					$this -> errorMessage['photo'] = $this -> view -> __('Invalid File Size');
 				}
 			} else {
-				$this -> errorMessage['filePhoto'] = $this -> view -> __('Invalid File Type');
+				$this -> errorMessage['photo'] = $this -> view -> __('Invalid File Type');
 			}
 		}
 		$this -> view -> form = $form;
@@ -342,6 +397,7 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 					unset($photObjResult['meta_data']);
 					unset($photObjResult['category_id']);
 					unset($photObjResult['object_source_id']);
+					unset($photObjResult['created_date']);
 					unset($objInfoObjResult['id']);
 
 					$publish_from = explode(' ', $photObjResult['publish_from']);
