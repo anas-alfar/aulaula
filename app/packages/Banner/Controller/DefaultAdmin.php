@@ -16,14 +16,35 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('actionURI' => array('uri', 0),'redirectURI' => array('uri', 0, ''), 'fullPath' => array('filePath', 0, $this -> bannerObj -> fullPath), 'uploadFile' => array('fileUploaded', 0, (!empty($_FILES['uploadFile']['name']) ? $_FILES['uploadFile']['name'] : '')), 'link' => array('url', 0), 'status' => array('text', 0), 'bannerId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'label' => array('text', 1), 'area' => array('numeric', 1), 'type' => array('text', 1, $this -> bannerObj -> type), 'object' => array('text', 0), 'published' => array('text', 0, $this -> bannerObj -> published), 'approved' => array('text', 0, $this -> bannerObj -> approved), 'comment' => array('text', 0, $this -> bannerObj -> comments), 'option' => array('text', 0, $this -> bannerObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'publishFrom' => array('shortDateTime', 0, $this -> bannerObj -> publishFrom), 'publishTo' => array('shortDateTime', 0, $this -> bannerObj -> publishTo), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'fullPath' => array('filePath', 0, $this -> bannerObj -> fullPath), 'uploadFile' => array('fileUploaded', 0, (!empty($_FILES['uploadFile']['name']) ? $_FILES['uploadFile']['name'] : '')), 'link' => array('url', 0), 'status' => array('text', 0), 'bannerId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'label' => array('text', 1), 'area' => array('numeric', 1), 'type' => array('text', 1, $this -> bannerObj -> type), 'object' => array('text', 0), 'published' => array('text', 0, $this -> bannerObj -> published), 'approved' => array('text', 0, $this -> bannerObj -> approved), 'comment' => array('text', 0, $this -> bannerObj -> comments), 'option' => array('text', 0, $this -> bannerObj -> options), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'publishFrom' => array('shortDateTime', 0, $this -> bannerObj -> publishFrom), 'publishTo' => array('shortDateTime', 0, $this -> bannerObj -> publishTo), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
+		$form = new Banner_Form_DefaultAdmin($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
+			$_POST['mandatory']['author_id'] = $this -> userId;
+
+			$this -> bannerObj -> insert(array_merge($_POST['mandatory'], $_POST['optional']));
+			/**
+			 * TODO
+			 * Upload here
+			 */
+			
+			header('Location: /admin/handle/pkg/banner/action/list');
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('banner/addBanner.phtml');
+		exit();
+
+		
+		
+		/*if ($this -> isPagePostBack) {
 			$this -> filterObj -> trimData($this -> view -> sanitized);
 			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
 			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
@@ -82,11 +103,58 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 		}
 
 		$this -> view -> render('banner/addBanner.phtml');
-		exit();
+		exit();*/
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
+		$form = new Banner_Form_DefaultAdmin($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id'])) {
+
+			$dataBanner = array_merge($_POST['mandatory'], $_POST['optional']);
+
+			$dataBanner['options'] = json_encode($dataBanner['options']);
+			$dataBanner['modified_by'] = $this -> userId;
+			$dataBanner['modified_time'] = new Zend_db_Expr("Now()");
+
+			$this -> bannerObj -> update($dataBanner, '`id` = ' . $dataBanner['id']);
+			
+			/**
+			 * TODO
+			 * Upload here
+			 */
+			
+
+			header('Location: /admin/handle/pkg/banner/action/list');
+			exit();
+
+		} else {
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				
+				$bannerObjResult = $this -> bannerObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				if ($bannerObjResult !== false) {
+
+					$publish_from = explode(' ', $bannerObjResult['publish_from']);
+					$publish_to = explode(' ', $bannerObjResult['publish_to']);
+					$bannerObjResult['publish_from'] = $publish_from[0];
+					$bannerObjResult['publish_to'] = $publish_to[0];
+					$bannerObjResult['options'] = json_decode($bannerObjResult['options']);
+
+					$form -> populate($bannerObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/banner/action/list');
+					exit();
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('banner/updateBanner.phtml');
+		exit();
+		
+		
+		
+		/*if ($this -> isPagePostBack) {
 			$this -> filterObj -> trimData($this -> view -> sanitized);
 			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
 			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
@@ -144,7 +212,7 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 		}
 
 		header('Location: /admin/handle/pkg/banner/action/list/');
-		exit();
+		exit();*/
 	}
 
 	public function approveAction() {

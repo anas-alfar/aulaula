@@ -19,85 +19,137 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				$result = $this -> areaObj -> insertIntoBanner_Area(Null, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> userId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/banner-area/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/banner-area/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on add record');
-				}
-			}
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+		$form = new Banner_Form_AreaAdmin($this -> view);
+		$form -> setView($this -> view);
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
+			$_POST['mandatory']['author_id'] = $this -> userId;
 
+			$this -> areaObj -> insert(array_merge($_POST['mandatory'], $_POST['optional']));
+			header('Location: /admin/handle/pkg/banner-area/action/list');
+		}
+		$this -> view -> form = $form;
 		$this -> view -> render('banner/addArea.phtml');
 		exit();
+
+		/*if ($this -> isPagePostBack) {
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 if (empty($this -> errorMessage)) {
+		 $result = $this -> areaObj -> insertIntoBanner_Area(Null, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> userId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
+		 $this -> view -> sanitized -> Id -> value = $result[0];
+		 if ($result !== false) {
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
+		 header('Location: /admin/handle/pkg/banner-area/action/list/s/1');
+		 exit();
+		 }
+		 header('Location: /admin/handle/pkg/banner-area/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 } else {
+		 $this -> errorMessage['general'] = $this -> view -> __('Error on add record');
+		 }
+		 }
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
+
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
+
+		 $this -> view -> render('banner/addArea.phtml');
+		 exit();*/
 
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				$result = $this -> areaObj -> updateBanner_areaById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> userId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/banner-area/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/banner-area/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
+		$form = new Banner_Form_AreaAdmin($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id'])) {
+
+			$dataBannerArea = array_merge($_POST['mandatory'], $_POST['optional']);
+
+			$dataBannerArea['options'] = json_encode($dataBannerArea['options']);
+			$dataBannerArea['modified_by'] = $this -> userId;
+			$dataBannerArea['modified_time'] = new Zend_db_Expr("Now()");
+
+			$this -> areaObj -> update($dataBannerArea, '`id` = ' . $dataBannerArea['id']);
+
+			header('Location: /admin/handle/pkg/banner-area/action/list');
+			exit();
+
+		} else {
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$areaObjResult = $this -> areaObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				if ($areaObjResult !== false) {
+
+					$publish_from = explode(' ', $areaObjResult['publish_from']);
+					$publish_to = explode(' ', $areaObjResult['publish_to']);
+					$areaObjResult['publish_from'] = $publish_from[0];
+					$areaObjResult['publish_to'] = $publish_to[0];
+					$areaObjResult['options'] = json_decode($areaObjResult['options']);
+
+					$form -> populate($areaObjResult);
 				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
+					header('Location: /admin/handle/pkg/banner-area/action/list');
+					exit();
 				}
 			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> areaObj -> getBanner_areaDetailsById(( int )$_GET['id']);
-			$result = $result[0];
-			$result['publish_from'] = substr($result['publish_from'], 0, 10);
-			$result['publish_to'] = substr($result['publish_to'], 0, 10);
-
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'areaId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'title' => array('text', 1, $result['title']), 'label' => array('text', 1, $result['label']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'publishFrom' => array('text', 0, $result['publish_from']), 'publishTo' => array('text', 0, $result['publish_to']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
 		}
-
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
-
-		$this -> view -> render('banner/addArea.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('banner/updateArea.phtml');
 		exit();
+
+		/*if ($this -> isPagePostBack) {
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 if (empty($this -> errorMessage)) {
+		 $result = $this -> areaObj -> updateBanner_areaById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> userId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
+		 if ($result !== false) {
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
+		 header('Location: /admin/handle/pkg/banner-area/action/list/s/1');
+		 exit();
+		 }
+		 header('Location: /admin/handle/pkg/banner-area/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 } else {
+		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
+		 }
+		 }
+		 } elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
+		 $result = $this -> areaObj -> getBanner_areaDetailsById(( int )$_GET['id']);
+		 $result = $result[0];
+		 $result['publish_from'] = substr($result['publish_from'], 0, 10);
+		 $result['publish_to'] = substr($result['publish_to'], 0, 10);
+
+		 $this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'areaId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'title' => array('text', 1, $result['title']), 'label' => array('text', 1, $result['label']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'publishFrom' => array('text', 0, $result['publish_from']), 'publishTo' => array('text', 0, $result['publish_to']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+
+		 $this -> view -> sanitized = array();
+		 $this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
+
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
+
+		 $this -> view -> render('banner/addArea.phtml');
+		 exit();*/
 	}
 
 	public function deleteAction() {

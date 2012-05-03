@@ -61,7 +61,7 @@ class Menu_Controller_TypeAdmin extends Aula_Controller_Action {
 					$menuTypeObjResult['options'] = json_decode($menuTypeObjResult['options']);
 					$form -> populate($menuTypeObjResult);
 				} else {
-					header('Location: /admin/handle/pkg/menu/action/list');
+					header('Location: /admin/handle/pkg/menu-type/action/list');
 					exit();
 				}
 			}
