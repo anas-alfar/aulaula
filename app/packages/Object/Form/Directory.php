@@ -286,7 +286,7 @@ class Object_Form_Directory extends Zend_Dojo_Form
 	            'FilteringSelect',
 	            'parent_id',
 	            array(
-	                'label' => $this-> view -> __ ( 'Object_Object' ),
+	                'label' => $this-> view -> __ ( 'Parent' ),
 	                'class' => 'lablvalue jstalgntop',
 	                'autocomplete'=>false,
 	                'multiOptions' => $this->_getObjectOptions(),

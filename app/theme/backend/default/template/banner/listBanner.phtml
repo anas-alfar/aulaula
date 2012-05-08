@@ -1,89 +1,120 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<?php include './html/meta.phtml'; ?>
-</head>
-<body>
-<!--container-->
-<div class="container">
-<?php include './html/header.phtml'; ?>
-<?php include './html/menu.phtml'; ?>
-<?php include './html/notification.phtml'; ?>
-<!--content-->
-<form method="get" action="" id="frm">
-<div>
-	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->title->value; ?>" />
-	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
-</div>
-<div class="content">
-<div class="srch-rslt cleaner">
-<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Banner_Banners' ); ?></h3>
-<a href="<?php print $this->sanitized->actionURI->value; ?>add" class="add-btn"><em><?php echo $this->__ ( 'Banner_Add New Banner' ); ?></em></a></div>
-<!--filtration-->
-<div class="filtration cleaner"><!--go2page-->
+	<head>
+		<?php
+		include './html/meta.phtml';
+		?>
+	</head>
+	<body>
+		<!--container-->
+		<div class="container">
+			<?php
+			include './html/header.phtml';
+			?>
+			<?php
+				include './html/menu.phtml';
+			?>
+			<?php
+				include './html/notification.phtml';
+			?>
+			<!--content-->
+			<form method="get" action="" id="frm">
+				<div>
+					<input type="hidden" id="token" name="token" value="<?php print $this -> sanitized -> title -> value;?>" />
+					<input type="hidden" id="actionURI" value="<?php print $this -> sanitized -> actionURI -> value;?>" />
+				</div>
+				<div class="content">
+					<div class="srch-rslt cleaner">
+						<h3 class="fl page_title margthaf"><?php echo $this -> __('Banner');?></h3>
+						<a href="<?php print $this -> sanitized -> actionURI -> value;?>add" class="add-btn"><em><?php echo $this -> __('Banner_Add New');?></em></a>
+					</div>
+					<!--filtration-->
+					<div class="filtration cleaner">
+						<!--go2page-->
+						<!--end go2page-->
+						<button type="button"
+						onclick="return changeFormAction('approve', 'post');" name="approve"
+						id="approve" class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Banner_Approve');?></em></span>
+						</button>
+						<button type="button"
+						onclick="return changeFormAction('publish', 'post');" name="publish"
+						id="publish" value="Yes" class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Banner_Publish');?></em></span>
+						</button>
+						<button type="button"
+						onclick="return changeFormAction('delete', 'post');" name="delete"
+						id="delete" class="inpt-btn fr">
+							<span><em><?php echo $this -> __('Banner_Delete');?></em></span>
+						</button>
+						<select style="float: left;" name="status">
+							<option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this -> __('Yes Option');?></option>
+							<option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this -> __('No Option');?></option>
+						</select>
+						<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this -> sanitized -> redirectURI -> value;?>" />
+					</div>
+					<!--end filtration-->
+					<!--srch-rsult-->
+					<table class="srch-rsult">
+						<tr class="heading">
+							<th class="jstalgntop col1">
+							<input type="checkbox" name="selectAll" id="selectAll" />
+							</th>
+							<th class="jstalgntop col1"><a
+							href="<?php echo $this -> sort -> title -> href;?>"
+							class="<?php echo $this -> sort -> title -> cssClass;?>"><span class="<?php echo $this -> sort -> title -> cssClass;?>"><?php echo $this -> __('Banner_Title');?></span></a></th>
+							<th class="jstalgntop col1"><a
+							href="<?php echo $this -> sort -> label -> href;?>"
+							class="<?php echo $this -> sort -> label -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> label -> cssClass;?>"><?php echo $this -> __('Banner_Label');?></span></a></th>
+							<th class="jstalgntop col4"><a
+							href="<?php echo $this -> sort -> type -> href;?>"
+							class="<?php echo $this -> sort -> type -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> type -> cssClass;?>"><?php echo $this -> __('Banner_Type');?></span></a></th>
+							<th class="jstalgntop colyesno"><a
+							href="<?php echo $this -> sort -> published -> href;?>"
+							class="<?php echo $this -> sort -> published -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> published -> cssClass;?>"><?php echo $this -> __('Banner_Publish');?></span></a></th>
+							<th class="jstalgntop colyesno"><a
+							href="<?php echo $this -> sort -> approved -> href;?>"
+							class="<?php echo $this -> sort -> approved -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> approved -> cssClass;?>"><?php echo $this -> __('Banner_Aprrove');?></span></a></th>
+							<th class="jstalgntop col6"><a
+							href="<?php echo $this -> sort -> date_added -> href;?>"
+							class="<?php echo $this -> sort -> date_added -> cssClass;?>"><span
+							class="<?php echo $this -> sort -> date_added -> cssClass;?>"><?php echo $this -> __('Banner_Date Added');?></span></a></th>
+							<th class="jstalgntop tools last"><span><?php echo $this -> __('Banner_Tools');?></span></th>
+						</tr>
+						<?php
+						if (!empty($this->bannerList) and false != $this->bannerList) {
+			foreach ($this->bannerList as $key => $value) {
+				echo '<tr>';
+				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="bannerId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
+				echo '<td class="jstalgntop">' . $this -> cleanHtml($value['title']) . '</td>';
+				echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['label']) . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['type']) . '</td>';
+				echo '<td class="jstalgntop">' . $this ->  __($value['published']) . '</td>';
+				echo '<td class="jstalgntop">' . $this ->  __($value['approved']) . '</td>';
+				echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
+				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/banner/action/edit/s/1/id/' . $value['id'] . '"
+						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
+			class="preview fl" title="Preview"></a></td>';
+				echo '</tr>';
+			}
+		}
+						?>
+					</table>
+					<!--end srch-rsult-->
+					<?php
+						include './html/paging.phtml';
+					?>
 
-<!--end go2page-->
-<button type="button"
-	onclick="return changeFormAction('approve', 'post');" name="approve"
-	id="approve" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Banner_Approve' ); ?></em></span></button>
-<button type="button"
-	onclick="return changeFormAction('publish', 'post');" name="publish"
-	id="publish" value="Yes" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Banner_Publish' ); ?></em></span></button>
-<button type="button"
-	onclick="return changeFormAction('delete', 'post');" name="delete"
-	id="delete" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Banner_Delete' ); ?></em></span></button>
-	<select style="float: left;" name="status">
-	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this->__('Yes Option'); ?></option>
-	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this->__('No Option'); ?></option>
-	</select>
-	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
-</div>
-<!--end filtration--> <!--srch-rsult-->
-<table class="srch-rsult">
-	<tr class="heading">
-		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
-		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->title->href; ?>"
-			class="<?php echo $this->sort->title->cssClass; ?>"><span
-			 class="<?php echo $this->sort->title->cssClass; ?>"><?php echo $this->__ ( 'Banner_Title' ); ?></span></a></th>
-		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->area->href; ?>"
-			class="<?php echo $this->sort->area->cssClass; ?>"><span
-			 class="<?php echo $this->sort->area->cssClass; ?>"><?php echo $this->__ ( 'Banner_Area' ); ?></span></a></th>
-		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->type->href; ?>"
-			class="<?php echo $this->sort->type->cssClass; ?>"><span
-			 class="<?php echo $this->sort->type->cssClass; ?>"><?php echo $this->__ ( 'Banner_Type' ); ?></span></a></th>
-		<th class="jstalgntop colyesno"><a
-			href="<?php echo $this->sort->published->href; ?>"
-			class="<?php echo $this->sort->published->cssClass; ?>"><span
-			class="<?php echo $this->sort->published->cssClass; ?>"><?php echo $this->__ ( 'Banner_Publish' ); ?></span></a></th>
-		<th class="jstalgntop colyesno"><a
-			href="<?php echo $this->sort->approved->href; ?>"
-			class="<?php echo $this->sort->approved->cssClass; ?>"><span
-			class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Banner_Aprrove' ); ?></span></a></th>
-		<th class="jstalgntop col6"><a
-			href="<?php echo $this->sort->dateAdded->href; ?>"
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><span
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><?php echo $this->__ ( 'Banner_Date Added' ); ?></span></a></th>
-		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Banner_Tools' ); ?></span></th>
-	</tr>
-	
-	<?php 
-	if (!empty($this->bannerList)) {
-		echo $this->bannerList; 
-	}
-	?>
-	
-</table>
-<!--end srch-rsult-->
-
-<?php include './html/paging.phtml'; ?>
-
-<!--end content-->
-</form>
-<?php include './html/footer.phtml'; ?>
-</div>
-<!--end container-->
-</body>
+					<!--end content-->
+			</form>
+			<?php
+				include './html/footer.phtml';
+			?>
+		</div>
+		<!--end container-->
+	</body>
 </html>

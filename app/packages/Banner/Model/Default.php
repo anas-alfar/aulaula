@@ -22,6 +22,7 @@ class Banner_Model_Default extends Aula_Model_DbTable {
 	public $publishTo = '0000-00-00';
 
 	public function __construct() {
+		
 		$this -> cols = $this -> _cols = array('id', 'banner_area_id', 'title', 'label', 'type', 'mime_type', 'size', 'extension', 'source', 'target', 'author_id', 'published', 'approved', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments', 'options');
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `banner_area_id`, `title`, `label`, `type`, `mime_type`, `size`, `extension`, `source`, `target`, `author_id`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
 		parent::__construct();

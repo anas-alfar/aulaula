@@ -63,8 +63,8 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$query = $this -> sourceObj -> getAdapter() -> query('UPDATE object_source SET `order`=`order`+1', array());
-			$query -> execute();
+			$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
+			$stmt -> execute(array($_POST['optional']['order']));
 
 			$_POST['mandatory']['locale_id'] = $this -> fc -> settings -> locale -> available -> lang -> _1 -> default;
 			$_POST['mandatory']['author_id'] = $this -> userId;
@@ -91,8 +91,8 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 			$objectSourceId = (int)$_POST['mandatory']['id'];
 			$sourceObjResult = $this -> sourceObj -> select() -> where('`id` = ?', $objectSourceId) -> query() -> fetch();
 			if ($sourceObjResult['order'] != $_POST['mandatory']['order']) {
-				$query = $this -> sourceObj -> getAdapter() -> query('UPDATE object_source SET `order`=1+`order`', array());
-				$query -> execute();
+				$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($_POST['optional']['order']));
 			}
 			$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
 			$dataSource = array('name' => $_POST['mandatory']['name'], 'description' => $_POST['mandatory']['description'], 'source_type' => $_POST['mandatory']['source_type'], 'url' => $_POST['mandatory']['url'], 'time_delay' => $_POST['mandatory']['time_delay'], 'order' => $_POST['mandatory']['order'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);

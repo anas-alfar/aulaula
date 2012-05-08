@@ -11,7 +11,7 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'areaId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'label' => array('text', 1), 'published' => array('text', 0, $this -> areaObj -> published), 'approved' => array('text', 0, $this -> areaObj -> approved), 'comment' => array('text', 0, $this -> areaObj -> comments), 'option' => array('text', 0, $this -> areaObj -> options), 'publishFrom' => array('text', 0, $this -> areaObj -> publishFrom), 'publishTo' => array('text', 0, $this -> areaObj -> publishTo), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'areaId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'label' => array('text', 1), 'published' => array('text', 0, $this -> areaObj -> published), 'approved' => array('text', 0, $this -> areaObj -> approved), 'comment' => array('text', 0, $this -> areaObj -> comments), 'option' => array('text', 0, $this -> areaObj -> options), 'publishFrom' => array('text', 0, $this -> areaObj -> publishFrom), 'publishTo' => array('text', 0, $this -> areaObj -> publishTo), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['author']['value'] = 1;
@@ -218,99 +218,83 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 	public function orderAction() {
 	}
 
+	/*public function listAction() {
+		$this -> view -> arrayToObject($this -> view -> sanitized);
+		if (!empty($this -> view -> sanitized -> bannerId -> value)) {
+			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == 'Yes' ? 'Yes' : 'No';
+			foreach ($this->view->sanitized->bannerId->value as $id => $value) {
+				$data = array('published' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> bannerObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$bannerPublish = $this -> bannerObj -> update($data, $where);
+			}
+			if (!empty($bannerPublish)) {
+				header('Location: /admin/handle/pkg/banner/action/list/success/publish');
+				exit();
+			}
+		}
+
+		header('Location: /admin/handle/pkg/banner/action/list/');
+		exit();
+	}*/
+
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		$this -> view -> sanitized -> actionURI -> value = '/admin/handle/pkg/banner-area/action/';
-		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
-			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
+
+		if (!empty($_GET['success'])) {
+			$this -> view -> successMessageStyle = 'display: block;';
+			switch ($_GET['success']) {
+				case 'approve' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Approved');
+					break;
+				case 'publish' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Published');
+					break;
+				case 'delete' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
+					break;
+			}
 		}
 
-		if ($_GET['success'] == 'approve') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Approved');
-			$this -> view -> successMessageStyle = 'display: block;';
-		} elseif ($_GET['success'] == 'publish') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Published');
-			$this -> view -> successMessageStyle = 'display: block;';
-		} elseif ($_GET['success'] == 'delete') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
-			$this -> view -> successMessageStyle = 'display: block;';
-		} elseif ($_GET['success'] == 'showInMenu') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Updated');
-			$this -> view -> successMessageStyle = 'display: block;';
+		//generate default sorting links
+		$this -> view -> sort = (object)NULL;
+		$cols = $this -> areaObj -> cols;
+
+		foreach ($cols as $col) {
+			/**
+			 * adding the following two lines to prvent E_STRICT error
+			 */
+			$this -> view -> sort -> {$col} = (object)NULL;
+			$this -> view -> sort -> {$col} -> cssClass = 'sort-title-desc';
+			$this -> view -> sort -> {$col} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $col . '/sort/desc';
 		}
 
-		//sortin
-		$this -> view -> sort -> title -> cssClass = 'sort-title';
-		$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/asc';
-		$this -> view -> sort -> published -> cssClass = 'sort-title';
-		$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-		$this -> view -> sort -> approved -> cssClass = 'sort-title';
-		$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-		$this -> view -> sort -> dateAdded -> cssClass = 'sort-title';
-		$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-
-		if (isset($_GET['title']) && $_GET['title'] == 'asc') {
-			$this -> view -> sort -> title -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/desc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByTitleWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['title']) && $_GET['title'] == 'desc') {
-			$this -> view -> sort -> title -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/asc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByTitleWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'asc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/desc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByPublishedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'desc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByPublishedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'asc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/desc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByApprovedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'desc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByApprovedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'asc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/desc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByDate_addedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'desc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByDate_addedWithLimit('DESC', $this -> start, $this -> limit);
+		if (isset($_GET['col']) and (in_array($_GET['col'], $cols))) {
+			$sort = 'ASC';
+			$sortInvert = 'desc';
+			$column = $_GET['col'];
+			if (isset($_GET['sort']) and (0 === strcasecmp($_GET['sort'], 'DESC'))) {
+				$sort = 'DESC';
+				$sortInvert = 'asc';
+			}
+			$areaListResult = $this -> areaObj -> select() -> from ('banner',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("$column $sort") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
+			$sort = strtolower($sort);
+			$column = strtolower($column);
+			$this -> view -> sort -> {$column} -> cssClass = 'sort-arrow-' . $sort;
+			$this -> view -> sort -> {$column} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $column . '/sort/' . ($sortInvert);
 		} else {
-			$areaListResult = $this -> areaObj -> getAllBanner_areaOrderByIdWithLimit($this -> start, $this -> limit);
+			$areaListResult = $this -> areaObj -> select() -> from ('banner_area',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("id DESC") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
 		}
-		$this -> pagingObj -> _init($this -> areaObj -> totalRecordsFound);
+
+		$this -> pagingObj -> _init($this -> areaObj -> getAdapter()-> fetchOne('SELECT FOUND_ROWS()'));
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
 
-		//listing
-		$label = '';
-		$areaList = '';
-		$areaIfnoList = '';
-		if (!empty($areaListResult) and false != $areaListResult) {
-			foreach ($areaListResult as $key => $value) {
-				$areaList .= '<tr>';
-				$areaList .= '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="areaId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				$areaList .= '<td class="jstalgntop">' . $value['title'] . '</td>';
-				$areaList .= '<td class="jstalgntop">' . $this -> view -> __($value['published']) . '</td>';
-				$areaList .= '<td class="jstalgntop">' . $this -> view -> __($value['approved']) . '</td>';
-				$areaList .= '<td class="jstalgntop">' . $value['date_added'] . '</td>';
-				$areaList .= '<td class="jstalgntop last"><a href="/admin/handle/pkg/banner-area/action/edit/s/1/id/' . $value['id'] . '"
-						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
-			class="preview fl" title="Preview"></a></td>';
-				$areaList .= '</tr>';
-			}
-		} else {
+		if (empty($areaListResult) and false != $areaListResult) {
 			$this -> view -> notificationMessage = $this -> view -> __('Sorry, no records found');
 			$this -> view -> notificationMessageStyle = 'display: block;';
 		}
-
-		$this -> view -> areaList = $areaList;
+		$this -> view -> areaList = $areaListResult;
 		$this -> view -> render('banner/listArea.phtml');
 		exit();
 	}

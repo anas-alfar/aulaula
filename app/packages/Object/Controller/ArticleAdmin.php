@@ -96,8 +96,8 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$query = $this -> articleObj -> getAdapter() -> query('UPDATE object_article SET `order`=`order`+1', array());
-			$query -> execute();
+			$stmt = $this -> articleObj -> getAdapter() -> prepare('UPDATE object_article SET `order`=`order`+1 WHERE `order` >= ?');
+			$stmt -> execute(array($_POST['optional']['order']));
 
 			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
 			$lastInsertId = $this -> objectObj -> insert($objectData);
@@ -254,8 +254,8 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 			$objectArticleId = (int)$_POST['mandatory']['id'];
 			$articleObjResult = $this -> articleObj -> select() -> where('`id` = ?', $objectArticleId) -> query() -> fetch();
 			if ($articleObjResult['order'] != $_POST['optional']['order']) {
-				$query = $this -> articleObj -> getAdapter() -> query('UPDATE object_article SET `order`=`order`+1', array());
-				$query -> execute();
+				$stmt = $this -> articleObj -> getAdapter() -> prepare('UPDATE object_article SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($_POST['optional']['order']));
 			}
 			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
 			$this -> objectObj -> update($objectData, '`id` = ' . $articleObjResult['object_id']);

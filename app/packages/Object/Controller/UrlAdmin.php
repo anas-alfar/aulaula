@@ -67,8 +67,8 @@ class Object_Controller_UrlAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$query = $this -> urlObj -> getAdapter() -> query('UPDATE object_url SET `order`=`order`+1', array());
-			$query -> execute();
+			$stmt = $this -> urlObj -> getAdapter() -> prepare('UPDATE object_url SET `order`=`order`+1 WHERE `order` >= ?');
+			$stmt -> execute(array($_POST['optional']['order']));
 
 			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
 			$lastInsertId = $this -> objectObj -> insert($objectData);
@@ -139,8 +139,8 @@ class Object_Controller_UrlAdmin extends Aula_Controller_Action {
 			$objectURLId = (int)$_POST['mandatory']['id'];
 			$urlObjResult = $this -> urlObj -> select() -> where('`id` = ?', $objectURLId) -> query() -> fetch();
 			if ($urlObjResult['order'] != $_POST['optional']['order']) {
-				$query = $this -> urlObj -> getAdapter() -> query('UPDATE object_url SET `order`=`order`+1', array());
-				$query -> execute();
+				$stmt = $this -> urlObj -> getAdapter() -> prepare('UPDATE object_url SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($_POST['optional']['order']));
 			}
 			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
 			$this -> objectObj -> update($objectData, '`id` = ' . $urlObjResult['object_id']);
@@ -193,67 +193,67 @@ class Object_Controller_UrlAdmin extends Aula_Controller_Action {
 		exit();
 
 		/*if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				$result = $this -> urlObj -> getObject_urlDetailsById(( int )$_GET['id']);
-				$result = $result[0];
-				$objectDetails = $this -> objectObj -> getObjectDetailsById($result['object_id']);
-				$objectId = $objectDetails[0]['id'];
-				$objectInfoDetails = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($objectId);
-				$objectInfoId = $objectInfoDetails[0]['id'];
-				$resultObject = $this -> objectObj -> updateObjectById($objectId, $this -> view -> sanitized -> titleUrl -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceUrl -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-				$result = $this -> objectInfoObj -> updateObject_infoById($objectInfoId, $objectId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
-				$result = $this -> urlObj -> updateObject_urlById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> aliasUrl -> value, $this -> view -> sanitized -> introTextUrl -> value, $this -> view -> sanitized -> urlUrl -> value, $this -> view -> sanitized -> styleUrl -> value, $this -> userId, $this -> view -> sanitized -> sourceUrl -> value, $objectId, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> urlTypeUrl -> value, $this -> view -> sanitized -> order -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/object-url/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/object-url/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-				}
-			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> urlObj -> getObject_urlDetailsById(( int )$_GET['id']);
-			$result = $result[0];
-			$resultObject = $this -> objectObj -> getObjectDetailsById($result['object_id']);
-			$resultObject = $resultObject[0];
-			$resultObjectInfo = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($resultObject['id']);
-			$resultObjectInfo = $resultObjectInfo[0];
+		 $this -> filterObj -> trimData($this -> view -> sanitized);
+		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
+		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 if (empty($this -> errorMessage)) {
+		 if ($this -> view -> sanitized -> order -> value == -1) {
+		 $this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
+		 }
+		 $result = $this -> urlObj -> getObject_urlDetailsById(( int )$_GET['id']);
+		 $result = $result[0];
+		 $objectDetails = $this -> objectObj -> getObjectDetailsById($result['object_id']);
+		 $objectId = $objectDetails[0]['id'];
+		 $objectInfoDetails = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($objectId);
+		 $objectInfoId = $objectInfoDetails[0]['id'];
+		 $resultObject = $this -> objectObj -> updateObjectById($objectId, $this -> view -> sanitized -> titleUrl -> value, $this -> view -> sanitized -> createdDate -> value, $this -> userId, $this -> view -> sanitized -> sourceUrl -> value, $this -> view -> sanitized -> tag -> value, $this -> view -> sanitized -> pageTitle -> value, $this -> view -> sanitized -> metaTitle -> value, $this -> view -> sanitized -> metaKey -> value, $this -> view -> sanitized -> metaDesc -> value, $this -> view -> sanitized -> metaData -> value, $this -> view -> sanitized -> objectType -> value, $this -> view -> sanitized -> category -> value, 1, 'GUID', $this -> view -> sanitized -> originalAuthor -> value, $this -> view -> sanitized -> parent -> value, $this -> view -> sanitized -> showInList -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
+		 $result = $this -> objectInfoObj -> updateObject_infoById($objectInfoId, $objectId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> layout -> value, $this -> view -> sanitized -> template -> value, $this -> view -> sanitized -> skin -> value, $this -> view -> sanitized -> themePublishFrom -> value, $this -> view -> sanitized -> themePublishTo -> value);
+		 $result = $this -> urlObj -> updateObject_urlById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> aliasUrl -> value, $this -> view -> sanitized -> introTextUrl -> value, $this -> view -> sanitized -> urlUrl -> value, $this -> view -> sanitized -> styleUrl -> value, $this -> userId, $this -> view -> sanitized -> sourceUrl -> value, $objectId, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> urlTypeUrl -> value, $this -> view -> sanitized -> order -> value);
+		 if ($result !== false) {
+		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
+		 header('Location: /admin/handle/pkg/object-url/action/list/s/1');
+		 exit();
+		 }
+		 header('Location: /admin/handle/pkg/object-url/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
+		 exit();
+		 } else {
+		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
+		 }
+		 }
+		 } elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
+		 $result = $this -> urlObj -> getObject_urlDetailsById(( int )$_GET['id']);
+		 $result = $result[0];
+		 $resultObject = $this -> objectObj -> getObjectDetailsById($result['object_id']);
+		 $resultObject = $resultObject[0];
+		 $resultObjectInfo = $this -> objectInfoObj -> GetAllObject_infoByObject_idOrderById($resultObject['id']);
+		 $resultObjectInfo = $resultObjectInfo[0];
 
-			$result['taken_date'] = substr($result['taken_date'], 0, 10);
-			$result['publish_from'] = substr($result['publish_from'], 0, 10);
-			$result['publish_to'] = substr($result['publish_to'], 0, 10);
-			$resultObject['created_date'] = substr($resultObject['created_date'], 0, 10);
-			$resultObjectInfo['theme_publish_from'] = substr($resultObjectInfo['theme_publish_from'], 0, 10);
-			$resultObjectInfo['theme_publish_to'] = substr($resultObjectInfo['theme_publish_to'], 0, 10);
+		 $result['taken_date'] = substr($result['taken_date'], 0, 10);
+		 $result['publish_from'] = substr($result['publish_from'], 0, 10);
+		 $result['publish_to'] = substr($result['publish_to'], 0, 10);
+		 $resultObject['created_date'] = substr($resultObject['created_date'], 0, 10);
+		 $resultObjectInfo['theme_publish_from'] = substr($resultObjectInfo['theme_publish_from'], 0, 10);
+		 $resultObjectInfo['theme_publish_to'] = substr($resultObjectInfo['theme_publish_to'], 0, 10);
 
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'urlId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'showInObject' => array('text', 0, $result['show_in_object']), 'showInList' => array('text', 0, $resultObject['show_in_list']), 'titleUrl' => array('text', 0, $resultObject['title']), 'aliasUrl' => array('text', 0, $result['alias']), 'introTextUrl' => array('text', 0, $result['intro_text']), 'sourceUrl' => array('numeric', 0, $result['source_id']), 'urlUrl' => array('url', 0, $result['url']), 'styleUrl' => array('text', 0, $result['style']), 'urlTypeUrl' => array('text', 0, $result['url_type']), 'category' => array('numericUnsigned', 1, $result['category_id']), 'tag' => array('text', 0, $resultObject['tags']), 'originalAuthor' => array('text', 0, $resultObject['original_author']), 'createdDate' => array('shortDateTime', 0, $resultObject['created_date']), 'themePublishFrom' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_from']), 'themePublishTo' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_to']), 'publishFrom' => array('shortDateTime', 0, $result['publish_from']), 'publishTo' => array('shortDateTime', 0, $result['publish_to']), 'parent' => array('numericUnsigned', 0, $resultObject['parent_id']), 'objectType' => array('numericUnsigned', 0, $resultObject['type_id']), 'showInList' => array('text', 0, $resultObject['show_in_list']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'pageTitle' => array('text', 0, $resultObject['page_title']), 'metaTitle' => array('text', 0, $resultObject['meta_title']), 'metaKey' => array('text', 0, $resultObject['meta_key']), 'metaDesc' => array('text', 0, $resultObject['meta_desc']), 'metaData' => array('text', 0, $resultObject['meta_data']), 'layout' => array('numericUnsigned', 0, $resultObjectInfo['layout_id']), 'template' => array('numericUnsigned', 0, $resultObjectInfo['template_id']), 'skin' => array('numericUnsigned', 0, $resultObjectInfo['skin_id']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $result['order']), 'afterId' => array('numeric', 0, $result['order']), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+		 $this -> fields = array('redirectURI' => array('uri', 0, ''), 'urlId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'showInObject' => array('text', 0, $result['show_in_object']), 'showInList' => array('text', 0, $resultObject['show_in_list']), 'titleUrl' => array('text', 0, $resultObject['title']), 'aliasUrl' => array('text', 0, $result['alias']), 'introTextUrl' => array('text', 0, $result['intro_text']), 'sourceUrl' => array('numeric', 0, $result['source_id']), 'urlUrl' => array('url', 0, $result['url']), 'styleUrl' => array('text', 0, $result['style']), 'urlTypeUrl' => array('text', 0, $result['url_type']), 'category' => array('numericUnsigned', 1, $result['category_id']), 'tag' => array('text', 0, $resultObject['tags']), 'originalAuthor' => array('text', 0, $resultObject['original_author']), 'createdDate' => array('shortDateTime', 0, $resultObject['created_date']), 'themePublishFrom' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_from']), 'themePublishTo' => array('shortDateTime', 0, $resultObjectInfo['theme_publish_to']), 'publishFrom' => array('shortDateTime', 0, $result['publish_from']), 'publishTo' => array('shortDateTime', 0, $result['publish_to']), 'parent' => array('numericUnsigned', 0, $resultObject['parent_id']), 'objectType' => array('numericUnsigned', 0, $resultObject['type_id']), 'showInList' => array('text', 0, $resultObject['show_in_list']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'pageTitle' => array('text', 0, $resultObject['page_title']), 'metaTitle' => array('text', 0, $resultObject['meta_title']), 'metaKey' => array('text', 0, $resultObject['meta_key']), 'metaDesc' => array('text', 0, $resultObject['meta_desc']), 'metaData' => array('text', 0, $resultObject['meta_data']), 'layout' => array('numericUnsigned', 0, $resultObjectInfo['layout_id']), 'template' => array('numericUnsigned', 0, $resultObjectInfo['template_id']), 'skin' => array('numericUnsigned', 0, $resultObjectInfo['skin_id']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'order' => array('numericUnsigned', 0, $result['order']), 'afterId' => array('numeric', 0, $result['order']), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		 $this -> view -> sanitized = array();
+		 $this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
+		 $this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 } else {
+		 $this -> view -> arrayToObject($this -> view -> sanitized);
+		 }
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
+		 if (!empty($this -> errorMessage)) {
+		 foreach ($this->errorMessage as $key => $msg) {
+		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
+		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+		 }
+		 }
 
-		$this -> view -> render('object/addUrlObject.phtml');
-		exit();*/
+		 $this -> view -> render('object/addUrlObject.phtml');
+		 exit();*/
 	}
 
 	public function deleteAction() {
