@@ -52,5 +52,34 @@ class Translation_Model_Default extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `label`, `translation`, `locale_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments` ';
 		parent::__construct();
 	}
+	
+	public function getAllTranslation_OrderByColumnWithLimit( $column, $sorting, $start, $limit ) 
+	{
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+		
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> order("$column $sorting") 
+		-> limit("$start, $limit") 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
+	
+	public function getAllTranslation( ) 
+	{
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
 
 }

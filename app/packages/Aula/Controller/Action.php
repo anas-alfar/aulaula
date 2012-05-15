@@ -65,9 +65,9 @@ class Aula_Controller_Action {
 		$this -> setDate();
 		$this -> initSEO();
 		//$this -> buildMenu();
-		
+
 		$this -> _init();
-		
+
 		return $this;
 	}
 
@@ -122,7 +122,7 @@ class Aula_Controller_Action {
 				exit();
 			}
 		}
-		
+
 	}
 
 	private function initSEO() {
@@ -273,6 +273,90 @@ class Aula_Controller_Action {
 				}
 			}
 		}
+	}
+
+	protected function exportSQL2CSV($data, $header, $fileName = 'mutashabeh_data') {
+		$flag = false;
+		$fileName = $fileName . '_' . date('Ymd') . ".xls";
+
+		foreach ($data as $row) {
+			foreach ($row as $k1 => $v1) {
+				if (!in_array($k1, $header)) {
+					unset($row[$k1]);
+				}
+			}
+			if (!$flag) {
+				echo implode("\t", array_keys($row)) . "\r\n";
+				$flag = true;
+			}
+			array_walk($row, 'self::cleanDataCSV');
+			echo implode("\t", array_values($row)) . "\r\n";
+		}
+		header("Content-Disposition: attachment; filename=\"$fileName\"");
+		header("Content-Type: application/vnd.ms-excel");
+		exit ;
+	}
+
+	protected function cleanDataCSV(&$str) {
+		$str = preg_replace("/\t/", "\\t", $str);
+		$str = preg_replace("/\r?\n/", "\\n", $str);
+		//if (strstr($str, '"'))
+		//$str = '"' . str_replace('"', '""', $str) . '"';
+	}
+
+	protected function importCSV2SQL($file, $objModelDB, $options = true) {
+		$flag = false;
+		$header = array();
+		$proheptedKey = false;
+
+		if ($handle = fopen($file, "r")) {
+
+			while (!feof($handle)) {
+				$line = fgets($handle);
+				if (!empty($line)) {
+
+					$line = explode("\t", $line);
+
+					array_walk($line, create_function('&$val', '$val = trim($val);'));
+
+					if ($flag == false) {
+						array_walk($line, create_function('&$val', '$val = strtolower($val);'));
+						$header = $line;
+						$checkHeader = array_diff($header, $objModelDB -> cols);
+						if (is_array($checkHeader) and sizeof($checkHeader) > 0) {
+							$this -> view -> notificationMessage = $this -> view -> __('Oops, you provided wrong data');
+							$this -> view -> notificationMessageStyle = 'display: block;';
+							return false;
+							exit ;
+						}
+						$flag = true;
+						continue;
+					}
+					/*$checkProheptedKeyid = array_keys($header, 'id');
+					 if (sizeof($checkProheptedKeyid) == 1) {
+					 $idIndex = $checkProheptedKeyid[0];
+					 }*/
+					$str = '';
+					for ($i = 0; $i < sizeof($header); $i++) {
+						$str .= "arr[$header[$i]]=$line[$i]&";
+					}
+					parse_str($str, $result);
+					if ($options == true) {
+						$result['arr']['options'] = json_encode($result['arr']['options']);
+					}
+					if (array_key_exists('id', $result['arr'])) {
+						$id = $result['arr']['id'];
+						unset($result['arr']['id']);
+						$objModelDB -> update($result['arr'], '`id` = ' . (int)$id);
+					} else {
+						$objModelDB -> insert($result['arr']);
+					}
+				}
+			}
+			fclose($handle);
+			return true;
+		}
+
 	}
 
 }

@@ -11,14 +11,15 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'translationId' => array('numeric', 0), 'Id' => array('numeric', 0), 'locale' => array('numeric', 0), 'token' => array('text', 1), 'label' => array('text', 1), 'translation' => array('text', 1), 'comment' => array('text', 0, $this -> translationObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'translationId' => array('numeric', 0), 'Id' => array('numeric', 0), 'locale' => array('numeric', 0), 'token' => array('text', 1), 'label' => array('text', 1), 'translation' => array('text', 1), 'comment' => array('text', 0, $this -> translationObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
 
 		//locale list
 		$this -> localeList = '';
-		$this -> localeListResult = $this -> localeObj -> getAllLocaleOrderById();
+		//$this -> localeListResult = $this -> localeObj -> getAllLocaleOrderById();
+		$this -> localeListResult = $this -> localeObj -> select() -> query() -> fetchAll();
 		if (!empty($this -> localeListResult)) {
 			foreach ($this->localeListResult as $key => $value) {
 				$selectedItem = ($value['id'] == $this -> view -> sanitized['locale']['value']) ? 'selected="selected"' : '';
@@ -26,94 +27,65 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 			}
 		}
 		$this -> view -> localeList = $this -> localeList;
+
+		$this -> view -> importExcelLink = '/admin/handle/pkg/translation/action/importcsv/';
+		$this -> view -> exportExcelLink = '/admin/handle/pkg/translation/action/exportcsv/';
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				$result = $this -> translationObj -> insertIntoTranslation(Null, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> translation -> value, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> comment -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/translation/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/translation/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on add record');
-				}
-			}
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+		$form = new Translation_Form_Default($this -> view);
+		$form -> setView($this -> view);
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$translationData = array('label' => $_POST['mandatory']['label'], 'translation' => $_POST['mandatory']['translation'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'comments' => $_POST['optional']['comments'], );
+			$this -> translationObj -> insert($translationData);
 
+			header('Location: /admin/handle/pkg/translation/action/list/');
+			exit();
+		}
+		$this -> view -> form = $form;
 		$this -> view -> render('translation/addTranslation.phtml');
 		exit();
 
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				$result = $this -> translationObj -> updateTranslationById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> translation -> value, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> comment -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/translation/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/translation/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
+		$form = new Translation_Form_Default($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$translationId = (int)$_POST['mandatory']['id'];
+
+			$translationData = array('label' => $_POST['mandatory']['label'], 'translation' => $_POST['mandatory']['translation'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'comments' => $_POST['optional']['comments'], );
+			$this -> translationObj -> update($translationData, '`id` = ' . $translationId);
+
+			header('Location: /admin/handle/pkg/translation/action/list/');
+			exit();
+		} else {
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$translationObjResult = $this -> translationObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+
+				if ($translationObjResult !== false) {
+					$form -> populate($translationObjResult);
 				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
+					header('Location: /admin/handle/pkg/translation/action/list');
+					exit();
 				}
 			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> translationObj -> getTranslationDetailsById(( int )$_GET['id']);
-			$result = $result[0];
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'translationId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'locale' => array('numeric', 0, $result['locale_id']), 'token' => array('text', 1), 'label' => array('text', 1, $result['label']), 'translation' => array('text', 1, $result['translation']), 'comment' => array('text', 0, $result['comments']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
 		}
-
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
-
-		$this -> view -> render('translation/addTranslation.phtml');
+		$this -> view -> form = $form;
+		$this -> view -> render('translation/updateTranslation.phtml');
 		exit();
-
 	}
 
 	public function deleteAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		if (!empty($this -> view -> sanitized -> translationId -> value)) {
 			foreach ($this->view->sanitized->translationId->value as $id => $value) {
-				$translationDelete = $this -> translationObj -> deleteFromTranslationById($id);
+				$where = $this -> translationObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$stmt = $this -> translationObj -> delete($where);
 			}
-			if (!empty($translationDelete)) {
+			if (!empty($stmt)) {
 				header('Location: /admin/handle/pkg/translation/action/list/success/delete');
 				exit();
 			}
@@ -125,95 +97,84 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		$this -> view -> sanitized -> actionURI -> value = '/admin/handle/pkg/translation/action/';
+
+		if (!empty($_GET['success']) AND $_GET['success'] == 'delete') {
+			$this -> view -> successMessageStyle = 'display: block;';
+			$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
+		}
+
 		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
 			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
 		}
 
-		if ($_GET['success'] == 'delete') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
-			$this -> view -> successMessageStyle = 'display: block;';
+		$this -> view -> sort = (object)NULL;
+		foreach ($this-> translationObj -> cols as $col) {
+			/**
+			 * adding the following two lines to prvent E_STRICT error
+			 */
+			$this -> view -> sort -> {$col} = (object)NULL;
+			$this -> view -> sort -> {$col} -> cssClass = 'sort-title-desc';
+			$this -> view -> sort -> {$col} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $col . '/sort/desc';
 		}
 
-		//sorting
-		$this -> view -> sort -> label -> cssClass = 'sort-title';
-		$this -> view -> sort -> label -> href = $this -> view -> sanitized -> actionURI -> value . 'list/label/asc';
-		$this -> view -> sort -> translation -> cssClass = 'sort-title';
-		$this -> view -> sort -> translation -> href = $this -> view -> sanitized -> actionURI -> value . 'list/translation/asc';
-		$this -> view -> sort -> published -> cssClass = 'sort-title';
-		$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-		$this -> view -> sort -> approved -> cssClass = 'sort-title';
-		$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-		$this -> view -> sort -> dateAdded -> cssClass = 'sort-title';
-		$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-
-		if (isset($_GET['label']) && $_GET['label'] == 'asc') {
-			$this -> view -> sort -> label -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> label -> href = $this -> view -> sanitized -> actionURI -> value . 'list/label/desc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByLabelWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['label']) && $_GET['label'] == 'desc') {
-			$this -> view -> sort -> label -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> label -> href = $this -> view -> sanitized -> actionURI -> value . 'list/label/asc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByLabelWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['translation']) && $_GET['translation'] == 'asc') {
-			$this -> view -> sort -> translation -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> translation -> href = $this -> view -> sanitized -> actionURI -> value . 'list/translation/desc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByTranslationWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['translation']) && $_GET['translation'] == 'desc') {
-			$this -> view -> sort -> translation -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> translation -> href = $this -> view -> sanitized -> actionURI -> value . 'list/translation/asc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByTranslationWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'asc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/desc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByPublishedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'desc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByPublishedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'asc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/desc';
-			$translationListResult = $this -> translationObj -> getAllCategoryOrderByApprovedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'desc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByApprovedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'asc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/desc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByDate_addedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'desc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByDate_addedWithLimit('DESC', $this -> start, $this -> limit);
+		if (isset($_GET['col']) and (in_array($_GET['col'], $this -> translationObj -> cols))) {
+			$sort = 'ASC';
+			$sortInvert = 'desc';
+			$column = $_GET['col'];
+			if (isset($_GET['sort']) and (0 === strcasecmp($_GET['sort'], 'DESC'))) {
+				$sort = 'DESC';
+				$sortInvert = 'asc';
+			}
+			$translationListResult = $this -> translationObj -> getAllTranslation_OrderByColumnWithLimit($column, $sort, $this -> start, $this -> limit);
+			$sort = strtolower($sort);
+			$column = strtolower($column);
+			$this -> view -> sort -> {$column} -> cssClass = 'sort-arrow-' . $sort;
+			$this -> view -> sort -> {$column} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $column . '/sort/' . ($sortInvert);
 		} else {
-			$translationListResult = $this -> translationObj -> getAllTranslationOrderByIdWithLimit($this -> start, $this -> limit);
+			$translationListResult = $this -> translationObj -> getAllTranslation_OrderByColumnWithLimit('id', 'ASC', $this -> start, $this -> limit);
 		}
-		$this -> pagingObj -> _init($this -> translationObj -> totalRecordsFound);
+
+		$this -> pagingObj -> _init($this -> translationObj -> getAdapter() -> fetchOne('SELECT FOUND_ROWS()'));
+		//$this -> pagingObj -> _init($this -> staticObj -> totalRecordsFound);
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
 
-		//listing
-		$translationList = '';
-		if (!empty($translationListResult) and false != $translationListResult) {
-			foreach ($translationListResult as $key => $value) {
-				$translationList .= '<tr>';
-				$translationList .= '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="translationId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				$translationList .= '<td class="jstalgntop">' . $value['label'] . '</td>';
-				$translationList .= '<td class="jstalgntop">' . $value['translation'] . '</td>';
-				$translationList .= '<td class="jstalgntop">' . $value['modified_time'] . '</td>';
-				$translationList .= '<td class="jstalgntop last"><a href="/admin/handle/pkg/translation/action/edit/s/1/id/' . $value['id'] . '"
-						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
-			class="preview fl" title="Preview"></a></td>';
-				$translationList .= '</tr>';
-			}
-		} else {
+		if (empty($translationListResult) and false == $translationListResult) {
 			$this -> view -> notificationMessage = $this -> view -> __('Sorry, no records found');
 			$this -> view -> notificationMessageStyle = 'display: block;';
 		}
 
-		$this -> view -> translationList = $translationList;
+		$this -> view -> translationList = $translationListResult;
 		$this -> view -> render('translation/listTranslation.phtml');
+		exit();
+	}
+
+	public function exportcsvAction() {
+		set_time_limit(0);
+		$allData = $this -> translationObj -> getAllTranslation();
+		$this -> exportSQL2CSV($allData, array('id', 'label', 'translation', 'locale_id', 'comments'), __CLASS__);
+	}
+
+	public function importcsvAction() {
+		$form = new Translation_Import_CSV($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$uploadObj = new Aula_Model_Upload('file');
+			if ($uploadObj -> CheckIfThereIsFile() === true) {
+				if ($uploadObj -> validatedMime()) {
+					if ($uploadObj -> validatedSize()) {
+						$result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> translationObj, false);
+						if ($result == true) {
+							header('Location: /admin/handle/pkg/translation/action/list/');
+							exit();
+						}
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('translation/addTranslation.phtml');
 		exit();
 	}
 

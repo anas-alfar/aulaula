@@ -9638,3 +9638,579 @@ WARNING [2]:
 Line 24 in file D:\wamp\www\www.mutashabih.clean\public\index.php
 require_once(D:\wamp\www\www.mutashabih.clean\library\Favicon\Controller\Ico.php) [function.require-once]: failed to open stream: No such file or directory
 ===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 285 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Undefined offset: 0
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+NOTICE [8]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: column
+===========================
+NOTICE [8]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Landlots/Model/Provence.php
+Undefined variable: sorting
+===========================
+WARNING [2]:
+Line 284 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_diff_uassoc(): at least 3 parameters are required, 2 given
+===========================
+NOTICE [8]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Undefined offset: 0
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_diff(): Argument #1 is not an array
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+in_array() expects parameter 2 to be array, integer given
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+in_array() expects parameter 2 to be array, integer given
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+in_array() expects parameter 2 to be array, integer given
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+in_array() expects parameter 2 to be array, integer given
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_diff_assoc(): Argument #1 is not an array
+===========================
+WARNING [2]:
+Line 283 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_diff(): Argument #1 is not an array
+===========================
+WARNING [2]:
+Line 289 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+implode(): Invalid arguments passed
+===========================
+NOTICE [8]:
+Line 30 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload.php
+Undefined index: fileVideo
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Aula/Model/Upload/file.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 168 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: _FILE
+===========================
+WARNING [2]:
+Line 167 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fread() expects exactly 2 parameters, 1 given
+===========================
+WARNING [2]:
+Line 167 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fgets() expects parameter 1 to be resource, string given
+===========================
+WARNING [2]:
+Line 167 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fgets() expects parameter 1 to be resource, string given
+===========================
+WARNING [2]:
+Line 167 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fgets() expects parameter 1 to be resource, string given
+===========================
+NOTICE [8]:
+Line 172 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: fh
+===========================
+WARNING [2]:
+Line 172 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fclose() expects parameter 1 to be resource, null given
+===========================
+NOTICE [8]:
+Line 179 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: fh
+===========================
+WARNING [2]:
+Line 179 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fclose() expects parameter 1 to be resource, null given
+===========================
+NOTICE [8]:
+Line 179 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: fh
+===========================
+WARNING [2]:
+Line 179 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+fclose() expects parameter 1 to be resource, null given
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 193 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 198 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 199 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 200 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 1
+===========================
+NOTICE [8]:
+Line 200 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 2
+===========================
+NOTICE [8]:
+Line 200 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined offset: 3
+===========================
+NOTICE [8]:
+Line 195 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: str
+===========================
+NOTICE [8]:
+Line 195 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: str
+===========================
+NOTICE [8]:
+Line 195 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined variable: str
+===========================
+WARNING [2]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Illegal offset type in unset
+===========================
+WARNING [2]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Illegal offset type in unset
+===========================
+WARNING [2]:
+Line 197 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Illegal offset type in unset
+===========================
+WARNING [2]:
+Line 196 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Illegal offset type
+===========================
+WARNING [2]:
+Line 209 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+UNKNOWN ERROR [4096]:
+Line 1031 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+Argument 1 passed to Zend_Db_Table_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php on line 211 and defined
+===========================
+WARNING [2]:
+Line 1062 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+array_key_exists() expects parameter 2 to be array, null given
+===========================
+UNKNOWN ERROR [4096]:
+Line 536 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Argument 2 passed to Zend_Db_Adapter_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php on line 1075 and defined
+===========================
+WARNING [2]:
+Line 542 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 573 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+array_values() expects parameter 1 to be array, null given
+===========================
+WARNING [2]:
+Line 209 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+UNKNOWN ERROR [4096]:
+Line 1031 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+Argument 1 passed to Zend_Db_Table_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php on line 211 and defined
+===========================
+WARNING [2]:
+Line 1062 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+array_key_exists() expects parameter 2 to be array, null given
+===========================
+UNKNOWN ERROR [4096]:
+Line 536 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Argument 2 passed to Zend_Db_Adapter_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php on line 1075 and defined
+===========================
+WARNING [2]:
+Line 542 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 573 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+array_values() expects parameter 1 to be array, null given
+===========================
+WARNING [2]:
+Line 209 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+WARNING [2]:
+Line 210 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+WARNING [2]:
+Line 210 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+WARNING [2]:
+Line 213 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+explode() expects parameter 2 to be string, array given
+===========================
+NOTICE [8]:
+Line 211 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Use of undefined constant arr - assumed 'arr'
+===========================
+NOTICE [8]:
+Line 211 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Use of undefined constant arr - assumed 'arr'
+===========================
+WARNING [2]:
+Line 312 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+fopen() expects at least 2 parameters, 1 given
+===========================
+WARNING [2]:
+Line 312 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+fopen() expects at least 2 parameters, 1 given
+===========================
+WARNING [2]:
+Line 312 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+fopen() expects at least 2 parameters, 1 given
+===========================
+WARNING [2]:
+Line 312 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+fopen() expects at least 2 parameters, 1 given
+===========================
+WARNING [2]:
+Line 354 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_key_exists(): The first argument should be either a string or an integer
+===========================
+NOTICE [8]:
+Line 104 in file /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+NOTICE [8]:
+Line 104 in file /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php
+Undefined index: action
+===========================
+NOTICE [8]:
+Line 115 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php
+Uninitialized string offset: 0
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/DefaultAdmin.php): failed to open stream: No such file or directory
+===========================
+E_STRICT [2048]:
+Line 131 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 142 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 131 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 142 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 131 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 142 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 99 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 111 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Undefined property: Translation_Controller_DefaultAdmin::$typeObj
+===========================
+NOTICE [8]:
+Line 111 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 111 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$label
+===========================
+NOTICE [8]:
+Line 58 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$translation
+===========================
+NOTICE [8]:
+Line 62 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$date_added
+===========================
+E_STRICT [2048]:
+Line 99 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Undefined property: stdClass::$title
+===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/translation/listTranslation.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 344 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Undefined index: options
+===========================

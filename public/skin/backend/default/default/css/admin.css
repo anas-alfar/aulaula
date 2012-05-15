@@ -839,4 +839,36 @@ a.feature {
 }
 .inptflxFilterLong {
 	width: 300px;
-} 
+}
+.status{
+	margin: 0 10px 0 0
+}
+.excel{
+	margin-top: 10px; 
+	margin-bottom: 10px
+}
+.excel span{
+	margin-right: 20px;
+}
+/*
+a.modify, a.delete, a.approve, a.preview, a.feature {
+	display: inline-block;
+	margin-right: 15px;
+	width: 16px;
+	height: 19px;
+	background: url(../images/edit.gif) no-repeat 100% 0
+}*/
+a.export {
+	display: inline-block;
+	background: url(../images/export-excel.png) no-repeat 0 0;
+	
+	width: 48px;
+	height: 48px;
+}
+a.import {
+	display: inline-block;
+	background: url(../images/import-excel.png) no-repeat 0 0;
+	width: 48px;
+	height: 48px;
+	margin-right: 5px;
+}

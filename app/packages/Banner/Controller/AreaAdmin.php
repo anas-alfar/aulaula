@@ -277,7 +277,7 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 				$sort = 'DESC';
 				$sortInvert = 'asc';
 			}
-			$areaListResult = $this -> areaObj -> select() -> from ('banner',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("$column $sort") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
+			$areaListResult = $this -> areaObj -> select() -> from ('banner_area',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("$column $sort") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
 			$sort = strtolower($sort);
 			$column = strtolower($column);
 			$this -> view -> sort -> {$column} -> cssClass = 'sort-arrow-' . $sort;
