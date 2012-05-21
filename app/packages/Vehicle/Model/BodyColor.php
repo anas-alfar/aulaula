@@ -42,8 +42,8 @@ class Vehicle_Model_BodyColor extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'title', 'description', 'locale_id', 'date_added', 'comments', 'options');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `description`, `locale_id`, `date_added`, `comments`, `options`';
+		$this -> cols = $this -> _cols = array('id', 'title', 'description', 'locale_id', 'date_added', 'hash_key', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `description`, `locale_id`, `date_added`, `hash_key`, `comments`, `options`';
 		parent::__construct();
 	}
 	

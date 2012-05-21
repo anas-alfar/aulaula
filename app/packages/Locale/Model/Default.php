@@ -41,13 +41,41 @@ class Locale_Model_Default extends Aula_Model_DbTable {
 	public $approved = 'No';
 	public $order = 1;
 	public $comments = '';
-	public $options = '';
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 	
 	public function __construct() {
 		$this -> cols = $this -> _cols = array('id', 'locale', 'title', 'locale_title', 'published', 'approved', 'order', 'date_added', 'comments');
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `locale`, `title`, `locale_title`, `published`, `approved`, `order`, `date_added`, `comments` ';
 		parent::__construct(); 
+	}
+	
+		public function getAllLocale_OrderByColumnWithLimit( $column, $sorting, $start, $limit ) 
+	{
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+		
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> order("$column $sorting") 
+		-> limit("$start, $limit") 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
+	
+	public function getAllLocale( ) 
+	{
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
 	}
 	
 }

@@ -42,8 +42,8 @@ class Vehicle_Model_Make extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'vehicle_type_id', 'title', 'description', 'locale_id', 'date_added', 'comments', 'options');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `vehicle_type_id`, `title`, `description`, `locale_id`, `date_added`, `comments`, `options`';
+		$this -> cols = $this -> _cols = array('id', 'vehicle_type_id', 'title', 'description', 'locale_id', 'hash_key', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `vehicle_type_id`, `title`, `description`, `locale_id`, `hash_key`, `date_added`, `comments`, `options`';
 		parent::__construct();
 	}
 	

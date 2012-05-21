@@ -2,125 +2,84 @@
 
 class Locale_Controller_DefaultAdmin extends Aula_Controller_Action {
 
-	private $localeObj = Null;
+	private $localeObj = NULL;
 
 	protected function _init() {
 		$this -> localeObj = new Locale_Model_Default();
+
 		$this -> defualtAdminAction = 'list';
+
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'localeId' => array('numeric', 0), 'Id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'locale' => array('text', 1), 'localeTitle' => array('text', 1), 'published' => array('text', 0, $this -> localeObj -> published), 'approved' => array('text', 0, $this -> localeObj -> approved), 'order' => array('numericUnsigned', 0, $this -> localeObj -> order), 'afterId' => array('numeric', 0), 'comment' => array('text', 0, $this -> localeObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'dateAddedFrom' => array('shortDateTime', 0), 'dateAddedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'localeId' => array('numeric', 0), 'id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'description' => array('text', 1), 'comment' => array('text', 0, $this -> localeObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
-
-		//order list
-		$this -> afterIdList = '';
-		$this -> afterIdListResult = $this -> localeObj -> getAllLocaleOrderById();
-		if (!empty($this -> afterIdListResult)) {
-			foreach ($this->afterIdListResult as $key => $value) {
-				$selectedItem = ($value['id'] == $this -> view -> sanitized['afterId']['value']) ? 'selected="selected"' : '';
-				$this -> afterIdList .= '<option value="' . $value['id'] . '"' . $selectedItem . '>' . $value['title'] . '</option>';
-			}
+		if (isset($GLOBALS['AULA_BLACKLIST']['introTextStatic'])) {
+			$this -> view -> sanitized['introTextStatic']['value'] = $GLOBALS['AULA_BLACKLIST']['introTextStatic'];
 		}
-		$this -> view -> afterIdList = $this -> afterIdList;
+		if (isset($GLOBALS['AULA_BLACKLIST']['fullTextStatic'])) {
+			$this -> view -> sanitized['fullTextStatic']['value'] = $GLOBALS['AULA_BLACKLIST']['fullTextStatic'];
+		}
+		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
+		$this -> view -> sanitized['locale']['value'] = 1;
+
+		$this -> view -> importExcelLink = '/admin/handle/pkg/locale/action/importcsv/';
+		$this -> view -> exportExcelLink = '/admin/handle/pkg/locale/action/exportcsv/';
 	}
 
 	public function addAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				$result = $this -> localeObj -> insertIntoLocale(Null, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> localeTitle -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				$this -> view -> sanitized -> Id -> value = $result[0];
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/locale/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/locale/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on add record');
-				}
-			}
-		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+		$form = new Locale_Form_Default($this -> view);
+		$form -> setView($this -> view);
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-			}
-		}
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$stmt = $this -> localeObj -> getAdapter() -> prepare('UPDATE locale SET `order`=`order`+1 WHERE `order` >= ?');
+			$stmt -> execute(array($_POST['optional']['order']));
 
+			$stmt -> execute(array($_POST['optional']['order']));
+
+			$localeData = array('locale' => $_POST['mandatory']['locale'], 'title' => $_POST['mandatory']['title'], 'locale_title' => $_POST['mandatory']['locale_title'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved'], 'order' => $_POST['optional']['order'], 'comments' => $_POST['optional']['comments'], );
+			$this -> localeObj -> insert($localeData);
+
+			header('Location: /admin/handle/pkg/locale/action/list/');
+			exit();
+		}
+		$this -> view -> form = $form;
 		$this -> view -> render('locale/addLocale.phtml');
 		exit();
-
 	}
 
 	public function editAction() {
-		if ($this -> isPagePostBack) {
-			$this -> filterObj -> trimData($this -> view -> sanitized);
-			$this -> filterObj -> sanitizeData($this -> view -> sanitized);
-			$this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-			if (empty($this -> errorMessage)) {
-				if ($this -> view -> sanitized -> order -> value == -1) {
-					$this -> view -> sanitized -> order -> value = $this -> view -> sanitized -> afterId -> value;
-				}
-				$result = $this -> localeObj -> updateLocaleById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> locale -> value, $this -> view -> sanitized -> localeTitle -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> view -> sanitized -> order -> value);
-				if ($result !== false) {
-					if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-						header('Location: /admin/handle/pkg/locale/action/list/s/1');
-						exit();
-					}
-					header('Location: /admin/handle/pkg/locale/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-					exit();
-				} else {
-					$this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-				}
+		$form = new Locale_Form_Default($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$localeId = (int)$_POST['mandatory']['id'];
+			$localeObjResult = $this -> localeObj -> select() -> where('`id` = ?', $localeId) -> query() -> fetch();
+			if ($localeObjResult['order'] != $_POST['optional']['order']) {
+				$stmt = $this -> localeObj -> getAdapter() -> prepare('UPDATE locale SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($_POST['optional']['order']));
 			}
-		} elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-			$result = $this -> localeObj -> getLocaleDetailsById(( int )$_GET['id']);
-			$result = $result[0];
-			$this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'localeId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'title' => array('text', 1, $result['title']), 'locale' => array('text', 1, $result['locale']), 'localeTitle' => array('text', 1, $result['title']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'order' => array('numericUnsigned', 0, $result['order']), 'afterId' => array('numeric', 0), 'comment' => array('text', 0, $result['comments']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'dateAddedFrom' => array('shortDateTime', 0), 'dateAddedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-			$this -> view -> sanitized = array();
-			$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-			$this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-			$this -> view -> arrayToObject($this -> view -> sanitized);
+
+			$localeData = array('locale' => $_POST['mandatory']['locale'], 'title' => $_POST['mandatory']['title'], 'locale_title' => $_POST['mandatory']['locale_title'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved'], 'order' => $_POST['optional']['order'], 'comments' => $_POST['optional']['comments'], );
+			$this -> localeObj -> update($localeData, '`id` = ' . $localeId);
+
+			header('Location: /admin/handle/pkg/locale/action/list/');
+			exit();
 		} else {
-			$this -> view -> arrayToObject($this -> view -> sanitized);
-		}
+			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+				$localeObjResult = $this -> localeObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
 
-		if (!empty($this -> errorMessage)) {
-			foreach ($this->errorMessage as $key => $msg) {
-				$this -> view -> sanitized -> $key -> errorMessage = $msg;
-				$this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
+				if ($localeObjResult !== false) {
+					//$localeObjResult['options'] = json_decode($localeObjResult['options']);
+
+					$form -> populate($localeObjResult);
+				} else {
+					header('Location: /admin/handle/pkg/locale/action/list');
+					exit();
+				}
 			}
 		}
-
-		$this -> view -> render('locale/addLocale.phtml');
-		exit();
-	}
-
-	public function deleteAction() {
-		$this -> view -> arrayToObject($this -> view -> sanitized);
-		if (!empty($this -> view -> sanitized -> localeId -> value)) {
-			foreach ($this->view->sanitized->localeId->value as $id => $value) {
-				$localeDelete = $this -> localeObj -> deleteFromLocaleById($id);
-			}
-			if (!empty($localeDelete)) {
-				header('Location: /admin/handle/pkg/locale/action/list/success/delete');
-				exit();
-			}
-		}
-		header('Location: /admin/handle/pkg/locale/action/list/');
+		$this -> view -> form = $form;
+		$this -> view -> render('locale/updateLocale.phtml');
 		exit();
 	}
 
@@ -129,7 +88,9 @@ class Locale_Controller_DefaultAdmin extends Aula_Controller_Action {
 		if (!empty($this -> view -> sanitized -> localeId -> value)) {
 			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == 'Yes' ? 'Yes' : 'No';
 			foreach ($this->view->sanitized->localeId->value as $id => $value) {
-				$localePublish = $this -> localeObj -> updateLocalePublishedColumnById($id, $this -> view -> sanitized -> status -> value);
+				$data = array('published' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> localeObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$localePublish = $this -> localeObj -> update($data, $where);
 			}
 			if (!empty($localePublish)) {
 				header('Location: /admin/handle/pkg/locale/action/list/success/publish');
@@ -145,7 +106,9 @@ class Locale_Controller_DefaultAdmin extends Aula_Controller_Action {
 		if (!empty($this -> view -> sanitized -> localeId -> value)) {
 			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == 'Yes' ? 'Yes' : 'No';
 			foreach ($this->view->sanitized->localeId->value as $id => $value) {
-				$localeAprrove = $this -> localeObj -> updateLocaleApprovedColumnById($id, $this -> view -> sanitized -> status -> value);
+				$data = array('approved' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> localeObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$localeAprrove = $this -> localeObj -> update($data, $where);
 			}
 			if (!empty($localeAprrove)) {
 				header('Location: /admin/handle/pkg/locale/action/list/success/approve');
@@ -156,117 +119,113 @@ class Locale_Controller_DefaultAdmin extends Aula_Controller_Action {
 		exit();
 	}
 
-	public function orderAction() {
+	public function deleteAction() {
+		$this -> view -> arrayToObject($this -> view -> sanitized);
+		if (!empty($this -> view -> sanitized -> localeId -> value)) {
+			foreach ($this -> view -> sanitized -> localeId -> value as $id => $value) {
+				$where = $this -> localeObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$stmt = $this -> localeObj -> delete($where);
+			}
+			if (!empty($stmt)) {
+				header('Location: /admin/handle/pkg/locale/action/list/success/delete');
+				exit();
+			}
+		}
+		header('Location: /admin/handle/pkg/locale/action/list/');
+		exit();
 	}
 
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		$this -> view -> sanitized -> actionURI -> value = '/admin/handle/pkg/locale/action/';
+
+		if (!empty($_GET['success'])) {
+			$this -> view -> successMessageStyle = 'display: block;';
+			switch ($_GET['success']) {
+				case 'approve' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Approved');
+					break;
+				case 'publish' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Published');
+					break;
+				case 'delete' :
+					$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
+					break;
+			}
+		}
+
 		if (isset($_SERVER['REQUEST_URI']) and !empty($_SERVER['REQUEST_URI'])) {
 			$this -> view -> sanitized -> redirectURI -> value = $_SERVER['REQUEST_URI'];
 		}
 
-		if ($_GET['success'] == 'approve') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Approved');
-			$this -> view -> successMessageStyle = 'display: block;';
-		} elseif ($_GET['success'] == 'publish') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Published');
-			$this -> view -> successMessageStyle = 'display: block;';
-		} elseif ($_GET['success'] == 'delete') {
-			$this -> view -> successMessage = $this -> view -> __('Records successfully Deleted');
-			$this -> view -> successMessageStyle = 'display: block;';
+		$this -> view -> sort = (object)NULL;
+		foreach ($this-> localeObj -> cols as $col) {
+			/**
+			 * adding the following two lines to prvent E_STRICT error
+			 */
+			$this -> view -> sort -> {$col} = (object)NULL;
+			$this -> view -> sort -> {$col} -> cssClass = 'sort-title-desc';
+			$this -> view -> sort -> {$col} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $col . '/sort/desc';
 		}
 
-		//sortin
-		$this -> view -> sort -> title -> cssClass = 'sort-title';
-		$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/asc';
-		$this -> view -> sort -> localeTitle -> cssClass = 'sort-title';
-		$this -> view -> sort -> localeTitle -> href = $this -> view -> sanitized -> actionURI -> value . 'list/localeTitle/asc';
-		$this -> view -> sort -> showInMenu -> cssClass = 'sort-title';
-		$this -> view -> sort -> showInMenu -> href = $this -> view -> sanitized -> actionURI -> value . 'list/showInMenu/asc';
-		$this -> view -> sort -> published -> cssClass = 'sort-title';
-		$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-		$this -> view -> sort -> approved -> cssClass = 'sort-title';
-		$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-		$this -> view -> sort -> dateAdded -> cssClass = 'sort-title';
-		$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-
-		if (isset($_GET['title']) && $_GET['title'] == 'asc') {
-			$this -> view -> sort -> title -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByTitleWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['title']) && $_GET['title'] == 'desc') {
-			$this -> view -> sort -> title -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> title -> href = $this -> view -> sanitized -> actionURI -> value . 'list/title/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByTitleWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['localeTitle']) && $_GET['localeTitle'] == 'asc') {
-			$this -> view -> sort -> localeTitle -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> localeTitle -> href = $this -> view -> sanitized -> actionURI -> value . 'list/localeTitle/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByLocale_titleWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['localeTitle']) && $_GET['localeTitle'] == 'desc') {
-			$this -> view -> sort -> localeTitle -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> localeTitle -> href = $this -> view -> sanitized -> actionURI -> value . 'list/localeTitle/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByLocale_titleWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['showInMenu']) && $_GET['showInMenu'] == 'asc') {
-			$this -> view -> sort -> showInMenu -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> showInMenu -> href = $this -> view -> sanitized -> actionURI -> value . 'list/showInMenu/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByShow_in_menuWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['showInMenu']) && $_GET['showInMenu'] == 'desc') {
-			$this -> view -> sort -> showInMenu -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> showInMenu -> href = $this -> view -> sanitized -> actionURI -> value . 'list/showInMenu/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByShow_in_menuWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'asc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByPublishedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['published']) && $_GET['published'] == 'desc') {
-			$this -> view -> sort -> published -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> published -> href = $this -> view -> sanitized -> actionURI -> value . 'list/published/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByPublishedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'asc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByApprovedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['approved']) && $_GET['approved'] == 'desc') {
-			$this -> view -> sort -> approved -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> approved -> href = $this -> view -> sanitized -> actionURI -> value . 'list/approved/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByApprovedWithLimit('DESC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'asc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-asc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/desc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByDate_addedWithLimit('ASC', $this -> start, $this -> limit);
-		} elseif (isset($_GET['dateAdded']) && $_GET['dateAdded'] == 'desc') {
-			$this -> view -> sort -> dateAdded -> cssClass = 'sort-arrow-desc';
-			$this -> view -> sort -> dateAdded -> href = $this -> view -> sanitized -> actionURI -> value . 'list/dateAdded/asc';
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByDate_addedWithLimit('DESC', $this -> start, $this -> limit);
-		} else {
-			$localeListResult = $this -> localeObj -> getAllLocaleOrderByIdWithLimit($this -> start, $this -> limit);
-		}
-
-		//listing
-		$localeList = '';
-		$localeIfnoList = '';
-		if (!empty($localeListResult) and false != $localeListResult) {
-			foreach ($localeListResult as $key => $value) {
-				$localeList .= '<tr>';
-				$localeList .= '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="localeId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				$localeList .= '<td class="jstalgntop">' . $value['title'] . '</td>';
-				$localeList .= '<td class="jstalgntop">' . $value['locale_title'] . '</td>';
-				$localeList .= '<td class="jstalgntop">' . $this -> view -> __($value['published']) . '</td>';
-				$localeList .= '<td class="jstalgntop">' . $this -> view -> __($value['approved']) . '</td>';
-				$localeList .= '<td class="jstalgntop">' . $value['date_added'] . '</td>';
-				$localeList .= '<td class="jstalgntop last"><a href="/admin/handle/pkg/locale/action/edit/s/1/id/' . $value['id'] . '"
-						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
-			class="preview fl" title="Preview"></a></td>';
-				$localeList .= '</tr>';
+		if (isset($_GET['col']) and (in_array($_GET['col'], $this -> localeObj -> cols))) {
+			$sort = 'ASC';
+			$sortInvert = 'desc';
+			$column = $_GET['col'];
+			if (isset($_GET['sort']) and (0 === strcasecmp($_GET['sort'], 'DESC'))) {
+				$sort = 'DESC';
+				$sortInvert = 'asc';
 			}
+			$localeListResult = $this -> localeObj -> getAllLocale_OrderByColumnWithLimit($column, $sort, $this -> start, $this -> limit);
+			$sort = strtolower($sort);
+			$column = strtolower($column);
+			$this -> view -> sort -> {$column} -> cssClass = 'sort-arrow-' . $sort;
+			$this -> view -> sort -> {$column} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $column . '/sort/' . ($sortInvert);
 		} else {
+			$localeListResult = $this -> localeObj -> getAllLocale_OrderByColumnWithLimit('id', 'ASC', $this -> start, $this -> limit);
+		}
+
+		$this -> pagingObj -> _init($this -> localeObj -> getAdapter() -> fetchOne('SELECT FOUND_ROWS()'));
+		//$this -> pagingObj -> _init($this -> staticObj -> totalRecordsFound);
+		$this -> view -> paging = $this -> pagingObj -> paging;
+		$this -> view -> arrayToObject($this -> view -> paging);
+
+		if (empty($localeListResult) and false == $localeListResult) {
 			$this -> view -> notificationMessage = $this -> view -> __('Sorry, no records found');
 			$this -> view -> notificationMessageStyle = 'display: block;';
 		}
 
-		$this -> view -> localeList = $localeList;
+		$this -> view -> localeList = $localeListResult;
 		$this -> view -> render('locale/listLocale.phtml');
+		exit();
+	}
+
+	public function exportcsvAction() {
+		set_time_limit(0);
+		$allData = $this -> localeObj -> getAllLocale();
+		$this -> exportSQL2CSV($allData, array('id', 'locale', 'title', 'locale_title', 'published', 'approved', 'order', 'comments'), __CLASS__);
+	}
+
+	public function importcsvAction() {
+		$form = new Locale_Import_CSV($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$uploadObj = new Aula_Model_Upload('file');
+			if ($uploadObj -> CheckIfThereIsFile() === true) {
+				if ($uploadObj -> validatedMime()) {
+					if ($uploadObj -> validatedSize()) {
+						$result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> localeObj, false);
+						if ($result == true) {
+							header('Location: /admin/handle/pkg/locale/action/list/');
+							exit();
+						}
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('locale/addLocale.phtml');
 		exit();
 	}
 

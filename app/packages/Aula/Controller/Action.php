@@ -276,18 +276,14 @@ class Aula_Controller_Action {
 	}
 
 	protected function exportSQL2CSV($data, $header, $fileName = 'mutashabeh_data') {
-		$flag = false;
 		$fileName = $fileName . '_' . date('Ymd') . ".xls";
 
+		echo implode("\t", array_values($header)) . "\r\n";
 		foreach ($data as $row) {
 			foreach ($row as $k1 => $v1) {
 				if (!in_array($k1, $header)) {
 					unset($row[$k1]);
 				}
-			}
-			if (!$flag) {
-				echo implode("\t", array_keys($row)) . "\r\n";
-				$flag = true;
 			}
 			array_walk($row, 'self::cleanDataCSV');
 			echo implode("\t", array_values($row)) . "\r\n";
@@ -332,10 +328,7 @@ class Aula_Controller_Action {
 						$flag = true;
 						continue;
 					}
-					/*$checkProheptedKeyid = array_keys($header, 'id');
-					 if (sizeof($checkProheptedKeyid) == 1) {
-					 $idIndex = $checkProheptedKeyid[0];
-					 }*/
+
 					$str = '';
 					for ($i = 0; $i < sizeof($header); $i++) {
 						$str .= "arr[$header[$i]]=$line[$i]&";
@@ -356,7 +349,6 @@ class Aula_Controller_Action {
 			fclose($handle);
 			return true;
 		}
-
 	}
 
 }

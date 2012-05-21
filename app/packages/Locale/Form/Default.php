@@ -1,5 +1,5 @@
 <?php
-class Vehicle_Form_BodyColor extends Zend_Dojo_Form
+class Locale_Form_Default extends Zend_Dojo_Form
 {
 	public $view = NULL;
 	private $translator, $translateValidators;
@@ -7,24 +7,6 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 	public function __construct($view) {
 		$this->view = $view;
 		parent::__construct();
-	}
-	
-	private function _getLocaleAvailabe() {
-		/*$vehicleTypeObj = new Vehicle_Model_Type();
-		$this -> _selectVehicleTypeOptions = array (0 => $this -> view -> __('Root'));
-		$vehicleTypeObjResult 	= $vehicleTypeObj -> select() -> query() -> fetchAll();
-		if (!empty($vehicleTypeObjResult)) {
-			foreach ($vehicleTypeObjResult as $key => $value) {
-				$this->_selectVehicleTypeOptions[$value['id']] = $value['title'];
-			}
-		}*/
-		$x = 1;
-		if ($x=1) {
-			return array(1 => 'English', 2 => 'Arabic');
-		} else {
-			return false;
-		}
-		//return $this->_selectVehicleTypeOptions;
 	}
 	
     public function init()
@@ -36,6 +18,7 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
             Zend_Validate_StringLength::TOO_SHORT 	=> $this-> view -> __ ( 'Value cannot be less than %min% characters'),
             Zend_Validate_StringLength::TOO_LONG 	=> $this-> view -> __ ( 'Value cannot be longer than %max% characters'),
             Zend_Validate_EmailAddress::INVALID 	=> $this-> view -> __ ( 'Invalid e-mail address'),
+			
 			);
 	    $this->translator = new Zend_Translate('array', $this->translateValidators);
     	Zend_Validate_Abstract::setDefaultTranslator($this->translator);	
@@ -55,84 +38,108 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
-
-		$flag = true;
-		foreach ($this->_getLocaleAvailabe() as $id => $value) {
-		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=>  $id,
-                //'legend' 		=>  $id,
+                'name'			=> 'mandatory',
+                'legend' 		=> 'mandatory',
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( $value . ' Vehicle_Information' ),
+                    'title' 	=> $this-> view -> __ ( 'Locale_Information' ),
                 )
         ));
+        $mandatoryForm->addElement(
+                'ValidationTextBox',
+                'locale',
+                array(
+                    'label' 	=> $this-> view -> __ ( 'Locale_Locale' ),
+                    'trim' 		=> true,
+                    'required'	=> true,
+                    'class' 	=> 'lablvalue jstalgntop',
+                )
+            );
         $mandatoryForm->addElement(
                 'ValidationTextBox',
                 'title',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_Title' ),
+                    'label' 	=> $this-> view -> __ ( 'Locale_Title' ),
                     'trim' 		=> true,
                     'required'	=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                 )
-        );
+            );
         $mandatoryForm->addElement(
                 'ValidationTextBox',
-                'description',
+                'locale_title',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_Description' ),
+                    'label' 	=> $this-> view -> __ ( 'Locale_Locale Title' ),
                     'trim' 		=> true,
                     'required'	=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                 )
+            );
+		$mandatoryForm->addElement(
+            'CheckBox',
+            'published',
+            array(
+                'label' 		=> $this-> view -> __('Locale_Published'),
+                'checkedValue' 	=> 'Yes',
+                'uncheckedValue'=> 'No',
+            )
         );
-
-		if ($flag === true) {
-	        $mandatoryForm->addElement(
-				'hidden',
-	            'id'
-	        );
-	        $mandatoryForm->addElement(
+		$mandatoryForm->addElement(
+            'CheckBox',
+            'approved',
+            array(
+                'label' 		=> $this-> view -> __('Locale	_Approved'),
+                'checkedValue' 	=> 'Yes',
+                'uncheckedValue'=> 'No',
+            )
+        );
+        $mandatoryForm->addElement(
+                'hidden',
+                'id'
+            );
+        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
+					//'required' 	=> true,
 					'value'		=> 'submit',
-					'label' 	=> $this-> view -> __ ( 'Vehicle_Save' ),
+					'label' 	=> $this-> view -> __ ( 'Locale_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-					)
-			);
-		$flag = false;
-		}
+				)
+		);
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 =>  'optional_' . $id,
-                    'legend' => $this-> view -> __ ( $value . ' Vehicle_Advanced Settings' ),
-        ));
-		
-		$optionalForm->addElement(
-			'TextBox',
-            'comments',
-            array(
-				'label' 	=> $this-> view -> __ ( 'Vehicle_Comments' ),
-                'trim' 		=> true,
-                'required'	=> false,
-                'class' 	=> 'lablvalue jstalgntop',
+                    'name' 	 => 'optional',
+                    'legend' => $this-> view -> __ ( 'Locale_Advanced Settings' ),
+                ));
+        $optionalForm->addElement(
+                'NumberTextBox',
+                'order',
+                array(
+                    'label' 	=> $this-> view -> __( 'Locale_Order' ),
+                    'class' 	=> 'lablvalue jstalgntop',
+                    'invalidMessage'=>'Invalid elevation.',
+                    'constraints' => array(
+                        'min' 	=> 0,
+                        'max'	=> 1000000,
+                        'places'=> 0,
+                    )
                 )
         );
         $optionalForm->addElement(
                 'TextBox',
-                'options',
+                'comments',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_Options' ),
+                    'label' 	=> $this-> view -> __ ( 'Locale_Comments' ),
                     'trim' 		=> true,
-                    'required'	=> false,
                     'class' 	=> 'lablvalue jstalgntop',
                 	)
-        );
+            );
+
 
 		$mandatoryForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$optionalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
@@ -152,16 +159,8 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-		//$mandatoryForm->comments->setDijitParam('required', false);
-		//$mandatoryForm->comments->setAttrib('required', false);
-		//$mandatoryForm->comments->setAttrib('dijitParams', array('required' => false));
-
-		
-		//$mandatoryForm->comments->removeDecorator ('HtmlTag');
-      	//$mandatoryForm->comments->removeDecorator ('Label');
-        
-        $this->addSubForm($mandatoryForm, $id)
-             ->addSubForm($optionalForm , 'optional_' . $id);
-		}
+        $this->addSubForm($mandatoryForm, 'mandatory')
+             ->addSubForm($optionalForm , 'optional');
+				
     }
 }
