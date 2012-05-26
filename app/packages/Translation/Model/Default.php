@@ -48,8 +48,8 @@ class Translation_Model_Default extends Aula_Model_DbTable {
 	public $modifiedTime = '0000-00-00';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'label', 'translation', 'locale_id', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `label`, `translation`, `locale_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments` ';
+		$this -> cols = $this -> _cols = array('id', 'label', 'translation', 'locale_id', 'hash_key', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'date_added', 'comments');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `label`, `translation`, `locale_id`, `hash_key`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments` ';
 		parent::__construct();
 	}
 	
@@ -70,6 +70,19 @@ class Translation_Model_Default extends Aula_Model_DbTable {
 
 		return $result;
 	}
+
+	public function getAllTranslationByHashkey( $hash_key ) 
+	{
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> where ('hash_key = ?', $hash_key )
+		-> query()
+		-> fetchAll();
+
+		return $result;
+	}
+
 	
 	public function getAllTranslation( ) 
 	{

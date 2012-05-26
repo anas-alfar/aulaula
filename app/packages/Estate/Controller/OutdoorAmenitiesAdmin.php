@@ -38,9 +38,27 @@ class Estate_Controller_OutdoorAmenitiesAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$outdoorAmenitiesData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> outdoorAmenitiesObj -> insert($outdoorAmenitiesData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$outdoorAmenitiesData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$outdoorAmenitiesData['options'] = json_encode($_POST[$language_id]['options']);
+					$outdoorAmenitiesData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$outdoorAmenitiesId = $this -> outdoorAmenitiesObj -> insert($outdoorAmenitiesData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $outdoorAmenitiesId);
+					$this -> outdoorAmenitiesObj -> update(array('hash_key' => $hash_key), '`id` = ' . $outdoorAmenitiesId);
+					$flag = false;
+				} else {
+					$outdoorAmenitiesData['hash_key'] = $hash_key;
+					$this -> outdoorAmenitiesObj -> insert($outdoorAmenitiesData);
+				}
+			}
 			header('Location: /admin/handle/pkg/estate-outdoor-amenities/action/list/');
 			exit();
 		}
@@ -50,13 +68,13 @@ class Estate_Controller_OutdoorAmenitiesAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Estate_Form_OutdoorAmenities($this -> view);
+		$form = new Estate_Form_SimpleOutdoorAmenities($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$outdoorAmenitiesId = (int)$_POST['mandatory']['id'];
 
-			$outdoorAmenitiesData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$outdoorAmenitiesData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> outdoorAmenitiesObj -> update($outdoorAmenitiesData, '`id` = ' . $outdoorAmenitiesId);
 
 			header('Location: /admin/handle/pkg/estate-outdoor-amenities/action/list/');
@@ -154,7 +172,7 @@ class Estate_Controller_OutdoorAmenitiesAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> outdoorAmenitiesObj -> getAllOutdoorAmenities();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

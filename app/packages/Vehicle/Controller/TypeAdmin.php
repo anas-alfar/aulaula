@@ -38,6 +38,30 @@ class Vehicle_Controller_TypeAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$typeData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$typeData['options'] = json_encode($_POST[$language_id]['options']);
+					$typeData['comments'] = $_POST[$language_id]['comments'];
+
+				}
+				if ($flag === true) {
+					$typeId = $this -> typeObj -> insert($typeData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $typeId);
+					$this -> typeObj -> update(array('hash_key' => $hash_key), '`id` = ' . $typeId);
+					$flag = false;
+				} else {
+					$typeData['hash_key'] = $hash_key;
+					$this -> typeObj -> insert($typeData);
+				}
+			}				
+				
+				
+				
 			$typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> typeObj -> insert($typeData);
 
@@ -50,13 +74,13 @@ class Vehicle_Controller_TypeAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_Type($this -> view);
+		$form = new Vehicle_Form_SimpleType($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$typeId = (int)$_POST['mandatory']['id'];
 
-			$typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> typeObj -> update($typeData, '`id` = ' . $typeId);
 
 			header('Location: /admin/handle/pkg/vehicle-type/action/list/');
@@ -154,7 +178,7 @@ class Vehicle_Controller_TypeAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> typeObj -> getAllType();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

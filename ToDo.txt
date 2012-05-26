@@ -10,7 +10,6 @@ like columns(comments/options/published/approved/meta_data/...) in object_photo
 
 - publish_from/publish_to when adding object and the admin insert blank should be handled when editing the object.
 
-- add condition in order update query in insert/update table, handle if the admin didn't type prder !
-- the update quesry by default +2 the value not +
+- check all update order query in add/edit action should have where condition.
 
 - Check if we need to keep "import/export" in Aula_Controller_Action or change it tobe plugin?

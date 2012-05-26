@@ -38,9 +38,27 @@ class Estate_Controller_Livenear2Admin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$livenear2Data = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> livenear2Obj -> insert($livenear2Data);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$livenear2Data = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$livenear2Data['options'] = json_encode($_POST[$language_id]['options']);
+					$livenear2Data['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$livenear2Id = $this -> livenear2Obj -> insert($livenear2Data);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $livenear2Id);
+					$this -> livenear2Obj -> update(array('hash_key' => $hash_key), '`id` = ' . $livenear2Id);
+					$flag = false;
+				} else {
+					$livenear2Data['hash_key'] = $hash_key;
+					$this -> livenear2Obj -> insert($livenear2Data);
+				}
+			}
 			header('Location: /admin/handle/pkg/estate-livenear2/action/list/');
 			exit();
 		}
@@ -50,13 +68,13 @@ class Estate_Controller_Livenear2Admin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Estate_Form_Livenear2($this -> view);
+		$form = new Estate_Form_SimpleLivenear2($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$livenear2Id = (int)$_POST['mandatory']['id'];
 
-			$livenear2Data = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$livenear2Data = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> livenear2Obj -> update($livenear2Data, '`id` = ' . $livenear2Id);
 
 			header('Location: /admin/handle/pkg/estate-livenear2/action/list/');
@@ -154,7 +172,7 @@ class Estate_Controller_Livenear2Admin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> livenear2Obj -> getAllLivenear2();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

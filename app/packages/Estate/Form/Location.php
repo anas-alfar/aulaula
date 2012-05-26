@@ -10,6 +10,12 @@ class Estate_Form_Location extends Zend_Dojo_Form
 		parent::__construct();
 	}
 	
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+	
 	/*private function _getEstateTypeOptions() {
 		$estateTypeObj = new Estate_Model_Type();
 		$this -> _selectEstateTypeOptions = array ('' => $this -> view -> __('Root'));
@@ -51,12 +57,15 @@ class Estate_Form_Location extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Estate_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Estate_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -94,28 +103,31 @@ class Estate_Form_Location extends Zend_Dojo_Form
 				//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
             )
         );*/
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-        );
-        $mandatoryForm->addElement(
+
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Estate_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Estate_Advanced Settings' ),
-                ));
+                    'name' 	 =>  'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Estate_Advanced Settings' ),
+        ));
         $optionalForm->addElement(
                 'TextBox',
                 'comments',
@@ -154,8 +166,8 @@ class Estate_Form_Location extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
-				
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
     }
 }

@@ -38,9 +38,27 @@ class Estate_Controller_LocationAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$locationData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> locationObj -> insert($locationData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$locationData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$locationData['options'] = json_encode($_POST[$language_id]['options']);
+					$locationData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$locationId = $this -> locationObj -> insert($locationData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $locationId);
+					$this -> locationObj -> update(array('hash_key' => $hash_key), '`id` = ' . $locationId);
+					$flag = false;
+				} else {
+					$locationData['hash_key'] = $hash_key;
+					$this -> locationObj -> insert($locationData);
+				}
+			}
 			header('Location: /admin/handle/pkg/estate-location/action/list/');
 			exit();
 		}
@@ -50,13 +68,13 @@ class Estate_Controller_LocationAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Estate_Form_Location($this -> view);
+		$form = new Estate_Form_SimpleLocation($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$locationId = (int)$_POST['mandatory']['id'];
 
-			$locationData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$locationData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> locationObj -> update($locationData, '`id` = ' . $locationId);
 
 			header('Location: /admin/handle/pkg/estate-location/action/list/');
@@ -154,7 +172,7 @@ class Estate_Controller_LocationAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> locationObj -> getAllLocation();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

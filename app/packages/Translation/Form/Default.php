@@ -9,6 +9,12 @@ class Translation_Form_Default extends Zend_Dojo_Form
 		parent::__construct();
 	}
 	
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+	
     public function init()
     {
 		Zend_Dojo::enableForm($this);
@@ -38,12 +44,15 @@ class Translation_Form_Default extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Translation_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Translation_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -53,6 +62,10 @@ class Translation_Form_Default extends Zend_Dojo_Form
                     'label' 	=> $this-> view -> __ ( 'Translation_Label' ),
                     'trim' 		=> true,
                     'required'	=> true,
+                    'regExp' 	=> '(?:.*?[0-9a-zA-Z])[0-9a-zA-Z$!@{\]{\[]*',
+                    'class' 	=> 'lablvalue jstalgntop',
+                    'invalidMessage' => 'Invalid english characters',
+                    'promptMessage'  => $this-> view -> __ ( 'Translation_Label' ) . ' accept only english characters',
                     'class' 	=> 'lablvalue jstalgntop',
                 )
             );
@@ -66,28 +79,30 @@ class Translation_Form_Default extends Zend_Dojo_Form
                     'class' 	=> 'lablvalue jstalgntop',
                 )
             );
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-            );
-        $mandatoryForm->addElement(
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Translation_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Translation_Advanced Settings' ),
-                ));
+                    'name' 	 =>  'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Translation_Advanced Settings' ),
+        ));
         $optionalForm->addElement(
                 'TextBox',
                 'comments',
@@ -117,8 +132,8 @@ class Translation_Form_Default extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
-				
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
     }
 }

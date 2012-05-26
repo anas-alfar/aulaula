@@ -10846,3 +10846,691 @@ NOTICE [8]:
 Line 338 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
 Undefined index: options
 ===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Favicon/Controller/Ico.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Locale/Model/Defaule.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Undefined variable: vehicleTypeObjResult
+===========================
+WARNING [2]:
+Line 16 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 17 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/BodyColor.php
+Indirect modification of overloaded property Vehicle_Form_BodyColor::$_selectVehicleTypeOptions has no effect
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/DragsystemAdmin.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 129 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 129 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 129 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 129 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 129 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: id
+===========================
+NOTICE [8]:
+Line 50 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: mandatory
+===========================
+NOTICE [8]:
+Line 134 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 134 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 134 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 134 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 107 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Use of undefined constant dijit - assumed 'dijit'
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 108 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Use of undefined constant dijit - assumed 'dijit'
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 156 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined variable: modelObjResult
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 126 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 126 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 126 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 126 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 97 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 126 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 127 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 107 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined variable: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 131 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 131 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined index: comments
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 119 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 119 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined variable: locale_id
+===========================
+NOTICE [8]:
+Line 119 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleModel.php
+Undefined variable: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 128 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 125 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 90 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 90 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined index: description
+===========================
+NOTICE [8]:
+Line 90 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined index: title
+===========================
+NOTICE [8]:
+Line 90 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined index: mandatory
+===========================
+NOTICE [8]:
+Line 90 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined index: mandatory
+===========================
+NOTICE [8]:
+Line 121 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 121 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined index: locale_id
+===========================
+NOTICE [8]:
+Line 74 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php
+Undefined variable: form
+===========================
+NOTICE [8]:
+Line 97 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: form
+===========================
+NOTICE [8]:
+Line 97 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Use of undefined constant Zend_Form - assumed 'Zend_Form'
+===========================
+E_STRICT [2048]:
+Line 96 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Non-static method Zend_Form::getAttrib() should not be called statically, assuming $this from incompatible context
+===========================
+NOTICE [8]:
+Line 96 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Use of undefined constant Zend_Form - assumed 'Zend_Form'
+===========================
+NOTICE [8]:
+Line 19 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: locale_id
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: id1
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 3 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 3 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+WARNING [2]:
+Line 1296 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Missing argument 2 for Zend_Form::setDefault(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php on line 27 and defined
+===========================
+NOTICE [8]:
+Line 1302 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Undefined variable: value
+===========================
+NOTICE [8]:
+Line 75 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php
+Undefined variable: form
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: locale_id
+===========================
+NOTICE [8]:
+Line 95 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php
+Undefined variable: form
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Missing argument 2 for Vehicle_Form_SimpleMake::__construct(), called in /var/www/html/git/aulaula/app/packages/Vehicle/Controller/MakeAdmin.php on line 73 and defined
+===========================
+NOTICE [8]:
+Line 10 in file /var/www/html/git/aulaula/app/packages/Vehicle/Form/SimpleMake.php
+Undefined variable: locale_id
+===========================
+NOTICE [8]:
+Line 72 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/ModelAdmin.php
+Undefined variable: form
+===========================
+NOTICE [8]:
+Line 82 in file /var/www/html/git/aulaula/app/packages/Estate/Controller/ProvenceAdmin.php
+Undefined index: location_id
+===========================
+NOTICE [8]:
+Line 44 in file /var/www/html/git/aulaula/app/packages/Landlots/Controller/ProvenceAdmin.php
+Undefined index: landlots_location_id1
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Waseet/Controller/DefaultAdmin.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 187 in file /var/www/html/git/aulaula/app/packages/Waseet/Controller/CategoryAdmin.php
+Undefined property: Waseet_Controller_CategoryAdmin::$typeObj
+===========================
+NOTICE [8]:
+Line 321 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 321 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+array_diff(): Argument #2 is not an array
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Translation/Controller/DefaultAdmin.php
+Use of undefined constant Zend_Locale - assumed 'Zend_Locale'
+===========================
+WARNING [2]:
+Line 65 in file /var/www/html/git/aulaula/app/packages/Translation/Form/Default.php
+Division by zero
+===========================
+NOTICE [8]:
+Line 101 in file /var/www/html/git/aulaula/app/packages/Translation/Form/SimpleDefault.php
+Undefined variable: value
+===========================
+NOTICE [8]:
+Line 101 in file /var/www/html/git/aulaula/app/packages/Translation/Form/SimpleDefault.php
+Undefined variable: value
+===========================
+UNKNOWN ERROR [4096]:
+Line 144 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::setMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Form/Element.php on line 375 and defined
+===========================
+UNKNOWN ERROR [4096]:
+Line 123 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::addMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php on line 147 and defined
+===========================
+WARNING [2]:
+Line 125 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Translation/Form/SimpleDefault.php
+Indirect modification of overloaded property Translation_Form_SimpleDefault::$_selectAllTranslations has no effect
+===========================
+UNKNOWN ERROR [4096]:
+Line 144 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::setMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Form/Element.php on line 375 and defined
+===========================
+UNKNOWN ERROR [4096]:
+Line 123 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::addMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php on line 147 and defined
+===========================
+WARNING [2]:
+Line 125 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 1796 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Illegal offset type in isset or empty
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Translation/Form/SimpleDefault.php
+Indirect modification of overloaded property Translation_Form_SimpleDefault::$_selectAllTranslationOption has no effect
+===========================
+UNKNOWN ERROR [4096]:
+Line 144 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::setMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Form/Element.php on line 375 and defined
+===========================
+UNKNOWN ERROR [4096]:
+Line 123 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Argument 1 passed to Zend_Dojo_Form_Element_DijitMulti::addMultiOptions() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php on line 147 and defined
+===========================
+WARNING [2]:
+Line 125 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
+Invalid argument supplied for foreach()
+===========================

@@ -28,7 +28,7 @@ class Vehicle_Controller_InsideColorAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
-		
+
 		$this -> view -> importExcelLink = '/admin/handle/pkg/vehicle-inside-color/action/importcsv/';
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-inside-color/action/exportcsv/';
 	}
@@ -38,8 +38,27 @@ class Vehicle_Controller_InsideColorAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$insideColorData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> insideColorObj -> insert($insideColorData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$insideColorData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$insideColorData['options'] = json_encode($_POST[$language_id]['options']);
+					$insideColorData['comments'] = $_POST[$language_id]['comments'];
+
+				}
+				if ($flag === true) {
+					$insideColorId = $this -> insideColorObj -> insert($insideColorData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $insideColorId);
+					$this -> insideColorObj -> update(array('hash_key' => $hash_key), '`id` = ' . $insideColorId);
+					$flag = false;
+				} else {
+					$insideColorData['hash_key'] = $hash_key;
+					$this -> insideColorObj -> insert($insideColorData);
+				}
+			}
 
 			header('Location: /admin/handle/pkg/vehicle-inside-color/action/list/');
 			exit();
@@ -50,13 +69,13 @@ class Vehicle_Controller_InsideColorAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_InsideColor($this -> view);
+		$form = new Vehicle_Form_SimpleInsideColor($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$insideColorId = (int)$_POST['mandatory']['id'];
 
-			$insideColorData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$insideColorData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> insideColorObj -> update($insideColorData, '`id` = ' . $insideColorId);
 
 			header('Location: /admin/handle/pkg/vehicle-inside-color/action/list/');
@@ -154,7 +173,7 @@ class Vehicle_Controller_InsideColorAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> insideColorObj -> getAllInsideColor();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

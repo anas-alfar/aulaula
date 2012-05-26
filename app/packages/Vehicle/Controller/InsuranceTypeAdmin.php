@@ -38,6 +38,29 @@ class Vehicle_Controller_InsuranceTypeAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$insuranceTypeData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$insuranceTypeData['options'] = json_encode($_POST[$language_id]['options']);
+					$insuranceTypeData['comments'] = $_POST[$language_id]['comments'];
+
+				}
+				if ($flag === true) {
+					$insuranceTypeId = $this -> insuranceTypeObj -> insert($insuranceTypeData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $insuranceTypeId);
+					$this -> insuranceTypeObj -> update(array('hash_key' => $hash_key), '`id` = ' . $insuranceTypeId);
+					$flag = false;
+				} else {
+					$insuranceTypeData['hash_key'] = $hash_key;
+					$this -> insuranceTypeObj -> insert($insuranceTypeData);
+				}
+			}
+			
+			
 			$insuranceTypeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> insuranceTypeObj -> insert($insuranceTypeData);
 
@@ -50,13 +73,13 @@ class Vehicle_Controller_InsuranceTypeAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_InsuranceType($this -> view);
+		$form = new Vehicle_Form_SimpleInsuranceType($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$insuranceTypeId = (int)$_POST['mandatory']['id'];
 
-			$insuranceTypeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$insuranceTypeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> insuranceTypeObj -> update($insuranceTypeData, '`id` = ' . $insuranceTypeId);
 
 			header('Location: /admin/handle/pkg/vehicle-insurance-type/action/list/');
@@ -154,7 +177,7 @@ class Vehicle_Controller_InsuranceTypeAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> insuranceTypeObj -> getAllInsuranceType();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

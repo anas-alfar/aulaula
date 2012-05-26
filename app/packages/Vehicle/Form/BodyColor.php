@@ -8,25 +8,13 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 		$this->view = $view;
 		parent::__construct();
 	}
-	
+
 	private function _getLocaleAvailabe() {
-		/*$vehicleTypeObj = new Vehicle_Model_Type();
-		$this -> _selectVehicleTypeOptions = array (0 => $this -> view -> __('Root'));
-		$vehicleTypeObjResult 	= $vehicleTypeObj -> select() -> query() -> fetchAll();
-		if (!empty($vehicleTypeObjResult)) {
-			foreach ($vehicleTypeObjResult as $key => $value) {
-				$this->_selectVehicleTypeOptions[$value['id']] = $value['title'];
-			}
-		}*/
-		$x = 1;
-		if ($x=1) {
-			return array(1 => 'English', 2 => 'Arabic');
-		} else {
-			return false;
-		}
-		//return $this->_selectVehicleTypeOptions;
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
 	}
-	
+
     public function init()
     {
 		Zend_Dojo::enableForm($this);
@@ -61,10 +49,10 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=>  $id,
+                'name'			=>  $value['id'],
                 //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( $value . ' Vehicle_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Vehicle_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -109,8 +97,8 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 =>  'optional_' . $id,
-                    'legend' => $this-> view -> __ ( $value . ' Vehicle_Advanced Settings' ),
+                    'name' 	 =>  'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Vehicle_Advanced Settings' ),
         ));
 		
 		$optionalForm->addElement(
@@ -160,8 +148,8 @@ class Vehicle_Form_BodyColor extends Zend_Dojo_Form
 		//$mandatoryForm->comments->removeDecorator ('HtmlTag');
       	//$mandatoryForm->comments->removeDecorator ('Label');
         
-        $this->addSubForm($mandatoryForm, $id)
-             ->addSubForm($optionalForm , 'optional_' . $id);
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
 		}
     }
 }

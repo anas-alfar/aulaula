@@ -28,6 +28,9 @@ class Waseet_Controller_CategoryAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
+		
+		$this -> view -> importExcelLink = '/admin/handle/pkg/waseet-category/action/importcsv/';
+		$this -> view -> exportExcelLink = '/admin/handle/pkg/waseet-category/action/exportcsv/';
 	}
 
 	public function addAction() {
@@ -35,9 +38,27 @@ class Waseet_Controller_CategoryAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$categoryData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> categoryObj -> insert($categoryData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$categoryData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$categoryData['options'] = json_encode($_POST[$language_id]['options']);
+					$categoryData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$categoryId = $this -> categoryObj -> insert($categoryData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $categoryId);
+					$this -> categoryObj -> update(array('hash_key' => $hash_key), '`id` = ' . $categoryId);
+					$flag = false;
+				} else {
+					$categoryData['hash_key'] = $hash_key;
+					$this -> categoryObj -> insert($categoryData);
+				}
+			}
 			header('Location: /admin/handle/pkg/waseet-category/action/list/');
 			exit();
 		}
@@ -47,13 +68,13 @@ class Waseet_Controller_CategoryAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Waseet_Form_Category($this -> view);
+		$form = new Waseet_Form_SimpleCategory($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$categoryId = (int)$_POST['mandatory']['id'];
 
-			$categoryData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$categoryData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> categoryObj -> update($categoryData, '`id` = ' . $categoryId);
 
 			header('Location: /admin/handle/pkg/waseet-category/action/list/');
@@ -145,6 +166,35 @@ class Waseet_Controller_CategoryAdmin extends Aula_Controller_Action {
 
 		$this -> view -> categoryList = $categoryListResult;
 		$this -> view -> render('waseet/listCategory.phtml');
+		exit();
+	}
+
+	public function exportcsvAction() {
+		set_time_limit(0);
+		$allData = $this -> categoryObj -> getAllCategory();
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
+	}
+
+	public function importcsvAction() {
+		$form = new Waseet_Import_CSV($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$uploadObj = new Aula_Model_Upload('file');
+			if ($uploadObj -> CheckIfThereIsFile() === true) {
+				if ($uploadObj -> validatedMime()) {
+					if ($uploadObj -> validatedSize()) {
+						$result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> categoryObj);
+						if ($result == true) {
+							header('Location: /admin/handle/pkg/waseet-category/action/list/');
+							exit();
+						}
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('waseet/addCategory.phtml');
 		exit();
 	}
 

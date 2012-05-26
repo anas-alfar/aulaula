@@ -67,6 +67,17 @@ class Locale_Model_Default extends Aula_Model_DbTable {
 		return $result;
 	}
 	
+	public function getAllApprovedLocale() {
+		$result = $this
+		-> select() 
+		-> from($this->_name, array('id','locale','title','locale_title')) 
+		-> where('approved=?', 'Yes') 
+		-> query() 
+		-> fetchAll();
+		
+		return $result;
+	}
+	
 	public function getAllLocale( ) 
 	{
 		$result = $this 

@@ -28,7 +28,7 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
-		
+
 		$this -> view -> importExcelLink = '/admin/handle/pkg/vehicle-model/action/importcsv/';
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-model/action/exportcsv/';
 	}
@@ -38,11 +38,27 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$modelData = array(
-			'title' => $_POST['mandatory']['title'], 
-			'description' => $_POST['mandatory']['description'], 
-			'vehicle_make_id' => $_POST['mandatory']['vehicle_make_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> modelObj -> insert($modelData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$modelData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, 'vehicle_make_id' => $_POST[$language_id]['vehicle_make_id_' . $language_id], );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$modelData['options'] = json_encode($_POST[$language_id]['options']);
+					$modelData['comments'] = $_POST[$language_id]['comments'];
+				}
+
+				if ($flag === true) {
+					$modelId = $this -> modelObj -> insert($modelData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $modelId);
+					$this -> modelObj -> update(array('hash_key' => $hash_key), '`id` = ' . $modelId);
+					$flag = false;
+				} else {
+					$modelData['hash_key'] = $hash_key;
+					$this -> modelObj -> insert($modelData);
+				}
+			}
 
 			header('Location: /admin/handle/pkg/vehicle-model/action/list/');
 			exit();
@@ -53,13 +69,12 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_Model($this -> view);
-		$form -> setView($this -> view);
+		$form = new Vehicle_Form_SimpleModel($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$modelId = (int)$_POST['mandatory']['id'];
 
-			$modelData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'vehicle_make_id' => $_POST['mandatory']['vehicle_make_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$modelData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'vehicle_make_id' => $_POST['mandatory']['vehicle_make_id'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> modelObj -> update($modelData, '`id` = ' . $modelId);
 
 			header('Location: /admin/handle/pkg/vehicle-model/action/list/');
@@ -71,6 +86,8 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 				if ($modelObjResult !== false) {
 					$modelObjResult['options'] = json_decode($modelObjResult['options']);
 
+					$form->locale_id = $modelObjResult['locale_id'];
+					$form-> createForm();
 					$form -> populate($modelObjResult);
 				} else {
 					header('Location: /admin/handle/pkg/vehicle-model/action/list');
@@ -78,6 +95,7 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 				}
 			}
 		}
+		$form -> setView($this -> view);
 		$this -> view -> form = $form;
 		$this -> view -> render('vehicle/updateModel.phtml');
 		exit();
@@ -98,17 +116,19 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 		header('Location: /admin/handle/pkg/vehicle-model/action/list/');
 		exit();
 	}
-	
+
 	public function recordsAction() {
+		$locale_id = $_GET['locale_id'];
+
 		$data = new Zend_Dojo_Data();
 		$data -> setIdentifier('name');
-		
+
 		$typeObj = new Vehicle_Model_Type();
 		$makeObj = new Vehicle_Model_Make();
 
 		$vehicleTypeObjResult = $typeObj -> select() -> from(array('vehicle_type'), array('id')) -> query() -> fetchAll();
 		foreach ($vehicleTypeObjResult as $key => $id) {
-			$vehicleMakeObjResult = $makeObj -> select() -> from(array('vehicle_make'), array('id', 'title', 'vehicle_type_id')) -> where('`vehicle_type_id` = ?', $id) -> query() -> fetchAll();
+			$vehicleMakeObjResult = $makeObj -> select() -> from(array('vehicle_make'), array('id', 'title', 'vehicle_type_id')) -> where('`vehicle_type_id` = ?', $id) -> where('`locale_id` = ?', $locale_id) -> query() -> fetchAll();
 			foreach ($vehicleMakeObjResult as $key2 => $value) {
 				$data -> addItem(array('name' => $value['id'], $value['vehicle_type_id'] => $value['title']));
 			}
@@ -174,7 +194,7 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> modelObj -> getAllModel();
-		$this -> exportSQL2CSV($allData, array('id', 'vehicle_make_id', 'title', 'description', 'vehicle_make_title', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'vehicle_make_id', 'title', 'description', 'vehicle_make_title', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

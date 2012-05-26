@@ -9,6 +9,12 @@ class Landlots_Form_AncillaryBuildings extends Zend_Dojo_Form
 		parent::__construct();
 	}
 	
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+	
     public function init()
     {
 		Zend_Dojo::enableForm($this);
@@ -18,7 +24,6 @@ class Landlots_Form_AncillaryBuildings extends Zend_Dojo_Form
             Zend_Validate_StringLength::TOO_SHORT 	=> $this-> view -> __ ( 'Value cannot be less than %min% characters'),
             Zend_Validate_StringLength::TOO_LONG 	=> $this-> view -> __ ( 'Value cannot be longer than %max% characters'),
             Zend_Validate_EmailAddress::INVALID 	=> $this-> view -> __ ( 'Invalid e-mail address'),
-			
 			);
 	    $this->translator = new Zend_Translate('array', $this->translateValidators);
     	Zend_Validate_Abstract::setDefaultTranslator($this->translator);	
@@ -38,12 +43,15 @@ class Landlots_Form_AncillaryBuildings extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Landlots_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Landlots_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -67,28 +75,31 @@ class Landlots_Form_AncillaryBuildings extends Zend_Dojo_Form
                     'class' 	=> 'lablvalue jstalgntop',
                 )
             );
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-            );
-        $mandatoryForm->addElement(
+
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Landlots_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Landlots_Advanced Settings' ),
-                ));
+                    'name' 	 =>  'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Landlots_Advanced Settings' ),
+        ));
         $optionalForm->addElement(
                 'TextBox',
                 'comments',
@@ -127,8 +138,8 @@ class Landlots_Form_AncillaryBuildings extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
-				
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
     }
 }

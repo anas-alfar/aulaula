@@ -38,9 +38,27 @@ class Landlots_Controller_ForAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$forData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> forObj -> insert($forData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$forData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$forData['options'] = json_encode($_POST[$language_id]['options']);
+					$forData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$forId = $this -> forObj -> insert($forData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $forId);
+					$this -> forObj -> update(array('hash_key' => $hash_key), '`id` = ' . $forId);
+					$flag = false;
+				} else {
+					$forData['hash_key'] = $hash_key;
+					$this -> forObj -> insert($forData);
+				}
+			}
 			header('Location: /admin/handle/pkg/landlots-for/action/list/');
 			exit();
 		}
@@ -50,13 +68,13 @@ class Landlots_Controller_ForAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Landlots_Form_For($this -> view);
+		$form = new Landlots_Form_SimpleFor($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$forId = (int)$_POST['mandatory']['id'];
 
-			$forData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$forData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> forObj -> update($forData, '`id` = ' . $forId);
 
 			header('Location: /admin/handle/pkg/landlots-for/action/list/');
@@ -154,7 +172,7 @@ class Landlots_Controller_ForAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> forObj -> getAllFor();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

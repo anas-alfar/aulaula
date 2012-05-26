@@ -8,7 +8,13 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
 		$this->view = $view;
 		parent::__construct();
 	}
-	
+
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+
     public function init()
     {
 		Zend_Dojo::enableForm($this);
@@ -18,7 +24,6 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
             Zend_Validate_StringLength::TOO_SHORT 	=> $this-> view -> __ ( 'Value cannot be less than %min% characters'),
             Zend_Validate_StringLength::TOO_LONG 	=> $this-> view -> __ ( 'Value cannot be longer than %max% characters'),
             Zend_Validate_EmailAddress::INVALID 	=> $this-> view -> __ ( 'Invalid e-mail address'),
-			
 			);
 	    $this->translator = new Zend_Translate('array', $this->translateValidators);
     	Zend_Validate_Abstract::setDefaultTranslator($this->translator);	
@@ -38,12 +43,16 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Vehicle_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -54,9 +63,8 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
                     'trim' 		=> true,
                     'required'	=> true,
                     'class' 	=> 'lablvalue jstalgntop',
-                    //'promptMessage'  => 'Enter '. $this-> view -> __ ( 'Menu_Link' ),
                 )
-            );
+        );
         $mandatoryForm->addElement(
                 'ValidationTextBox',
                 'description',
@@ -66,48 +74,53 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
                     'required'	=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                 )
-            );
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-            );
-        $mandatoryForm->addElement(
+        );
+
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Vehicle_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Vehicle_Advanced Settings' ),
-                ));
-        $optionalForm->addElement(
-                'TextBox',
-                'comments',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_Comments' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                	)
-            );
+                    'name' 	 =>  'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Vehicle_Advanced Settings' ),
+        ));
+		
+		$optionalForm->addElement(
+			'TextBox',
+            'comments',
+            array(
+				'label' 	=> $this-> view -> __ ( 'Vehicle_Comments' ),
+                'trim' 		=> true,
+                'required'	=> false,
+                'class' 	=> 'lablvalue jstalgntop',
+                )
+        );
         $optionalForm->addElement(
                 'TextBox',
                 'options',
                 array(
                     'label' 	=> $this-> view -> __ ( 'Vehicle_Options' ),
                     'trim' 		=> true,
+                    'required'	=> false,
                     'class' 	=> 'lablvalue jstalgntop',
                 	)
-            );
-
+        );
 
 		$mandatoryForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$optionalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
@@ -127,8 +140,8 @@ class Vehicle_Form_InsuranceType extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
-				
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
     }
 }

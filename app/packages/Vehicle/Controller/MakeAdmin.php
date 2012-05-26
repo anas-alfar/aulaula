@@ -28,7 +28,7 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
-		
+
 		$this -> view -> importExcelLink = '/admin/handle/pkg/vehicle-make/action/importcsv/';
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-make/action/exportcsv/';
 	}
@@ -38,8 +38,27 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$makeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'vehicle_type_id' => $_POST['mandatory']['vehicle_type_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> makeObj -> insert($makeData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$makeData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, 'vehicle_type_id' => $_POST[$language_id]['vehicle_type_id_' . $language_id]);
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$makeData['options'] = json_encode($_POST[$language_id]['options']);
+					$makeData['comments'] = $_POST[$language_id]['comments'];
+
+				}
+				if ($flag === true) {
+					$makeId = $this -> makeObj -> insert($makeData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $makeId);
+					$this -> makeObj -> update(array('hash_key' => $hash_key), '`id` = ' . $makeId);
+					$flag = false;
+				} else {
+					$makeData['hash_key'] = $hash_key;
+					$this -> makeObj -> insert($makeData);
+				}
+			}
 
 			header('Location: /admin/handle/pkg/vehicle-make/action/list/');
 			exit();
@@ -50,13 +69,13 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_Make($this -> view);
-		$form -> setView($this -> view);
+
+		$form = new Vehicle_Form_SimpleMake($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$makeId = (int)$_POST['mandatory']['id'];
 
-			$makeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'vehicle_type_id' => $_POST['mandatory']['vehicle_type_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$makeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'vehicle_type_id' => $_POST['mandatory']['vehicle_type_id'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> makeObj -> update($makeData, '`id` = ' . $makeId);
 
 			header('Location: /admin/handle/pkg/vehicle-make/action/list/');
@@ -67,7 +86,9 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 
 				if ($makeObjResult !== false) {
 					$makeObjResult['options'] = json_decode($makeObjResult['options']);
-
+					
+					$form->locale_id = $makeObjResult['locale_id'];
+					$form-> createForm();
 					$form -> populate($makeObjResult);
 				} else {
 					header('Location: /admin/handle/pkg/vehicle-make/action/list');
@@ -75,6 +96,7 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 				}
 			}
 		}
+		$form -> setView($this -> view);
 		$this -> view -> form = $form;
 		$this -> view -> render('vehicle/updateMake.phtml');
 		exit();
@@ -154,7 +176,7 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> makeObj -> getAllMake();
-		$this -> exportSQL2CSV($allData, array('id', 'vehicle_type_id', 'title', 'description', 'vehicle_type_title', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'vehicle_type_id', 'title', 'description', 'vehicle_type_title', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

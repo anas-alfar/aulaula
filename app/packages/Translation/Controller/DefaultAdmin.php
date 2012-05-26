@@ -37,9 +37,26 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$translationData = array('label' => $_POST['mandatory']['label'], 'translation' => $_POST['mandatory']['translation'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'comments' => $_POST['optional']['comments'], );
-			$this -> translationObj -> insert($translationData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$translationData = array('label' => $_POST[$language_id]['label'], 'translation' => $_POST[$language_id]['translation'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$translationData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$translationId = $this -> translationObj -> insert($translationData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $translationId);
+					$this -> translationObj -> update(array('hash_key' => $hash_key), '`id` = ' . $translationId);
+					$flag = false;
+				} else {
+					$translationData['hash_key'] = $hash_key;
+					$this -> translationObj -> insert($translationData);
+				}
+			}
 			header('Location: /admin/handle/pkg/translation/action/list/');
 			exit();
 		}
@@ -50,13 +67,12 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Translation_Form_Default($this -> view);
-		$form -> setView($this -> view);
+		$form = new Translation_Form_SimpleDefault($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$translationId = (int)$_POST['mandatory']['id'];
 
-			$translationData = array('label' => $_POST['mandatory']['label'], 'translation' => $_POST['mandatory']['translation'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'comments' => $_POST['optional']['comments'], );
+			$translationData = array('label' => $_POST['mandatory']['label'], 'translation' => $_POST['mandatory']['translation'], 'locale_id' => $_POST['mandatory']['locale_id'], 'modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'comments' => $_POST['optional']['comments'], );
 			$this -> translationObj -> update($translationData, '`id` = ' . $translationId);
 
 			header('Location: /admin/handle/pkg/translation/action/list/');
@@ -66,6 +82,9 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 				$translationObjResult = $this -> translationObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
 
 				if ($translationObjResult !== false) {
+					$translationObjResult['translate_id'] = $translationObjResult['id'];
+					$form -> hash_key = $translationObjResult['hash_key'];
+					$form -> createForm();
 					$form -> populate($translationObjResult);
 				} else {
 					header('Location: /admin/handle/pkg/translation/action/list');
@@ -73,6 +92,7 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 				}
 			}
 		}
+		$form -> setView($this -> view);
 		$this -> view -> form = $form;
 		$this -> view -> render('translation/updateTranslation.phtml');
 		exit();
@@ -152,7 +172,7 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> translationObj -> getAllTranslation();
-		$this -> exportSQL2CSV($allData, array('id', 'label', 'translation', 'locale_id', 'comments'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'label', 'translation', 'locale_id', 'hash_key', 'comments'), __CLASS__);
 	}
 
 	public function importcsvAction() {

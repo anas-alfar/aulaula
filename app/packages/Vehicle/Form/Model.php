@@ -10,10 +10,16 @@ class Vehicle_Form_Model extends Zend_Dojo_Form
 		parent::__construct();
 	}
 	
-	private function _getVehicleTypeOptions() {
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+	
+	private function _getVehicleTypeOptionsByLocaleId($locale_id) {
 		$vehicleTypeObj = new Vehicle_Model_Type();
 		$this -> _selectVehicleTypeOptions = array (0 => $this -> view -> __('Root'));
-		$vehicleTypeObjResult 	= $vehicleTypeObj -> select() -> query() -> fetchAll();
+		$vehicleTypeObjResult 	= $vehicleTypeObj -> select() -> where('locale_id=?',$locale_id) -> query() -> fetchAll();
 		if (!empty($vehicleTypeObjResult)) {
 			foreach ($vehicleTypeObjResult as $key => $value) {
 				$this->_selectVehicleTypeOptions[$value['id']] = $value['title'];
@@ -51,12 +57,15 @@ class Vehicle_Form_Model extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Vehicle_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -82,53 +91,55 @@ class Vehicle_Form_Model extends Zend_Dojo_Form
         );
         $mandatoryForm->addElement(
             'FilteringSelect',
-            'vehicle_type_id',
+            'vehicle_type_id_'.$value['id'],
             array(
                 'label' => $this-> view -> __ ( 'Vehicle_Type' ),
                 'class' => 'lablvalue jstalgntop',
                 'autocomplete'=>false,
                 'required'	=> true,
-                'multiOptions' => $this->_getVehicleTypeOptions(),
-                'id' => 'vehicle_type_id',
-				'onchange' => "dijit.byId('vehicle_make_id').searchAttr = dijit.byId('vehicle_type_id').getValue();return true",
+                'multiOptions' => $this->_getVehicleTypeOptionsByLocaleId($value['id']),
+                'id' => 'vehicle_type_id_'.$value['id'],
+				'onchange' => "dijit.byId('vehicle_make_id_{$value['id']}').searchAttr = dijit.byId('vehicle_type_id_{$value['id']}').getValue();return true",
             )
         );
         $mandatoryForm->addElement(
             'FilteringSelect',
-            'vehicle_make_id',
+            'vehicle_make_id_'.$value['id'],
             array(
                 'label' => $this-> view -> __ ( 'Vehicle_Make' ),
                 'class' => 'lablvalue jstalgntop',
                 'autocomplete'=>false,
                 'required'	=> true,
-                'id' => 'vehicle_make_id',
+                'id' => 'vehicle_make_id_'.$value['id'],
 				'storeId' => 'myData',
 				'storeType'=> 'dojo.data.ItemFileReadStore',
-             	'storeParams' => array( 'url' => '/admin/handle/pkg/vehicle-model/action/records/',),
+             	'storeParams' => array( 'url' => '/admin/handle/pkg/vehicle-model/action/records/locale_id/'.$value['id'],),
              	'dijitParams' => array( 'searchAttr' => '0' ),
             )
         );
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-        );
-        $mandatoryForm->addElement(
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Vehicle_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Vehicle_Advanced Settings' ),
+                    'name' 	 => 'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Vehicle_Advanced Settings' ),
                 ));
         $optionalForm->addElement(
                 'TextBox',
@@ -168,8 +179,9 @@ class Vehicle_Form_Model extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
 				
     }
 }

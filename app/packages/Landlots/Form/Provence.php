@@ -10,10 +10,16 @@ class Landlots_Form_Provence extends Zend_Dojo_Form
 		parent::__construct();
 	}
 	
-	private function _getLandlotsLocationOptions() {
+	private function _getLocaleAvailabe() {
+		$localeObj = new Locale_Model_Default();
+		$localeObjResult 	= $localeObj -> getAllApprovedLocale();
+		return $localeObjResult;
+	}
+	
+	private function _getLandlotsLocationOptionsByLocaleId($locale_id) {
 		$landlotsLocationObj = new Landlots_Model_Location();
 		$this -> _selectLandlotsLocationOptions = array ('' => $this -> view -> __('Root'));
-		$landlotsLocationObjResult 	= $landlotsLocationObj -> select() -> query() -> fetchAll();
+		$landlotsLocationObjResult 	= $landlotsLocationObj -> select() -> where('locale_id=?',$locale_id) -> query() -> fetchAll();
 		if (!empty($landlotsLocationObjResult)) {
 			foreach ($landlotsLocationObjResult as $key => $value) {
 				$this->_selectLandlotsLocationOptions[$value['id']] = $value['title'];
@@ -51,12 +57,15 @@ class Landlots_Form_Provence extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
+		$flag = true;
+		foreach ($this->_getLocaleAvailabe() as $id => $value) {
+		
         $mandatoryForm= new Zend_Dojo_Form_SubForm();
         $mandatoryForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
+                'name'			=>  $value['id'],
+                //'legend' 		=>  $id,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Landlots_Information' ),
+                    'title' 	=> $this-> view -> __ ( $value['title'] . ' Landlots_Information' ),
                 )
         ));
         $mandatoryForm->addElement(
@@ -82,39 +91,41 @@ class Landlots_Form_Provence extends Zend_Dojo_Form
         );
         $mandatoryForm->addElement(
             'FilteringSelect',
-            'landlots_location_id',
+            'landlots_location_id_'.$value['id'],
             array(
                 'label' => $this-> view -> __ ( 'Landlots_Location' ),
                 'class' => 'lablvalue jstalgntop',
                 'autocomplete'=>false,
                 'required'	=> true,
                 //'validator' => array('NotEmpty', true),
-                'multiOptions' => $this->_getLandlotsLocationOptions(),
-                'id' => 'landlots_location_id',
+                'multiOptions' => $this->_getLandlotsLocationOptionsByLocaleId($value['id']),
+                'id' => 'landlots_location_id_'.$value['id'],
 				//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
             )
         );
-        $mandatoryForm->addElement(
-                'hidden',
-                'id'
-        );
-        $mandatoryForm->addElement(
+		if ($flag === true) {
+	        $mandatoryForm->addElement(
+				'hidden',
+	            'id'
+	        );
+	        $mandatoryForm->addElement(
 				'SubmitButton',
 				'submit',
 				array(
-					//'required' 	=> true,
 					'value'		=> 'submit',
 					'label' 	=> $this-> view -> __ ( 'Landlots_Save' ),
 					'type'	 	=> 'Submit',
 					'ignore'	=> true,
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
-		);
+					)
+			);
+		$flag = false;
+		}
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Landlots_Advanced Settings' ),
+                    'name' 	 => 'optional_' . $value['id'],
+                    'legend' => $this-> view -> __ ( $value['title'] . ' Landlots_Advanced Settings' ),
                 ));
         $optionalForm->addElement(
                 'TextBox',
@@ -154,8 +165,8 @@ class Landlots_Form_Provence extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 
-        $this->addSubForm($mandatoryForm, 'mandatory')
-             ->addSubForm($optionalForm , 'optional');
-				
+        $this->addSubForm($mandatoryForm, $value['id'])
+             ->addSubForm($optionalForm , 'optional_' . $value['id']);
+		}
     }
 }

@@ -38,8 +38,30 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> provenceObj -> insert($provenceData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$provenceData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, 'landlots_location_id' => $_POST[$language_id]['landlots_location_id_' . $language_id]);
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$provenceData['options'] = json_encode($_POST[$language_id]['options']);
+					$provenceData['comments'] = $_POST[$language_id]['comments'];
+
+				}
+				if ($flag === true) {
+					$provenceId = $this -> provenceObj -> insert($provenceData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $provenceId);
+					$this -> provenceObj -> update(array('hash_key' => $hash_key), '`id` = ' . $provenceId);
+					$flag = false;
+				} else {
+					$provenceData['hash_key'] = $hash_key;
+					$this -> provenceObj -> insert($provenceData);
+				}
+			}
+			
+			/*$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$this -> provenceObj -> insert($provenceData);*/
 
 			header('Location: /admin/handle/pkg/landlots-provence/action/list/');
 			exit();
@@ -50,13 +72,12 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Landlots_Form_Provence($this -> view);
-		$form -> setView($this -> view);
+		$form = new Landlots_Form_SimpleProvence($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$provenceId = (int)$_POST['mandatory']['id'];
 
-			$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> provenceObj -> update($provenceData, '`id` = ' . $provenceId);
 
 			header('Location: /admin/handle/pkg/landlots-provence/action/list/');
@@ -68,6 +89,8 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 				if ($provenceObjResult !== false) {
 					$provenceObjResult['options'] = json_decode($provenceObjResult['options']);
 
+					$form -> locale_id = $provenceObjResult['locale_id'];
+					$form -> createForm();
 					$form -> populate($provenceObjResult);
 				} else {
 					header('Location: /admin/handle/pkg/landlots-provence/action/list');
@@ -75,6 +98,7 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 				}
 			}
 		}
+		$form -> setView($this -> view);
 		$this -> view -> form = $form;
 		$this -> view -> render('landlots/updateProvence.phtml');
 		exit();
@@ -160,7 +184,7 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> provenceObj -> getAllProvence();
-		$this -> exportSQL2CSV($allData, array('id', 'landlots_location_id', 'title', 'description', 'landlots_location_title', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'landlots_location_id', 'title', 'description', 'landlots_location_title', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {

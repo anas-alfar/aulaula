@@ -38,9 +38,28 @@ class Vehicle_Controller_YearAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$yearData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> yearObj -> insert($yearData);
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$yearData = array('title' => $_POST[$language_id]['title'], 'description' => $_POST[$language_id]['description'], 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+					continue;
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$yearData['options'] = json_encode($_POST[$language_id]['options']);
+					$yearData['comments'] = $_POST[$language_id]['comments'];
 
+				}
+				if ($flag === true) {
+					$yearId = $this -> yearObj -> insert($yearData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $yearId);
+					$this -> yearObj -> update(array('hash_key' => $hash_key), '`id` = ' . $yearId);
+					$flag = false;
+				} else {
+					$yearData['hash_key'] = $hash_key;
+					$this -> yearObj -> insert($yearData);
+				}
+			}			
+			
 			header('Location: /admin/handle/pkg/vehicle-year/action/list/');
 			exit();
 		}
@@ -50,13 +69,13 @@ class Vehicle_Controller_YearAdmin extends Aula_Controller_Action {
 	}
 
 	public function editAction() {
-		$form = new Vehicle_Form_Year($this -> view);
+		$form = new Vehicle_Form_SimpleYear($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$yearId = (int)$_POST['mandatory']['id'];
 
-			$yearData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$yearData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> yearObj -> update($yearData, '`id` = ' . $yearId);
 
 			header('Location: /admin/handle/pkg/vehicle-year/action/list/');
@@ -154,7 +173,7 @@ class Vehicle_Controller_YearAdmin extends Aula_Controller_Action {
 	public function exportcsvAction() {
 		set_time_limit(0);
 		$allData = $this -> yearObj -> getAllYear();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'comments', 'options'), __CLASS__);
+		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
 	}
 
 	public function importcsvAction() {
