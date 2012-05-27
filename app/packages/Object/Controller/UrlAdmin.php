@@ -61,6 +61,15 @@ class Object_Controller_UrlAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> urlObj -> getURLById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewURL.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 
 		$form = new Object_Form_URL($this -> view);

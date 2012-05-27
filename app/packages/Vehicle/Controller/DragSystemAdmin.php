@@ -33,6 +33,16 @@ class Vehicle_Controller_DragSystemAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-drag-system/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> dragSystemObj -> getDragSystemById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewDragSystem.phtml');
+			exit();
+		}
+	}
+
+
 	public function addAction() {
 		$form = new Vehicle_Form_DragSystem($this -> view);
 		$form -> setView($this -> view);

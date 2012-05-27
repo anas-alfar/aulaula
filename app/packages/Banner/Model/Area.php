@@ -26,6 +26,20 @@ class Banner_Model_Area extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `author_id`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
 		parent::__construct();
 	}
+	
+	public function getAreaById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
+	
 }
 
 /*class Banner_Model_Area extends Aula_Model_DbTable {

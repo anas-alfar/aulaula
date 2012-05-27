@@ -28,4 +28,17 @@ class Menu_Model_Type extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `published`, `approved`, `order`, `package_id`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
 		parent::__construct();
 	}
+	
+	public function getTypeById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 }

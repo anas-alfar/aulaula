@@ -50,7 +50,22 @@ class Category_Model_Default extends Aula_Model_DbTable {
 		$this -> _limit = "$start, $limit";
 		$result = $this -> read();
 		return $result;
+	}
 
+	public function getCategoryAndCategory_infoById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner($this->_name.'_info', $this->_name . '.id='.$this->_name.'_info.category_id',array($this->_name.'_info.*'))
+		-> joinInner('category_type', $this->_name . '.category_type_id=category_type.id',array('category_type.title as category_type_title','category_type.label as category_type_label','category_type.description as category_type_description'))
+		-> setIntegrityCheck(false)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
 	}
 
 }

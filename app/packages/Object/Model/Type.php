@@ -50,5 +50,20 @@ class Object_Model_Type extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `published`, `approved` ';
 		parent::__construct();
 	}
+	
+	public function getTypeById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner($this->_name.'_info', $this->_name . '.id='.$this->_name.'_info.object_type_id',array('*'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

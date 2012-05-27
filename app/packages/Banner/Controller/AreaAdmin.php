@@ -18,6 +18,15 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> areaObj -> getAreaById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('banner/viewArea.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Banner_Form_AreaAdmin($this -> view);
 		$form -> setView($this -> view);

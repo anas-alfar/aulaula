@@ -33,6 +33,15 @@ class Landlots_Controller_LocationAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/landlots-location/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> locationObj -> getLocationById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('landlots/viewLocation.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Landlots_Form_Location($this -> view);
 		$form -> setView($this -> view);

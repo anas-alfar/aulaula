@@ -68,5 +68,21 @@ class Object_Model_Static extends Aula_Model_DbTable {
 		$result = $this -> read();
 		return $result;
 	}
+	
+	public function getStaticById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('object', $this->_name . '.object_id=object.id',array('*'))
+		-> joinInner('object_info', 'object_info.object_id=object.id',array('*'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

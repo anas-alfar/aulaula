@@ -63,6 +63,15 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> typeObj -> getTypeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Type($this -> view);
 		$form -> setView($this -> view);
@@ -268,7 +277,7 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 				$typeList .= '<td class="jstalgntop">' . $this -> view -> __($value['approved']) . '</td>';
 				$typeList .= '<td class="jstalgntop">' . $value['date_added'] . '</td>';
 				$typeList .= '<td class="jstalgntop last"><a href="/admin/handle/pkg/object-type/action/edit/s/1/id/' . $value['id'] . '"
-						class="modify fl" title="Edit"></a> <a href="javascript:void(0);"
+						class="modify fl" title="Edit"></a> <a href="/admin/handle/pkg/object-type/action/view/id/' . $value['id'] . '"
 			class="preview fl" title="Preview"></a></td>';
 				$typeList .= '</tr>';
 			}

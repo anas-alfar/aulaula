@@ -33,6 +33,15 @@ class Vehicle_Controller_ModelAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-model/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> modelObj -> getModelById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewModel.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_Model($this -> view);
 		$form -> setView($this -> view);

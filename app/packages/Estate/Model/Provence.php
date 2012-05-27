@@ -79,5 +79,21 @@ class Estate_Model_Provence extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getProvenceById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> joinInner('estate_location', $this->_name.'.estate_location_id=estate_location.id',array('estate_location.title as estate_location_title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

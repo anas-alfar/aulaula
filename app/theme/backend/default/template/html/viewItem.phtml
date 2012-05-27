@@ -1,0 +1,8 @@
+<table class="formlist">
+<?php foreach ($this->result as $id => $value) { ?>
+	<tr>
+		<td><label class="lable"><b><?php echo $this->__ ( "$id" ); ?></b></label></td>
+		<td><?php echo ($id == 'options') ? json_decode($value) : $value; ?></td>
+	</tr>
+<?php } ?>
+</table>

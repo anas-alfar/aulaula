@@ -70,5 +70,21 @@ class Landlots_Model_Provence extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getProvenceById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> joinInner('landlots_location', $this->_name.'.landlots_location_id=landlots_location.id', array('landlots_location.title as landlots_location_title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

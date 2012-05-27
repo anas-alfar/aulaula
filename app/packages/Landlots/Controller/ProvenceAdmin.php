@@ -33,6 +33,15 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/landlots-provence/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> provenceObj -> getProvenceById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('landlots/viewProvence.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Landlots_Form_Provence($this -> view);
 		$form -> setView($this -> view);

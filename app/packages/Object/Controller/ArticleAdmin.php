@@ -91,6 +91,15 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> articleObj -> getArticleById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewArticle.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Article($this -> view);
 		$form -> setView($this -> view);
@@ -763,7 +772,7 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 				$objectList .= '<td class="jstalgntop last">
 																<a href="/admin/handle/pkg/object-article/action/edit/id/' . $value['id'] . '" class="modify fl" title="Edit" target="_blank"></a>
 																<a href="/admin/handle/pkg/feature/action/add/id/' . $value['id'] . '" class="feature fl" title="Add to Feature"></a>
-																<!-- <a href="javascript:void(0);" class="preview fl" title="Preview"></a> -->
+																<a href="/admin/handle/pkg/feature/action/view/id/' . $value['id'] . '" class="preview fl" title="Preview"></a>
 																</td>';
 				$objectList .= '</tr>';
 			}

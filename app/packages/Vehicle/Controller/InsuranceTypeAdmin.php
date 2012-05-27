@@ -33,6 +33,15 @@ class Vehicle_Controller_InsuranceTypeAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-insurance-type/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> insuranceTypeObj -> getInsuranceTypeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewInsuranceType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_InsuranceType($this -> view);
 		$form -> setView($this -> view);

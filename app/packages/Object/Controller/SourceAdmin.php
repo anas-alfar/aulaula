@@ -58,6 +58,15 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> sourceObj -> getSourceById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewSource.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Source($this -> view);
 		$form -> setView($this -> view);

@@ -58,5 +58,21 @@ class Object_Model_Directory extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `label`, `description`, `parent_id`, `author_id`, `size`, `files_count`, `full_path`, `object_id`, `category_id`, `show_in_object`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `comments`, `options` ,`date_added` ';
 		parent::__construct();
 	}
+	
+	public function getDirectoryById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('object', $this->_name . '.object_id=object.id',array('*'))
+		-> joinInner('object_info', 'object_info.object_id=object.id',array('*'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

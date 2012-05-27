@@ -33,6 +33,15 @@ class Vehicle_Controller_YearAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-year/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> yearObj -> getYearById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewYear.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_Year($this -> view);
 		$form -> setView($this -> view);

@@ -11534,3 +11534,423 @@ WARNING [2]:
 Line 125 in file /var/www/html/git/aulaula/library/Zend/Dojo/Form/Element/DijitMulti.php
 Invalid argument supplied for foreach()
 ===========================
+NOTICE [8]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewCategory.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 25 in file /var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewCategory.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewCategory.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 33 in file /var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewCategory.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 22 in file /var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewCategory.phtml
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/vehicle/viewInsideColor.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/vehicle/viewInsuranceType.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewType.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/backend/default/template/waseet/viewType.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/vehicle/viewType.phtml
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 74 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/TypeAdmin.php
+Undefined index: mandatory
+===========================
+NOTICE [8]:
+Line 74 in file /var/www/html/git/aulaula/app/packages/Vehicle/Controller/TypeAdmin.php
+Undefined index: optional
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/vehicle/viewYear.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Landlots/Controller/MakeAdmin.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewFor.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewFor.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear2.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear2.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear3.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/landlots/viewLivenear3.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Estate/Controller/ForAdmin.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/estate/viewLivenear2.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/estate/viewLivenear2.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/estate/viewLivenear3.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/estate/viewLivenear4.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/backend/default/template/locale/viewType.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/backend/default/template/locale/viewType.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/backend/default/template/locale/viewType.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/backend/default/template/locale/viewType.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/menu/viewMenu.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/menu/viewMenu.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/category/addType.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/category/addType.phtml
+Invalid argument supplied for foreach()
+===========================
+E_STRICT [2048]:
+Line 314 in file /var/www/html/git/aulaula/app/packages/Poll/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 331 in file /var/www/html/git/aulaula/app/packages/Poll/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 174 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 191 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 174 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 191 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 585 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 611 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 174 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 191 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 183 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 200 in file /var/www/html/git/aulaula/app/packages/Object/Controller/TypeAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 585 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 611 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Undefined property: stdClass::$category
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Undefined property: stdClass::$category
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Undefined property: stdClass::$category
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Undefined property: stdClass::$category
+===========================
+NOTICE [8]:
+Line 47 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listUrlObject.phtml
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 73 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listStaticObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listFileObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 73 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listStaticObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 73 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listStaticObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 73 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listStaticObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listFileObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listFileObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listFileObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listDirectoryObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listDirectoryObject.phtml
+Undefined index: 0
+===========================
+NOTICE [8]:
+Line 80 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/listVideoObject.phtml
+Undefined index: 0
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+E_STRICT [2048]:
+Line 594 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 620 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+E_STRICT [2048]:
+Line 594 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 620 in file /var/www/html/git/aulaula/app/packages/Object/Controller/ArticleAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 2 in file /var/www/html/git/aulaula/app/theme/backend/default/template/html/viewItem.phtml
+Invalid argument supplied for foreach()
+===========================

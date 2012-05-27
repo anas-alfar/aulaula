@@ -33,6 +33,15 @@ class Vehicle_Controller_TypeAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-type/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> typeObj -> getTypeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_Type($this -> view);
 		$form -> setView($this -> view);
@@ -59,12 +68,6 @@ class Vehicle_Controller_TypeAdmin extends Aula_Controller_Action {
 					$this -> typeObj -> insert($typeData);
 				}
 			}				
-				
-				
-				
-			$typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> typeObj -> insert($typeData);
-
 			header('Location: /admin/handle/pkg/vehicle-type/action/list/');
 			exit();
 		}

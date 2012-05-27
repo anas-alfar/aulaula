@@ -27,6 +27,20 @@ class Banner_Model_Default extends Aula_Model_DbTable {
 		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `banner_area_id`, `title`, `label`, `type`, `mime_type`, `size`, `extension`, `source`, `target`, `author_id`, `published`, `approved`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `date_added`, `comments`, `options` ';
 		parent::__construct();
 	}
+	
+	
+	public function getBannerById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 	/*public function insertIntoBanner($Id, $Area_id, $Title, $Label, $Type = "image file", $Mime_type = "", $Size = "", $Extension = "", $Full_path = "", $Link = "", $Published = "No", $Approved = "No", $Author_id = 0, $Comments = "", $Options = "", $Publish_from = "0000-00-00 00:00:00", $Publish_to = "0000-00-00 00:00:00", $Locked_by = 0, $Locked_time = "0000-00-00 00:00:00", $Modified_by = 0, $Modified_time = "0000-00-00 00:00:00") {
 		$data = array('id' => $Id, 'area_id' => $Area_id, 'title' => $Title, 'label' => $Label, 'type' => $Type, 'mime_type' => $Mime_type, 'size' => $Size, 'extension' => $Extension, 'context' => $Full_path, 'target' => $Link, 'published' => $Published, 'approved' => $Approved, 'author_id' => $Author_id, 'comments' => $Comments, 'options' => $Options, 'publish_from' => $Publish_from, 'publish_to' => $Publish_to, 'locked_by' => $Locked_by, 'locked_time' => $Locked_time, 'modified_by' => $Modified_by, 'modified_time' => $Modified_time);

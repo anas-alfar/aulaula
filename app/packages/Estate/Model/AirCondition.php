@@ -75,5 +75,20 @@ class Estate_Model_AirCondition extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getAirConditionById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

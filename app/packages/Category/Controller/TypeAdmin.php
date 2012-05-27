@@ -20,6 +20,15 @@ class Category_Controller_TypeAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> categoryTypeObj -> getCategoryTypeAndCategoryTypeInfoById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('category/viewType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Category_Form_TypeAdmin($this -> view);
 		$form -> setView($this -> view);

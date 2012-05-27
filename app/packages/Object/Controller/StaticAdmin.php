@@ -70,6 +70,15 @@ class Object_Controller_StaticAdmin extends Aula_Controller_Action {
 		}
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> staticObj -> getStaticById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewStatic.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Static($this -> view);
 		$form -> setView($this -> view);

@@ -28,9 +28,18 @@ class Estate_Controller_LocationAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
-		
+
 		$this -> view -> importExcelLink = '/admin/handle/pkg/estate-location/action/importcsv/';
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/estate-location/action/exportcsv/';
+	}
+
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> locationObj -> getLocationById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('estate/viewLocation.phtml');
+			exit();
+		}
 	}
 
 	public function addAction() {

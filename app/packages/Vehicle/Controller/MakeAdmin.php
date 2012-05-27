@@ -33,6 +33,15 @@ class Vehicle_Controller_MakeAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-make/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> makeObj -> getMakeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewMake.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_Make($this -> view);
 		$form -> setView($this -> view);

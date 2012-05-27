@@ -32,6 +32,15 @@ class Translation_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/translation/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> translationObj -> getTranslationById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('translation/viewTranslation.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Translation_Form_Default($this -> view);
 		$form -> setView($this -> view);

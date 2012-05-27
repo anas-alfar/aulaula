@@ -81,5 +81,21 @@ class Vehicle_Model_Model extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getModelById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> joinInner('vehicle_make', $this->_name.'.vehicle_make_id=vehicle_make.id',array('vehicle_make.title as vehicle_make_title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

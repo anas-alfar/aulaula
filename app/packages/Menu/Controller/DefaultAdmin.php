@@ -63,6 +63,15 @@ class Menu_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> afterIdList = $this -> afterIdList;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> menuObj -> getmenuById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('menu/viewMenu.phtml');
+			exit();
+		}
+	}
+
 /**
  * @todo: check and fix "UPDATE query issue" that doubles the value when update `order`=`order`+1
  * @todo: NEVER USE $_POST, use $this -> view -> sanitized instead

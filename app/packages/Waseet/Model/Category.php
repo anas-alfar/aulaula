@@ -69,9 +69,24 @@ class Waseet_Model_Category extends Aula_Model_DbTable {
 	{
 		$result = $this 
 		-> select() 
-		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *')) 
 		-> query() 
 		-> fetchAll();
+
+		return $result;
+	}
+	
+	public function getCategoryById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
 
 		return $result;
 	}

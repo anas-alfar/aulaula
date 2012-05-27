@@ -33,6 +33,15 @@ class Estate_Controller_Livenear1Admin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/estate-livenear1/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> livenear1Obj -> getLivenear1ById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('estate/viewLivenear1.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Estate_Form_Livenear1($this -> view);
 		$form -> setView($this -> view);

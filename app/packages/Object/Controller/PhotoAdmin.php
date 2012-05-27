@@ -67,6 +67,15 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> photoObj -> getPhotoById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewPhoto.phtml');
+			exit();
+		}
+	}
+
 	public function importPhotoAction($photoData, $photoName, $objectId = 0) {
 		$uploadObj = new Aula_Model_Upload_Photo($photoName);
 		if ($uploadObj -> CheckIfThereIsFile() === TRUE) {

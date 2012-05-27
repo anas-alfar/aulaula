@@ -33,6 +33,15 @@ class Landlots_Controller_TypeAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/landlots-type/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> typeObj -> getTypeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('landlots/viewType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Landlots_Form_Type($this -> view);
 		$form -> setView($this -> view);

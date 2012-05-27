@@ -33,6 +33,15 @@ class Estate_Controller_OutdoorAmenitiesAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/estate-outdoor-amenities/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> outdoorAmenitiesObj -> getOutdoorAmenitiesById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('estate/viewOutdoorAmenities.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Estate_Form_OutdoorAmenities($this -> view);
 		$form -> setView($this -> view);

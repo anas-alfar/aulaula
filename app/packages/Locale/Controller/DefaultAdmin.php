@@ -26,6 +26,15 @@ class Locale_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/locale/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> localeObj -> getLocaleById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('locale/viewLocale.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Locale_Form_Default($this -> view);
 		$form -> setView($this -> view);

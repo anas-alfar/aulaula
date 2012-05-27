@@ -33,6 +33,15 @@ class Landlots_Controller_Livenear4Admin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/landlots-livenear4/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> livenear4Obj -> getLivenear4ById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('landlots/viewLivenear4.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Landlots_Form_Livenear4($this -> view);
 		$form -> setView($this -> view);

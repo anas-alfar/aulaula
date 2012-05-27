@@ -22,6 +22,15 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> bannerObj -> getBannerById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('banner/viewBanner.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Banner_Form_DefaultAdmin($this -> view);
 		$form -> setView($this -> view);

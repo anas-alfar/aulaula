@@ -56,6 +56,15 @@ class Object_Controller_DirectoryAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> directoryObj -> getDirectoryById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('object/viewDirectory.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Directory($this -> view);
 		$form -> setView($this -> view);

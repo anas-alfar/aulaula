@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php include './html/meta.phtml'; ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	field('image url');
+	//$("#context").parent().parent().css("display","none");
+	$("#uploadFile").parent().parent().css("display","none");
+})
+
+	function field(field) {
+	switch(field){
+	case 'image file':
+	case 'swf file':
+		$("#uploadFile").parent().parent().css("display","");
+		$("#context").parent().parent().css("display", "none");
+		$("label[for=uploadFile]").html(field);
+		break;
+	case 'image url':
+	case 'swf object':
+	case 'javascript code':
+		$("#context").parent().parent().css("display", "");
+		$("#uploadFile").parent().parent().css("display","none");
+		$("label[for=context]").html(field);
+		break;
+	}
+}
+
+</script>
+</head>
+<body class="tundra">
+
+<!--container-->
+<div class="container">
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<!--end lftnav-->
+
+<!--srch-rslt-->
+<div class="srch-rslt">
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Banner_Banner View' ); ?></h3>
+<a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Banner_Back' ); ?></button></em></a>
+</div>
+<!--end srch-rslt-->
+
+<div class="entrdata">
+	<div class="entrdcont">
+		<div class="wdthauto">
+			<?php include './html/viewItem.phtml'; ?>
+		</div>
+	</div>
+</div>
+
+
+</div>
+<!--end maincont-->
+</div>
+<!--end content-->
+
+<?php include './html/footer.phtml'; ?>
+</div>
+<!--end container-->
+</body>
+</html>

@@ -61,5 +61,20 @@ class Object_Model_Source extends Aula_Model_DbTable {
 		$result = $this -> read();
 		return $result;
 	}
+	
+	public function getSourceById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner($this->_name.'_info', $this->_name . '.id='.$this->_name.'_info.object_source_id',array('*'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

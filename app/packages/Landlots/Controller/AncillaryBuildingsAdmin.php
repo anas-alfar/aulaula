@@ -33,6 +33,15 @@ class Landlots_Controller_AncillaryBuildingsAdmin extends Aula_Controller_Action
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/landlots-ancillary-buildings/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> ancillaryBuildingsObj -> getAncillaryBuildingsById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('landlots/viewAncillaryBuildings.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Landlots_Form_AncillaryBuildings($this -> view);
 		$form -> setView($this -> view);

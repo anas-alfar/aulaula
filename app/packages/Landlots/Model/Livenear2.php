@@ -75,5 +75,20 @@ class Landlots_Model_Livenear2 extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getLivenear2ById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('locale', $this->_name . '.locale_id=locale.id',array('title as locale_title'))
+		-> setIntegrityCheck(false)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

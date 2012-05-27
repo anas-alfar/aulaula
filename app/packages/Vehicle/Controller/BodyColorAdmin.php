@@ -33,6 +33,15 @@ class Vehicle_Controller_BodyColorAdmin extends Aula_Controller_Action {
 		$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-body-color/action/exportcsv/';
 	}
 
+	public function viewAction() {
+		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+			$result = $this -> bodyColorObj -> getBodyColorById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('vehicle/viewBodyColor.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Vehicle_Form_BodyColor($this -> view);
 		$form -> setView($this -> view);

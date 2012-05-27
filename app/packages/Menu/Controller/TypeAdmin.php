@@ -17,6 +17,15 @@ class Menu_Controller_TypeAdmin extends Aula_Controller_Action {
 		$this -> view -> sanitized['locale']['value'] = 1;
 	}
 
+	public function viewAction() {
+		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+			$result = $this -> menuTypeObj -> getTypeById($_GET['id']);
+			$this -> view -> result = $result;
+			$this -> view -> render('menu/viewType.phtml');
+			exit();
+		}
+	}
+
 	public function addAction() {
 		$form = new Menu_Form_TypeAdmin($this -> view);
 		$form -> setView($this -> view);

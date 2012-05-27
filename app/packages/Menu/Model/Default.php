@@ -72,5 +72,22 @@ class Menu_Model_Default extends Aula_Model_DbTable {
 		$result = $this -> read('`m`.`published` = ? AND `m`.`approved` = ?', array('Yes', 'Yes'));
 		return $result;
 	}
+	
+	public function getmenuById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('menu_info', $this->_name . '.id=menu_info.menu_id',array('menu_info.*'))
+		-> joinInner('menu_type', $this->_name . '.menu_type_id=menu_type.id',array('menu_type.title as menu_type_title', 'menu_type.label as menu_type_label', 'menu_type.description as menu_type_description'))
+		-> setIntegrityCheck(false)
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
+
 
 }
