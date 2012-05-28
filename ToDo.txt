@@ -13,3 +13,17 @@ like columns(comments/options/published/approved/meta_data/...) in object_photo
 - check all update order query in add/edit action should have where condition.
 
 - Check if we need to keep "import/export" in Aula_Controller_Action or change it tobe plugin?
+
+
+- To continue working on view/list on all other tables (ALL TABLES)
+- Fix all upload code (files/videos). in file listing, show icon for file extension in db, when click on it, download it with direct link
+- remove photo/video form article
+- fix configs physical paths (like skin path by adding "public" directory) 
+- take backup copy of all old packages, add it to var/tmp, then clean all objects and remove ANY unused code
+- remove "old" from package directory
+
+
+- To continue working on locale on object tables
+- check to keep using $_POST or not. How to switch to "$sanitized"?
+- Mosua to check the inisert statement if it should/not use prepare?
+- To continue working on import/export on all other tables (ALL TABLES)
