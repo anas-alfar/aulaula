@@ -2,52 +2,12 @@
 
 class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 
-	private $objectObj = NULL;
-	private $objectInfoObj = NULL;
-	private $abuseObj = NULL;
-	private $abuseTypeObj = NULL;
-	private $articleObj = NULL;
-	private $commentObj = NULL;
-	private $directoryObj = NULL;
-	private $fileObj = NULL;
-	private $photoObj = NULL;
-	private $ratingObj = NULL;
 	private $sourceInfoObj = NULL;
 	private $sourceObj = NULL;
-	private $staticObj = NULL;
-	private $tagObj = NULL;
-	private $typeObj = NULL;
-	private $typeIfnoObj = NULL;
-	private $urlObj = NULL;
-	private $userFavouriteObj = NULL;
-	private $videoObj = NULL;
-
-	//theme objects
-	private $themeObj = NULL;
-	private $layoutObj = NULL;
-	private $skinObj = NULL;
-	private $templateObj = NULL;
-
-	//locale object
-	private $lcoaleObj = NULL;
-
-	//category object
-	private $categoryObj = NULL;
 
 	protected function _init() {
-		//default objects
-		// $this -> objectObj = new Object_Model_Default();
-		// $this -> objectInfoObj = new Object_Model_Info();
-
-		//objects
 		$this -> sourceObj = new Object_Model_Source();
 		$this -> sourceInfoObj = new Object_Model_SourceInfo();
-
-		//country object
-		//$this -> countryObj = new Aula_Model_CountriesList();
-
-		//category object
-		//$this -> categoryObj = new Category_Model_Default();
 
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;

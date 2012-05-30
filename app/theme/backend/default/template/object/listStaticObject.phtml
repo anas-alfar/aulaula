@@ -43,13 +43,13 @@
 	<tr class="heading">
 	<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a href="
-			<?php echo $this->sort->category_id->href; ?>"
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><span
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
-		<th class="jstalgntop col1"><a href="
 			<?php echo $this->sort->alias->href; ?>"
 			class="<?php echo $this->sort->alias->cssClass; ?>"><span
 			class="<?php echo $this->sort->alias->cssClass; ?>"><?php echo $this->__ ( 'Object_Alias' ); ?></span></a></th>
+		<th class="jstalgntop col1"><a href="
+			<?php echo $this->sort->url->href; ?>"
+			class="<?php echo $this->sort->url->cssClass; ?>"><span
+			class="<?php echo $this->sort->url->cssClass; ?>"><?php echo $this->__ ( 'Object_URL' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a href="
 			<?php echo $this->sort->published->href; ?>"
 			class="<?php echo $this->sort->published->cssClass; ?>"><span
@@ -70,12 +70,12 @@
 		foreach ($this->objectList as $key => $value) {
 				echo '<tr>';
 				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="staticId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				echo '<td class="jstalgntop">' . $this -> category[$value['category_id']] . '</td>';
 				echo '<td class="jstalgntop">' . $value['alias'] . '</td>';
+				echo '<td class="jstalgntop">' . $value['url'] . '</td>';
 				echo '<td class="jstalgntop">' . $this  -> __($value['published']) . '</td>';
 				echo '<td class="jstalgntop">' . $this  -> __($value['approved']) . '</td>';
 				echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
-				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/object-static/action/edit/s/1/id/' . $value['id'] . '"
+				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/object-static/action/edit/id/' . $value['id'] . '"
 						class="modify fl" title="Edit"></a> <a href="/admin/handle/pkg/object-static/action/view/id/' . $value['id'] . '"
 			class="preview fl" title="Preview"></a></td>';
 				echo '</tr>';

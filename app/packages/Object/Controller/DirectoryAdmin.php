@@ -4,48 +4,13 @@ class Object_Controller_DirectoryAdmin extends Aula_Controller_Action {
 
 	private $objectObj = NULL;
 	private $objectInfoObj = NULL;
-	private $abuseObj = NULL;
-	private $abuseTypeObj = NULL;
-	private $articleObj = NULL;
-	private $commentObj = NULL;
 	private $directoryObj = NULL;
-	private $fileObj = NULL;
-	private $photoObj = NULL;
-	private $ratingObj = NULL;
-	private $sourceInfoObj = NULL;
-	private $sourceObj = NULL;
-	private $staticObj = NULL;
-	private $tagObj = NULL;
-	private $typeObj = NULL;
-	private $typeIfnoObj = NULL;
-	private $urlObj = NULL;
-	private $userFavouriteObj = NULL;
-	private $videoObj = NULL;
-
-	//theme objects
-	private $themeObj = NULL;
-	private $layoutObj = NULL;
-	private $skinObj = NULL;
-	private $templateObj = NULL;
-
-	//category object
-	private $categoryObj = NULL;
 
 	protected function _init() {
 		//default objects
 		$this -> objectObj = new Object_Model_Default();
 		$this -> objectInfoObj = new Object_Model_Info();
-
-		//objects
 		$this -> directoryObj = new Object_Model_Directory();
-
-		//theme objects
-		$this -> templateObj = new Theme_Model_Template();
-		$this -> layoutObj = new Theme_Model_Layout();
-		$this -> skinObj = new Theme_Model_Skin();
-
-		//locale and category objects
-		$this -> categoryObj = new Category_Model_Default();
 
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
@@ -88,45 +53,6 @@ class Object_Controller_DirectoryAdmin extends Aula_Controller_Action {
 		$this -> view -> form = $form;
 		$this -> view -> render('object/addDirectory.phtml');
 		exit();
-
-		/*if ($this -> isPagePostBack) {
-		 $this -> filterObj -> trimData($this -> view -> sanitized);
-		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
-		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 if (empty($this -> errorMessage)) {
-		 $result = $this -> directoryObj -> insertIntoObject_directory(Null, $this -> view -> sanitized -> nameDirectory -> value, $this -> view -> sanitized -> labelDirectory -> value, $this -> view -> sanitized -> descriptionDirectory -> value, $this -> view -> sanitized -> parent -> value, $this -> userId, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> filesCount -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> objectId -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-		 $this -> view -> sanitized -> Id -> value = $result[0];
-
-		 if ($result !== false) {
-		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-		 header('Location: /admin/handle/pkg/object-directory/action/list/s/1');
-		 exit();
-		 } else {
-		 if (isset($_GET['s']) and $_GET['s'] == -1) {
-		 header('Location: /admin/handle/pkg/object-directory/action/edit/s/-1/id/' . $this -> view -> sanitized -> Id -> value);
-		 exit();
-		 }
-		 header('Location: /admin/handle/pkg/object-directory/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-		 exit();
-		 }
-		 } else {
-		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-		 }
-		 }
-		 } else {
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 }
-
-		 if (!empty($this -> errorMessage)) {
-		 foreach ($this->errorMessage as $key => $msg) {
-		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
-		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-		 }
-		 }
-
-		 $this -> view -> render('object/addDirectoryObject.phtml');
-		 exit();*/
 	}
 
 	public function editAction() {
@@ -182,46 +108,6 @@ class Object_Controller_DirectoryAdmin extends Aula_Controller_Action {
 		$this -> view -> form = $form;
 		$this -> view -> render('object/updateDirectory.phtml');
 		exit();
-
-		/*if ($this -> isPagePostBack) {
-		 $this -> filterObj -> trimData($this -> view -> sanitized);
-		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
-		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 if (empty($this -> errorMessage)) {
-		 $result = $this -> directoryObj -> updateObject_directoryById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> nameDirectory -> value, $this -> view -> sanitized -> labelDirectory -> value, $this -> view -> sanitized -> descriptionDirectory -> value, $this -> view -> sanitized -> parent -> value, $this -> userId, $this -> view -> sanitized -> size -> value, $this -> view -> sanitized -> filesCount -> value, $this -> view -> sanitized -> fullPath -> value, $this -> view -> sanitized -> objectId -> value, $this -> view -> sanitized -> category -> value, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> showInObject -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value);
-		 if ($result !== false) {
-		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-		 header('Location: /admin/handle/pkg/object-directory/action/list/s/1');
-		 exit();
-		 }
-		 header('Location: /admin/handle/pkg/object-directory/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-		 exit();
-		 } else {
-		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-		 }
-		 }
-		 } elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-		 $result = $this -> directoryObj -> getObject_directoryDetailsById(( int )$_GET['id']);
-		 $result = $result[0];
-		 $this -> fields = array('redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'directoryId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'author' => array('numericUnsigned', $result['author_id']), 'nameDirectory' => array('codeConvention', 1, $result['name']), 'labelDirectory' => array('text', 1, $result['label']), 'descriptionDirectory' => array('text', 0, $result['description']), 'parent' => array('numeric', 1, $result['parent_id']), 'category' => array('numeric', 1, $result['category_id']), 'size' => array('numeric', 0, $this -> directoryObj -> size), 'filesCount' => array('numeric', 0, $this -> directoryObj -> filesCount), 'showInObject' => array('text', 0, $result['show_in_object']), 'fullPath' => array('filePath', 0, $this -> directoryObj -> fullPath), 'objectId' => array('numericUnsigned', 0, $result['object_id']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
-		 $this -> view -> sanitized = array();
-		 $this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-		 $this -> view -> sanitized['Id']['value'] = ( int )$_GET['id'];
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 } else {
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 }
-
-		 if (!empty($this -> errorMessage)) {
-		 foreach ($this->errorMessage as $key => $msg) {
-		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
-		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-		 }
-		 }
-
-		 $this -> view -> render('object/addDirectoryObject.phtml');
-		 exit();*/
 	}
 
 	public function deleteAction() {
@@ -354,20 +240,12 @@ class Object_Controller_DirectoryAdmin extends Aula_Controller_Action {
 		$this -> pagingObj -> _init($this -> directoryObj -> totalRecordsFound);
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
-		//listing
-		$categoryListResult = $this -> categoryObj -> read();
-		$countOfOCategoryListResult = count($categoryListResult);
-		$category = '';
-		for ($i = 0; $i < $countOfOCategoryListResult; $i++) {
-			$category[$categoryListResult[$i]['id']] = $categoryListResult[$i]['label'];
-		}
 
 		if (empty($directoryListResult) and false == $directoryListResult) {
 			$this -> view -> notificationMessage = $this -> view -> __('Sorry, no records found');
 			$this -> view -> notificationMessageStyle = 'display: block;';
 		}
 
-		$this -> view -> category = $category;
 		$this -> view -> objectList = $directoryListResult;
 		$this -> view -> render('object/listDirectoryObject.phtml');
 		exit();
