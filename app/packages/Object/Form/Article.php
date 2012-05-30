@@ -139,53 +139,6 @@ class Object_Form_Article extends Zend_Dojo_Form
                     'style'		=> 'height:200px'
                 )
         );
-		/*$mandatoryForm->addElement(
-				'editor', 
-				'content', 
-				array(
-    				//'plugins' => array('undo', '|', 'bold', 'italic') ,
-    				//'editActionInterval' => 2,
-    				'focusOnLoad'        => true,
-    				'height'             => '250px',
-    				'inheritWidth'       => true,
-    				//'styleSheets'        => array('/js/custom/editor.css'),
-				)
-		);*/
-		$mandatoryForm->addElement(
-				'file', 
-				'filePhoto', 
-				array(
-					//'required'	=> true,
-			    	'label'         => $this -> view -> __ ( 'Object_Photo' ),
-			    	'validators'    => array(
-			    		array('ExcludeExtension', false, array('php', 'exe', 'case' => true)),
-			        	//array('Count', false, array('min'=>1, 'max'=>3)),
-			        	array('Size', false, 209715200),
-			        	array('Extension', false, 'jpg,png,gif,jpeg,x-png')
-			    	),
-			    //'multiFile'=>3,
-			    //'maxFileSize' => 2048,
-			    //'destination'=>APPLICATION_PATH . '/tmp'
-				)
-		);
-		$mandatoryForm->addElement(
-				'file', 
-				'fileVideo', 
-				array(
-					//'required'	=> true,
-			    	'label'         => $this -> view -> __ ( 'Object_Video' ),
-			    	'validators'    => array(
-			    		array('ExcludeExtension', false, array('php', 'exe', 'case' => true)),
-			        	//array('Count', false, array('min'=>1, 'max'=>3)),
-			        	//array('Size', false, 209715200),
-			        	array('Extension', false, 'flv')
-			    	),
-			    //'multiFile'=>3,
-			    //'maxFileSize' => 2048,
-			    //'destination'=>APPLICATION_PATH . '/tmp'
-				)
-		);
- 
 		$mandatoryForm->addElement(
             'CheckBox',
             'published',
@@ -219,15 +172,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 					'onclick' 	=> 'dijit.byId("add-edit").submit()',
 				)
 		);
-		$mandatoryForm->addElement(
-				'reset', 
-				'reset',
-				array(
-					'label' => 'Reset',
-					'id'	=> 'reset',
-					'ignore'=> true,
-				)
-		);
 
         $optionalForm = new Zend_Dojo_Form_SubForm();
         $optionalForm->setAttribs(array(
@@ -243,7 +187,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 	                'autocomplete'=>false,
 	                'multiOptions' => $this->_getCategoryOptions(),
 	                'id' => 'category_id',
-					//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
 	            )
         );
         $optionalForm->addElement(
@@ -255,7 +198,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 	                'autocomplete'=>false,
 	                'multiOptions' => $this->_getSourceOptions(),
 	                'id' => 'object_source_id',
-					//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
 	            )
         );
         $optionalForm->addElement(
@@ -267,7 +209,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 	                'autocomplete'=>false,
 	                'multiOptions' => $this->_getTypeOptions(),
 	                'id' => 'object_type_id',
-					//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
 	            )
         );
         $optionalForm->addElement(
@@ -279,7 +220,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 	                'autocomplete'=>false,
 	                'multiOptions' => $this->_getObjectOptions(),
 	                'id' => 'object_id',
-					//'onchange' => "dijit.byId('parent_id').searchAttr = dijit.byId('category_type_id').getValue();return true",
 	            )
         );
         $optionalForm->addElement(
@@ -471,25 +411,6 @@ class Object_Form_Article extends Zend_Dojo_Form
 		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
-
-		$mandatoryForm->getElement('filePhoto')-> setDecorators(
-	    array(
-	        'File',
-	        'Errors',
-	        array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	        array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	        array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-	    	)
-		);
-		$mandatoryForm->getElement('fileVideo')-> setDecorators(
-	    array(
-	        'File',
-	        'Errors',
-	        array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	        array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	        array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-	    	)
-		);
 		
 
         $this->addSubForm($mandatoryForm, 'mandatory')

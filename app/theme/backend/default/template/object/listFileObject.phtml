@@ -46,13 +46,15 @@
 	<tr class="heading">
 		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->category_id->href; ?>"
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><span
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
+			href="#"><span ><?php echo $this->__ ( 'Object_Avatar' ); ?></span></a></th>
 		<th class="jstalgntop col1"><a
 			href="<?php echo $this->sort->name->href; ?>"
 			class="<?php echo $this->sort->name->cssClass; ?>"><span
 			class="<?php echo $this->sort->name->cssClass; ?>"><?php echo $this->__ ( 'Object_Name' ); ?></span></a></th>
+		<th class="jstalgntop col1"><a
+			href="<?php echo $this->sort->label->href; ?>"
+			class="<?php echo $this->sort->label->cssClass; ?>"><span
+			class="<?php echo $this->sort->label->cssClass; ?>"><?php echo $this->__ ( 'Object_Label' ); ?></span></a></th>
 		<th class="jstalgntop col4"><a
 			href="<?php echo $this->sort->show_in_object->href; ?>"
 			class="<?php echo $this->sort->show_in_object->cssClass; ?>"><span
@@ -77,8 +79,9 @@
 			foreach ($this->objectList as $key => $value) {
 				echo '<tr>';
 				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="fileId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				echo '<td class="jstalgntop">' . $this -> category [$value['category_id']] . '</td>';
+				echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' .$this->defaultSkinImagesUrl . substr($value['extension'], 1) . '.png" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
 				echo '<td class="jstalgntop">' . $value['name'] . '</td>';
+				echo '<td class="jstalgntop">' . $value['label'] . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['show_in_object']) . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['published']) . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['approved']) . '</td>';

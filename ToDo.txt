@@ -16,11 +16,12 @@ like columns(comments/options/published/approved/meta_data/...) in object_photo
 
 
 - To continue working on view/list on all other tables (ALL TABLES)
-- Fix all upload code (files/videos). in file listing, show icon for file extension in db, when click on it, download it with direct link
-- remove photo/video form article
+- Fix all upload code (files/videos)
+- DONE: In file listing, show icon for file extension in db, when click on it, download it with direct link
+- DONE: Remove photo/video form article
 - fix configs physical paths (like skin path by adding "public" directory) 
 - take backup copy of all old packages, add it to var/tmp, then clean all objects and remove ANY unused code
-- remove "old" from package directory
+- DONE: remove "old" from package directory
 
 
 - To continue working on locale on object tables

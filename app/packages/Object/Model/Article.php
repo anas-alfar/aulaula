@@ -626,5 +626,22 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 
 		return $result;
 	}
+	
+	public function getAllArticle_OrderByColumnWithLimit ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
+		
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> order("$column $sorting") 
+		-> limit("$start, $limit") 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
 
 }

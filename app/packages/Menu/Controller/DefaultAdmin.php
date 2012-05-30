@@ -80,13 +80,9 @@ class Menu_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$form = new Menu_Form_DefaultAdmin($this -> view);
 		$form -> setView($this -> view);
 		 if (!empty($_POST) and $form -> isValid($_POST)) {
-			//$fetchResults = $this -> menuObj -> select() -> where('`order` >= ?', (int) $_POST['mandatory']['order']) -> query() -> fetchAll();
-			//foreach ($fetchResults as $value) {
-				//$this -> menuObj -> update(array('order' => $value['order'] + 1), array('id =' . $value['id']));
-			//}
-			$query = $this -> menuObj ->getAdapter()->query('UPDATE menu SET `order`=1+`order`', array());
-			$query->execute(); 
-			
+			$stmt = $this -> menuObj -> getAdapter() -> prepare('UPDATE menu SET `order`=`order`+1 WHERE `order` >= ?');
+			$stmt -> execute(array($_POST['mandatory']['order']));
+
 			$lastInsertId = $this -> menuObj -> insert($_POST['mandatory']);
 			if ($lastInsertId !== false) {
 				$_POST['optional']['menu_id'] = $lastInsertId;
