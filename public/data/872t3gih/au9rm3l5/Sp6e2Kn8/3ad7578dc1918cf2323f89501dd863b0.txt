@@ -1,0 +1,68 @@
+Qcreator enhancements:
+
+1- Editing a MC option currently requires a longer refresh/load time to display the edited result, then takes you to a place on the screen other than where you would like to view the new answer. It would be nice to have it more immediate and not move from the current place on screen as time is spent trying to find where you left off. 
+My note: it seems doable, need tracing, show us in action.
+
+2- Ability to rearrange questions using the original functions (without it freezing/locking) and not having to edit each question number.
+My note: what is the original functions? what you mean by freezing/locking?
+
+3- Ability to re-map questions after they are already created without starting over (e.g. edit the question and map it to additional a parent questions/answers)
+My note: need tracing, show us in action.
+
+4- Add ability to insert a new question type of Consent. Exactly like MC just need the option available. 
+My note: there's a question type called "ConsentByText" and "Consent", what option?, show us in action.
+
+5- Some questions are MC and should be color rated, but they also have a N/A answer. Can we add an option to have a neutral option in gray, but all other options color rated?
+Kaitlyn Cardwell – Being able to add an N/A option to any question would be great.  Right now we have to ask a Y/N question and then make it adaptive to yes. 
+My note: it seems doable, need tracing, show us in action.
+
+6- I saw we have a height option ___ft and __in. Can we get one of these for weight? ____lbs, ___oz.
+Kaitlyn Cardwell – This would be especially helpful with these new pediatric forms when asking weight of infant. 
+My note: it seems doable, need tracing, show us in action.
+
+7- In a grid section: ability to input column answers once and apply it to all questions. Same with MC and scales, if a bunch of questions are going to have the same set of answers, can we save the scale or answer set and apply it to multiple questions? 
+My note: it seems doable, need tracing, show us in action.
+
+8- Ability to input data into a grid, not just checkmarks
+My note: I didn't understand, show us in action.
+
+9- Ability to add instruction boxes or comments at various points in a section.
+My note: there is an instruction box for every section, is it what you are looking for? show us in action.
+
+10- Add buttons so we can underline, italicize, and bold.
+My note: it seems doable, will use richtext editor.
+
+11- We're getting a lot of pages of forms, can we get a search box (like the ones in assign questionnaires that suggest forms as you type)?
+Allison Schwent – Other ideas:
+Sort by clinic
+Have the alphabet at the top instead of the page numbers so we can click R and get all the forms starting with R. 
+My note: it's doable, choose a method.
+
+12- HOOS and KOOS both need the SF12 attached to bottom. Currently, the SF12 has to be manually input at the bottom of both, even though it already resides in the system. 
+Could the existing SF12 be selected as a questionnaire attached to the bottom of both the HOOS and KOOS? 
+My note: it seems doable, need more clarification and tracing, show us in action.
+
+13- Adaptive sections possible? Currently, questions can only be adaptive within a section. Can we map back to parent questions in a different section?
+My note: I didn't understand, show us in action.
+
+14- MC options deletable in Qcreator and re-arrangeable without using the Edit All function.
+My note: Edit All used to add choices as I see, can you show us in action.
+
+15- Ability to link Existing Questionnaires without duplicate or re-write
+Fadi Muheidat – we have two issues:
+1.Add two or more questionnaires to form new questionnaire , example;
+Let us say FadiQues1, with Id=100, and FadiQues2 with id=200, then I need to form new questionnaire called  " FadiQues1/FadiQues2" with id=300 .
+Then we can make each Questionnaire as new section in the new one.
+My note: I think it's doable, need deeply check.
+
+2.Link a questionnaire to an existing questionnaire without changing the id but might change the name , example:
+Assume  we have a form called "RI sports Medicine New Patient" with id=2, then I need to add SF-12 form with id=3 to this existing form keeping the same id. So the SF-12 questions will be embedded to the RI form at the end or wherever I need.
+My note: I think it is not doable, coze the id is auto increment, eventhough it needs deeply check and brainstorm if there's work arround.
+
+16- Screening tools
+Andrea Wood – Screening tools are questionnaires which re-direct pts. to the next questionnaire based on their selection(s). 
+Example: 
+http://qcreatormedamine.oberd.com/editquestionnaire.php?id=228
+If you select shoulder, you are directed to a different QID which is shoulder related. 
+We currently have to request a screening tool from the backend and explain the linkage to the secondary questionnaires.
+My note: I didn't understand, need more clarification.
