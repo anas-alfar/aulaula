@@ -16616,6 +16616,7 @@ WARNING [2]:
 Line 24 in file /var/www/html/git/aulaula/public/index.php
 require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
 ===========================
+<<<<<<< HEAD
 E_STRICT [2048]:
 Line 192 in file /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php
 Creating default object from empty value
@@ -21264,3 +21265,5 @@ WARNING [2]:
 Line 24 in file /var/www/html/git/aulaula/public/index.php
 require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
 ===========================
+=======
+>>>>>>> 232dba3... Upload Object Adding
