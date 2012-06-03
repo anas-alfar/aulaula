@@ -37,9 +37,36 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 	public function viewAction() {
 		if (isset($_GET['id']) and is_numeric($_GET['id'])) {
 			$result = $this -> fileObj -> getFileById($_GET['id']);
+
+			$fileDate = explode('-', $result['date_added'], 3);
+			$result['download_link'] = parent::$encryptedUrl['file'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $_GET['id']) . $result['extension'];
+
 			$this -> view -> result = $result;
 			$this -> view -> render('object/viewFile.phtml');
 			exit();
+		}
+	}
+
+	public function import($objectFileData) {
+		$uploadFileObj = new Aula_Model_Upload('file');
+
+		if ($uploadFileObj -> CheckIfThereIsFile() === TRUE) {
+			if ($uploadFileObj -> validatedMime()) {
+				if ($uploadFileObj -> validatedSize()) {
+					$lastInsertIdFile = $this -> fileObj -> insert($objectFileData);
+					if ($lastInsertIdFile !== false) {
+						$uploadFileObj -> newFileName = parent::$encryptedDisk['file'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdFile) . $uploadFileObj -> extension;
+						$fileUploaded = $uploadFileObj -> uploadFile($uploadFileObj -> newFileName);
+						if (true === $fileUploaded) {
+							$relativePath = explode('data' . DIRECTORY_SEPARATOR, $uploadFileObj -> newFileName);
+							$objecdInfoData = array('mime_type' => $uploadFileObj -> mime, 'size' => $uploadFileObj -> size, 'extension' => $uploadFileObj -> extension, 'full_path' => $relativePath[1], );
+							$this -> fileObj -> update($objecdInfoData, '`id` = ' . $lastInsertIdFile);
+							
+							return true;
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -272,7 +299,7 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 
 			foreach ($fileListResult as $key => $value) {
 				$fileDate = explode('-', $value['date_added'], 3);
-				$fileURL  = parent::$encryptedUrl['file'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . $value['extension'];
+				$fileURL = parent::$encryptedUrl['file'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . $value['extension'];
 				$fileListResult[$key]['fileURL'] = $fileURL;
 			}
 

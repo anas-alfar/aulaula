@@ -31,6 +31,41 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 		}
 	}
 
+	public function import($objectVideoData) {
+		$uploadPhotoObj = new Aula_Model_Upload_Photo('videoThumb');
+		$uploadVideoObj = new Aula_Model_Upload_Video('video');
+
+		if ($uploadVideoObj -> CheckIfThereIsFile() === TRUE && $uploadPhotoObj -> CheckIfThereIsFile() === TRUE) {
+			if ($uploadVideoObj -> validatedMime() && $uploadPhotoObj -> validatedMime()) {
+				if ($uploadVideoObj -> validatedSize() && $uploadPhotoObj -> validatedSize()) {
+					$stmt = $this -> videoObj -> getAdapter() -> prepare('UPDATE object_video SET `order`=`order`+1 WHERE `order` >= ?');
+					$stmt -> execute(array($objectVideoData['order']));
+
+					$objectVideoData['author_id'] = $this -> userId;
+					$objectVideoData['size'] = 'NULL';
+					$objectVideoData['width'] = 'NULL';
+					$objectVideoData['height'] = 'NULL';
+					$objectVideoData['author_id'] = 'NULL';
+					$lastInsertIdVideo = $this -> videoObj -> insert($objectVideoData);
+
+					if (is_numeric($lastInsertIdVideo)) {
+						$videoData = array('size' => $uploadVideoObj -> size, 'width' => $uploadVideoObj -> width, 'height' => $uploadVideoObj -> height, 'extension' => $uploadVideoObj -> extension, );
+						$this -> videoObj -> update($videoData, '`id` = ' . $lastInsertIdVideo);
+
+						$uploadVideoObj -> newFileName = parent::$encryptedDisk['video']['flv'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.flv';
+						$uploadVideoObj -> uploadFile($uploadVideoObj -> newFileName);
+
+						$uploadPhotoObj -> newFileName = parent::$encryptedDisk['video']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.jpg';
+						$uploadPhotoObj -> uploadFile($uploadPhotoObj -> newFileName);
+
+						$thumbUploaded = $uploadPhotoObj -> resizeUploadImage($uploadVideoObj -> width, $uploadVideoObj -> height, parent::$encryptedDisk['video']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+						return true;
+					}
+				}
+			}
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Video($this -> view);
 		$form -> setView($this -> view);
@@ -292,9 +327,10 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 		} else {
 			foreach ($videoListResult as $key => $value) {
 				$fileDate = explode('-', $value['date_added'], 3);
-				//$photoSRC = parent::$encryptedUrl['video']['thumb'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg?r=' . rand(0, 1000) . '<br /><br />';
-				$fileURL = parent::$encryptedUrl['video']['flv'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . $value['extension'];
-				$videoListResult[$key]['fileURL'] = $fileURL;
+				$thumbURL = parent::$encryptedUrl['video']['thumb'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg?r=' . rand(0, 1000) . '<br /><br />';
+				$flvURL = parent::$encryptedUrl['video']['flv'][$fileDate[0] . '-' . $fileDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . $value['extension'];
+				$videoListResult[$key]['thumbURL'] = $thumbURL;
+				$videoListResult[$key]['fileURL'] = $flvURL;
 			}
 		}
 

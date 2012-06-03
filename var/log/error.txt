@@ -15982,3 +15982,637 @@ WARNING [2]:
 Line 32 in file /var/www/html/git/aulaula/app/theme/backend/default/template/category/addType.phtml
 Invalid argument supplied for foreach()
 ===========================
+NOTICE [8]:
+Line 314 in file /var/www/html/git/aulaula/app/packages/Object/Controller/PhotoAdmin.php
+Undefined variable: photoSRC
+===========================
+NOTICE [8]:
+Line 314 in file /var/www/html/git/aulaula/app/packages/Object/Controller/PhotoAdmin.php
+Undefined variable: photoSRC
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/git/aulaula/app/packages/Object/Controller/FileAdmin.php
+Undefined variable: key
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 298 in file /var/www/html/git/aulaula/app/packages/Object/Controller/VideoAdmin.php
+Undefined variable: fileURL
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 298 in file /var/www/html/git/aulaula/app/packages/Object/Controller/VideoAdmin.php
+Undefined variable: fileURL
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 298 in file /var/www/html/git/aulaula/app/packages/Object/Controller/VideoAdmin.php
+Undefined variable: fileURL
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+E_STRICT [2048]:
+Line 138 in file /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php
+Creating default object from empty value
+===========================
+NOTICE [8]:
+Line 158 in file /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php
+Indirect modification of overloaded property Aula_Model_View::$sort has no effect
+===========================
+NOTICE [8]:
+Line 57 in file /var/www/html/git/aulaula/app/theme/backend/default/template/object/addObject.phtml
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Object/Form/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(34): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(34): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+WARNING [512]:
+Line 2925 in file /var/www/html/git/aulaula/library/Zend/Form.php
+Exception caught by form: No file decorator found... unable to render file element
+Stack Trace:
+#0 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form_Element_File->render()
+#1 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#2 /var/www/html/git/aulaula/library/Zend/Form/Decorator/FormElements.php(111): Zend_Form->render()
+#3 /var/www/html/git/aulaula/library/Zend/Form.php(2904): Zend_Form_Decorator_FormElements->render('')
+#4 /var/www/html/git/aulaula/library/Zend/Form.php(2920): Zend_Form->render()
+#5 /var/www/html/git/aulaula/app/theme/backend/default/template/object/add.phtml(68): Zend_Form->__toString()
+#6 /var/www/html/git/aulaula/app/packages/Aula/Model/View.php(146): include('/var/www/html/g...')
+#7 /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php(90): Aula_Model_View->render('object/add.phtm...')
+#8 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(132): Object_Controller_DefaultAdmin->addAction()
+#9 /var/www/html/git/aulaula/app/packages/Admin/Controller/DefaultAdmin.php(108): Aula_Model_Router->loadController(Object(BootStrap))
+#10 /var/www/html/git/aulaula/app/packages/Aula/Model/Router.php(137): Admin_Controller_DefaultAdmin->handle()
+#11 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(37): Aula_Model_Router->loadController(Object(BootStrap))
+#12 /var/www/html/git/aulaula/public/index.php(82): Aula_Controller_Default->dispatcher()
+#13 /var/www/html/git/aulaula/app/packages/Aula/Controller/Default.php(10): BootStrap->_init()
+#14 /var/www/html/git/aulaula/public/index.php(144): Aula_Controller_Default->__construct()
+#15 {main}
+===========================
+UNKNOWN ERROR [4096]:
+Line 45 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Argument 1 passed to Aula_Controller_Action::__construct() must be an instance of Aula_Controller_Default, none given, called in /var/www/html/git/aulaula/app/packages/Object/Controller/DefaultAdmin.php on line 95 and defined
+===========================
+NOTICE [8]:
+Line 46 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Undefined variable: fc
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/git/aulaula/app/packages/Aula/Controller/Action.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 56 in file /var/www/html/git/aulaula/app/packages/Object/Controller/FileAdmin.php
+Undefined variable: objectFileData
+===========================
+UNKNOWN ERROR [4096]:
+Line 1031 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+Argument 1 passed to Zend_Db_Table_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/app/packages/Object/Controller/FileAdmin.php on line 56 and defined
+===========================
+WARNING [2]:
+Line 1062 in file /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php
+array_key_exists() expects parameter 2 to be array, null given
+===========================
+UNKNOWN ERROR [4096]:
+Line 536 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Argument 2 passed to Zend_Db_Adapter_Abstract::insert() must be an array, null given, called in /var/www/html/git/aulaula/library/Zend/Db/Table/Abstract.php on line 1075 and defined
+===========================
+WARNING [2]:
+Line 542 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+Invalid argument supplied for foreach()
+===========================
+WARNING [2]:
+Line 573 in file /var/www/html/git/aulaula/library/Zend/Db/Adapter/Abstract.php
+array_values() expects parameter 1 to be array, null given
+===========================
+NOTICE [8]:
+Line 42 in file /var/www/html/git/aulaula/app/packages/Object/Controller/VideoAdmin.php
+Undefined index: order
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(): Unable to open file
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(): Unable to open file
+===========================
+NOTICE [8]:
+Line 43 in file /var/www/html/git/aulaula/app/packages/Object/Controller/PhotoAdmin.php
+Undefined index: order
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(): Unable to open file
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpNobANa): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(php4KTbWA): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpMOea4Z): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpRLem4c): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(php5FBOOP): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpM5FGCi): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpLMXNl4): File not supported
+===========================
+WARNING [2]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error: 
+===========================
+WARNING [2]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecreatefromjpeg(): '/var/www/html/git/aulaula/public/data/872t3gih/79g0f2bh/7slk207d/sd08or5lv/2ab4d8cd7ac6bb2aa574d0ed3c6e5926.jpg' is not a valid JPEG file
+===========================
+WARNING [2]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagesx() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 65 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagesy() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 67 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecopyresized() expects parameter 2 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 84 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagedestroy() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(phpNZ0uqp): File not supported
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(php4W4b6J): File not supported
+===========================
+WARNING [2]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error: 
+===========================
+WARNING [2]:
+Line 63 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecreatefromjpeg(): '/var/www/html/git/aulaula/public/data/872t3gih/79g0f2bh/7slk207d/sd08or5lv/bc3902af2d90db3ceec4e43bf78ee9bf.jpg' is not a valid JPEG file
+===========================
+WARNING [2]:
+Line 64 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagesx() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 65 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagesy() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 67 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagecopyresized() expects parameter 2 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 84 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+imagedestroy() expects parameter 1 to be resource, boolean given
+===========================
+WARNING [2]:
+Line 12 in file /var/www/html/git/aulaula/app/packages/Aula/Model/Upload/Photo.php
+exif_read_data(php28D0ZD): File not supported
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================

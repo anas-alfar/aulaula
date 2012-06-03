@@ -33,6 +33,7 @@ class Object_Controller_DefaultAdmin extends Aula_Controller_Action {
 
 	//object
 	private $categoryObj = NULL;
+	private $mediaCount = array(1, 2, 3);
 
 	protected function _init() {
 		//default objects
@@ -42,6 +43,7 @@ class Object_Controller_DefaultAdmin extends Aula_Controller_Action {
 		//objects
 		$this -> articleObj = new Object_Model_Article();
 		$this -> sourceObj = new Object_Model_Source();
+		$this -> sourceInfoObj = new Object_Model_SourceInfo();
 
 		//theme objects
 		$this -> templateObj = new Theme_Model_Template();
@@ -62,9 +64,64 @@ class Object_Controller_DefaultAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$this -> view -> arrayToObject($this -> view -> sanitized);
-		$this -> view -> render('object/addObject.phtml');
+		$form = new Object_Form_Default($this -> view);
+		$form -> setView($this -> view);
+
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+			$objectData = array('title' => $_POST['optional']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['optional']['published'], 'approved' => $_POST['optional']['approved']);
+			$objectLastInsertId = $this -> objectObj -> insert($objectData);
+
+			if ($objectLastInsertId !== false) {
+				$objecdInfoData = array('object_id' => $objectLastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+				$objectInfoLastInsertId = $this -> objectInfoObj -> insert($objecdInfoData);
+
+				if ($objectInfoLastInsertId !== false) {
+					$objectArticleData = array('alias' => $_POST['article']['alias'], 'intro_text' => $_POST['article']['intro_text'], 'full_text' => $_POST['article']['full_text'], 'author_id' => $this -> userId, 'object_id' => $objectLastInsertId, );
+					$objectArticleLastInsertId = $this -> articleObj -> insert($objectArticleData);
+
+					if ($objectArticleLastInsertId !== false) {
+						$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
+						$stmt -> execute(array($_POST['source']['order']));
+
+						$objectSourceData = array('name' => $_POST['source']['name'], 'description' => $_POST['source']['description'], 'source_type' => $_POST['source']['source_type'], 'url' => $_POST['source']['url'], 'order' => $_POST['source']['order'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'author_id' => $_POST['source']['author_id'] = $this -> userId, 'time_delay' => $_POST['source']['time_delay'], 'published' => $_POST['source']['published'], 'approved' => $_POST['source']['approved'], );
+						$objectSourceLastInsertId = $this -> sourceObj -> insert($objectSourceData);
+
+						if ($objectSourceLastInsertId !== false) {
+							$objectSourceInfoData = array('object_source_id' => $objectSourceLastInsertId, 'publish_from' => $_POST['source']['publish_from'], 'publish_to' => $_POST['source']['publish_to'], 'comments' => $_POST['source']['comments'], 'options' => json_encode($_POST['source']['options']), );
+							$this -> sourceInfoObj -> insert($objectSourceInfoData);
+
+							$_POST['file']['object_id'] = $objectLastInsertId;
+							$fileAdmin = new Object_Controller_FileAdmin($this -> fc);
+							$fileUploadedSuccessfully = $fileAdmin -> import($_POST['file']);
+
+							if ($fileUploadedSuccessfully === true) {
+
+								$_POST['video']['object_id'] = $objectLastInsertId;
+								$videoAdmin = new Object_Controller_VideoAdmin($this -> fc);
+								$videoUploadedSuccessfully = $videoAdmin -> import($_POST['video']);
+
+								if ($videoUploadedSuccessfully === true) {
+
+									foreach ($this->mediaCount as $value) {
+										$_POST['photo_' . $value]['object_id'] = $objectLastInsertId;
+										$photoAdmin = new Object_Controller_PhotoAdmin($this -> fc);
+										$photoUploadedSuccessfully = $photoAdmin -> import($_POST['photo_' . $value], 'photo_' . $value);
+									}
+
+									header('Location: /admin/handle/pkg/object/action/list/');
+									exit();
+
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('object/add.phtml');
 		exit();
+
 	}
 
 	public function editAction() {

@@ -74,7 +74,8 @@
 			foreach ($this->objectList as $key => $value) {
 				echo '<tr>';
 				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="videoId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' . $this->defaultSkinImagesUrl . substr($value['extension'], 1) . '.png" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
+				//echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' . $this->defaultSkinImagesUrl . substr($value['extension'], 1) . '.png" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
+				echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' . $value['thumbURL'] . '.jpg" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
 				echo '<td class="jstalgntop">' . $value['alias'] . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['show_in_object']) . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['published']) . '</td>';

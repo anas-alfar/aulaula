@@ -32,14 +32,52 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 		}
 	}
 
+	public function import($objectPhotoData, $photoName) {
+		$uploadPhotoObj = new Aula_Model_Upload_Photo($photoName);
+
+		if ($uploadPhotoObj -> CheckIfThereIsFile() === TRUE) {
+			if ($uploadPhotoObj -> validatedMime()) {
+				if ($uploadPhotoObj -> validatedSize()) {
+
+					$stmt = $this -> photoObj -> getAdapter() -> prepare('UPDATE object_photo SET `order`=`order`+1 WHERE `order` >= ?');
+					$stmt -> execute(array($objectPhotoData['order']));
+
+					if (empty($objectPhotoData['taken_date'])) {
+						$objectPhotoData['taken_date'] = $uploadPhotoObj -> takenTime;
+					}
+					$objectPhotoData['author_id'] = $this -> userId;
+					$objectPhotoData['size'] = $uploadPhotoObj -> size;
+					$objectPhotoData['width'] = $uploadPhotoObj -> width;
+					$objectPhotoData['height'] = $uploadPhotoObj -> height;
+					$objectPhotoData['extension'] = $uploadPhotoObj -> extension;
+
+					$lastInsertIdPhoto = $this -> photoObj -> insert($objectPhotoData);
+					if ($lastInsertIdPhoto !== false) {
+
+						$uploadPhotoObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdPhoto) . '.jpg';
+						$fileUploaded = $uploadPhotoObj -> uploadFile($uploadPhotoObj -> newFileName);
+
+						$thumbUploaded = $uploadPhotoObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+						$thumbLargeUploaded = $uploadPhotoObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+						$mediumUploaded = $uploadPhotoObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+						$largeMiniUploaded = $uploadPhotoObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+						$largeUploaded = $uploadPhotoObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+
+						return true;
+					}
+				}
+			}
+		}
+	}
+
 	public function addAction() {
 		$form = new Object_Form_Photo($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			
+
 			$uploadObj = new Aula_Model_Upload_Photo('photo');
-			
+
 			if ($uploadObj -> validatedMime()) {
 				if ($uploadObj -> validatedSize()) {
 					if (empty($_POST['mandatory']['taken_date'])) {
@@ -59,18 +97,18 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 
 							$objectPhotoData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'size' => $uploadObj -> size, 'width' => $uploadObj -> width, 'height' => $uploadObj -> height, 'extension' => $uploadObj -> extension, 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
 							$lastInsertIdPhoto = $this -> photoObj -> insert($objectPhotoData);
-							
+
 							if ($lastInsertIdPhoto !== false) {
-								
-								$uploadObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdPhoto) . '.jpg';
+
+								$uploadObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdPhoto) . '.jpg';
 								$fileUploaded = $uploadObj -> uploadFile($uploadObj -> newFileName);
-								
-								$thumbUploaded = $uploadObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> settings-> date_time -> _dateTodayVeryShortDate]);
-								$thumbLargeUploaded = $uploadObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate]);
-								$mediumUploaded = $uploadObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
-								$largeMiniUploaded = $uploadObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
-								$largeUploaded = $uploadObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
-								
+
+								$thumbUploaded = $uploadObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+								$thumbLargeUploaded = $uploadObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+								$mediumUploaded = $uploadObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+								$largeMiniUploaded = $uploadObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+								$largeUploaded = $uploadObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+
 								header('Location: /admin/handle/pkg/object-photo/action/list/');
 								exit();
 							}
@@ -115,14 +153,14 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 					$objectPhotoData = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $photoObjResult['object_id'], 'size' => $uploadObj -> size, 'width' => $uploadObj -> width, 'height' => $uploadObj -> height, 'extension' => $uploadObj -> extension, 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
 					$lastInsertIdPhoto = $this -> photoObj -> update($objectPhotoData, '`id` = ' . $objectPhotoId);
 
-					$uploadObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $objectPhotoId) . '.jpg';
+					$uploadObj -> newFileName = parent::$encryptedDisk['photo']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $objectPhotoId) . '.jpg';
 					$fileUploaded = $uploadObj -> uploadFile($uploadObj -> newFileName);
 
-					$thumbUploaded = $uploadObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate]);
-					$thumbLargeUploaded = $uploadObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate]);
-					$mediumUploaded = $uploadObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
-					$largeMiniUploaded = $uploadObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
-					$largeUploaded = $uploadObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> settings->date_time-> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+					$thumbUploaded = $uploadObj -> resizeUploadImage(76, 52, parent::$encryptedDisk['photo']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+					$thumbLargeUploaded = $uploadObj -> resizeUploadImage(184, 125, parent::$encryptedDisk['photo']['thumb-large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+					$mediumUploaded = $uploadObj -> resizeUploadImage(470, 320, parent::$encryptedDisk['photo']['medium'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+					$largeMiniUploaded = $uploadObj -> resizeUploadImage(600, 408, parent::$encryptedDisk['photo']['large-mini'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
+					$largeUploaded = $uploadObj -> resizeUploadImage(800, 545, parent::$encryptedDisk['photo']['large'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate], $this -> fc -> settings -> directories -> cache . 'watermark.png');
 
 					header('Location: /admin/handle/pkg/object-photo/action/list/');
 					exit();
@@ -309,7 +347,7 @@ class Object_Controller_PhotoAdmin extends Aula_Controller_Action {
 		} else {
 			foreach ($photoListResult as $key => $value) {
 				$photoDate = explode('-', $value['date_added'], 3);
-				
+				$photoSRC = parent::$encryptedUrl['photo']['thumb'][$photoDate[0] . '-' . $photoDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg?x=' . rand(0, 1000);
 				$largePhotoSRC = parent::$encryptedUrl['photo']['large'][$photoDate[0] . '-' . $photoDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $value['id']) . '.jpg?x=' . rand(0, 1000);
 				$photoListResult[$key]['photoSRC'] = $photoSRC;
 				$photoListResult[$key]['largePhotoSRC'] = $largePhotoSRC;
