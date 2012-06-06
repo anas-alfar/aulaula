@@ -15,7 +15,7 @@ class Aula_Model_Upload_Video extends Aula_Model_Upload {
 			$this->size = $_FILES [$this->htmlFileObj] ['size'];
 			$this->height = '230';
 			$this->width = '480';
-			$this->extension = 'flv';
+			$this->extension = '.flv';
 			$this->takenTime = '';
 			$this->takenLocation = '';
 		}

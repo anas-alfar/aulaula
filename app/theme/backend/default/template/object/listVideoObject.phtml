@@ -45,10 +45,7 @@
 <table class="srch-rsult">
 	<tr class="heading">
 		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
-		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->category_id->href; ?>"
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><span
-			class="<?php echo $this->sort->category_id->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
+		<th class="jstalgntop col1"><span ><?php echo $this->__ ( 'Object_Avatar' ); ?></span></th>
 		<th class="jstalgntop col1"><a
 			href="<?php echo $this->sort->alias->href; ?>"
 			class="<?php echo $this->sort->alias->cssClass; ?>"><span
@@ -77,13 +74,14 @@
 			foreach ($this->objectList as $key => $value) {
 				echo '<tr>';
 				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="videoId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
-				echo '<td class="jstalgntop">' . $this -> category [$value['category_id']] . '</td>';
+				//echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' . $this->defaultSkinImagesUrl . substr($value['extension'], 1) . '.png" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
+				echo '<td class="jstalgntop"><a href="' . $value['fileURL'] . '" target="_blank"><img src="' . $value['thumbURL'] . '.jpg" border="0px" alt="' . $value['extension'] . '" title="' . $value['extension'] . '" /></a></td>';
 				echo '<td class="jstalgntop">' . $value['alias'] . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['show_in_object']) . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['published']) . '</td>';
 				echo '<td class="jstalgntop">' . $this ->  __($value['approved']) . '</td>';
 				echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
-				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/object-video/action/edit/s/1/id/' . $value['id'] . '"
+				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/object-video/action/edit/id/' . $value['id'] . '"
 						class="modify fl" title="Edit"></a> <a href="/admin/handle/pkg/object-video/action/view/id/' . $value['id'] . '"
 			class="preview fl" title="Preview"></a></td>';
 				echo '</tr>';

@@ -15,15 +15,20 @@ like columns(comments/options/published/approved/meta_data/...) in object_photo
 - Check if we need to keep "import/export" in Aula_Controller_Action or change it tobe plugin?
 
 
-- To continue working on view/list on all other tables (ALL TABLES)
-- Fix all upload code (files/videos). in file listing, show icon for file extension in db, when click on it, download it with direct link
-- remove photo/video form article
+- DONE: To continue working on view/list on all other tables (ALL TABLES)
+- DONE: Fix all upload code (files/videos)
+- DONE: In file listing, show icon for file extension in db, when click on it, download it with direct link
+- DONE: Remove photo/video form article
 - fix configs physical paths (like skin path by adding "public" directory) 
-- take backup copy of all old packages, add it to var/tmp, then clean all objects and remove ANY unused code
-- remove "old" from package directory
+- DONE: take backup copy of all old packages, add it to var/tmp, then clean all objects and remove ANY unused code
+- DONE: remove "old" from package directory
 
 
-- To continue working on locale on object tables
+- DONE: To continue working on locale on object tables
 - check to keep using $_POST or not. How to switch to "$sanitized"?
 - Mosua to check the inisert statement if it should/not use prepare?
 - To continue working on import/export on all other tables (ALL TABLES)
+
+- DONE: Check photo source notice
+- DONE: Add direct download link to "view file" page
+- DONE: Show video thump in "video list" page

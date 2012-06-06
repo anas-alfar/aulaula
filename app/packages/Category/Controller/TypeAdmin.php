@@ -2,8 +2,6 @@
 
 class Category_Controller_TypeAdmin extends Aula_Controller_Action {
 
-	private $categoryObj = Null;
-	private $categoryInfoObj = Null;
 	private $categoryTypeObj = Null;
 	private $categoryTypeInfoObj = Null;
 

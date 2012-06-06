@@ -371,7 +371,7 @@ class Object_Controller_CommentAdmin extends Aula_Controller_Action {
 			$this -> view -> sort -> {$col} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $col . '/sort/desc';
 		}
 
-		if (isset($_GET['col']) and (in_array($_GET['col'], $this -> menuObj -> cols))) {
+		if (isset($_GET['col']) and (in_array($_GET['col'], $this -> commentObj -> cols))) {
 			$sort = 'ASC';
 			$sortInvert = 'desc';
 			$column = $_GET['col'];

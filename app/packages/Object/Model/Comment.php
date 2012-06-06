@@ -92,11 +92,11 @@ INNER JOIN `object` AS o ON o.`id` = oc.`object_id`';
 		$special_article = ( bool )($special_article);
 
 		$sorting = mysql_escape_string($sorting);
-		if ($special_article === True) {
+		/*if ($special_article === True) {
 			$special_article_condition = 'IN';
 		} else {
 			$special_article_condition = 'NOT IN';
-		}
+		}*/
 
 		if (in_array($column, $this -> _cols)) {
 			$column = 'oc.' . $column;
@@ -109,7 +109,7 @@ FROM `object_comment` AS oc INNER JOIN `object` AS o ON o.`id` = oc.`object_id`'
 
 		$this -> _orderBy = "$column $sorting";
 		$this -> _limit = "$start, $limit";
-		$result = $this -> read('oc.`date_added` > ? AND o.`category_id` IN (?) AND oc.`object_id` ? (SELECT `object_id` FROM `object_article_special`) AND oc.`date_added` > ?', array('2010-07-15', $categoryId, $special_article_condition, $this -> _4weeksEarlier));
+		$result = $this -> read('oc.`date_added` > ? AND o.`category_id` IN (?) AND oc.`date_added` > ?', array('2010-07-15', $categoryId, $this -> _4weeksEarlier));
 		return $result;
 	}//End Function GetAllObject_commentByCategoryListOrderByColumnWithLimitAndSpecial_article
 

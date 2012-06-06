@@ -45,18 +45,18 @@
 <table class="srch-rsult">
 	<tr class="heading">
 		<th class="jstalgntop tools"><input type="checkbox" name="selectAll" id="selectAll" /></th>
-		<th class="jstalgntop col5"><a
-			href="<?php echo $this->sort->category->href; ?>"
-			class="<?php echo $this->sort->category->cssClass; ?>"><span
-			class="<?php echo $this->sort->category->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
 		<th class="jstalgntop col8"><a
-			href="<?php echo $this->sort->title->href; ?>"
-			class="<?php echo $this->sort->title->cssClass; ?>"><span
-			class="<?php echo $this->sort->title->cssClass; ?>"><?php echo $this->__ ( 'Object_Title' ); ?></span></a></th>
+			href="<?php echo $this->sort->alias->href; ?>"
+			class="<?php echo $this->sort->alias->cssClass; ?>"><span
+			class="<?php echo $this->sort->alias->cssClass; ?>"><?php echo $this->__ ( 'Object_Alias' ); ?></span></a></th>
+		<th class="jstalgntop col5"><a
+			href="<?php echo $this->sort->order->href; ?>"
+			class="<?php echo $this->sort->order->cssClass; ?>"><span
+			class="<?php echo $this->sort->order->cssClass; ?>"><?php echo $this->__ ( 'Object_Order' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
-			href="<?php echo $this->sort->showInObject->href; ?>"
-			class="<?php echo $this->sort->showInObject->cssClass; ?>"><span
-			class="<?php echo $this->sort->showInObject->cssClass; ?>"><?php echo $this->__ ( 'Object_Show In Object' ); ?></span></a></th>
+			href="<?php echo $this->sort->show_in_object->href; ?>"
+			class="<?php echo $this->sort->show_in_object->cssClass; ?>"><span
+			class="<?php echo $this->sort->show_in_object->cssClass; ?>"><?php echo $this->__ ( 'Object_Show In Object' ); ?></span></a></th>
 		<th class="jstalgntop tools"><a
 			href="<?php echo $this->sort->published->href; ?>"
 			class="<?php echo $this->sort->published->cssClass; ?>"><span
@@ -66,15 +66,30 @@
 			class="<?php echo $this->sort->approved->cssClass; ?>"><span
 			class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Object_Aprrove' ); ?></span></a></th>
 		<th class="jstalgntop col5"><a
-			href="<?php echo $this->sort->dateAdded->href; ?>"
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><span
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+			href="<?php echo $this->sort->date_added->href; ?>"
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><span
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
 		<th class="jstalgntop col2 last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th>
 	</tr>
 	<?php 
-	if (!empty($this->objectList)) {
-		echo $this->objectList; 
-	}
+		if (!empty($this -> objectList) and false != $this -> objectList) {
+			foreach ($this->objectList as $key => $value) {
+				echo '<tr>';
+				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="articleId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
+				echo '<td class="jstalgntop">' . $this -> cleanHtml($value['alias']) . '</td>';
+				echo '<td class="jstalgntop">' . $value['order'] . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['show_in_object']) . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['published']) . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['approved']) . '</td>';
+				echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
+				echo '<td class="jstalgntop last">
+									<a href="/admin/handle/pkg/object-article/action/edit/id/' . $value['id'] . '" class="modify fl" title="Edit" target="_blank"></a>
+									<!-- <a href="/admin/handle/pkg/object-article/action/add/id/' . $value['id'] . '" class="feature fl" title="Add to Feature"></a> -->
+									<a href="/admin/handle/pkg/object-article/action/view/id/' . $value['id'] . '" class="preview fl" title="Preview"></a>
+								</td>';
+				echo '</tr>'; 
+			}
+		}
 	?>
 
 </table>

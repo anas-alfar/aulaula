@@ -102,9 +102,14 @@ class Object_Model_File extends Aula_Model_DbTable {
 		$column = mysql_escape_string($column);
 		$sorting = mysql_escape_string($sorting);
 
-		$this -> _orderBy = "$column $sorting";
-		$this -> _limit = "$start, $limit";
-		$result = $this -> read();
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> order("$column $sorting") 
+		-> limit("$start, $limit") 
+		-> query() 
+		-> fetchAll();
+		
 		return $result;
 	}
 	

@@ -42,7 +42,12 @@ class Menu_Model_Default extends Aula_Model_DbTable {
 	}
 	
 	public function getAllMenuAndMenu_infoAndMenu_typeOrderByColumn($column = '`id`', $sorting = 'DESC', $start = 0, $limit = 10) {
-		$column = '`m`.' . $column;
+		if ($column == 'type_id') {
+			$column = '`m`.menu_type_id';
+		} else {
+			$column = '`m`.' . $column;	
+		}
+
 		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS  m.`id`,  m.`label`, m.`link`, m.`menu_type_id` AS `type_id`, m.`parent_id`, 
 							m.`package_id`,	m.`sublevel`,m.`published`,m.`approved`,m.`order`,m.`date_added`, m.`published`,m.`approved`,
 							mi.`menu_id`, mi.`locked_by`, mi.`locked_by`,mi.`locked_time`, mi.`modified_by`,mi.`modified_time`,
