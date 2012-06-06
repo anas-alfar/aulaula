@@ -46,17 +46,13 @@
 	<tr class="heading">
 		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
 		<th class="jstalgntop col1"><a
-			href="<?php echo $this->sort->category->href; ?>"
-			class="<?php echo $this->sort->category->cssClass; ?>"><span
-			class="<?php echo $this->sort->category->cssClass; ?>"><?php echo $this->__ ( 'Object_Category' ); ?></span></a></th>
-		<th class="jstalgntop col1"><a
 			href="<?php echo $this->sort->title->href; ?>"
 			class="<?php echo $this->sort->title->cssClass; ?>"><span
 			class="<?php echo $this->sort->title->cssClass; ?>"><?php echo $this->__ ( 'Object_Title' ); ?></span></a></th>
 		<th class="jstalgntop col4"><a
-			href="<?php echo $this->sort->showInList->href; ?>"
-			class="<?php echo $this->sort->showInList->cssClass; ?>"><span
-			class="<?php echo $this->sort->showInList->cssClass; ?>"><?php echo $this->__ ( 'Object_Show In List' ); ?></span></a></th>
+			href="<?php echo $this->sort->show_in_list->href; ?>"
+			class="<?php echo $this->sort->show_in_list->cssClass; ?>"><span
+			class="<?php echo $this->sort->show_in_list->cssClass; ?>"><?php echo $this->__ ( 'Object_Show In List' ); ?></span></a></th>
 		<th class="jstalgntop colyesno"><a
 			href="<?php echo $this->sort->published->href; ?>"
 			class="<?php echo $this->sort->published->cssClass; ?>"><span
@@ -66,16 +62,39 @@
 			class="<?php echo $this->sort->approved->cssClass; ?>"><span
 			class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Object_Aprrove' ); ?></span></a></th>
 		<th class="jstalgntop col5"><a
-			href="<?php echo $this->sort->dateAdded->href; ?>"
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><span
-			class="<?php echo $this->sort->dateAdded->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+			href="<?php echo  $this->sort->date_added->href; ?>"
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><span
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+		<th class="jstalgntop col1"><span><?php echo $this->__ ( 'Object_Contains' ); ?></span></th>
 		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th>
 	</tr>
-	
+
+
 	<?php 
 	if (!empty($this->objectList)) {
-		echo $this->objectList; 
-	}
+			foreach ($this->objectList as $key => $value) {
+				echo '<tr>';
+				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="objectId[' . $value['object_id'] . ']" id="check" value="Yes" /></td>';
+				//echo '<td class="jstalgntop"><a href="' . $value['largePhotoSRC'] . '" target="_blank"><img src="' . $value['photoSRC'] . '" border="0px" alt="' . $value['title'] . '" title="' . $value['title'] . '" /></a></td>';
+				echo '<td class="jstalgntop">' . $value['title'] . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['object_show_in_list']) . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['object_published']) . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['object_approved']) . '</td>';
+				echo '<td class="jstalgntop">' . $value['object_date_added'] . '</td>';
+				echo '<td class="jstalgntop">';
+				if (!empty($value['flvURL']))
+					echo '<a href="' . $value['flvURL'] . '" target="_blank"><img src="' . $value['thumbURL'] . '.jpg" border="0px" alt="' . $value['object_video_extension'] . '" title="' . $value['object_video_extension'] . '" /></a><br />';
+				if (!empty($value['largePhotoSRC']))
+					echo '<a href="' . $value['largePhotoSRC'] . '" target="_blank"><img src="' . $value['photoSRC'] . '" border="0px" alt="' . $value['object_photo_alias'] . '" title="' . $value['object_photo_alias'] . '" /></a><br />';
+				if (!empty($value['fileURL']))
+					echo '<a href="' . $value['fileURL'] . '" target="_blank"><img src="' .$this->defaultSkinImagesUrl . substr($value['object_file_extension'], 1) . '.png" border="0px" alt="' . $value['object_file_extension'] . '" title="' . $value['object_file_extension'] . '" /></a>';
+				echo '</td>';
+				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/object/action/edit/id/' . $value['id'] . '"
+						class="modify fl" title="Edit"></a> <a href="/admin/handle/pkg/object/action/view/id/' . $value['id'] . '"
+			class="preview fl" title="Preview"></a></td>';
+				echo '</tr>';
+			}
+	} 
 	?>
 
 </table>

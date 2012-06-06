@@ -419,7 +419,7 @@ class Object_Form_Default extends Zend_Dojo_Form
 
 
 		// Begin Source Form
-        $sourceForm = new Zend_Dojo_Form_SubForm();
+        /*$sourceForm = new Zend_Dojo_Form_SubForm();
         $sourceForm->setAttribs(array(
                 'name'			=> 'source',
                 'legend' 		=> 'source',
@@ -556,7 +556,7 @@ class Object_Form_Default extends Zend_Dojo_Form
                     'trim' 		=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                 	)
-		);
+		);*/
 		// End Source Form
 
 
@@ -894,7 +894,7 @@ class Object_Form_Default extends Zend_Dojo_Form
 
 		$articleForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$videoForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$sourceForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		//$sourceForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$fileForm  		->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$optionalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$metaForm		->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
@@ -913,13 +913,13 @@ class Object_Form_Default extends Zend_Dojo_Form
 		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
-		$sourceForm->setElementDecorators(array(
+		/*$sourceForm->setElementDecorators(array(
 		'DijitElement',
 		'Errors',
 		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
+		));*/
 		$fileForm->setElementDecorators(array(
 		'DijitElement',
 		'Errors',
@@ -973,7 +973,7 @@ class Object_Form_Default extends Zend_Dojo_Form
 		
 
         $this->addSubForm($videoForm	, 'video')
-             ->addSubForm($sourceForm	, 'source')
+             //->addSubForm($sourceForm	, 'source')
              ->addSubForm($fileForm		, 'file')
              ->addSubForm($optionalForm , 'optional')
 			 ->addSubForm($metaForm 	, 'meta');
