@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * 
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -29,8 +29,8 @@
  * @author Anas K. Al-Far <anas@al-far.com>
  *
  */
-
-
+ 
+ 
 class Admin_Controller_DefaultAdmin extends Aula_Controller_Action {
 	
 	private $usersObj = NULL;
