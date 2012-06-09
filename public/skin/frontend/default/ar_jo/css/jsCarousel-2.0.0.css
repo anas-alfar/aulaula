@@ -1,0 +1,109 @@
+﻿﻿/*Horizontal Orientation CSS*/
+.jscarousal-horizontal
+{
+	width: 740px;
+	height: 118px;
+	background-color: #121212;
+	border: solid 1px #7A7677;
+	margin: 0;
+	padding: 0;
+	padding: 22px 8px 22px 8px;
+	position: relative; /*overflow: hidden;*/
+}
+.jscarousal-horizontal-back, .jscarousal-horizontal-forward
+{
+	/*float: left;
+	width: 10px;
+	height: 98px;
+	background-color: #121212;
+	color: White;
+	position: relative;
+	top: 6px;
+	cursor: pointer;*/
+}
+.jscarousal-horizontal-back
+{
+	background: url(../images/farrows.png) no-repeat scroll 0 -40px transparent;
+	cursor: pointer;
+	float: left;
+	height: 54px;
+	margin: 35px 0 0;
+	width: 15px;
+}
+.jscarousal-horizontal-forward
+{
+	background: url(../images/farrows.png) no-repeat scroll 5px 20px transparent;
+	cursor: pointer;
+	float: right;
+	height: 54px;
+	margin: 35px 0 0;
+	width: 15px;
+}
+.jscarousal-contents-horizontal
+{
+	width: 680px;
+	height: 96px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.jscarousal-contents-horizontal > div
+{
+	position: absolute;
+	width: 100%;
+	height: 124px;
+}
+.jscarousal-contents-horizontal > div > div
+{
+	float: left;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding: 35px 0 0;
+}
+.jscarousal-contents-horizontal img
+{
+	width: 95px;
+	height: 54px;
+	border: solid 1px #7A7677;
+}
+/*Horizontal Orientation CSS Ends*/
+
+
+/*Common*/
+.hidden
+{
+	display: none;
+}
+.visible
+{
+	display: block;
+}
+.thumbnail-active
+{
+	filter: alpha(opacity=100);
+	opacity: 1.0;
+	cursor: pointer;
+}
+.thumbnail-inactive
+{
+	filter: alpha(opacity=20);
+	opacity: 0.2;
+	cursor: pointer;
+}
+.thumbnail-text
+{
+	color: #7A7677;
+	font-weight: bold;
+	text-align: left;
+	display: block;
+	padding: 10px 2px 2px 0px;
+}
+
+.selected 
+{
+	background: url(../images/fselected.png) no-repeat scroll 35px 0 transparent;
+}
+div .selected img {
+	border: 1px solid #FFFFFF;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

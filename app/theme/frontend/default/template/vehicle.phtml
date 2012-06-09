@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php include './header/meta.phtml'; ?>
+</head>
+
+<body>
+
+<div>
+
+<!--header-->
+<!--logoarea-->
+		<?php include './header/logo.phtml';?>
+<!--end logoarea-->
+<!--end header-->
+
+
+<!--navbar -->
+		<?php include './navigation/menu.phtml';?>
+<!--end nav-->
+
+    <div class="con">
+    	
+    	
+    	
+    	<div class="lftPan">
+   	  <h1>BMW - 225i 2005</h1>
+   		<div>
+            	<div class="photo">
+            		<img height="243" width="324" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo.png">
+            		<?php if ( $this -> vehicleFor == 'sale' ) { ?>
+            			<div class="sold"><img height="50" width="94" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sold.png"></div>
+            		<?php } else { ?>
+            			<div class="sold"><img height="50" width="94" alt="" src="<?php echo $this->defaultSkinImagesUrl?>rented.png"></div>
+            		<?php } ?>
+            	</div>
+            	<div>
+                  <div class=" photoSmallTtl">More views</div>
+                    <div class="photoSmall">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <img height="52" width="52" alt="" src="<?php echo $this->defaultSkinImagesUrl?>sample_photo_small1.png">
+                        <div class="cls"></div>
+                    </div>
+        		</div>
+       	</div>
+			<!--video -->
+					<?php include './blocks/video.phtml';?>
+			<!--end video-->
+			
+			<?php if ( $this -> vehicleFor == 'rent' ) { ?>
+			<!--map location -->
+					<?php include './blocks/mapLocation.phtml';?>
+			<!--end map location-->
+			<?php } ?>
+            <div>
+           	  <h2 title="Price Index of BMW - 225i 2005">Price Index</h2>
+              <div class="grid">
+               	<div>Max:1,000,000 QAR</div>
+                    <div>Avarage:1,200,000 QAR</div>
+                    <div>Min:1,400,000 QAR</div>
+              </div>
+            </div>
+            
+            
+            <?php if ( $this -> vehicleFor == 'sale' ) { ?>
+			<!--insurance -->
+					<?php include './blocks/insurance.phtml';?>
+			<!--end insurance-->
+
+			<!--bankloan -->
+					<?php include './blocks/bankLoan.phtml';?>
+			<!--end bankloan-->
+			<?php } ?>
+        
+        
+      </div>
+      
+      
+      <div class="midPan">
+		<!--social -->
+				<?php include './blocks/socialMedia.phtml';?>
+		<!--end social-->
+  <div class="price">
+        	<div class="priceNum">
+        		    <?php if ( $this -> vehicleFor == 'sale' ) { ?>
+            			Price: QAR 1,000,000 <span class="negotiable">(Negotiable)</span>
+            		<?php } else { ?>
+            			Daily Rate: QAR 1,000,000
+            		<?php } ?>
+        	</div>
+            <div class="priceContact">
+            	<div>
+               	  <div class="ttl">Contact Details:</div>
+               	  <div class="data">
+                	Phone: +974-44430285<br>
+                    Fax: +974-44356125<br>
+                    Mobile: +974-55867235
+                </div>
+                	<div class="cls"></div>
+                </div>
+        		    <?php if ( $this -> vehicleFor == 'sale' ) { ?>
+					<div>
+                		<div class="ttl">Seller type:</div>
+                   	 	<div class="data">Person</div>
+                    	<div class="cls"></div>
+       		  		</div>
+            		<?php } ?>
+
+                <div>
+                	<div class="ttl">Advertise date:</div>
+                    <div class="data">20-11-2011</div>
+                    <div class="cls"></div>
+              </div>
+            </div>
+        </div>
+        
+        
+        
+<div>
+       	  <h2 title="BMW - 225i 2005 Quick Overview">General Info</h2>
+          <div class="grid dataListBig">
+               	<div>
+               	  <div class="ttl">Make</div>
+                  <div class="data">Qatar</div>
+                  <div class="cls"></div>
+</div>
+                <div>
+                	<div class="ttl">Model</div>
+                    <div class="data">18.000 Km</div>
+                    <div class="cls"></div>
+</div>
+                <div>
+                	<div class="ttl">Year</div>
+                    <div class="data">Automatic</div>
+                    <div class="cls"></div>
+          </div>
+                <div>
+                	<div class="ttl">Mileage</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Body colors</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Inslide colors</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Thermal Insulation Film</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Body Protective Film</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Insurance Type</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Warranty until</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Vehicle registration Expiry</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+              </div>
+        </div>
+        
+        
+        <div>
+       	  <h2 title="BMW - 225i 2005 Specifications">Vehicle Specifications</h2>
+<div class="grid dataListBig">
+               	<div>
+               	  <div class="ttl">Gear Type</div>
+                  <div class="data">Qatar</div>
+                  <div class="cls"></div>
+</div>
+                <div>
+                	<div class="ttl">No. Cylinder</div>
+                    <div class="data">18.000 Km</div>
+                    <div class="cls"></div>
+</div>
+                <div>
+                	<div class="ttl">Engine Size (cc)</div>
+                    <div class="data">Automatic</div>
+                    <div class="cls"></div>
+          </div>
+                <div>
+                	<div class="ttl">Horsepower</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Fuel type</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Fuel Tank size</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Vehicle Drag System</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">ABS</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Automatic Parking</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Parking Sensors</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Rear Camera</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Front Lights</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">LED Rear Lights</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Sport Exhaust</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Alarm system</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Sunroof</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div>
+                	<div class="ttl">Portable Roof</div>
+                    <div class="data">156.000 Q.R.</div>
+                    <div class="cls"></div>
+        		</div>
+                <div class="more"><span>+ View more</span><div class="cls"></div></div>
+              </div>
+        </div>
+        
+        
+        
+        
+				<?php if ( $this -> vehicleFor == 'sale' ) { ?>
+					<div>
+			       	  <h2 title="BMW - 225i 2005 Extra Features">Extra Features <span class="note">(these information certified by Owner)</span></h2>
+			            <div class="grid dataListBig">
+			              	<div>
+			                	<div class="ttl">Used by a Lady</div>
+			                    <div class="data">Yes</div>
+			                    <div class="cls"></div>
+			        		</div>
+			                <div>
+			                	<div class="ttl">Gearbox changed</div>
+			                    <div class="data">Yes</div>
+			                    <div class="cls"></div>
+			        		</div>
+			                <div>
+			                	<div class="ttl">Accident Free</div>
+			                    <div class="data">Yes</div>
+			                    <div class="cls"></div>
+			        		</div>
+			                <div>
+			                	<div class="ttl">Original Engine Changed</div>
+			                    <div class="data">No</div>
+			                    <div class="cls"></div>
+			        		</div>
+			          </div>
+			        </div>
+        		<?php } ?>
+        
+        
+        
+        
+        
+        
+      </div>
+      
+
+      
+      
+<!--right-->
+	<?php include './right/right.phtml'; ?>
+<!--end right-->
+      
+      
+  </div>
+  
+  
+  	<!--right-->
+		<?php include './footer/beforeFooter.phtml'; ?>
+	<!--end right-->
+  
+  
+  
+	<!-- footer -->
+		<?php include './footer/footer.phtml'; ?>
+	<!-- end footer -->
+
+
+</div>
+
+</body>
+</html>

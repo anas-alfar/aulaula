@@ -20076,3 +20076,1083 @@ WARNING [2]:
 Line 24 in file /var/www/html/git/aulaula/public/index.php
 require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
 ===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Data/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Index/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Index/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$_helper
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: BootStrap::$_helper
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: BootStrap::$_helper
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$_helper
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Trying to get property of non-object
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$layout
+===========================
+NOTICE [8]:
+Line 20 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: BootStrap::$layout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Use of undefined constant ROOT_DIR - assumed 'ROOT_DIR'
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$frontend_default_theme_layout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$frontendDefaultThemeLayout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$frontendDefaultThemeLayout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$defaultThemeLayout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$defaultThemeLayout
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$directories
+===========================
+NOTICE [8]:
+Line 21 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: BootStrap::$directories
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Main/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Main/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+NOTICE [8]:
+Line 36 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: content
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined variable: nav
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Main/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Main/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Main/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 37 in file /var/www/html/git/aulaula/app/packages/Home/Controller/Default.php
+Undefined property: Home_Controller_Default::$defaultSkinJsUrl
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 6 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/index.phtml
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+NOTICE [8]:
+Line 6 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/index.phtml
+Trying to get property of non-object
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Css/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Styles/car2dar/Controller/Css.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 19 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/index.phtml
+include(./banner/logo.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 19 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/index.phtml
+include(): Failed opening './banner/logo.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 3 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(./blocks/mutashabehat.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 3 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(): Failed opening './blocks/mutashabehat.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 6 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(./blocks/dabt.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 6 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(): Failed opening './blocks/dabt.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(./blocks/voting.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 9 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/right/right.phtml
+include(): Failed opening './blocks/voting.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Contactus/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Contactus/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/frontend/default/template/contactus.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 17 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(./header/topMenu.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 17 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(): Failed opening './header/topMenu.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 20 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(./header/status.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 20 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(): Failed opening './header/status.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(./header/ticker.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 23 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(): Failed opening './header/ticker.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 30 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(./object/treeNav.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 30 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(): Failed opening './object/treeNav.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 59 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(./object/leftColumn.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 59 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/contact.phtml
+include(): Failed opening './object/leftColumn.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Contactus/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Contactus/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/frontend/default/template/aboutus.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/frontend/default/template/aboutus.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/News/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Realestate/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Realestate/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 68 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/realestate.phtml
+include(./blockes/bankloan.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 68 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/realestate.phtml
+include(): Failed opening './blockes/bankloan.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 68 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/realestate.phtml
+include(./blocks/bankloan.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 68 in file /var/www/html/git/aulaula/app/theme/frontend/default/template/realestate.phtml
+include(): Failed opening './blocks/bankloan.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(/var/www/html/git/aulaula/app/theme/frontend/default/template/landlots.phtml): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 146 in file /var/www/html/git/aulaula/app/packages/Aula/Model/View.php
+include(): Failed opening '/var/www/html/git/aulaula/app/theme/frontend/default/template/landlots.phtml' for inclusion (include_path='/var/www/html/git/aulaula/library:/var/www/html/git/aulaula/app/packages:.:/usr/share/pear:/usr/share/php')
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle?r=t/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle?r=t/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php?r=t.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Vehicle/Controller/Php.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Imagesfselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library//Controller/FselectedPng.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Imagesfselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Fselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Imagesfselected/Controller/Png.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================
+WARNING [2]:
+Line 24 in file /var/www/html/git/aulaula/public/index.php
+require_once(/var/www/html/git/aulaula/library/Images/Controller/Default.php): failed to open stream: No such file or directory
+===========================

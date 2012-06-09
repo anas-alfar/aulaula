@@ -1,105 +1,177 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php include './header/meta.phtml'; ?>
+<script type="text/javascript" src="<?php print $this->defaultSkinJsUrl; ?>jsCarousel-2.0.0.js"></script>
+<link href="<?php print $this->defaultSkinCssUrl; ?>jsCarousel-2.0.0.css?w=1" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#carouselh').jsCarousel({ 
+    	onthumbnailclick: function(src) { 
+    		return true;
+    		}, 
+    	returnobject: function(thistag) {
+    		$(".pic img").hide("slow");
+    		$(".news div").hide("slow");
+    		$(".pic img").css("visibility", "hidden");
+    		$(".news div").css("visibility", "hidden");
+    		
+    		var currentItem = thistag.parent().attr('id');
+    		$("#pic-"+ currentItem).css("visibility", "visible");
+    		$("#news-"+currentItem).css("visibility", "visible");
+
+    		$("#pic-"+ currentItem).show("slow");
+    		$("#news-"+currentItem).show("slow");
+    		
+
+    		$("#carouselh div").removeClass("selected");
+    		thistag.parent().attr('class','selected') ; 
+
+    		}, 
+    	autoscroll: false, 
+    	circular: true, 
+    	masked: true, 
+    	itemstodisplay: 6, 
+    	orientation: 'h' 
+    	});
+});       
+</script>
+<style>
+	.select{ background: url("fselected.png") no-repeat scroll 35px 0 transparent}
+	
+</style>
 </head>
+
 <body>
+
+<div>
+
 <!--header-->
 <!--logoarea-->
 		<?php include './header/logo.phtml';?>
 <!--end logoarea-->
+
+<!--leaderboard and others -->
+		<?php include './banner/topBanner.phtml';?>
+<!--end leaderboard and others-->
 <!--end header-->
-<!--containcont-->
-<div class="containcont">
-	<!--containrit-->
-	<div class="containrit">
-        <!--container-->
-        <div class="container cleaner">
-        	<!--data-->
-            <div class="data cleaner">
-            	<!--right-->
-					<?php include './right/right.phtml'; ?>
-                <!--end right-->
-                <!--middledata-->
-                <div class="middledata">
-                	<!--boxwite-->
-                    <div class="boxwite">
-                    	<span class="boxwtop"><span><em></em></span></span>
-                        <div class="boxwdata">
-                        	<p class="margbhaf"><img src="<?php print $this->defaultSkinImagesUrl; ?>title5.gif" alt="كلمة المشرف" width="86" height="16" /></p>
-                            <div class="dotpx margb1">
-                            	<!--<p>إن ما يتميز به موقع إسلام ويب من شمولية واعتدال وإتقان ، يجعل من الموقع صرحا شامخا ، وبناء قويا في عالم الإنترنت ، فالموقع لا يكتفي بتقديم المعلومات الشرعية من كتب وفتاوى ومقالات وصوتيات ، بل هو أيضا يقدم خدمات استشارية في فنون الطب والثقافة والأسرة ، كما يربط الزائر بواقع الإسلام والمسلمين في كل مكان ، إضافة إلى جهود الموقع لاحتواء جميع فئات المجتمع ، بمختلف مستوياتهم ، كل هذا ضمن منهج أهل السنة والجماعة ، وثوابت ديننا الإسلامي الحنيف المزيد ...</p>-->
-                            </div>
-                            <p class="margbhaf"><img src="<?php print $this->defaultSkinImagesUrl; ?>title6.gif" alt="أهـداف الموقـع" width="91" height="16" /></p>
-                            <ul class="arowlst">
-<!--                            	<li>توضيح الصورة الصحيحة للإسلام والمسلمين</li>-->
-<!--                                <li>الاهتمام بدعوة غير المسلمين بالطريقة الصحيحة</li>-->
-<!--                                <li>توضيح الصورة الصحيحة للإسلام والمسلمين</li>-->
-<!--                                <li>الاهتمام بدعوة غير المسلمين بالطريقة الصحيحة</li>-->
-                            </ul>
-                        </div>
-                        <span class="boxwbotom"><span><em></em></span></span>
-                    </div>
-                    <!--end boxwite-->
-                    <!--boxwitegray-->
-                    <div class="boxwitegray margt1haf">
-                    	<span class="boxwtop"><span><em></em></span></span>
-                        <div class="boxwdata">
-                        	<p class="margbhaf"><img src="<?php print $this->defaultSkinImagesUrl; ?>title7.gif" alt="قصتي مع الآيات المتشابهة" width="165" height="16" /></p>
-                            <ul class="arowlst">
-                            	<li>
-                                	<a href="#er"><strong>للعلماء المعاصرين وتجرتهم مع الآايات المتشابهة</strong></a>
-                                    <p><span class="gray fnt11">للشيخ  فواز الحنين</span></p>
-                                </li>
-                                <li>
-                                	<a href="#er"><strong>للعلماء المعاصرين وتجرتهم مع الآايات المتشابهة</strong></a>
-                                    <p><span class="gray fnt11">للشيخ  فواز الحنين</span></p>
-                                </li>
-                            </ul>
-                            <p class="cleaner"><cite class="more fl"><a href="#er">المزيد&nbsp;&raquo;</a></cite></p>
-                        </div>
-                        <span class="boxwbotom"><span><em></em></span></span>
-                    </div>
-                    <!--end boxwitegray-->
-                    <!--boxwitegray-->
-                    <div class="boxwitegray margt1haf">
-                    	<span class="boxwtop"><span><em></em></span></span>
-                        <ul class="tabs cleaner">
-                            <li class="on"><a href="#er">أحـدث الصوتيـات</a></li>
-                            <li><a href="#er">أحـدث المرئـيـات</a></li>
-                        </ul>
-                        <div class="boxwdata">
-                            <ul class="thumblst cleaner">
-                            	<li><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>audio-thumb.jpg" alt="" width="86" height="65" class="thumb" /></a></li>
-                                <li><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>audio-default.jpg" alt="" width="86" height="65" class="thumb" /></a></li>
-                                <li><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>audio-thumb.jpg" alt="" width="86" height="65" class="thumb" /></a></li>
-                                <li class="last"><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>audio-default.jpg" alt="" width="86" height="65" class="thumb" /></a></li>
-                            </ul>
-                            <p class="cleaner"><cite class="more fl"><a href="#er">المزيد&nbsp;&raquo;</a></cite></p>
-                        </div>
-                        <span class="boxwbotom"><span><em></em></span></span>
-                    </div>
-                    <!--end boxwitegray-->
-                    <ul class="adsbotomlst cleaner">
-                    	<li><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>botomads.jpg" alt="" width="125" height="125" /></a></li>
-                        <li><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>botomads.jpg" alt="" width="125" height="125" /></a></li>
-                        <li class="last"><a href="#er"><img src="<?php print $this->defaultSkinImagesUrl; ?>botomads.jpg" alt="" width="125" height="125" /></a></li>
-                    </ul>
-                </div>
-                <!--end middledata-->
+
+
+<!--navbar -->
+		<?php include './navigation/menu.phtml';?>
+<!--end nav-->
+
+    <div class="con">
+   	  <div class="hLftPan">
+
+      	<div class="fNews">
+        	<h3>Today news</h3>
+            <div class="newsCon">
+					<div class="pic">
+						<img id="pic-1" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" width="280" height="170" alt="" />
+						<img id="pic-2" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-3" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-4" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-5" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-6" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-7" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						<img id="pic-8" src="<?php echo $this->defaultSkinImagesUrl?>sample_pic.png" style="display: none; visibility: hidden" width="280" height="170" alt="" />
+						</div>
+	           		<div class="news">
+	               	  <div id="news-1">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">111 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-2" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">222 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-3" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">333 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-4" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">444 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-5" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">555 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-6" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">666 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-7" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">777 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	                  
+	                  <div id="news-8" style="display: none; visibility: hidden">
+	               	  	<h2><a href="<?php echo $this->rootUrl?>news">888 Ferrari 2012 now in Qatar</a></h2>
+	                  	<p>Enzo Ferrari never intended to produce road cars when he formed Scuderia Ferrari (literally "Ferrari Stable", and usually used to mean "Team Ferrari", it is correctly pronounced [skudeˈriːa]) in 1928 as a sponsor for amateur drivers headquartered in Modena. Ferrari prepared, and successfully raced, various drivers in Alfa Romeo cars until 1938, when he was hired by Alfa Romeo to head their motor racing department... <a class="more" href="<?php echo $this->rootUrl?>news">read more &raquo;</a></p>
+	                  </div>
+	              	</div>
+	               	<div class="cls"></div>
             </div>
-            <!--end data-->
-            <!--left-->
-            <?php include './left/left.phtml'?>
-            <!--end left-->
+            <div class="list">
+<!--             	<div class="arl"></div> -->
+            	<div class="carouselh" id="carouselh">
+                	<div id="1"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="2"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="3"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="4"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="5"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="6"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="7"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                    <div id="8"><img src="<?php echo $this->defaultSkinImagesUrl ?>sample_cr.png" width="95" height="54" alt="" /><span class="thumbnail-text"></span></div>
+                </div>
+<!--                 <div class="arr"></div> -->
+                <div class="cls"></div>
+            </div>
         </div>
-        <!--end container-->
-    </div>
-    <!--end containrit-->
+
+        <div class="bshadow"></div>
+        
+	<!--featured cars-->
+		<?php include './blocks/featuredCars.phtml'; ?>
+	<!--end featured cars-->  
+        
+        
+	<!--featured realestate-->
+		<?php include './blocks/featuredRealestate.phtml'; ?>
+	<!--end featured realestate-->      
+
+
+	<!--right-->
+		<?php include './footer/beforeFooter.phtml'; ?>
+	<!--end right-->
+
+      </div>
+      
+      
+<!--right-->
+	<?php include './right/right.phtml'; ?>
+<!--end right-->
+      
+      
+  </div>
+  
+	<!-- footer -->
+		<?php include './footer/footer.phtml'; ?>
+	<!-- end footer -->
+
+
 </div>
-<!--end containcont-->
-<!-- footer -->
-<?php include './footer/footer.phtml'; ?>
-<!-- end footer -->
+
 </body>
 </html>

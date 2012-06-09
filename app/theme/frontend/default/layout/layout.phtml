@@ -1,0 +1,29 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <?php echo $this->headMeta()->appendName("keywords", "all,keywords,go,here") ?>
+  <?php echo $this->headMeta()->appendName("description", "Good for SEO, nice description here") ?>
+  <?php echo $this->headTitle("Page Title")->setSeparator(' - ') ?>
+  <?php echo $this->headScript() ?>
+  <?php echo $this->headLink()->appendStylesheet("/css/style.css","screen") ?>
+  <?php echo $this->headStyle() ?>
+</head> 
+
+<body>
+  <div id="wrapper">
+	<h1 id="head-block">Zend Framework Layout Example</h1>
+	<div id="page">
+	  
+	  <div id="sidenav">
+		<?php echo $this->layout()->sidenav ?>
+	  </div>
+	  
+	  <div id="content">
+		<?php echo $this->layout()->content ?>
+	  </div>
+	
+	</div>
+  </div>
+</body>
+</html>
