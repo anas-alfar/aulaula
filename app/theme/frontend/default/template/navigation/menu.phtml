@@ -1,22 +1,71 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#subNavCon-1").css("visibility", "visible").show();
+		$(".navCon ul li").hover(function () {
+			$(".subNavCon").css("visibility", "hidden").hide();
+			$("#subNavCon-"+this.id).css("visibility", "visible").show();
+		});
+	});	
+</script>
 <div class="nav" style="overflow:hidden">
 	<div class="navCon">
 		<ul>
-        	<li class="first"><a href="<?php echo $this -> rootUrl?>">Home</a></li>
-            <li><a href="/vehicle/default/for/sale">Vehicle for sale</a></li>
-            <li><a href="/vehicle/default/for/rent">Vehicle for rent</a></li>
-            <li><a href="<?php echo $this -> rootUrl?>estate">Realestate</a></li>
-            <li><a href="<?php echo $this -> rootUrl?>landlots">Land lots</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">Mobile</a></li>
+        	<li id="1" class="first"><a href="<?php echo $this -> rootUrl?>">Home</a></li>
+            <li id="2"><a href="/vehicle/default/for/sale">Vehicle for sale</a></li>
+            <li id="3"><a href="/vehicle/default/for/rent">Vehicle for rent</a></li>
+            <li id="4"><a href="<?php echo $this -> rootUrl?>estate">Realestate</a></li>
+            <li id="5"><a href="<?php echo $this -> rootUrl?>landlots">Land lots</a></li>
+            <li id="6" class="last"><a href="<?php echo $this -> rootUrl?>mobile">Mobile</a></li>
         </ul>
     </div>
 </div>
 <div class="subNav">
-	<div class="subNavCon">
+	<div id="subNavCon-1" class="subNavCon">
     	<ul>
         	<li class="first"><a href="#">Rent your home</a></li>
             <li><a href="#">House</a></li>
             <li><a href="#">Rent your can</a></li>
             <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">Mobile</a></li>
         </ul>
-    </div>
+   </div>
+   <div id="subNavCon-2" class="hidden subNavCon">
+        <ul>
+        	<li class="first"><a href="#">xxxx</a></li>
+            <li><a href="#">xxxx</a></li>
+            <li><a href="#">xxxx</a></li>
+            <li class="last">xxxx</li>
+        </ul>
+   </div>
+   <div id="subNavCon-3" class="hidden subNavCon">
+        <ul>
+        	<li class="first"><a href="#">mmmm</a></li>
+            <li><a href="#">mmmm</a></li>
+            <li><a href="#">mmmm</a></li>
+            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">mmmm</a></li>
+        </ul>
+   </div>
+   <div id="subNavCon-4" class="hidden subNavCon">
+        <ul>
+        	<li class="first"><a href="#">zzzz</a></li>
+            <li><a href="#">zzzz</a></li>
+            <li><a href="#">zzzz</a></li>
+            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">zzzz</a></li>
+        </ul>
+   </div>
+   <div id="subNavCon-5" class="hidden subNavCon">
+        <ul>
+        	<li class="first"><a href="#">oooo</a></li>
+            <li><a href="#">oooo</a></li>
+            <li><a href="#">oooo</a></li>
+            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">oooo</a></li>
+        </ul>
+   </div>
+   <div id="subNavCon-6" class="hidden subNavCon">
+        <ul>
+        	<li class="first"><a href="#">cccc</a></li>
+            <li><a href="#">cccc</a></li>
+            <li><a href="#">cccc</a></li>
+            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">cccc</a></li>
+        </ul>
+   </div>
 </div>
