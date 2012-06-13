@@ -75,6 +75,8 @@ class Aula_Model_Locale extends Aula_Model_Default {
 			}
 		}
 		
+		$settings->locale->default->current->id = 1;
+		
 		if (empty ( $settings->locale->default->current->title )) {
 			$settings->locale->default->current->short = $settings->locale->default->lang;
 			$settings->locale->default->current->title = $settings->locale->default->title;
