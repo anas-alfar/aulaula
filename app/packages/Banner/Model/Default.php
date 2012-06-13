@@ -17,11 +17,11 @@
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Aulaula to newer versions
- * in the future. If you wish to customize Magento for your needs please refer to
+ * in the future. If you wish to customize Aulaula for your needs please refer to
  * http://www.aulaula.com for more information.
  *
  * @category Aula
- * @package Aula_Banner
+ * @package Banner
  * @subpackage Model
  * @name Banner_Model_Default
  * @copyright Copyright (c) 2012 Aulaula (http://www.aulaula.com/)

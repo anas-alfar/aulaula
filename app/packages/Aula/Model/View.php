@@ -1,9 +1,39 @@
 <?php
 
-class Aula_Model_View extends Zend_View{
-        //define controller/action to load default view
-        public $templateAction = NULL;
-        public $templateController = NULL;
+/**
+ *
+ * Aulaula
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is
+ * bundled with this package in the file LICENSE.txt. It is also available through
+ * the world-wide-web at this URL: http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to obtain it
+ * through the world-wide-web, please send an email to license@aulaula.com
+ * so we can send you a copy immediately.
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Aulaula to newer versions
+ * in the future. If you wish to customize Aulaula for your needs please refer to
+ * http://www.aulaula.com for more information.
+ *
+ * @category Aula
+ * @package Aula - Core
+ * @subpackage Model
+ * @name Aula_Model_View
+ * @copyright Copyright (c) 2012 Aulaula (http://www.aulaula.com/)
+ * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @author Anas K. Al-Far <anas@al-far.com>
+ *
+ */
+
+class Aula_Model_View extends Zend_View {
+	//define controller/action to load default view
+	public $templateAction = NULL;
+	public $templateController = NULL;
 	
 	//Frontend Theme Paths
 	public $isBackendTheme = false;
@@ -135,14 +165,15 @@ class Aula_Model_View extends Zend_View{
 	
 	public function render($template = NULL) {
 		if (is_null ( $template )) {
-		        echo '<br />' . $this->templateController . '/' . $this->templateAction;
-                        exit;
-			//@TODO
+			echo '<br />' . $this->templateController . '/' . $this->templateAction;
+			exit ();
+		
+		//@TODO
 		}
 		chdir ( $this->defaultThemeTemplate );
-                
-                //echo $this->fc->request->package . DIRECTORY_SEPARATOR . $this->fc->request->controller . DIRECTORY_SEPARATOR . substr($this->fc->request->action, 0, -6);
-                //include $this->fc->request->package . DIRECTORY_SEPARATOR . $this->fc->request->controller . DIRECTORY_SEPARATOR . substr($this->fc->request->action, 0, -6);
+		
+		//echo $this->fc->request->package . DIRECTORY_SEPARATOR . $this->fc->request->controller . DIRECTORY_SEPARATOR . substr($this->fc->request->action, 0, -6);
+		//include $this->fc->request->package . DIRECTORY_SEPARATOR . $this->fc->request->controller . DIRECTORY_SEPARATOR . substr($this->fc->request->action, 0, -6);
 		include ($this->defaultThemeTemplate . $template);
 		
 		return $this;
@@ -150,11 +181,12 @@ class Aula_Model_View extends Zend_View{
 	
 	public function load($template = NULL) {
 		if (is_null ( $template )) {
-		        echo '<br />' . $this->templateController . '/' . $this->templateAction;
-                        exit;
-			//@TODO
+			echo '<br />' . $this->templateController . '/' . $this->templateAction;
+			exit ();
+		
+		//@TODO
 		}
-		return file_get_contents($this->defaultThemeTemplate . $template);
+		return file_get_contents ( $this->defaultThemeTemplate . $template );
 	}
 	
 	public function subString($message, $start, $length, $unicode = 'UTF-8') {
@@ -173,8 +205,8 @@ class Aula_Model_View extends Zend_View{
 				if ($value ['parent_id'] != 0) {
 					$noUnderLine = 'style="background:none;"';
 				}
-				$target = ($value ['label'] == 'استعرض الكتاب' )?'target ="_blank"':'';
-				echo '<li ' . $noUnderLine . '><span class="circlbg"><a '.$target.' href="' . $value ['link'] . '">' . $value ['label'] . '</a></span></li>';
+				$target = ($value ['label'] == 'استعرض الكتاب') ? 'target ="_blank"' : '';
+				echo '<li ' . $noUnderLine . '><span class="circlbg"><a ' . $target . ' href="' . $value ['link'] . '">' . $value ['label'] . '</a></span></li>';
 			} else {
 				echo '<li><span class="circlbg"><a href="javascript:void(0);">' . $value ['label'] . '</a></span><div class="lst"><ul  style="margin-right: 20px;" class="lst">';
 				$this->drawMenu ( $value ['tree'] );

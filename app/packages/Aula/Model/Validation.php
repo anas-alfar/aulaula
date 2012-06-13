@@ -1,15 +1,35 @@
 <?php
+
 /**
- * Handle most of data type validation
- * Validate Email addresses, Nicknames, Passwords, Alphabatec strings, Regular Strings, Numeric Values, Short DateTime and Long DateTime strings.
- * 
- * @name data_validation
- * @access public
- * @author Anas K. Al-Far <anas@hazeemsoft.com>
- * @copyright HazeemSoft.com
- * @version 1.0.0
+ *
+ * Aulaula
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is
+ * bundled with this package in the file LICENSE.txt. It is also available through
+ * the world-wide-web at this URL: http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to obtain it
+ * through the world-wide-web, please send an email to license@aulaula.com
+ * so we can send you a copy immediately.
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Aulaula to newer versions
+ * in the future. If you wish to customize Aulaula for your needs please refer to
+ * http://www.aulaula.com for more information.
+ *
+ * @category Aula
+ * @package Aula - Core
+ * @subpackage Model
+ * @name Aula_Model_Validation
+ * @copyright Copyright (c) 2012 Aulaula (http://www.aulaula.com/)
+ * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @author Anas K. Al-Far <anas@al-far.com>
  *
  */
+
 class Aula_Model_Validation extends Aula_Model_Default {
 	private $_text = array ();
 	public function __construct() {
@@ -57,7 +77,7 @@ class Aula_Model_Validation extends Aula_Model_Default {
 	
 	/**
 	 * Validate URL address formula
-	 * @example $URL = 'https://hazeemsoft.com';
+	 * @example $URL = 'https://aulaula.com';
 	 * @param string $URL
 	 * @return bool
 	 */
@@ -257,7 +277,7 @@ class Aula_Model_Validation extends Aula_Model_Default {
 		}
 		
 		foreach ( $requiredFields as $filed => $value ) {
-			if (! isset ( $array [$filed] ['value'] ) || (empty ( $array [$filed] ['value'] ) && $array [$filed] ['value']!= 0)) {
+			if (! isset ( $array [$filed] ['value'] ) || (empty ( $array [$filed] ['value'] ) && $array [$filed] ['value'] != 0)) {
 				$errorMsg [$filed] = $errorArray [$filed . 'PresenceErrorMSG'];
 			} else {
 				if (is_array ( $array [$filed] )) {
