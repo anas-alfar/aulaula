@@ -56,6 +56,7 @@ class Home_Controller_Default extends Aula_Controller_Action {
 	}
 
 	public function defaultAction() {
+		echo 'mousa';
 		$this -> view -> render('index.phtml');
 	}
 	
