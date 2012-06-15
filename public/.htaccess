@@ -3,7 +3,7 @@
 # set application environment [development-testing-staging-production]
 SetEnv AULA_APP_ENV 	"development"
 # set physical application path '/var/www/htmll/www.mutashabih.local/'
-SetEnv AULA_APP_PATH 	"/var/www/html/git/aulaula/"
+SetEnv AULA_APP_PATH 	"/var/www/html/www.aulaula.local/"
 # set domain name 'mutashabih.local'
 SetEnv AULA_APP_DOMAIN 	"aulaula.local"
 
