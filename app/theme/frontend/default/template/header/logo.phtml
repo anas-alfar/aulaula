@@ -20,11 +20,16 @@
                 <div class="cls"></div>
             </div>
             <div>
-<ul>
-                	<li><a href="<?php echo $this -> rootUrl?>">Home</a></li>
+				<ul>
+					<?php 
+					foreach ( $this->menuList['upper_menu'] as $key => $value) {
+						echo '<li><a href="' . $this -> rootUrl . $value['link'] . '">' . $value['label'] . '</a></li>';
+					} 
+					?>
+                	<!-- <li><a href="<?php echo $this -> rootUrl?>">Home</a></li>
                     <li><a href="<?php echo $this -> rootUrl?>default/aboutus">About us</a></li>
                     <li><a href="<?php echo $this -> rootUrl?>default/mission">Mission</a></li>
-                    <li><a href="<?php echo $this -> rootUrl?>default/services">Services</a></li>
+                    <li><a href="<?php echo $this -> rootUrl?>default/services">Services</a></li> -->
                     <li class="last"><a href="<?php echo $this -> rootUrl?>default/contactus">Contact us</a></li>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -46,34 +46,48 @@ class Home_Controller_Default extends Aula_Controller_Action {
 
 	protected function _init() {
 		/*
-		$layout = new Zend_Layout();
-		$layout -> setLayout('layout');
+		 $layout = new Zend_Layout();
+		 $layout -> setLayout('layout');
 
-		$layout -> setLayoutPath($this -> fc -> settings -> directories -> frontend_default_theme_layout);
-		$layout -> content = '$content//////////////////';
-		$layout -> nav = '$nav';
-		echo $layout -> render();*/
+		 $layout -> setLayoutPath($this -> fc -> settings -> directories -> frontend_default_theme_layout);
+		 $layout -> content = '$content//////////////////';
+		 $layout -> nav = '$nav';
+		 echo $layout -> render();*/
 	}
 
 	public function defaultAction() {
-		echo 'mousa';
 		$this -> view -> render('index.phtml');
 	}
-	
-	public function aboutusAction() {
-		$this -> view -> render('aboutus.phtml');
-	}
-	
+
 	public function contactusAction() {
+		if (isset($_POST) AND !empty($_POST)) {
+			$name = trim($_POST['name']);
+			$email = trim($_POST['email']);
+			$body = trim($_POST['body']);
+
+			if (!empty($name) AND !empty($email) AND !empty($body)) {
+				try {
+					$configMail = array('auth' => 'login', 'username' => 'mohammad.riad@gmail.com', 'password' => 'ccfkwndyrrtfwefh', 'ssl' => 'ssl', 'port' => 465);
+
+					$email_body = 'This email From: <b>' . $name . '</b><br />';
+					$email_body .= 'His/Her email is: <b>' . $email . '</b><br />';
+					$email_body .= 'And the message is:<br /><br /> ' . $body;
+
+					$mailTransport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $configMail);
+					Zend_Mail::setDefaultTransport($mailTransport);
+
+					$mail = new Zend_Mail('utf-8');
+					$mail -> setFrom('mohammad.riad@gmail.com', $name);
+					$mail -> setBodyHtml($email_body);
+					$mail -> addTo('mohammad.riad@gmail.com', 'Mohammad R. Mousa');
+					$mail -> setSubject('CAR2DAR Contact us');
+					$mail -> send();
+
+				} catch (Zend_Exception $e) {
+				}
+			}
+		}
 		$this -> view -> render('contactus.phtml');
-	}
-	
-	public function missionAction() {
-		$this -> view -> render('mission.phtml');
-	}
-	
-	public function servicesAction() {
-		$this -> view -> render('services.phtml');
 	}
 
 }
