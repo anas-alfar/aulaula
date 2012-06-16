@@ -90,5 +90,24 @@ class Object_Model_Static extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getStaticByURLAndLocaleId( $url , $locale_id ) 
+	{
+		$locale_id  = $this -> getAdapter() -> quoteInto('object.locale_id = ?', $locale_id, 'INTEGER');
+		$url  		= $this -> getAdapter() -> quoteInto('url = ?', $url);
+		
+		$result = $this 
+		-> select() 
+		-> from($this->_name)
+		-> joinInner('object', $this->_name . '.object_id=object.id',array('*'))
+		-> joinInner('object_info', 'object_info.object_id=object.id',array('*'))
+		-> where ($url)
+		-> where ($locale_id)
+		-> setIntegrityCheck(false)
+		-> query() 
+		-> fetch();
+
+		return $result;
+	}
 
 }

@@ -65,7 +65,7 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 			$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
 			$stmt -> execute(array($_POST['optional']['order']));
 
-			$_POST['mandatory']['locale_id'] = $this -> fc -> settings -> locale -> available -> lang -> _1 -> default;
+			$_POST['mandatory']['locale_id'] = $this -> fc -> settings -> locale -> default -> current -> id;
 			$_POST['mandatory']['author_id'] = $this -> userId;
 
 			$lastInsertId = $this -> sourceObj -> insert($_POST['mandatory']);

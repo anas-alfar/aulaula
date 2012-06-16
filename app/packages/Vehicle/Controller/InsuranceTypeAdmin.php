@@ -99,10 +99,6 @@ class Vehicle_Controller_InsuranceTypeAdmin extends Aula_Controller_Action {
 				}
 			}
 			
-			
-			$insuranceTypeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> insuranceTypeObj -> insert($insuranceTypeData);
-
 			header('Location: /admin/handle/pkg/vehicle-insurance-type/action/list/');
 			exit();
 		}

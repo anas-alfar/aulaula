@@ -94,7 +94,7 @@ class Aula_Controller_Action {
 		$this -> buildPaging();
 		$this -> setDate();
 		$this -> initSEO();
-		//$this -> buildMenu();
+		$this -> buildMenu();
 
 		$this -> _init();
 
@@ -210,6 +210,7 @@ class Aula_Controller_Action {
 			$this -> menuList = $menuListResult;
 			if (!empty($this -> menuList)) {
 				$this -> menuList = $this -> buildMenuTree($this -> menuList);
+				//print_r($this -> menuList); exit;
 				$this -> view -> menuList = $this -> menuList;
 			}
 		}
@@ -219,6 +220,7 @@ class Aula_Controller_Action {
 		if (!empty($menuList)) {
 			$menuTree = $parentIds = array();
 			foreach ($menuList as $key => $item) {
+				$menuList[$key]['options'] = json_decode($menuList[$key]['options']);
 				$menuTree[$item['id']] = $menuList[$key];
 			}
 			foreach ($menuTree as $key => $menu) {
@@ -230,6 +232,7 @@ class Aula_Controller_Action {
 				$menuTree[$parentId]['options'] .= $subMenuId . ',';
 			}
 			foreach ($menuTree as $key => &$item) {
+				//$item['options'] = json_decode($item['options']);
 				if (!empty($item['options'])) {
 					$item['options'] = substr($item['options'], 0, -1);
 					$subMenu = explode(',', $item['options']);

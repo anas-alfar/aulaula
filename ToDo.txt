@@ -1,5 +1,5 @@
 - Use this as locale_id in DB (this is the only variable that return integer!!):
-$this -> fc -> settings -> locale -> available -> lang -> _1 -> default
+$this -> fc -> settings -> locale -> default -> current -> id
 
 - Insert all redundant data in object_* into object and object_info
 like columns(comments/options/published/approved/meta_data/...) in object_photo

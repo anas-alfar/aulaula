@@ -1,0 +1,242 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #333;
+	padding:0; margin:0;
+}
+img {border:0}
+ul, p, h1, h2, h3, h4 {margin:0; padding:0}
+a:link {
+	color: #e60c0c;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #e60c0c;
+}
+a:hover {
+	text-decoration: underline;
+	color: #e60c0c;
+}
+a:active {
+	text-decoration: none;
+	color: #e60c0c;}
+
+p {line-height:150%;}
+
+.cls {clear: both}
+.fl {float:left;}
+.fr {float: right;}
+.btn{background:url(../images/bg_button.png) no-repeat; width: 80px; height:24px; color:#FFF; font-size: 12px; font-weight:700; border:none; cursor:pointer}
+h2 {font-size:16px; margin:30px 0 7px 0; padding-bottom:5px; font-weight:400; border-bottom:#d7d7d7 solid 2px}
+
+.mart10 {margin-top:10px;}
+
+.header {background:#000 url(../images/bg_head.png) bottom repeat-x; height:78px; color:#FFF; overflow:hidden}
+.headerCon {width: 980px; margin:auto}
+.logo {float:left}
+.menu {float:right}
+.menu a:link, .menu a:visited {color:#FFF;}
+.menu .flag {float:left; width: 30px; margin: 10px 10px 0 0}
+.menu .flag img {border:#666 solid 1px;}
+.menu select {width: 125px; font-size:10px; margin: 10px 10px 0 0}
+.menu .lang {float:right; margin: 10px 0 0 25px; font-size:11px}
+.menu .lang .flag {float:left; margin: 0; width:20px}
+.menu ul{float: right}
+.menu li {list-style: none inside; float:left; padding:0 15px; margin:30px 0; border-right: #666 solid 1px; font-size:11px}
+.menu li.last {padding-right:0; border:0;}
+
+.nav {height: 27px; background:#e02222 url(../images/bg_menu.png) repeat-x bottom; overflow:hidden}
+.navCon {width: 980px; margin:auto}
+.navCon li {list-style: none inside; float:left; padding:6px 20px 6px 25px; border-right: #f79c9c solid 1px; font-size:12px; font-weight:700}
+.navCon li.selected {background:#aa0706}
+.navCon li.first { padding-left:0}
+.navCon li.last {border:0;}
+.navCon a:link, .navCon a:visited {color:#FFF;}
+
+.subNav {background: url(../images/bg-nav.png) repeat-x bottom; height:27px; overflow:hidden}
+.subNavCon {width: 980px; margin:auto; padding:0}
+.subNavCon li {list-style: none inside; float:left; padding:7px 20px 4px; border-right: #CCC solid 1px; font-size:12px;}
+.subNavCon a:link, .subNavCon a:visited {color:#333;}
+.subNavCon li.first { padding-left:0}
+.subNavCon li.last {border:0;}
+.subNavCon li.selected {background:#CCC;padding:7px 20px 4px}
+
+.con {width: 960px; margin:auto; padding: 20px 0}
+.lftPan {float:left; width:335px;}
+.lftPan h1 {font-size:18px; margin-bottom:7px}
+.photo {border:#cdcdcd solid 1px; text-align:center}
+.photo img {margin: 5px 0}
+.photo .sold { margin:-71px 0 0 218px;}
+
+.midPan {float:left; width:370px; margin: 30px 0 0 15px;}
+.ritPan {float: right; width: 225px; border:#dfdfdf solid 1px}
+.hLftPan {float:left; width: 715px;}
+
+.hLftPan h3 { font-family:Arial; font-size:18px; font-weight:400; text-transform: uppercase; margin:35px 0 10px 0;}
+
+.photoSmallTtl {border-bottom:#ccc solid 1px; margin: 10px 0 5px 0; font-size: 12px; font-weight:700}
+.photoSmall img { border:#cdcdcd solid 1px; float:left; margin: 0 1px 0 0; cursor: pointer}
+
+.grid div {border-bottom:#d7d7d7 solid 1px; font-size:12px; padding: 5px 0}
+.box {border:#d7d7d7 solid 1px; padding: 7px}
+.box select {width: 140px;}
+.box .btn {margin: 5px 0 10px 160px;}
+.boxGray {background:#d7d7d7; padding:7px; margin:0 -7px -7px; font-size:12px}
+
+.insuranceLogo {float:left; height:30px;}
+.insuranceName {float: left; height:30px; padding: 10px 0 0 5px; font-size: 12px; font-weight:700;}
+
+.nxt-back {float: left; height:30px; width:31px; padding: 10px 0 0 10px;}
+
+.btnNxt{background: url(../images/nxt-back.png) no-repeat 0 -71px; width:14px; height:14px; float:right; cursor: pointer}
+.btnNxtInActive{background: url(../images/nxt-back.png) no-repeat 0 0; width:14px; height:14px; float:right}
+.btnback{background: url(../images/nxt-back.png) no-repeat 0 -105px; width:14px; height:14px; float:left; cursor: pointer}
+.btnbackInActive{background: url(../images/nxt-back.png) no-repeat 0 -36px; width:14px; height:14px; float:left}
+
+.sendIcon {background:url(../images/icons-send.png) no-repeat 0 0; height:14px;padding-left: 25px; margin-bottom:5px}
+.commentIcon {background:url(../images/icons-send.png) no-repeat 0 -29px;height:14px; padding-left: 25px; margin-bottom:5px}
+.compareIcon {background:url(../images/icons-send.png) no-repeat 0 -58px;height:14px; padding-left: 25px; margin-bottom:5px}
+.sendBox {width: 150px; float:left; font-size:12px}
+.socialBox {width: 180px; float:right;}
+
+.price {border:#CCC solid 2px; margin-top: 20px}
+.priceNum {background:#e6e6e6; color:#e60c0c; font-weight:700; padding: 7px 5px}
+.priceNum .negotiable {color:#333;}
+.priceContact {padding:7px 5px; font-size:12px}
+.priceContact .ttl {float:left; width:95px;}
+.priceContact .data {float:left; line-height:170%}
+
+.dataListBig {font-size:12px;}
+.dataListBig div div {border:0; padding:0}
+.dataListBig .ttl {float:left; width:150px;}
+.dataListBig .data {float:left;}
+.dataListBig .more {border-top:#ccc solid 1px; border-bottom:0;}
+.dataListBig .more span {background:#ebebeb; display:block; float:right; padding:5px; margin-top:-5px; cursor: pointer}
+.data ul {margin-left:16px;}
+
+.dataListSmall {font-size:12px;}
+.dataListSmall div {margin-bottom: 2px;}
+.dataListSmall div div {border:0; padding:0}
+.dataListSmall .ttl {float:left; width:100px;}
+.dataListSmall .data {float:left;}
+
+.txtInputMidd {width: 140px;}
+
+.newsletter {padding:5px 5px 20px 5px ; border-bottom:1px solid #DFDFDF}
+.newsletter label {font-weight:700; display:block; margin:10px 0}
+.newsletter .field {width:128px; height:18px; display:block; float:right}
+.newsletter .btn {display:block; float:right}
+
+.ad {margin: 10px 0 0 0}
+.adTtl {font-size:11px; text-align:center; padding:5px 0 0 0}
+
+.bfooter {margin: 50px 0;}
+.bfooterCon {width:980px; margin:auto}
+.bfooter .part {float:left; width:200px; border-top:#e3e3e3 solid 1px; margin-right:30px}
+.bfooter .part li {list-style: none; background:url(../images/arrow.png) no-repeat left; padding: 5px 0 5px 20px}
+.bfooter a:link, .bfooter a:visited {color:#333;}
+
+.footer {background:#333; color:#fff; font-size:11px; font-variant:small-caps; padding:10px 0}
+.footerCon {width:980px; margin: auto;}
+.footer li {list-style:none; float:left; padding:0 10px; margin: 0 0 10px 0; border-right: #666 solid 1px;}
+.footer .last {border:0;}
+.footer .first {padding-left:0;}
+.footer a:link, .footer a:visited {color:#fff;}
+
+.srch {background:url(../images/bg_srch.png) repeat-x bottom; padding: 20px 0; border-bottom:#999 solid 1px}
+.srchCon {width:980px; margin:auto}
+.srch select {width: 115px; border:#CCC solid 1px}
+.srch .sml {font-size:11px; font-weight:700;}
+.srch .input {width: 115px; border:#CCC solid 1px}
+
+/*.srch-leftPan {float:left; width: 715px;}*/
+.srch-midPan {float:left; width: 475px;}
+.srch-lftPan {float: left; width: 225px; border:#dfdfdf solid 1px; margin-right: 15px}
+
+.srchListDiv {}
+.srchListDivhover {background:#f0f0f0;}
+.thumb {border:#f0f0f0 solid 1px;}
+.pad10 {padding:10px;}
+.hr {height:1px; border-bottom:#dedede solid 1px; margin:0 0 10px 0}
+
+.paging {margin:auto; width:170px; margin-top: 20px}
+.paging .nxt {background:url(../images/paging.png) no-repeat 0 -165px; width:26px; height:26px; float: left; cursor:pointer}
+.paging .nxt-d {background:url(../images/paging.png) no-repeat 0 -273px; width:26px; height:26px; float: left}
+.paging .bck {background:url(../images/paging.png) no-repeat 0 -1px; width:26px; height:26px; float: left; cursor:pointer}
+.paging .bck-d {background:url(../images/paging.png) no-repeat 0 -222px; width:26px; height:26px; float: left}
+.paging .num {width:26px; height:21px; float: left; color:#377f09; padding-top:5px; text-align:center}
+.paging .num a:link {display:block; text-decoration:none}
+.paging .num a:visited {display:block; text-decoration:none}
+.paging .num a:hover {color:#fff; background-color:#cc1e1f; display:block; text-decoration:none}
+.paging .num-s {width:26px; height:26px; float: left; color: #666; font-weight:700; padding-top:5px; text-align:center}
+
+.advSrch {background:#fff; border-radius:4px; margin:7px 0 0 0; padding:5px; border-width:1px 1px 2px 1px; border-color: #ccc; border-style:solid; display:none}
+
+.sold {position:absolute; margin:-53px 0 0 54px;}
+.soldH {display:none}
+.note {font-weight:400; font-size:12px;}
+
+
+.fNews {}
+.fNews h3 {border-bottom:#dfdfdf solid 1px; padding:10px 0; margin:0; text-transform:uppercase; font-size: 18px; font-weight:400}
+.fNews .newsCon {padding:10px 10px 0 10px;border:#dfdfdf solid 1px; border-bottom:0}
+.fNews .pic {width:295px; float:left; padding-bottom:10px}
+.fNews .news {float: left; width:395px; padding-bottom:10px}
+.fNews .news .more {font-size:11px; font-weight:700;}
+.fNews  h2{border:0; font-size:18px; font-weight: 700; margin:0 0 5px 0; padding:0}
+.fNews .list {position:relative; background: url(../images/bg_fnews.png) repeat-x top; overflow:hidden;}
+.fNews .list .arr {width:15px; height:54px; float:right; background:url(../images/farrows.png) no-repeat 5px 20px; cursor:pointer; margin:35px 0 0 0}
+.fNews .list .arl {width:15px; height:54px; float: left; background:url(../images/farrows.png) no-repeat 0px -40px; cursor:pointer;margin:35px 0 0 0}
+.fNews .list ul{margin:0; padding:0 0 0 13px; float:left;}
+.fNews .list ul li:last-child {margin-right:0}
+.fNews .list li {float:left; list-style:inside none; padding:35px 0 0 0;margin:0 10px 0 0;}
+.fNews .list li.selected  {background:url(../images/fselected.png) no-repeat 35px 0px}
+.fNews .list li.selected img{ box-shadow:0 0 10px rgba(0, 0, 0, 0.5); border:#fff solid 1px}
+
+.bshadow {background:url(../images/bshadow.png) no-repeat top; height:5px; margin:20px 0 0 0 }
+
+
+.hfBox {border:#dfdfdf solid 1px; border-bottom:0; padding:10px 7px 50px; width:150px; margin-right:15px; float: left; font-size:13px; font-weight:700; line-height:130%; position:relative}
+.hfBox .num {color:#e60c0c; font-weight:400}
+.hfBox img {margin-bottom:10px;}
+.hfBox .more {position:absolute; bottom: -5px; left:4px; background:url(../images/hfmore.png); width:163px; height:47px; text-align:center}
+.lastDiv {margin:0}
+
+.adsTop { background: #000; border-top:#333 solid 1px}
+.adsTopCon {width:980px; margin:auto;}
+.adsTopCon td {vertical-align:top;}
+
+.sort {background:#f0f0f0; border-top:#ccc solid 1px; border-bottom:#ccc solid 1px; padding:10px}
+.sort select{width:130px; border:#ccc solid 1px;}
+
+.winner {width:430px; background:url(../images/bg_winner.png) repeat-x bottom; padding:10px;box-shadow:0 0 10px rgba(0, 0, 0, 0.5); border:#fff solid 1px;border-radius:4px; margin:auto}
+.winner .winnerCon {background:#fff; border:#ccc solid 1px;}
+.winner .hdr {background:#e02222 url(../images/bg_menu.png) repeat-x bottom; padding:10px; color:#fff; font-weight:700}
+.winner .ttl {font-size:18px; font-weight:700;; margin:10px 0 15px 0;}
+.winner .close {font-size:11px; float:right; cursor:pointer}
+.winner .wcon {padding:10px;}
+.winner .form {margin: 10px 0 20px 0}
+.winner  td {padding:5px 0;}
+.winner .wbtn {background:#e02222 url(../images/bg_menu.png) repeat-x bottom; color:#fff; font-weight:700; padding:5px 10px; border-radius:4px; border:0; cursor:pointer}
+.winner textarea {height:50px;}
+
+.compare {background:#ebebeb; padding:10px}
+.compare table {background:#fff; border:#fff solid 1px; border-bottom:0}
+.compare .ttl {padding:10px 0; text-transform: uppercase;}
+.compare .ttl .nums {float:right; text-transform:none; font-size:11px; width:350px;}
+.compare .ttl .paging {margin:-5px 0 5px 0; float:right}
+.compare .ttl .smltxt {float:left; margin-top:5px}
+.compare td {text-align:center; vertical-align:top; border-bottom:#ebebeb solid 1px;}
+.compare .hdr td { background:#333; color:#fff; font-size:11px}
+.compare .hdr a{color:#fff;}
+.compare .details {text-align:left; padding-left:10px;background:#ebebeb; border-bottom:#FFF solid 1px}
+.compare .dark td {background:#f0f0f0;}
+.compareBtn {float:right; margin-top:10px} /*for the search pages*/
+
+.newsList li { margin:0 0 5px 15px}
+
+.mapIcon {background:url(../images/map_magnify.png) no-repeat 2px 10px; padding: 10px 0 0 22px}
+.mapIcon a:link, .mapIcon a:visited {color:#333;}
+.mapCloseIcon {background:url(../images/list.png) no-repeat 2px 10px; padding: 10px 0 0 22px}
+.mapCloseIcon a:link, .mapCloseIcon a:visited {color:#333;}

@@ -164,10 +164,10 @@ class Object_Form_Static extends Zend_Dojo_Form
                     'label' 	=> $this-> view -> __ ( 'Object_URL' ),
                     'trim'		=> true,
                     'required' 	=> true,
-                    'regExp' 	=> "(https?|ftp)://[A-Za-z0-9-_]+\.[A-Za-z0-9-_%&\?\/\.=]+",
+                    //'regExp' 	=> "(https?|ftp)://[A-Za-z0-9-_]+\.[A-Za-z0-9-_%&\?\/\.=]+",
                     'class' 	=> 'lablvalue jstalgntop',
                     //'invalidMessage' => 'Invalid Email Address.',
-                    'promptMessage'  => 'Enter '. $this-> view -> __ ( 'Object_URL' ),
+                    //'promptMessage'  => 'Enter '. $this-> view -> __ ( 'Object_URL' ),
                     /*'validators'     => array(
                     	array('validator' => 'EmailAddress')
                     )*/

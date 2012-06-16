@@ -69,7 +69,7 @@ class Landlots_Controller_Livenear1Admin extends Aula_Controller_Action {
 				}
 			}
 			
-			$livenear1Data = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> available -> lang -> _1 -> default, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			$livenear1Data = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $this -> fc -> settings -> locale -> default -> current -> id, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> livenear1Obj -> insert($livenear1Data);
 
 			header('Location: /admin/handle/pkg/landlots-livenear1/action/list/');

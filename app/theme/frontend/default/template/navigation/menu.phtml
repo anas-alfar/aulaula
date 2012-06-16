@@ -10,62 +10,54 @@
 <div class="nav" style="overflow:hidden">
 	<div class="navCon">
 		<ul>
-        	<li id="1" class="first"><a href="<?php echo $this -> rootUrl?>">Home</a></li>
-            <li id="2"><a href="/vehicle/default/for/sale">Vehicle for sale</a></li>
-            <li id="3"><a href="/vehicle/default/for/rent">Vehicle for rent</a></li>
-            <li id="4"><a href="<?php echo $this -> rootUrl?>estate">Realestate</a></li>
-            <li id="5"><a href="<?php echo $this -> rootUrl?>landlots">Land lots</a></li>
-            <li id="6" class="last"><a href="<?php echo $this -> rootUrl?>mobile">Mobile</a></li>
+			<?php 
+				$i = 1;
+				$count = count($this->menuList['main_menu']); 
+				foreach ( $this->menuList['main_menu'] as $key => $value) {
+					if ( $value['parent_id'] == 0 ) {
+						$first = ($i == 1) ? 'class="first"' : ''; 
+						$last  = ($i == $count) ? 'class="last"' : '';
+					
+						echo '<li '.$first.$last.' id="'. $value['id'] .'"><a href="' . $this -> rootUrl . $value['link'] . '">' . $value['label'] . '</a></li>';
+						$i++;
+					}
+				}
+			?>
         </ul>
     </div>
 </div>
 <div class="subNav">
-	<div id="subNavCon-1" class="subNavCon">
-    	<ul>
-        	<li class="first"><a href="#">Rent your home</a></li>
-            <li><a href="#">House</a></li>
-            <li><a href="#">Rent your can</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">Mobile</a></li>
-        </ul>
-   </div>
-   <div id="subNavCon-2" class="hidden subNavCon">
-        <ul>
-        	<li class="first"><a href="#">xxxx</a></li>
-            <li><a href="#">xxxx</a></li>
-            <li><a href="#">xxxx</a></li>
-            <li class="last">xxxx</li>
-        </ul>
-   </div>
-   <div id="subNavCon-3" class="hidden subNavCon">
-        <ul>
-        	<li class="first"><a href="#">mmmm</a></li>
-            <li><a href="#">mmmm</a></li>
-            <li><a href="#">mmmm</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">mmmm</a></li>
-        </ul>
-   </div>
-   <div id="subNavCon-4" class="hidden subNavCon">
-        <ul>
-        	<li class="first"><a href="#">zzzz</a></li>
-            <li><a href="#">zzzz</a></li>
-            <li><a href="#">zzzz</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">zzzz</a></li>
-        </ul>
-   </div>
-   <div id="subNavCon-5" class="hidden subNavCon">
-        <ul>
-        	<li class="first"><a href="#">oooo</a></li>
-            <li><a href="#">oooo</a></li>
-            <li><a href="#">oooo</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">oooo</a></li>
-        </ul>
-   </div>
-   <div id="subNavCon-6" class="hidden subNavCon">
-        <ul>
-        	<li class="first"><a href="#">cccc</a></li>
-            <li><a href="#">cccc</a></li>
-            <li><a href="#">cccc</a></li>
-            <li class="last"><a href="<?php echo $this -> rootUrl?>mobile">cccc</a></li>
-        </ul>
-   </div>
+	<?php 
+		$d = 0;
+		//echo $count = count($this->menuList['main_menu']); exit; 
+		foreach ( $this->menuList['main_menu'] as $main_key => $tree) {
+			//print_r($value);
+			if ( (isset($tree['tree'])) AND (is_array($tree['tree'])) AND (!empty($tree['tree']) ) ) {
+				
+				$count_tree = count($tree['tree']);
+				$hidden_tree = ($d != 0) ? 'hidden' : ''; 
+				echo '<div id="subNavCon-' . $tree['id'] . '" class="subNavCon '.$hidden_tree.'">
+					<ul>';
+			
+				$j = 1;	
+				foreach ($tree['tree'] as $sub_key => $value) {
+					$first_tree = ($j == 1) ? 'class="first"' : ''; 
+					$last_tree  = ($j == $count_tree) ? ' class="last"' : '';
+					
+					if (1 == $count_tree) {
+						echo '<li class="first last" id="'. $value['id'] .'"><a href="' . $this -> rootUrl . $value['link'] . '">' . $value['label'] . '</a></li>';
+					} else {
+						echo '<li '.$first_tree.$last_tree.' id="'. $value['id'] .'"><a href="' . $this -> rootUrl . $value['link'] . '">' . $value['label'] . '</a></li>';
+					}
+					$j++;
+				}
+				
+				echo '
+				</ul>
+				</div>
+				';
+				$d++;
+			}
+		}
+	?>
 </div>

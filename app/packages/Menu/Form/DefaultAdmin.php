@@ -133,10 +133,10 @@ class Menu_Form_DefaultAdmin extends Zend_Dojo_Form
                     'label' 	=> $this-> view -> __ ( 'Menu_Link' ),
                     'trim'		=> true,
                     'required' 	=> true,
-                    'regExp' 	=> "(https?|ftp)://[A-Za-z0-9-_]+\.[A-Za-z0-9-_%&\?\/\.=]+",
+                    //'regExp' 	=> "(https?|ftp)://[A-Za-z0-9-_]+\.[A-Za-z0-9-_%&\?\/\.=]+",
                     'class' 	=> 'lablvalue jstalgntop',
                     //'invalidMessage' => 'Invalid Email Address.',
-                    'promptMessage'  => 'Enter '. $this-> view -> __ ( 'Menu_Link' ),
+                    //'promptMessage'  => 'Enter '. $this-> view -> __ ( 'Menu_Link' ),
                     /*'validators'     => array(
                     	array('validator' => 'EmailAddress')
                     )*/
