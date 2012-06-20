@@ -1,3 +1,15 @@
+Anas:
+-----------------------------------------------------
+- crate confgis table
+- create cars_for_sell table
+- create cars_for_rent table
+- create landlots table
+- create real_estate table
+- create waseet table
+- fill in all trnaslation phrases into table
+- handle users management
+
+
 - Use this as locale_id in DB (this is the only variable that return integer!!):
 $this -> fc -> settings -> locale -> default -> current -> id
 
