@@ -163,8 +163,8 @@ class Aula_Model_View extends Zend_View {
 		return $array;
 	}
 	
-	public function render($template = NULL) {
-		if (is_null ( $template )) {
+	public function render($template) {
+		if (empty( $template )) {
 			echo '<br />' . $this->templateController . '/' . $this->templateAction;
 			exit ();
 		
