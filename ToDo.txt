@@ -8,6 +8,7 @@ Anas:
 - create waseet table
 - fill in all trnaslation phrases into table
 - handle users management
+- remove extra buttons in all forms
 
 
 - Use this as locale_id in DB (this is the only variable that return integer!!):
