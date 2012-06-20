@@ -125,8 +125,8 @@ class Object_Model_Default extends Aula_Model_DbTable {
 	public function getAllObject_OrderByColumnWithLimit($column, $sorting, $start, $limit) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 
 		$column = $this -> _name . '.' . $column;
 

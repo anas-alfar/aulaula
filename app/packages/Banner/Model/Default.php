@@ -1247,8 +1247,8 @@ class Banner_Model_Default extends Aula_Model_DbTable {
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$Column = mysql_escape_string($Column);
-		$sorting = mysql_escape_string($sorting);
+		$Column = mysql_real_escape_string($Column);
+		$sorting = mysql_real_escape_string($sorting);
 		$AreaId = ( int )($AreaId);
 		$this -> _selectQuery = "
 				SELECT   
@@ -1280,8 +1280,8 @@ class Banner_Model_Default extends Aula_Model_DbTable {
 
 	public function GetCleanDistinctBannerAndAreaOrderByColumn($Column = 'b.`date_added`', $sorting = 'DESC') {
 
-		$Column = mysql_escape_string($Column);
-		$sorting = mysql_escape_string($sorting);
+		$Column = mysql_real_escape_string($Column);
+		$sorting = mysql_real_escape_string($sorting);
 
 		$this -> _selectQuery = "SELECT   
 					SQL_CALC_FOUND_ROWS DISTINCT(b.`area_id`), b.`id`, 

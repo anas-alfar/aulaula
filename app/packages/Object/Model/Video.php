@@ -69,9 +69,9 @@ class Object_Model_Video extends Aula_Model_DbTable {
 		
 		$start = ( int ) ($start);
 		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $Column );
-		$sorting = mysql_escape_string ( $sorting );
-		$CategoryIds = mysql_escape_string ( $CategoryIds );
+		$column = mysql_real_escape_string ( $Column );
+		$sorting = mysql_real_escape_string ( $sorting );
+		$CategoryIds = mysql_real_escape_string ( $CategoryIds );
 		
 		
 		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
@@ -95,7 +95,7 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
 	
 	public function GetListingCleanObjectAndInfoAndVideoById ($Id) {
 		
-		$Id = mysql_escape_string ( $Id );
+		$Id = mysql_real_escape_string ( $Id );
 		
 		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ov.`id`, ov.`alias`, ov.`intro_text`, ov.`author_id`, ov.`source_id`, 
   ov.`object_id`, ov.`category_id`, ov.`size`, ov.`height`, ov.`width`, ov.`extension`, ov.`taken_date`, ov.`taken_location`, ov.`meta_data`,
@@ -116,8 +116,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id` ';
 	public function getAllObject_VideoOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 
 		$this -> _orderBy = "$column $sorting";
 		$this -> _limit = "$start, $limit";

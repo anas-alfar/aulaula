@@ -57,8 +57,8 @@ class Landlots_Model_Location extends Aula_Model_DbTable {
 	{
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 		
 		$result = $this 
 		-> select() 

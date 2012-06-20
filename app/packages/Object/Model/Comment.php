@@ -63,8 +63,8 @@ class Object_Model_Comment extends Aula_Model_DbTable {
 		$start = (int)($start);
 		$limit = (int)($limit);
 		$categoryId = (int)($categoryId);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 		if (in_array($column, $this -> _cols)) {
 			$column = 'oc.' . $column;
 		} else {
@@ -93,11 +93,11 @@ INNER JOIN `object` AS o ON o.`id` = oc.`object_id`';
 		$start = (int)($start);
 		$limit = (int)($limit);
 		$categoryId = (int)($categoryId);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 		$special_article = ( bool )($special_article);
 
-		$sorting = mysql_escape_string($sorting);
+		$sorting = mysql_real_escape_string($sorting);
 		/*if ($special_article === True) {
 			$special_article_condition = 'IN';
 		} else {
@@ -123,11 +123,11 @@ FROM `object_comment` AS oc INNER JOIN `object` AS o ON o.`id` = oc.`object_id`'
 
 		$start = (int)($start);
 		$limit = (int)($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 		$special_article = ( bool )($special_article);
 
-		$sorting = mysql_escape_string($sorting);
+		$sorting = mysql_real_escape_string($sorting);
 		if ($special_article === True) {
 			$this -> _selectQuery = 'SELECT SQL_CALC_FOUND_ROWS oc.`id`, oc.`object_id`, oc.`user_id`, oc.`title`, oc.`content`, oc.`email`, oc.`webpage`, oc.`locale_id`, oc.`country_id`, oc.`published`, oc.`approved`, oc.`date_added`, oc.`comments`, oc.`options`, o.`title` AS `article_title`, o.`author_id`
 FROM `object_comment` AS oc
@@ -172,36 +172,36 @@ left join `object_article_special` oas on oas.object_id = oc.`object_id`';
 	public function GetAllObject_commentBySearchOrderByColumnWithLimitAndSpecial_article($Column = 'oc.date_added', $Special_article = false, $start = 0, $limit = 10, $sorting = 'DESC', $webpage = NULL, $email = NULL, $articleTitle = NULL, $userId = NULL, $content = NULL, $published = NULL, $approved = NULL, $dateAddedFrom = NULL, $dateAddedTo = NULL, $categoryList = NULL) {
 		$searchCondition = '';
 		if ($webpage !== NULL) {
-			$webpage = mysql_escape_string($webpage);
+			$webpage = mysql_real_escape_string($webpage);
 			$searchCondition .= 'oc.`webpage` LIKE "%' . $webpage . '%" AND ';
 		}
 		if ($email !== NULL) {
-			$email = mysql_escape_string($email);
+			$email = mysql_real_escape_string($email);
 			$and = ' AND ';
 			$searchCondition .= ' oc.`email` LIKE "%' . $email . '%" AND ';
 		}
 		if ($articleTitle !== NULL) {
-			$articleTitle = mysql_escape_string($articleTitle);
+			$articleTitle = mysql_real_escape_string($articleTitle);
 			$searchCondition .= ' o.`title` LIKE "%' . $articleTitle . '%" AND ';
 		}
 		if ($userId !== NULL) {
-			$userId = mysql_escape_string($userId);
+			$userId = mysql_real_escape_string($userId);
 			$searchCondition .= ' oc.`user_id` LIKE "%' . $userId . '%" AND ';
 		}
 		if ($content !== NULL) {
-			$content = mysql_escape_string($content);
+			$content = mysql_real_escape_string($content);
 			$searchCondition .= ' oc.`content` LIKE "%' . $content . '%" AND ';
 		}
 		if ($published !== NULL) {
-			$published = mysql_escape_string($published);
+			$published = mysql_real_escape_string($published);
 			$searchCondition .= ' oc.`published`="' . $published . '" AND ';
 		}
 		if ($categoryList !== NULL) {
 			$searchCondition .= ' o.`category_id` IN (' . $categoryList . ') AND ';
 		}
 		if ($dateAddedFrom !== NULL && $dateAddedTo !== NULL) {
-			$dateAddedFrom = mysql_escape_string($dateAddedFrom);
-			$dateAddedTo = mysql_escape_string($dateAddedTo);
+			$dateAddedFrom = mysql_real_escape_string($dateAddedFrom);
+			$dateAddedTo = mysql_real_escape_string($dateAddedTo);
 			$searchCondition .= ' oc.`date_added`> "' . $dateAddedFrom . '" AND  oc.`date_added`< "' . $dateAddedTo . '" AND ';
 		}/*else {
 		 $_last10DaysTime = time () - (60 * 60 * 24 * 10);
@@ -210,10 +210,10 @@ left join `object_article_special` oas on oas.object_id = oc.`object_id`';
 		 } */
 
 		$searchCondition = substr($searchCondition, 0, -4);
-		$Column = mysql_escape_string($Column);
+		$Column = mysql_real_escape_string($Column);
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$sorting = mysql_escape_string($sorting);
+		$sorting = mysql_real_escape_string($sorting);
 		$Special_article = ( bool )($Special_article);
 		if ($Special_article === True) {
 			$this -> _selectQuery = 'SELECT SQL_CALC_FOUND_ROWS oc.`id`, oc.`object_id`, oc.`user_id`, oc.`title`, oc.`content`, oc.`email`, oc.`webpage`, oc.`locale_id`, oc.`country_id`, oc.`published`, oc.`approved`, oc.`date_added`, oc.`comments`, oc.`options`, o.`title` AS `article_title`, o.`author_id`

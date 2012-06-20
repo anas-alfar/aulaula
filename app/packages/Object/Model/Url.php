@@ -68,9 +68,9 @@ class Object_Model_Url extends  Aula_Model_DbTable {
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($Column);
-		$sorting = mysql_escape_string($sorting);
-		$CategoryIds = mysql_escape_string($CategoryIds);
+		$column = mysql_real_escape_string($Column);
+		$sorting = mysql_real_escape_string($sorting);
+		$CategoryIds = mysql_real_escape_string($CategoryIds);
 
 		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS ou.`id`, ou.`alias`, ou.`intro_text`, ou.`url`, ou.`style`, 
   ou.`author_id`, ou.`source_id`, ou.`object_id`, ou.`category_id`, ou.`show_in_object`, ou.`published`, ou.`approved`, ou.`url_type`,
@@ -95,8 +95,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
 	public function getAllObject_urlOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 
 		$this -> _orderBy = "$column $sorting";
 		$this -> _limit = "$start, $limit";

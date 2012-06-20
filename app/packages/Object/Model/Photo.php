@@ -68,9 +68,9 @@ class Object_Model_Photo extends Aula_Model_DbTable {
 		
 		$start = ( int ) ($start);
 		$limit = ( int ) ($limit);
-		$sorting = mysql_escape_string ( $sorting );
-		$column = mysql_escape_string ( $column );
-		$subCategoriesList = mysql_escape_string ( $subCategoriesList );
+		$sorting = mysql_real_escape_string ( $sorting );
+		$column = mysql_real_escape_string ( $column );
+		$subCategoriesList = mysql_real_escape_string ( $subCategoriesList );
 		
 		$this -> _selectQuery = 'SELECT SQL_CALC_FOUND_ROWS u.*, ui.*, op.`id`, op.`alias`, op.`intro_text`, op.`author_id`, op.`source_id`, op.`object_id`, op.`category_id`, op.`size`, op.`height`, op.`width`, op.`extension`, op.`taken_date`, op.`taken_location`, op.`meta_data`, op.`show_in_object`, op.`published`, op.`approved`, op.`order`, op.`locked_by`, op.`locked_time`, op.`modified_by`, op.`modified_time`, op.`publish_from`, op.`publish_to`, op.`date_added`, op.`comments`, op.`options`, o.`category_id` AS `sub_category` 
 		FROM `object_photo` AS op  
@@ -87,8 +87,8 @@ class Object_Model_Photo extends Aula_Model_DbTable {
 	public function getAllObject_PhotoOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
 
 		$this -> _orderBy = "$column $sorting";
 		$this -> _limit = "$start, $limit";
