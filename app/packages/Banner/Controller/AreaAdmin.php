@@ -195,7 +195,9 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		if (!empty($this -> view -> sanitized -> areaId -> value)) {
 			foreach ($this->view->sanitized->areaId->value as $id => $value) {
-				$areaDelete = $this -> areaObj -> deleteFromBanner_areaById($id);
+				//$areaDelete = $this -> areaObj -> deleteFromBanner_areaById($id);
+				$where = $this -> areaObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$areaDelete = $this -> areaObj -> delete($where);
 			}
 			if (!empty($areaDelete)) {
 				header('Location: /admin/handle/pkg/banner-area/action/list/success/delete');
@@ -227,7 +229,9 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 		if (!empty($this -> view -> sanitized -> areaId -> value)) {
 			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == 'Yes' ? 'Yes' : 'No';
 			foreach ($this->view->sanitized->areaId->value as $id => $value) {
-				$areaPublish = $this -> areaObj -> updateBanner_areaPublishedColumnById($id, $this -> view -> sanitized -> status -> value);
+				$data = array('published' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> areaObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$bannerPublish = $this -> areaObj -> update($data, $where);
 			}
 			if (!empty($areaPublish)) {
 				header('Location: /admin/handle/pkg/banner-area/action/list/success/publish');
@@ -243,7 +247,10 @@ class Banner_Controller_AreaAdmin extends Aula_Controller_Action {
 		if (!empty($this -> view -> sanitized -> areaId -> value)) {
 			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == 'Yes' ? 'Yes' : 'No';
 			foreach ($this->view->sanitized->areaId->value as $id => $value) {
-				$areaAprrove = $this -> areaObj -> updateBanner_areaApprovedColumnById($id, $this -> view -> sanitized -> status -> value);
+				/*$areaAprrove = $this -> areaObj -> updateBanner_areaApprovedColumnById($id, $this -> view -> sanitized -> status -> value);*/
+				$data = array('approved' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> areaObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$bannerAprrove = $this -> areaObj -> update($data, $where);
 			}
 			if (!empty($areaAprrove)) {
 				header('Location: /admin/handle/pkg/banner-area/action/list/success/approve');
