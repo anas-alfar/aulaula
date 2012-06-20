@@ -187,66 +187,23 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> form = $form;
 		$this -> view -> render('banner/updateBanner.phtml');
 		exit();
+	}
 
-		/*if ($this -> isPagePostBack) {
-		 $this -> filterObj -> trimData($this -> view -> sanitized);
-		 $this -> filterObj -> sanitizeData($this -> view -> sanitized);
-		 $this -> errorMessage = $this -> validationObj -> validator($this -> fields, $this -> view -> sanitized);
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 if (empty($this -> errorMessage)) {
-		 $result = $this -> bannerObj -> updateBannerById($this -> view -> sanitized -> Id -> value, $this -> view -> sanitized -> area -> value, $this -> view -> sanitized -> title -> value, $this -> view -> sanitized -> label -> value, $this -> view -> sanitized -> type -> value, $this -> view -> sanitized -> link -> value, $this -> view -> sanitized -> object -> value, $this -> view -> sanitized -> published -> value, $this -> view -> sanitized -> approved -> value, $this -> userId, $this -> view -> sanitized -> comment -> value, $this -> view -> sanitized -> option -> value, $this -> view -> sanitized -> publishFrom -> value, $this -> view -> sanitized -> publishTo -> value);
-		 if ($result !== false) {
-		 $this -> view -> sanitized -> general -> successMessage = $this -> view -> __('Record successfully added');
-		 $this -> view -> sanitized -> general -> successMessageStyle = 'display: block;';
-		 if (isset($this -> view -> sanitized -> btn_submit -> value) and (1 == $this -> view -> sanitized -> btn_submit -> value)) {
-		 header('Location: /admin/handle/pkg/banner/action/list/s/1');
-		 exit();
-		 }
-		 header('Location: /admin/handle/pkg/banner/action/edit/s/1/id/' . $this -> view -> sanitized -> Id -> value);
-		 exit();
-		 } else {
-		 $this -> errorMessage['general'] = $this -> view -> __('Error on edit record');
-		 }
-		 }
-		 } elseif (isset($_GET['id']) and is_numeric($_GET['id'])) {
-		 $result = $this -> bannerObj -> getBannerDetailsById(( int )$_GET['id']);
-		 $result = $result[0];
-		 $result['publish_from'] = substr($result['publish_from'], 0, 10);
-		 $result['publish_to'] = substr($result['publish_to'], 0, 10);
-		 $this -> fields = array('redirectURI' => array('uri', 0, ''), 'link' => array('url', 0, $result['link']), 'status' => array('text', 0), 'bannerId' => array('numeric', 0), 'Id' => array('numeric', 0, $result['id']), 'token' => array('text', 1), 'title' => array('text', 1, $result['title']), 'label' => array('text', 1, $result['label']), 'area' => array('numeric', 1, $result['area_id']), 'type' => array('text', 1, $result['type']), 'object' => array('text', 1, $result['object']), 'published' => array('text', 0, $result['published']), 'approved' => array('text', 0, $result['approved']), 'comment' => array('text', 0, $result['comments']), 'option' => array('text', 0, $result['options']), 'resetFilter' => array('', 0), 'search' => array('', 0), 'lastModifiedFrom' => array('shortDateTime', 0), 'lastModifiedTo' => array('shortDateTime', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'publishFrom' => array('shortDateTime', 0, $result['publish_from']), 'publishTo' => array('shortDateTime', 0, $result['publish_to']), 'btn_submit' => array('', 0, 2));
-		 $this -> view -> sanitized = array();
-		 $this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 } else {
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 }
+	public function deleteAction() {
+		$this -> view -> arrayToObject($this -> view -> sanitized);
+		if (!empty($this -> view -> sanitized -> bannerId -> value)) {
+			foreach ($this->view->sanitized->bannerId->value as $id => $value) {
+				$where = $this -> bannerObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$bannerDelete = $this -> bannerObj -> delete($where);
+			}
+			if (!empty($bannerDelete)) {
+				header('Location: /admin/handle/pkg/banner/action/list/success/delete');
+				exit();
+			}
+		}
 
-		 if (!empty($this -> errorMessage)) {
-		 foreach ($this->errorMessage as $key => $msg) {
-		 $this -> view -> sanitized -> $key -> errorMessage = $msg;
-		 $this -> view -> sanitized -> $key -> errorMessageStyle = 'display: block;';
-		 }
-		 }
-
-		 $this -> view -> render('banner/addBanner.phtml');
-		 exit();
-		 }
-
-		 public function deleteAction() {
-		 $this -> view -> arrayToObject($this -> view -> sanitized);
-		 if (!empty($this -> view -> sanitized -> bannerId -> value)) {
-		 foreach ($this->view->sanitized->bannerId->value as $id => $value) {
-		 $where = $this -> bannerObj -> getAdapter() -> quoteInto('id = ?', $id);
-		 $bannerDelete = $this -> bannerObj -> delete($where);
-		 }
-		 if (!empty($bannerDelete)) {
-		 header('Location: /admin/handle/pkg/banner/action/list/success/delete');
-		 exit();
-		 }
-		 }
-
-		 header('Location: /admin/handle/pkg/banner/action/list/');
-		 exit();*/
+		header('Location: /admin/handle/pkg/banner/action/list/');
+		exit();
 	}
 
 	public function approveAction() {
@@ -329,16 +286,16 @@ class Banner_Controller_DefaultAdmin extends Aula_Controller_Action {
 				$sort = 'DESC';
 				$sortInvert = 'asc';
 			}
-			$bannerListResult = $this -> bannerObj -> select() -> from ('banner',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("$column $sort") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
+			$bannerListResult = $this -> bannerObj -> select() -> from('banner', new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->   where ('id > ?', 1)*/ -> order("$column $sort") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
 			$sort = strtolower($sort);
 			$column = strtolower($column);
 			$this -> view -> sort -> {$column} -> cssClass = 'sort-arrow-' . $sort;
 			$this -> view -> sort -> {$column} -> href = $this -> view -> sanitized -> actionURI -> value . 'list/col/' . $column . '/sort/' . ($sortInvert);
 		} else {
-			$bannerListResult = $this -> bannerObj -> select() -> from ('banner',new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->  where ('id > ?', 1)*/ -> order("id DESC") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
+			$bannerListResult = $this -> bannerObj -> select() -> from('banner', new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->   where ('id > ?', 1)*/ -> order("id DESC") -> limit("$this->start, $this->limit") -> query() -> fetchAll();
 		}
 
-		$this -> pagingObj -> _init($this -> bannerObj -> getAdapter()-> fetchOne('SELECT FOUND_ROWS()'));
+		$this -> pagingObj -> _init($this -> bannerObj -> getAdapter() -> fetchOne('SELECT FOUND_ROWS()'));
 		$this -> view -> paging = $this -> pagingObj -> paging;
 		$this -> view -> arrayToObject($this -> view -> paging);
 
