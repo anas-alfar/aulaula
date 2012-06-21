@@ -99,7 +99,7 @@ class Landlots_Controller_ProvenceAdmin extends Aula_Controller_Action {
 				}
 			}
 			
-			/*$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $this -> fc -> settings -> locale -> default -> current -> id, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+			/*$provenceData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'landlots_location_id' => $_POST['mandatory']['landlots_location_id'], 'locale_id' => $this->fc->settings->locale->default->current->id, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
 			$this -> provenceObj -> insert($provenceData);*/
 
 			header('Location: /admin/handle/pkg/landlots-provence/action/list/');

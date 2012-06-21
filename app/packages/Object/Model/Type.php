@@ -52,9 +52,21 @@ class Object_Model_Type extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'package_id', 'published', 'approved');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `published`, `approved` ';
+		$this -> cols = $this -> _cols = array('id', 'title', 'label', 'description', 'author_id', 'package_id', 'published', 'approved', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `label`, `description`, `author_id`, `package_id`, `published`, `approved`, `date_added` ';
 		parent::__construct();
+	}
+	
+	public function getAllObject_TypeOrderByColumnWithLimit  ( $column ,$sorting, $start, $limit ) {
+		$start = ( int )($start);
+		$limit = ( int )($limit);
+		$column = mysql_real_escape_string($column);
+		$sorting = mysql_real_escape_string($sorting);
+
+		$this -> _orderBy = "$column $sorting";
+		$this -> _limit = "$start, $limit";
+		$result = $this -> read();
+		return $result;
 	}
 	
 	public function getTypeById( $id ) 

@@ -137,7 +137,7 @@ class Object_Controller_Static extends Aula_Controller_Action {
 	public function viewAction() {
 		if (isset($_GET['name']) AND !empty($_GET['name'])) {
 			$static_name = trim($_GET['name']);
-			$static_page = $this -> staticObj -> getStaticByURLAndLocaleId($static_name, $this -> fc -> settings -> locale -> default -> current -> id);
+			$static_page = $this -> staticObj -> getStaticByURLAndLocaleId($static_name, $this->fc->settings->locale->default->current->id);
 			if ($static_page) {
 				if ( !empty($static_page['page_title'])) $this -> view -> pageTitle = $static_page['page_title'];  
 				if ( !empty($static_page['meta_key'])) $this -> view -> metaKeywords = $static_page['meta_key'];  
