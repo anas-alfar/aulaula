@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php include './html/meta.phtml'; ?>
+</head>
+<body>
+<!--container-->
+<div class="container">
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
+<!--content-->
+<form method="get" action="" id="frm">
+<div>
+	<input type="hidden" id="token" name="token" value="<?php print $this->sanitized->token->value; ?>" />
+	<input type="hidden" id="actionURI" value="<?php print $this->sanitized->actionURI->value; ?>" />
+</div>
+<div class="content">
+<div class="srch-rslt cleaner">
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Configs_Default' ); ?></h3>
+<a href="<?php print $this->sanitized->actionURI->value; ?>add" class="add-btn"><em><?php echo $this->__ ( 'Configs_Add New' ); ?></em></a></div>
+<!--filtration-->
+<div class="filtration cleaner">
+<button type="button"
+	onclick="return changeFormAction('approve', 'post');" name="approve"
+	id="approve" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Configs_Status' ); ?></em></span></button>
+	<select style="float: left;" name="status">
+	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="1"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="0"><?php echo $this->__('No Option'); ?></option>
+	</select>
+	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
+</div>
+<!--end filtration-->
+
+<!--srch-rsult-->
+<table class="srch-rsult">
+	<tr class="heading">
+		<th class="jstalgntop col1"><input type="checkbox" name="selectAll" id="selectAll" /></th>
+		<th class="jstalgntop col1">
+			<a href="<?php echo $this->sort->option_title->href; ?>" class="<?php echo $this->sort->option_title->cssClass; ?>">
+			<span class="<?php echo $this->sort->option_title->cssClass; ?>"><?php echo $this->__ ( 'Configs_Option Title' ); ?></span></a></th>
+		<th class="jstalgntop col1"><a href="<?php echo $this->sort->option_hint->href; ?>"
+			class="<?php echo $this->sort->option_hint->cssClass; ?>"><span class="<?php echo $this->sort->option_hint->cssClass; ?>"><?php echo $this->__ ( 'Configs_Option Hint' ); ?></span></a></th>
+		<th class="jstalgntop colyesno"><a href="<?php echo $this->sort->option_value->href; ?>"
+			class="<?php echo $this->sort->option_value->cssClass; ?>"><span class="<?php echo $this->sort->option_value->cssClass; ?>"><?php echo $this->__ ( 'Configs_Option Value' ); ?></span></a></th>
+		<th class="jstalgntop colyesno"><a href="<?php echo $this->sort->option_status->href; ?>"
+			class="<?php echo $this->sort->option_status->cssClass; ?>"><span class="<?php echo $this->sort->option_status->cssClass; ?>"><?php echo $this->__ ( 'Configs_Option Status' ); ?></span></a></th>
+		<th class="jstalgntop col5"><a href="<?php echo $this->sort->date_added->href; ?>" class="<?php echo $this->sort->date_added->cssClass; ?>"><span
+			class="<?php echo $this->sort->date_added->cssClass; ?>"><?php echo $this->__ ( 'Object_Date Added' ); ?></span></a></th>
+		<th class="jstalgntop tools last"><span><?php echo $this->__ ( 'Object_Tools' ); ?></span></th>
+	</tr>
+	
+	<?php 
+	if (!empty($this->configList)) {
+		foreach ($this->configList as $key => $value) {
+				echo '<tr>';
+				echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="configId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
+				echo '<td class="jstalgntop">' . $value['option_title'] . '</td>';
+				echo '<td class="jstalgntop">' . $value['option_hint'] . '</td>';
+				echo '<td class="jstalgntop">' . $value['option_value'] . '</td>';
+				echo '<td class="jstalgntop">' . $this -> __($value['option_status']) . '</td>';
+				echo '<td class="jstalgntop">' . $value['date_added'] . '</td>';
+				echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/configs/action/edit/id/' . $value['id'] . '"
+						class="modify fl" title="Edit"></a> <a href="/admin/handle/pkg/configs/action/view/id/' . $value['id'] . '"
+			class="preview fl" title="Preview"></a></td>';
+				echo '</tr>';
+			}
+	} 
+	?>
+
+</table>
+
+<!--begin paging-->
+<?php include './html/paging.phtml'; ?>
+<!--end paging-->
+
+</div>
+<!--end content-->
+</form>
+<?php include './html/footer.phtml'; ?>
+</div>
+<!--end container-->
+</body>
+</html>
