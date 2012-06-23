@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php include './html/meta.phtml'; ?>
+</head>
+<body class="tundra">
+
+<!--container-->
+<div class="container">
+<?php include './html/header.phtml'; ?>
+<?php include './html/menu.phtml'; ?>
+<?php include './html/notification.phtml'; ?>
+
+<!--content-->
+<div class="content"><!--maincont-->
+<div class="maincont cleaner"><!--lftnav-->
+<!--end lftnav-->
+
+<!--srch-rslt-->
+<div class="srch-rslt">
+<h3 class="fl pagetitle margthaf"><?php echo $this->__ ( 'Configs_Default List Groups' ); ?></h3>
+<a href="javascript:history.go(-1)" class="backbtn"><em><button name="btn_submit" value="-1" class="emptbtn" type="button" onlcick="javascript:history.go(-1);"><?php echo $this->__ ( 'Configs_Back' ); ?></button></em></a>
+</div>
+<!--end srch-rslt-->
+
+
+<!--ritcont-->
+<div class="entrdata">
+	<div class="entrdcont">
+		<div align="center" class="wdthauto">
+			<form method="post" id="configs_groups" name="configs_groups" action="/admin/handle/pkg/configs/action/edit">
+				<table>
+					<tr>
+						<td><?php echo $this->__ ( 'Configs_Groups' )?></td>
+						<td>
+							<select size="1" style="width: 200px" id="group_id" name="group_id">
+								<option value="0"><?php echo $this->__ ( 'Please select group' )?></option>
+							<?php
+								foreach ($this->configsGroups as $key => $value) {
+									echo '<option value="'.$value['group_id'].'">'.$value['group_key'].'</option>';
+								}
+							?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $this->__ ( 'Locale' )?></td>
+						<td>
+							<select size="1" style="width: 200px" id="locale_id" name="locale_id">
+								<option value="0"><?php echo $this->__ ( 'Please select locale' )?></option>
+							<?php
+								foreach ($this->allLocale as $key => $value) {
+									echo '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+								}
+							?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $this->__ ( 'Submit' )?></td>
+						<td><input type="submit" value="<?php echo $this->__( 'Submit' )?>" /> </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+jQuery(document).ready(function() {
+	jQuery('#configs_groups').submit(function() {
+		if (jQuery('#group_id').val() == 0 ) {
+			alert("<?php echo $this->__ ( 'Please select group' )?>");
+			return false;
+		}
+		if (jQuery('#locale_id').val() == 0 ) {
+			alert("<?php echo $this->__ ( 'Please select locale' )?>");
+			return false;
+		}
+		return true;
+	});
+});
+</script>
+
+
+</div>
+<!--end maincont-->
+</div>
+<!--end content-->
+<?php include './html/footer.phtml'; ?>
+</div>
+<!--end container-->
+</body>
+</html>

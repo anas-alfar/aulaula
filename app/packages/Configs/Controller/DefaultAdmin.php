@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -33,9 +33,11 @@
 class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 
 	private $configsObj = NULL;
+	private $localeObj = NULL;
 
 	protected function _init() {
 		$this -> configsObj = new Configs_Model_Default();
+		$this -> localeObj 	= new Locale_Model_Default();
 
 		$this -> defualtAdminAction = 'list';
 
@@ -51,47 +53,56 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		}
 		$this -> view -> sanitized['token']['value'] = md5(time() . 'qwiedkhjsafg');
 		$this -> view -> sanitized['locale']['value'] = 1;
-		
+
 		//$this -> view -> importExcelLink = '/admin/handle/pkg/vehicle-type/action/importcsv/';
 		//$this -> view -> exportExcelLink = '/admin/handle/pkg/vehicle-type/action/exportcsv/';
 	}
 
 	/*public function viewAction() {
-		if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
-			$result = $this -> typeObj -> getTypeById($_GET['id']);
-			$this -> view -> result = $result;
-			$this -> view -> render('vehicle/viewType.phtml');
-			exit();
-		}
-	}*/
+	 if ( isset($_GET['id']) and is_numeric($_GET['id']) ) {
+	 $result = $this -> typeObj -> getTypeById($_GET['id']);
+	 $this -> view -> result = $result;
+	 $this -> view -> render('vehicle/viewType.phtml');
+	 exit();
+	 }
+	 }*/
 
 	public function addAction() {
 		$form = new Configs_Form_Default($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			
+
 			print_r($_POST);
-			
+
 			$configurationData = array();
 			foreach ($_POST as $configurationName => $configurationValue) {
-				if (!empty($configurationValue['option_title']) AND !empty($configurationValue['option_value']) ) {
-					
-					$configurationData['group_id'] 		= 2;
-					$configurationData['group_key'] 	= trim($configurationName);
-					$configurationData['option_value'] 	= trim($configurationValue['option_value']);
-					$configurationData['option_hint'] 	= trim($configurationValue['option_hint']);
-					$configurationData['option_status'] 	= (int) $configurationValue['option_status'];
-					$configurationData['option_description'] = trim($configurationValue['option_description']);
-					$configurationData['comments'] 		= trim($configurationValue['comments']);
-					$configurationData['locale_id'] 	= (int) $configurationValue['locale_id'];
-					$configurationData['permission_level_id'] = $this-> userId;
+				if (!empty($configurationValue['option_title']) AND trim($configurationValue['option_value']) != '') {
 
-					$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_title'];
-					if ( trim($configurationValue['option_type']) != '' ) {
-						$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_type'] . '.' . $configurationValue['option_title'];  
+					if (($configurationValue['group_id'] != 0) AND (empty($configurationValue['group_value']))) {
+						$groupInfo = explode('-', $configurationValue['group_id']);
+						$configurationData['group_id'] = $groupInfo[0];
+						$configurationData['group_key'] = $groupInfo[1];
+					} else {
+						$configurationData['group_key'] = $configurationValue['group_key'];
+						$currentMaxGroupId = $this -> configsObj -> getMaxGroupId();
+						$configurationData['group_id'] = $currentMaxGroupId['group_id'] + 1;
 					}
 
+					$configurationData['option_value'] = trim($configurationValue['option_value']);
+					$configurationData['option_hint'] = trim($configurationValue['option_hint']);
+					$configurationData['option_status'] = (int)$configurationValue['option_status'];
+					$configurationData['option_description'] = trim($configurationValue['option_description']);
+					$configurationData['comments'] = trim($configurationValue['comments']);
+					$configurationData['locale_id'] = (int)$configurationValue['locale_id'];
+					$configurationData['permission_level_id'] = $this -> userId;
+
+					$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_title'];
+					if (trim($configurationValue['option_type']) != '') {
+						$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_type'] . '.' . $configurationValue['option_title'];
+					}
+					echo '<br /><br />';
+					//print_r($configurationData); exit;
 					$this -> configsObj -> insert($configurationData);
 				}
 			}
@@ -104,52 +115,68 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		exit();
 	}
 
-	/*public function editAction() {
-		$form = new Vehicle_Form_SimpleType($this -> view);
-		$form -> setView($this -> view);
-
-		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$typeId = (int)$_POST['mandatory']['id'];
-
-			$typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-			$this -> typeObj -> update($typeData, '`id` = ' . $typeId);
-
-			header('Location: /admin/handle/pkg/vehicle-type/action/list/');
-			exit();
-		} else {
-			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
-				$typeObjResult = $this -> typeObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
-
-				if ($typeObjResult !== false) {
-					$typeObjResult['options'] = json_decode($typeObjResult['options']);
-
-					$form -> populate($typeObjResult);
-				} else {
-					header('Location: /admin/handle/pkg/vehicle-type/action/list');
-					exit();
-				}
-			}
-		}
-		$this -> view -> form = $form;
-		$this -> view -> render('vehicle/updateType.phtml');
-		exit();
-	}*/
-
-	/*public function deleteAction() {
-		$this -> view -> arrayToObject($this -> view -> sanitized);
-		if (!empty($this -> view -> sanitized -> typeId -> value)) {
-			foreach ($this -> view -> sanitized -> typeId -> value as $id => $value) {
-				$where = $this -> typeObj -> getAdapter() -> quoteInto('id = ?', $id);
-				$stmt = $this -> typeObj -> delete($where);
-			}
-			if (!empty($stmt)) {
-				header('Location: /admin/handle/pkg/vehicle-type/action/list/success/delete');
+	public function showgroupAction() {
+		if (isset($_GET['group_id']) AND is_numeric($_GET['group_id'])) {
+			$group_id = $_GET['group_id'];
+			$configsObjResult = $this -> configsObj -> getAllConfigs();
+			$localeAvailable  = $this -> localeObj 	-> getAllLocale();
+			if ($configsObjResult) {
+				$this -> view -> allLocale = $localeAvailable;
+				$this -> view -> configsGroups = $configsObjResult;
+				$this -> view -> render('configs/listGroups.phtml');
 				exit();
 			}
 		}
-		header('Location: /admin/handle/pkg/vehicle-type/action/list/');
+		header('Location: /admin/handle/pkg/configs/action/list');
 		exit();
-	}*/
+	}
+
+	/*public function editAction() {
+	 $form = new Vehicle_Form_SimpleType($this -> view);
+	 $form -> setView($this -> view);
+
+	 if (!empty($_POST) and $form -> isValid($_POST)) {
+	 $typeId = (int)$_POST['mandatory']['id'];
+
+	 $typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+	 $this -> typeObj -> update($typeData, '`id` = ' . $typeId);
+
+	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
+	 exit();
+	 } else {
+	 if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+	 $typeObjResult = $this -> typeObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+
+	 if ($typeObjResult !== false) {
+	 $typeObjResult['options'] = json_decode($typeObjResult['options']);
+
+	 $form -> populate($typeObjResult);
+	 } else {
+	 header('Location: /admin/handle/pkg/vehicle-type/action/list');
+	 exit();
+	 }
+	 }
+	 }
+	 $this -> view -> form = $form;
+	 $this -> view -> render('vehicle/updateType.phtml');
+	 exit();
+	 }*/
+
+	/*public function deleteAction() {
+	 $this -> view -> arrayToObject($this -> view -> sanitized);
+	 if (!empty($this -> view -> sanitized -> typeId -> value)) {
+	 foreach ($this -> view -> sanitized -> typeId -> value as $id => $value) {
+	 $where = $this -> typeObj -> getAdapter() -> quoteInto('id = ?', $id);
+	 $stmt = $this -> typeObj -> delete($where);
+	 }
+	 if (!empty($stmt)) {
+	 header('Location: /admin/handle/pkg/vehicle-type/action/list/success/delete');
+	 exit();
+	 }
+	 }
+	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
+	 exit();
+	 }*/
 
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
@@ -204,32 +231,32 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 	}
 
 	/*public function exportcsvAction() {
-		set_time_limit(0);
-		$allData = $this -> typeObj -> getAllType();
-		$this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
-	}*/
+	 set_time_limit(0);
+	 $allData = $this -> typeObj -> getAllType();
+	 $this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
+	 }*/
 
 	/*public function importcsvAction() {
-		$form = new Vehicle_Import_CSV($this -> view);
-		$form -> setView($this -> view);
+	 $form = new Vehicle_Import_CSV($this -> view);
+	 $form -> setView($this -> view);
 
-		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$uploadObj = new Aula_Model_Upload('file');
-			if ($uploadObj -> CheckIfThereIsFile() === true) {
-				if ($uploadObj -> validatedMime()) {
-					if ($uploadObj -> validatedSize()) {
-						$result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> typeObj);
-						if ($result == true) {
-							header('Location: /admin/handle/pkg/vehicle-type/action/list/');
-							exit();
-						}
-					}
-				}
-			}
-		}
-		$this -> view -> form = $form;
-		$this -> view -> render('vehicle/addType.phtml');
-		exit();
-	}*/
+	 if (!empty($_POST) and $form -> isValid($_POST)) {
+	 $uploadObj = new Aula_Model_Upload('file');
+	 if ($uploadObj -> CheckIfThereIsFile() === true) {
+	 if ($uploadObj -> validatedMime()) {
+	 if ($uploadObj -> validatedSize()) {
+	 $result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> typeObj);
+	 if ($result == true) {
+	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
+	 exit();
+	 }
+	 }
+	 }
+	 }
+	 }
+	 $this -> view -> form = $form;
+	 $this -> view -> render('vehicle/addType.phtml');
+	 exit();
+	 }*/
 
 }

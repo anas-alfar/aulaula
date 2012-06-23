@@ -84,9 +84,20 @@ class Configs_Model_Default extends Aula_Model_DbTable {
 	{
 		$result = $this 
 		-> select() 
-		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> group('group_key') 
 		-> query() 
 		-> fetchAll();
+
+		return $result;
+	}
+	
+	public function getMaxGroupId() {
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('max(group_id) as group_id'))
+		-> query() 
+		-> fetch();
 
 		return $result;
 	}

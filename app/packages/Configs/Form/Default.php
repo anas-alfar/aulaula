@@ -33,7 +33,7 @@
 class Configs_Form_Default extends Zend_Dojo_Form
 {
 	public $view = NULL;
-	private $translator, $_selectLocaleOptions, $translateValidators;
+	private $translator, $_selectLocaleOptions, $_selectConfigOptions, $translateValidators;
 	
 	public function __construct($view) {
 		$this->view = $view;
@@ -42,7 +42,7 @@ class Configs_Form_Default extends Zend_Dojo_Form
 	
 	private function _getLocaleOptions() {
 		$localeObj 	= new Locale_Model_Default();
-		$this -> _selectLocaleOptions = array (0 => $this -> view -> __('Root'));
+		$this -> _selectLocaleOptions = array ('' => $this -> view -> __('Root'));
 		$localeObjResult 	= $localeObj -> getAllLocale();
 		if (!empty($localeObjResult)) {
 			foreach ($localeObjResult as $key => $value) {
@@ -50,6 +50,19 @@ class Configs_Form_Default extends Zend_Dojo_Form
 			}
 		}
 		return $this->_selectLocaleOptions;
+	}
+	
+	private function _getConfigOptions() {
+		$configsObj 	= new Configs_Model_Default();
+		$this -> _selectConfigOptions = array ('' => $this -> view -> __('Root'));
+		$configsObjResult 	= $configsObj -> getAllConfigs();
+		if (!empty($configsObjResult)) {
+			foreach ($configsObjResult as $key => $value) {
+				$this->_selectConfigOptions[$value['group_id'].'-'.$value['group_key']] = $value['group_key'];
+			}
+		}
+		$this->_selectConfigOptions[0] = 'Create New Group';
+		return $this->_selectConfigOptions;
 	}
 
 	
@@ -83,91 +96,113 @@ class Configs_Form_Default extends Zend_Dojo_Form
 			'DijitForm'
 		));
 		
-        $databaseForm= new Zend_Dojo_Form_SubForm();
-        $databaseForm->setAttribs(array(
-                'name'			=> 'mandatory',
-                'legend' 		=> 'mandatory',
-                'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Configs_Database' ),
-                )
+        $configsForm= new Zend_Dojo_Form_SubForm();
+        $configsForm->setAttribs(array(
+            'name'			=> 'mandatory',
+            'legend' 		=> 'mandatory',
+            'dijitParams' 	=> array(
+                'title' 	=> $this-> view -> __ ( 'Configs' ),
+            )
         ));
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'option_type',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Type If Exist' ),
-                    'trim' 		=> true,
-                    'required'	=> false,
-                    'name'		=> 'option_type',
-                    'id'		=> 'option_type',
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
+        $configsForm->addElement(
+            'FilteringSelect',
+            'group_id',
+            array(
+                'label' => $this-> view -> __ ( 'Use Exist Configs_Group Key' ),
+                'required'	=> true,
+                'value'		=> '',
+                'multiOptions' => $this->_getConfigOptions(),
+                'id'		=> 'group_id',
+                //'onchange' => "ShowP( dijit.byId('group_id') );",
+            )
+        );
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'group_key',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Or Create Configs_Group Key' ),
+                'trim' 		=> true,
+                //'style'		=> 'display:none',
+                'class' 	=> 'lablvalue jstalgntop',
+                'id'		=> 'group_key'
+            )
+        );
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'option_type',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Type If Exist' ),
+                'trim' 		=> true,
+                'required'	=> false,
+                'name'		=> 'option_type',
+                'id'		=> 'option_type',
+                'class' 	=> 'lablvalue jstalgntop',
+            )
         );    
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'option_title',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Title' ),
-                    'trim' 		=> true,
-                    'required'	=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
-        );       
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'option_value',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Value' ),
-                    'trim' 		=> true,
-                    'required'	=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
-        ); 
-		$databaseForm->addElement(
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'option_title',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Title' ),
+                'trim' 		=> true,
+                'required'	=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+            )
+        );
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'option_value',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Value' ),
+                'trim' 		=> true,
+                'required'	=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+            )
+        );
+		$configsForm->addElement(
             'select',
             'option_status',
             array(
                 'label' 		=> $this-> view -> __('Configs_Option Status'),
-                //'name'			=> 'option_status',
-                //'id'			=> 'option_status',
                 'required'		=> true,
                 'value'			=> '',
-	            'multiOptions'  => array('' => $this -> view -> __('Root'), 1 => 'Enabel', 2 => 'Disabel'),
+	            'multiOptions'  => array('' => $this -> view -> __('Root'), 0 => 'Disabel', 1 => 'Enabel'),
             )
         );
-        $databaseForm->addElement(
-	            'FilteringSelect',
-	            'locale_id',
-	            array(
-	                'label' => $this-> view -> __ ( 'Configs_Locale' ),
-	                'class' => 'lablvalue jstalgntop',
-	                'autocomplete'=>false,
-	                'required'	=> true,
-	                'multiOptions' => $this->_getLocaleOptions(),
-	                'id' => 'locale_id',
-	            )
+        $configsForm->addElement(
+            'FilteringSelect',
+            'locale_id',
+            array(
+                'label' => $this-> view -> __ ( 'Configs_Locale' ),
+                'class' => 'lablvalue jstalgntop',
+                'autocomplete'=>false,
+                'required'	=> true,
+                'multiOptions' => $this->_getLocaleOptions(),
+                'id' => 'locale_id',
+            )
         );
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'option_hint',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Hint' ),
-                    'trim' 		=> true,
-                    'required'	=> false,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'option_hint',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Hint' ),
+                'trim' 		=> true,
+                'required'	=> false,
+                'class' 	=> 'lablvalue jstalgntop',
+            )
         );
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'option_description',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Description' ),
-                    'trim' 		=> true,
-                    'required'	=> false,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'option_description',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Description' ),
+                'trim' 		=> true,
+                'required'	=> false,
+                'class' 	=> 'lablvalue jstalgntop',
+            )
         );
-		/*$databaseForm->addElement(
+
+		/*$configsForm->addElement(
             'CheckBox',
             'option_status',
             array(
@@ -179,90 +214,51 @@ class Configs_Form_Default extends Zend_Dojo_Form
                 'required'		=> false,
             )
         );*/
-        $databaseForm->addElement(
-                'ValidationTextBox',
-                'comments',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Configs_Option Comments' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                	)
+        $configsForm->addElement(
+            'ValidationTextBox',
+            'comments',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Configs_Option Comments' ),
+                'trim' 		=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+            	)
 		);
-        $databaseForm->addElement(
-                'hidden',
-                'id'
+        $configsForm->addElement(
+            'hidden',
+            'id'
 		);
-        $databaseForm->addElement(
-				'SubmitButton',
-				'submit',
-				array(
-					'value'		=> 'submit',
-					'label' 	=> $this-> view -> __ ( 'Object_Save' ),
-					'type'	 	=> 'Submit',
-					'ignore'	=> true,
-					'onclick' 	=> 'dijit.byId("add-edit").submit()',
-				)
+		
+		
+        $configsForm->addElement(
+			'SubmitButton',
+			'submit',
+			array(
+				'value'		=> 'submit',
+				'label' 	=> $this-> view -> __ ( 'Object_Save' ),
+				'type'	 	=> 'Submit',
+				'ignore'	=> true,
+				'onclick' 	=> 'dijit.byId("add-edit").submit()',
+			)
 		);
-		$databaseForm->addElement(
-				'reset', 
-				'reset',
-				array(
-					'label' => 'Reset',
-					'id'	=> 'reset',
-					'ignore'=> true,
-				)
-		);
-
-
-
-
-        $advancedForm = new Zend_Dojo_Form_SubForm();
-        $advancedForm->setAttribs(array(
-                    'name' 	 => 'optional',
-                    'legend' => $this-> view -> __ ( 'Configs_Advanced' ),
-        ));
-        $advancedForm->addElement(
-                'TextBox',
-                'comments',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Object_Comments' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                	)
-		);
-        $advancedForm->addElement(
-                'TextBox',
-                'options',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Object_Options' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                	)
+		$configsForm->addElement(
+			'reset', 
+			'reset',
+			array(
+				'label' => 'Reset',
+				'id'	=> 'reset',
+				'ignore'=> true,
+			)
 		);
 
-
-		$databaseForm ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$advancedForm ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-
-        $databaseForm->setElementDecorators(array(
+		$configsForm ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+        $configsForm->setElementDecorators(array(
 		'DijitElement',
 		'Errors',
 			array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
-		$advancedForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
 
-
-		   
-
-        $this->addSubForm($databaseForm, 'database')
-             ->addSubForm($advancedForm, 'advanced');
+        $this->addSubForm($configsForm, 'configs');
     }
 }
