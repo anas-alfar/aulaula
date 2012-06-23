@@ -308,8 +308,11 @@ class Aula_Controller_Action {
 		}
 	}
 
-	protected function exportSQL2CSV($data, $header, $fileName = 'mutashabeh_data') {
+	protected function exportSQL2CSV($data, $header, $fileName = 'CAR2DAR_data') {
 		$fileName = $fileName . '_' . date('Ymd') . ".xls";
+
+		header("Content-Disposition: attachment; filename=\"$fileName\"");
+		header("Content-Type: application/vnd.ms-excel; charset=utf-8");
 
 		echo implode("\t", array_values($header)) . "\r\n";
 		foreach ($data as $row) {
@@ -318,11 +321,9 @@ class Aula_Controller_Action {
 					unset($row[$k1]);
 				}
 			}
-			array_walk($row, 'self::cleanDataCSV');
+			array_walk($row, 'cleanDataCSV');
 			echo implode("\t", array_values($row)) . "\r\n";
 		}
-		header("Content-Disposition: attachment; filename=\"$fileName\"");
-		header("Content-Type: application/vnd.ms-excel");
 		exit ;
 	}
 
