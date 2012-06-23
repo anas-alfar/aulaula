@@ -22,11 +22,11 @@
 <!--filtration-->
 <div class="filtration cleaner">
 <button type="button"
-	onclick="return changeFormAction('approve', 'post');" name="approve"
+	onclick="return changeFormAction('status', 'post');" name="approve"
 	id="approve" class="inpt-btn fr"><span><em><?php echo $this->__ ( 'Configs_Status' ); ?></em></span></button>
 	<select style="float: left;" name="status">
-	    <option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="1"><?php echo $this->__('Yes Option'); ?></option>
-	    <option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="0"><?php echo $this->__('No Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == '1') ? 'selected="selected"' : '' ; ?> value="1"><?php echo $this->__('Yes Option'); ?></option>
+	    <option <?php echo ($this->sanitized->status->value == '0') ? 'selected="selected"' : '' ; ?> value="0"><?php echo $this->__('No Option'); ?></option>
 	</select>
 	<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this->sanitized->redirectURI->value; ?>" />
 </div>

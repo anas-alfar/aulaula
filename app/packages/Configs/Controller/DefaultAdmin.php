@@ -37,13 +37,13 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 
 	protected function _init() {
 		$this -> configsObj = new Configs_Model_Default();
-		$this -> localeObj 	= new Locale_Model_Default();
+		$this -> localeObj = new Locale_Model_Default();
 
 		$this -> defualtAdminAction = 'list';
 
 		$this -> view -> sanitized = $_POST;
 		$this -> view -> _init();
-		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'typeId' => array('numeric', 0), 'id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'description' => array('text', 1), 'comments' => array('text', 0, $this -> configsObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
+		$this -> fields = array('actionURI' => array('uri', 0), 'redirectURI' => array('uri', 0, ''), 'status' => array('text', 0), 'configId' => array('numeric', 0), 'id' => array('numeric', 0), 'token' => array('text', 1), 'title' => array('text', 1), 'description' => array('text', 1), 'comments' => array('text', 0, $this -> configsObj -> comments), 'resetFilter' => array('', 0), 'search' => array('', 0), 'notification' => array('', 0), 'success' => array('', 0), 'error' => array('', 0), 'btn_submit' => array('', 0, 2));
 		$this -> view -> sanitized = $this -> filterObj -> initData($this -> fields, $this -> view -> sanitized);
 		if (isset($GLOBALS['AULA_BLACKLIST']['introTextStatic'])) {
 			$this -> view -> sanitized['introTextStatic']['value'] = $GLOBALS['AULA_BLACKLIST']['introTextStatic'];
@@ -72,9 +72,6 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-
-			print_r($_POST);
-
 			$configurationData = array();
 			foreach ($_POST as $configurationName => $configurationValue) {
 				if (!empty($configurationValue['option_title']) AND trim($configurationValue['option_value']) != '') {
@@ -101,8 +98,6 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 					if (trim($configurationValue['option_type']) != '') {
 						$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_type'] . '.' . $configurationValue['option_title'];
 					}
-					echo '<br /><br />';
-					//print_r($configurationData); exit;
 					$this -> configsObj -> insert($configurationData);
 				}
 			}
@@ -119,7 +114,7 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		if (isset($_GET['group_id']) AND is_numeric($_GET['group_id'])) {
 			$group_id = $_GET['group_id'];
 			$configsObjResult = $this -> configsObj -> getAllConfigs();
-			$localeAvailable  = $this -> localeObj 	-> getAllLocale();
+			$localeAvailable = $this -> localeObj -> getAllLocale();
 			if ($configsObjResult) {
 				$this -> view -> allLocale = $localeAvailable;
 				$this -> view -> configsGroups = $configsObjResult;
@@ -131,58 +126,101 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		exit();
 	}
 
-	/*public function editAction() {
-	 $form = new Vehicle_Form_SimpleType($this -> view);
-	 $form -> setView($this -> view);
+	public function editAction() {
+		$form = new Configs_Form_SimpleDefault($this -> view);
+		$form -> setView($this -> view);
 
-	 if (!empty($_POST) and $form -> isValid($_POST)) {
-	 $typeId = (int)$_POST['mandatory']['id'];
+		if (!empty($_POST) AND isset($_POST['firststep']) AND $_POST['firststep'] == 1) {
+			if (isset($_POST['group_id']) and is_numeric($_POST['group_id']) AND isset($_POST['locale_id']) and is_numeric($_POST['locale_id'])) {
+				$configsObjResult = $this -> configsObj -> getAllConfigsByGroupIdAndLocaleId($_POST['group_id'], $_POST['locale_id']);
+				if ($configsObjResult !== false) {
+					foreach ($configsObjResult as $key => $config) {
+						$optionTypeArray = explode('.', $config['option_title']);
+						array_shift($optionTypeArray);
+						if (count($optionTypeArray) == 1) {
+							$config['option_title'] = $optionTypeArray[0];
+						} else {
+							$config['option_type'] = $optionTypeArray[0];
+							$config['option_title'] = $optionTypeArray[1];
+						}
+						$form -> addConfigSubForm($key, $config);
+					}
+				} else {
+					header('Location: /admin/handle/pkg/configs/action/list');
+					exit();
+				}
+			}
+		} else {
 
-	 $typeData = array('title' => $_POST['mandatory']['title'], 'description' => $_POST['mandatory']['description'], 'locale_id' => $_POST['mandatory']['locale_id'], 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-	 $this -> typeObj -> update($typeData, '`id` = ' . $typeId);
+			if (!empty($_POST) and $form -> isValid($_POST) AND !isset($_POST['firststep'])) {
+				$configurationData = array();
 
-	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
-	 exit();
-	 } else {
-	 if (isset($_GET['id']) and is_numeric($_GET['id'])) {
-	 $typeObjResult = $this -> typeObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
+				foreach ($_POST as $configurationName => $configurationValue) {
+					if (!empty($configurationValue['option_title']) AND trim($configurationValue['option_value']) != '') {
 
-	 if ($typeObjResult !== false) {
-	 $typeObjResult['options'] = json_decode($typeObjResult['options']);
+						$configurationData['group_id'] = $configurationValue['group_id'];
+						$configurationData['group_key'] = $configurationValue['group_key'];
 
-	 $form -> populate($typeObjResult);
-	 } else {
-	 header('Location: /admin/handle/pkg/vehicle-type/action/list');
-	 exit();
-	 }
-	 }
-	 }
-	 $this -> view -> form = $form;
-	 $this -> view -> render('vehicle/updateType.phtml');
-	 exit();
-	 }*/
+						$configurationData['option_value'] = trim($configurationValue['option_value']);
+						$configurationData['option_hint'] = trim($configurationValue['option_hint']);
+						$configurationData['option_status'] = (int)$configurationValue['option_status'];
+						$configurationData['option_description'] = trim($configurationValue['option_description']);
+						$configurationData['comments'] = trim($configurationValue['comments']);
+						$configurationData['locale_id'] = (int)$configurationValue['locale_id'];
+						$configurationId = (int)$configurationValue['id'];
 
-	/*public function deleteAction() {
-	 $this -> view -> arrayToObject($this -> view -> sanitized);
-	 if (!empty($this -> view -> sanitized -> typeId -> value)) {
-	 foreach ($this -> view -> sanitized -> typeId -> value as $id => $value) {
-	 $where = $this -> typeObj -> getAdapter() -> quoteInto('id = ?', $id);
-	 $stmt = $this -> typeObj -> delete($where);
-	 }
-	 if (!empty($stmt)) {
-	 header('Location: /admin/handle/pkg/vehicle-type/action/list/success/delete');
-	 exit();
-	 }
-	 }
-	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
-	 exit();
-	 }*/
+						$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_title'];
+						if (trim($configurationValue['option_type']) != '') {
+							$configurationData['option_title'] = $configurationData['group_key'] . '.' . $configurationValue['option_type'] . '.' . $configurationValue['option_title'];
+						}
+						$this -> configsObj -> update($configurationData, '`id` = ' . $configurationId);
+					}
+				}
+				header('Location: /admin/handle/pkg/configs/action/list');
+				exit();
+			} else {
+				exit ;
+				if (isset($_POST['group_id']) and is_numeric($_POST['group_id']) AND isset($_POST['locale_id']) and is_numeric($_POST['locale_id'])) {
+					$configsObjResult = $this -> configsObj -> getAllConfigsByGroupIdAndLocaleId($_POST['group_id'], $_POST['locale_id']);
+					if ($configsObjResult !== false) {
+						foreach ($configsObjResult as $key => $config) {
+							$form -> addConfigSubForm($key, $config);
+						}
+					} else {
+						header('Location: /admin/handle/pkg/configs/action/list');
+						exit();
+					}
+				}
+			}
+		}
+		$this -> view -> form = $form;
+		$this -> view -> render('configs/update.phtml');
+		exit();
+	}
+
+	public function statusAction() {
+		$this -> view -> arrayToObject($this -> view -> sanitized);
+		if (!empty($this -> view -> sanitized -> configId -> value)) {
+			$this -> view -> sanitized -> status -> value = $this -> view -> sanitized -> status -> value == '1' ? '1' : '0';
+			foreach ($this->view->sanitized->configId->value as $id => $value) {
+				$data = array('option_status' => $this -> view -> sanitized -> status -> value);
+				$where = $this -> configsObj -> getAdapter() -> quoteInto('id = ?', $id);
+				$configStatus = $this -> configsObj -> update($data, $where);
+			}
+			if (!empty($configStatus)) {
+				header('Location: /admin/handle/pkg/configs/action/list/success/status');
+				exit();
+			}
+		}
+		header('Location: /admin/handle/pkg/configs/action/list/err');
+		exit();
+	}
 
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		$this -> view -> sanitized -> actionURI -> value = '/admin/handle/pkg/configs/action/';
 
-		if (!empty($_GET['success']) AND $_GET['success'] == 'update') {
+		if (!empty($_GET['success']) AND $_GET['success'] == 'status') {
 			$this -> view -> successMessageStyle = 'display: block;';
 			$this -> view -> successMessage = $this -> view -> __('Records successfully Updated');
 		}
@@ -229,34 +267,5 @@ class Configs_Controller_DefaultAdmin extends Aula_Controller_Action {
 		$this -> view -> render('configs/list.phtml');
 		exit();
 	}
-
-	/*public function exportcsvAction() {
-	 set_time_limit(0);
-	 $allData = $this -> typeObj -> getAllType();
-	 $this -> exportSQL2CSV($allData, array('id', 'title', 'description', 'locale_id', 'hash_key', 'comments', 'options'), __CLASS__);
-	 }*/
-
-	/*public function importcsvAction() {
-	 $form = new Vehicle_Import_CSV($this -> view);
-	 $form -> setView($this -> view);
-
-	 if (!empty($_POST) and $form -> isValid($_POST)) {
-	 $uploadObj = new Aula_Model_Upload('file');
-	 if ($uploadObj -> CheckIfThereIsFile() === true) {
-	 if ($uploadObj -> validatedMime()) {
-	 if ($uploadObj -> validatedSize()) {
-	 $result = $this -> importCSV2SQL($_FILES['file']['tmp_name'], $this -> typeObj);
-	 if ($result == true) {
-	 header('Location: /admin/handle/pkg/vehicle-type/action/list/');
-	 exit();
-	 }
-	 }
-	 }
-	 }
-	 }
-	 $this -> view -> form = $form;
-	 $this -> view -> render('vehicle/addType.phtml');
-	 exit();
-	 }*/
 
 }

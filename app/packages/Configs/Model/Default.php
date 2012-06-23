@@ -92,6 +92,26 @@ class Configs_Model_Default extends Aula_Model_DbTable {
 		return $result;
 	}
 	
+	public function getAllConfigsByGroupIdAndLocaleId($group_id, $locale_id ) 
+	{
+		//$group_id  = $this -> getAdapter() -> quote($group_id, 'INTEGER');
+		//$locale_id = $this -> getAdapter() -> quote($locale_id, 'INTEGER');
+
+		$locale_id = $this -> getAdapter() -> quoteInto('locale_id = ?', $locale_id, 'INTEGER');
+		$group_id  = $this -> getAdapter() -> quoteInto('group_id = ?' , $group_id, 'INTEGER');
+
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> where ($group_id)
+		-> where ($locale_id)
+		//-> group('group_key') 
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
+	
 	public function getMaxGroupId() {
 		$result = $this 
 		-> select() 
