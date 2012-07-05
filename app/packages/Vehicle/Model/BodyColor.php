@@ -82,6 +82,20 @@ class Vehicle_Model_BodyColor extends Aula_Model_DbTable {
 		return $result;
 	}
 	
+	public function getAllBodyColorByLocalId( $locale_id ) 
+	{
+		$locale_id = $this -> getAdapter() -> quoteInto('locale_id = ?', $locale_id, 'INTEGER');
+
+		$result = $this 
+		-> select() 
+		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))
+		-> where ($locale_id)
+		-> query() 
+		-> fetchAll();
+
+		return $result;
+	}
+	
 	public function getBodyColorById( $id ) 
 	{
 		$id = (int) $id;

@@ -103,5 +103,18 @@ class Vehicle_Model_Model extends Aula_Model_DbTable {
 
 		return $result;
 	}
+	
+	public function getModelTitleById( $id ) 
+	{
+		$id = (int) $id;
+		$result = $this 
+		-> select() 
+		-> from($this->_name, array($this->_name.'_title' => 'title'))
+		-> where ($this->_name . '.id = ?', $id)
+		-> query() 
+		-> fetch();
+
+		return $result[$this->_name.'_title'];
+	}
 
 }
