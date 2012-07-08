@@ -23,14 +23,14 @@
  * @category Aula
  * @package Vehicle
  * @subpackage Form
- * @name Vehicle_Form_ForSale
+ * @name Vehicle_Form_ForSaleUpdate
  * @copyright Copyright (c) 2012 Aulaula (http://www.aulaula.com/)
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @author Mohammad R. Mousa <mohammad.riad@gmail.com>
  *
  */
 
-class Vehicle_Form_ForSale extends Zend_Dojo_Form
+class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 {
 	public $view = NULL;
 	public $locale_id, $vehicleLookup;
@@ -1076,6 +1076,61 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 	)
         );
 
+
+        $this->addSubForm($mainForm, 'main')
+             ->addSubForm($contactForm , 'contact')
+             ->addSubForm($generalForm , 'general')
+             ->addSubForm($specificationForm , 'specification')
+             ->addSubForm($extraFeatureForm , 'extraFeature');
+
+		
+		
+
+		$mainForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$contactForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$generalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$specificationForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$extraFeatureForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+
+        $mainForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+			array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+		$contactForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+		$generalForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+		$specificationForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+		$extraFeatureForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+	}
+
+
+	public function videoForm($data) {
 		// Begin Video Form
         $videoForm = new Zend_Dojo_Form_SubForm();
         $videoForm->setAttribs(array(
@@ -1187,23 +1242,48 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 'class' 	 => 'lablvalue jstalgntop'
             )
         );
+        $videoForm->addElement(
+			'hidden',
+            'video_id'
+        );
 		// End Video Form
 
-        $this->addSubForm($mainForm, 'main')
-             ->addSubForm($contactForm , 'contact')
-             ->addSubForm($generalForm , 'general')
-             ->addSubForm($specificationForm , 'specification')
-             ->addSubForm($extraFeatureForm , 'extraFeature')
-			 ->addSubForm($videoForm	, 'video');
-		
-		
+		$videoForm->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$videoForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
+		$videoForm->getElement('video')-> setDecorators(array(
+        'File',
+        'Errors',
+        	array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+        	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
+    	));
+		$videoForm->getElement('videoThumb')-> setDecorators(array(
+        'File',
+        'Errors',
+        	array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+        	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
+    	));
+
+		$videoForm->populate($data);
+		$this->addSubForm($videoForm	, 'video');
+	}
+
+
+	public function photoForm($number, $data) {
 		// Begin Photo Form 1, 2 and 3
-		for ($value = 1; $value <= $numberOfPhoto; ++$value) {
+		// for ($value = 1; $value <= $numberOfPhoto; ++$value) {
 	        $photoForm = new Zend_Dojo_Form_SubForm();
 	        $photoForm->setAttribs(array(
-                'name'			=> 'photo_'  . $value,
+                'name'			=> 'photo_'  . $number,
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Photo' ) . ' ' . $value,
+                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Photo' ) . ' ' . $number,
                 )
 	        ));
 	        $photoForm->addElement(
@@ -1228,12 +1308,12 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 	        );
 			$photoForm->addElement(
 				'file', 
-				'photo_' . $value, 
+				'photo_' . $number, 
 				array(
 					'required'	=> true,
 			    	'label'     => $this -> view -> __ ( 'Vehicle_For_Sale_Upload' ),
-			    	'id'		=> 'photo_' . $value,
-			    	'name'      => 'photo_' . $value,
+			    	'id'		=> 'photo_' . $number,
+			    	'name'      => 'photo_' . $number,
 			    	'validators'    => array(
 			        	//array('Count', false, array('min'=>1, 'max'=>3)),
 			        	array('Size', false, 209715200),
@@ -1301,6 +1381,10 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                     'class' 	 => 'lablvalue jstalgntop'
                 )
 	        );
+	        $photoForm->addElement(
+				'hidden',
+	            'photo_id'
+	        );
 
 			$photoForm -> setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 			$photoForm->setElementDecorators(array(
@@ -1311,7 +1395,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 			    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 			));
 
-			$photoForm->getElement('photo_' . $value)-> setDecorators(
+			$photoForm->getElement('photo_' . $number)-> setDecorators(
 	    	array(
 	        	'File',
 		        'Errors',
@@ -1321,76 +1405,17 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 	    		)
 			);
 
-			$this->addSubForm($photoForm 	, 'photo_' . $value);
-        }
+			$photoForm->populate($data);
+			$this->addSubForm($photoForm 	, 'photo_' . $number);
+       // }
 		// End Photo Form 1, 2 and 3
-		
-		
-
-		$mainForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$contactForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$generalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$specificationForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$extraFeatureForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$videoForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-
-        $mainForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-			array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$contactForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$generalForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$specificationForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$extraFeatureForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$videoForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$videoForm->getElement('video')-> setDecorators(array(
-        'File',
-        'Errors',
-        	array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-        	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-    	));
-		$videoForm->getElement('videoThumb')-> setDecorators(array(
-        'File',
-        'Errors',
-        	array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-        	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-    	));
-
-
 	}
+
+
+
+
+
+
+
+
 }
