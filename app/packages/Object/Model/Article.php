@@ -73,9 +73,9 @@ class Object_Model_Article extends Aula_Model_DbTable {
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -105,9 +105,9 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id` ";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		$this -> _selectQuery = 'SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -131,9 +131,9 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`';
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -164,9 +164,9 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$Keyword = mysql_real_escape_string($Keyword);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$Keyword = mysql_escape_string($Keyword);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -196,9 +196,9 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$SubCategoryIds = mysql_real_escape_string($SubCategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$SubCategoryIds = mysql_escape_string($SubCategoryIds);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -228,10 +228,10 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$featureList = mysql_real_escape_string($featureList);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		if (empty($featureList)) {
 			$featureCondition = '';
@@ -269,10 +269,10 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$featureList = mysql_real_escape_string($featureList);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		if (empty($featureList)) {
 			$featureCondition = '';
@@ -310,10 +310,10 @@ Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$Column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$featureList = mysql_real_escape_string($featureList);
-		$SubCategoryIds = mysql_real_escape_string($SubCategoryIds);
+		$Column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$SubCategoryIds = mysql_escape_string($SubCategoryIds);
 
 		if (empty($featureList)) {
 			$featureCondition = '';
@@ -351,9 +351,9 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$IdsList = mysql_real_escape_string($IdsList);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -388,9 +388,9 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$IdsList = mysql_real_escape_string($IdsList);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
 
 		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -415,10 +415,10 @@ INNER JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 	public function GetHPCleanObjectAndInfoAndArticleByCategoryIdsAndNotFeatureOrderWoPhotoByColumnWithLimit($featureList, $CategoryIds, $start = 0, $limit = 10, $Column = 'oa.`date_added`', $sorting = 'DESC') {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$featureList = mysql_real_escape_string($featureList);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		if (empty($featureList)) {
 			$featureCondition = '';
@@ -451,10 +451,10 @@ Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$featureList = mysql_real_escape_string($featureList);
-		$CategoryIds = mysql_real_escape_string($CategoryIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$featureList = mysql_escape_string($featureList);
+		$CategoryIds = mysql_escape_string($CategoryIds);
 
 		if (empty($featureList)) {
 			$featureCondition = '';
@@ -487,9 +487,9 @@ Left JOIN  `object_photo` AS op ON op.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$IdsList = mysql_real_escape_string($IdsList);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$IdsList = mysql_escape_string($IdsList);
 
 		$forceIndex = '';
 		if ($column == 'oa.`date_added`') {
@@ -521,8 +521,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
 
 		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -546,8 +546,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 		$start = ( int )($start);
 		$limit = ( int )($limit);
 		$Author_id = ( int )($Author_id);
-		$sorting = mysql_real_escape_string($sorting);
-		$column = mysql_real_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$column = mysql_escape_string($Column);
 
 		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -571,8 +571,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 		$start = ( int )($start);
 		$limit = ( int )($limit);
 		$Author_id = ( int )($Author_id);
-		$sorting = mysql_real_escape_string($sorting);
-		$column = mysql_real_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$column = mysql_escape_string($Column);
 
 		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`intro_text`, oa.`full_text`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -595,9 +595,9 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($Column);
-		$sorting = mysql_real_escape_string($sorting);
-		$UserIds = mysql_real_escape_string($UserIds);
+		$column = mysql_escape_string($Column);
+		$sorting = mysql_escape_string($sorting);
+		$UserIds = mysql_escape_string($UserIds);
 
 		$this -> _selectQuery = "SELECT   SQL_CALC_FOUND_ROWS oa.`id`, oa.`alias`, oa.`created_date`, oa.`author_id`, oa.`source_id`, 
   oa.`object_id`, oa.`category_id`, oa.`show_in_object`, oa.`published`, oa.`approved`, oa.`order`, oa.`locked_by`, oa.`locked_time`, 
@@ -636,8 +636,8 @@ INNER JOIN  `object_info` AS oi ON oi.`object_id` = o.`id`";
 	public function getAllArticle_OrderByColumnWithLimit ( $column ,$sorting, $start, $limit ) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($column);
-		$sorting = mysql_real_escape_string($sorting);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
 		
 		$result = $this 
 		-> select() 

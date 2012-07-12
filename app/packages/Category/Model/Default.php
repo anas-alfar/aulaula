@@ -60,8 +60,8 @@ class Category_Model_Default extends Aula_Model_DbTable {
 
 		$start = (int)($start);
 		$limit = (int)($limit);
-		$sorting = mysql_real_escape_string ( $sorting );
-		$column = mysql_real_escape_string ( $column );
+		$sorting = mysql_escape_string ( $sorting );
+		$column = mysql_escape_string ( $column );
 		if (in_array($column, $this->_cols)) {
 			$column = 'c.' . $column;
 		} else {

@@ -63,8 +63,8 @@ class Translation_Model_Default extends Aula_Model_DbTable {
 	{
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($column);
-		$sorting = mysql_real_escape_string($sorting);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
 		
 		$result = $this 
 		-> select() 

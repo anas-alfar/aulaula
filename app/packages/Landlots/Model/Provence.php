@@ -56,8 +56,8 @@ class Landlots_Model_Provence extends Aula_Model_DbTable {
 	public function getAllProvence_OrderByColumnWithLimit($column, $sorting, $start, $limit) {
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_real_escape_string($column);
-		$sorting = mysql_real_escape_string($sorting);
+		$column = mysql_escape_string($column);
+		$sorting = mysql_escape_string($sorting);
 
 		$result = $this -> select() -> from($this -> _name . ' as vm', new Zend_Db_Expr('SQL_CALC_FOUND_ROWS vm.*'))/* ->     where ('id > ?', 1)*/
 		-> joinInner('landlots_location as vt', 'vm.landlots_location_id=vt.id', array('vt.title as landlots_location_title')) -> order("$column $sorting") -> limit("$start, $limit") -> setIntegrityCheck(false) -> query() -> fetchAll();
