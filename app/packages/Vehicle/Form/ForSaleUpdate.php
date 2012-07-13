@@ -35,7 +35,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 	public $view = NULL;
 	public $locale_id, $vehicleLookup;
 	private $translator, $translateValidators;
-	private $_selectLocaleOptions, $_selectYearOptions, $_selectBodyColorOptions, $_selectInsideColorOptions;
+	private /*$_selectLocaleOptions,*/ $_selectYearOptions, $_selectBodyColorOptions, $_selectInsideColorOptions;
 	private $_selectDragSystemOptions, $_selectInsuranceTypeOptions, $_selectTypeOptions, $_selectContactNIDCROptions, $_numberOfSeats, $_numberOfDoors, $_numberOfCylinders;
 	
 	public function __construct($view) {
@@ -65,7 +65,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 	}
 
 
-	private function _getLocaleAvailabe() {
+	/*private function _getLocaleAvailabe() {
 		$localeObj 	= new Locale_Model_Default();
 		$this -> _selectLocaleOptions = array ('' => $this -> view -> __('Root'));
 		$localeObjResult 	= $localeObj -> getAllLocale();
@@ -75,7 +75,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 			}
 		}
 		return $this->_selectLocaleOptions;
-	}
+	}*/
 	
 	private function _getAllYearByLocalId ($locale_id) {
 		$yearObj 	= new Vehicle_Model_Year();
@@ -184,311 +184,23 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 		$this->setAction('');
         $this->setAttrib('name'	, 'add-edit');
 		$this->setAttrib('id'	, 'add-edit');
+		$this->setAttrib('enctype', 'multipart/form-data');
 		$this->setAttrib('onSubmit' , 'return this.validate();');
 
 		$this->setDecorators(array(
 		'FormElements',
 		array('TabContainer', array(
 				'id' 			=> 'tabContainer',
-				'style' 		=> 'width:500px;height:920px;',
+				'style' 		=> 'width:500px;height:1000px;',
 				'dijitParams' 	=> array('tabPosition' => 'right')
 				)),
 			'DijitForm'
 		));
 		
-
-        $mainForm= new Zend_Dojo_Form_SubForm();
-        $mainForm->setAttribs(array(
-            'name'			=>  'main',
-            'dijitParams' 	=> array(
-                'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Main_Information' ),
-            )
-        ));
-		$mainForm->addElement(
-            'select',
-            'locale_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Locale'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _getLocaleAvailabe(),
-            )
-        );
-		$mainForm->addElement(					
-            'select',
-            'year_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Year'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _getAllYearByLocalId($this -> getLocale()),
-            )
-        );
-		$mainForm->addElement(					
-            'select',
-            'body_color_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Body_Color'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _getAllBodyColorByLocalId($this -> getLocale()),
-            )
-        );
-		$mainForm->addElement(					
-            'select',
-            'inside_color_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Inside_Color'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _getAllInsideColorByLocalId($this -> getLocale()),
-            )
-        );
-		$mainForm->addElement(					
-            'select',
-            'number_of_seats',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Seats'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _numberOfSeats,
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'number_of_doors',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Doors'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _numberOfDoors,
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'number_of_cylinders',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Cylinders'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> _numberOfCylinders,
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'status',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Vehicle_Status'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('vehicle_status'),
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'money_status',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Money_Status'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('money_status'),
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'gear_type_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Gear_Type'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('gear_type'),
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'seat_type_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Seat_Type'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('seat_type'),
-            )
-        ); 
-		$mainForm->addElement(					
-            'select',
-            'window_type_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Window_Type'),
-                'required'		=> true,
-                'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('window_type'),
-            )
-        );  
-		$mainForm->addElement(					
-            'FilteringSelect',
-            'type_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Type'),
-                'required'		=> true,
-                'value'			=> '',
-                'id'			=> 'type_id',
-	            'multiOptions'  => $this -> _getAllTypeByLocalId($this -> getLocale()),
-	            'onchange' 		=> "dijit.byId('make_id').searchAttr = dijit.byId('type_id').getValue();return true", 
-			)
-        );
-		$mainForm->addElement(					
-            'FilteringSelect',
-            'make_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Make'),
-                'required'		=> true,
-                'value'			=> '',
-                'id'			=> 'make_id',
-	            'storeId' => 'myData',
-				'storeType'=> 'dojo.data.ItemFileReadStore',
-             	'storeParams' => array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getMakeAjax/locale_id/'.$this -> getLocale(),),
-             	'dijitParams' => array( 'searchAttr' => '0' ),
-             	'onchange' 		=> "dijit.byId('model_id').searchAttr = dijit.byId('make_id').getValue();return true",
-            )
-        );
-		$mainForm->addElement(					
-            'FilteringSelect',
-            'model_id',
-            array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Model'),
-                'required'		=> true,
-                'value'			=> '',
-                'id'			=> 'model_id',
-	            'storeId' => 'myData',
-				'storeType'=> 'dojo.data.ItemFileReadStore',
-             	'storeParams' => array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getModelAjax/locale_id/'.$this -> getLocale(),),
-             	'dijitParams' => array( 'searchAttr' => '0' ),
-            )
-        );
-        $mainForm->addElement(
-            'ValidationTextBox',
-            'job_car_number',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Job_Car_Number' ),
-                'trim' 		=> true,
-                'required'	=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
-        $mainForm->addElement(
-            'ValidationTextBox',
-            'plate_number',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Plate_Number' ),
-                'trim' 		=> true,
-                'required'	=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
-        $mainForm->addElement(
-            'NumberTextBox',
-            'advertise_period',
-            array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Advertise_Period' ),
-                'class' 	=> 'lablvalue jstalgntop',
-                'invalidMessage'=>'Invalid elevation.',
-                'required'	=> true,
-                'constraints' => array(
-                    'min' 	=> 0,
-                    'max'	=> 1000000,
-                    'places'=> 0,
-                )
-            )
-        );
-        $mainForm->addElement(
-            'NumberTextBox',
-            'fuel_tank_size',
-            array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Fuel_Tank_Size' ),
-                'class' 	=> 'lablvalue jstalgntop',
-                'invalidMessage'=>'Invalid elevation.',
-                'required'	=> true,
-                'constraints' => array(
-                    'min' 	=> 0,
-                    'max'	=> 1000000,
-                    'places'=> 0,
-                )
-            )
-        );
-        $mainForm->addElement(
-            'DateTextBox',
-            'advertise_date',
-            array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Advertise_Date' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
-            )
-        );
-        $mainForm->addElement(
-            'DateTextBox',
-            'Warranty_until',
-            array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Warranty_Until' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
-            )
-        );
-        $mainForm->addElement(
-            'NumberTextBox',
-            'cost',
-            array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Cost' ),
-                'class' 	=> 'lablvalue jstalgntop',
-                'invalidMessage'=>'Invalid elevation.',
-                'required'	=> true,
-                'constraints' => array(
-                    'min' 	=> 0,
-                    'max'	=> 1000000000,
-                    'places'=> 0,
-                )
-            )
-        );
-        $mainForm->addElement(
-            'ValidationTextBox',
-            'swap',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Swap' ),
-                'trim' 		=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
-        $mainForm->addElement(
-            'ValidationTextBox',
-            'mileage',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Mileage' ),
-                'trim' 		=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
-
-        $mainForm->addElement(
-			'hidden',
-            'id'
-        );
-        $mainForm->addElement(
-			'SubmitButton',
-			'submit',
-			array(
-				'value'		=> 'submit',
-				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Save' ),
-				'type'	 	=> 'Submit',
-				'ignore'	=> true,
-				'onclick' 	=> 'dijit.byId("add-edit").submit()',
-			)
-		);
-
+		
+		
+		
+		
         $contactForm = new Zend_Dojo_Form_SubForm();
         $contactForm->setAttribs(array(
                     'name' 	 =>  'contact',
@@ -609,16 +321,167 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 					array ('Regex', true, array ('/\w+/i' ) ) 
 				) 
 			) 
-		); 
+		);
 		
-        
-        
+        $contactForm->addElement(
+			'hidden',
+            'id'
+        );
+        $contactForm->addElement(
+			'SubmitButton',
+			'submit',
+			array(
+				'value'		=> 'submit',
+				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Save' ),
+				'type'	 	=> 'Submit',
+				'ignore'	=> true,
+				'onclick' 	=> 'dijit.byId("add-edit").submit()',
+			)
+		);
+		
+		
+		
+
+
         $generalForm = new Zend_Dojo_Form_SubForm();
         $generalForm->setAttribs(array(
-                    'name' 	 =>  'general',
-                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_General_Information' ),
+				'name' 	 =>  'general',
+				'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_General_Information' ),
         ));
 		
+
+		$generalForm->addElement(					
+            'select',
+            'status',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Vehicle_Status'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> getLookup ('vehicle_status'),
+            )
+        );
+        $generalForm->addElement(
+            'ValidationTextBox',
+            'job_car_number',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Job_Card_Number' ),
+                'trim' 		=> true,
+                'required'	=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+			)
+        );
+        $generalForm->addElement(
+            'DateTextBox',
+            'advertise_date',
+            array(
+                'datePattern'=> 'dd-MM-yyyy',
+                'validators' => array('Date'),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Advertise_Date' ),
+                'trim' 		 => true,
+                'required'	 => true,
+                'class' 	 => 'lablvalue jstalgntop'
+            )
+        );
+        $generalForm->addElement(
+            'NumberTextBox',
+            'advertise_period',
+            array(
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Advertise_Period' ),
+                'class' 	=> 'lablvalue jstalgntop',
+                'invalidMessage'=>'Invalid elevation.',
+                'required'	=> true,
+                'constraints' => array(
+                    'min' 	=> 0,
+                    'max'	=> 1000000,
+                    'places'=> 0,
+                )
+            )
+        );
+        $generalForm->addElement(
+            'ValidationTextBox',
+            'plate_number',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Plate_Number' ),
+                'trim' 		=> true,
+                'required'	=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+			)
+        );
+		$generalForm->addElement(					
+            'FilteringSelect',
+            'type_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Type'),
+                'required'		=> true,
+                'value'			=> '',
+                'id'			=> 'type_id',
+	            'multiOptions'  => $this -> _getAllTypeByLocalId($this -> getLocale()),
+	            'onchange' 		=> "dijit.byId('make_id').searchAttr = dijit.byId('type_id').getValue();return true", 
+			)
+        );
+		$generalForm->addElement(					
+            'FilteringSelect',
+            'make_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Make'),
+                'required'		=> true,
+                'value'			=> '',
+                'id'			=> 'make_id',
+	            'storeId' 		=> 'myData',
+				'storeType'		=> 'dojo.data.ItemFileReadStore',
+             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getMakeAjax/locale_id/'.$this -> getLocale(),),
+             	'dijitParams' 	=> array( 'searchAttr' => '0' ),
+             	'onchange' 		=> "dijit.byId('model_id').searchAttr = dijit.byId('make_id').getValue();return true",
+            )
+        );
+		$generalForm->addElement(					
+            'FilteringSelect',
+            'model_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Model'),
+                'required'		=> true,
+                'value'			=> '',
+                'id'			=> 'model_id',
+	            'storeId' 		=> 'myData',
+				'storeType'		=> 'dojo.data.ItemFileReadStore',
+             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getModelAjax/locale_id/'.$this -> getLocale(),),
+             	'dijitParams' 	=> array( 'searchAttr' => '0' ),
+            )
+        );
+		$generalForm->addElement(					
+            'select',
+            'year_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Year'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _getAllYearByLocalId($this -> getLocale()),
+            )
+        );
+        $generalForm->addElement(
+            'NumberTextBox',
+            'cost',
+            array(
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Cost' ),
+                'class' 	=> 'lablvalue jstalgntop',
+                'invalidMessage'=>'Invalid elevation.',
+                'required'	=> true,
+                'constraints' => array(
+                    'min' 	=> 0,
+                    'max'	=> 1000000000,
+                    'places'=> 0,
+                )
+            )
+        );
+        $generalForm->addElement(
+            'ValidationTextBox',
+            'swap',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Swap' ),
+                'trim' 		=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+			)
+        );
 		$generalForm->addElement(
             'CheckBox',
             'negotiable',
@@ -628,6 +491,85 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                 'uncheckedValue'=> '0',
             )
         );
+        $generalForm->addElement(
+            'ValidationTextBox',
+            'mileage',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Mileage' ),
+                'trim' 		=> true,
+                'class' 	=> 'lablvalue jstalgntop',
+			)
+        );
+		$generalForm->addElement(					
+            'select',
+            'body_color_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Body_Color'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _getAllBodyColorByLocalId($this -> getLocale()),
+            )
+        );
+		$generalForm->addElement(					
+            'select',
+            'inside_color_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Inside_Color'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _getAllInsideColorByLocalId($this -> getLocale()),
+            )
+        );
+		$generalForm->addElement(					
+            'select',
+            'gear_type_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Gear_Type'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> getLookup ('gear_type'),
+            )
+        ); 
+		$generalForm->addElement(					
+            'select',
+            'seat_type_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Seat_Type'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> getLookup ('seat_type'),
+            )
+        ); 
+		$generalForm->addElement(					
+            'select',
+            'number_of_cylinders',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Cylinders'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _numberOfCylinders,
+            )
+        ); 
+		$generalForm->addElement(					
+		    'select',
+		    'drag_system_id',
+		    array(
+		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Drag_System'),
+		        'required'		=> true,
+		        'value'			=> '',
+		            'multiOptions'  => $this -> _getAllDragSystemByLocalId($this -> getLocale()),
+		    )
+		);
+		$generalForm->addElement(					
+		    'select',
+		    'fuel_type_id',
+		    array(
+		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Fuel_Type'),
+		        'required'		=> true,
+		        'value'			=> '',
+		            'multiOptions'  => $this -> getLookup ('fuel_type'),
+		    )
+		); 
 		$generalForm->addElement(
             'CheckBox',
             'cd',
@@ -664,260 +606,19 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                 'uncheckedValue'=> '0',
             )
         );
-		$generalForm->addElement(
-            'CheckBox',
-            'abs',
+        $generalForm->addElement(
+            'DateTextBox',
+            'vehicle_registration_expiry',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_ABS' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
+                'datePattern'=> 'dd-MM-yyyy',
+                'validators' => array('Date'),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Vehicle_Registration_Expiry' ),
+                'trim' 		 => true,
+                'required'	 => true,
+                'class' 	 => 'lablvalue jstalgntop'
             )
         );
-		$generalForm->addElement(
-            'CheckBox',
-            'automatic_parking',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Automatic_Parking' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'parking_sensors',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Parking_Sensors' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'rear_camera',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Rear_Camera' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'front_lights',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Front_Lights' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'led_rear_lights',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Led_Rear_Lights' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'sport_exhaust',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Sport_Exhaust' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'alarm_system',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Alarm_System' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'portable_roof',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Portable_Roof' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'airbags',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Airbags' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'driving_control_system',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Driving_Control_System' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'ir_monitor',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IR_Monitor' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'bluetooth',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Bluetooth' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'ipod_port',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IPOD_Port' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'usb_port',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_USB_Port' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'external_mirrors_heating',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_External_Mirrors_Heating' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'dimmed_glass',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Dimmed_Glass' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'self_dimming_internal_mirror',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Self_Dimming_Internal_Mirror' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'electrical_seats',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Electrical_Seats' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'heated_seats',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Heated_Seats' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'massage_in_seats',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Massage_In_Seats' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'ventilated_seats',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Ventilated_Seats' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'thermal_insulation_film',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Thermal_Insulation_Film' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'approved',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Approved' ),
-                'checkedValue' 	=> 'Yes',
-                'uncheckedValue'=> 'No',
-            )
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'published',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Published' ),
-                'checkedValue' 	=> 'Yes',
-                'uncheckedValue'=> 'No',
-            )
-        );
-		
-		
-        $specificationForm = new Zend_Dojo_Form_SubForm();
-        $specificationForm->setAttribs(array(
-                    'name' 	 =>  'specification',
-                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Specification' ),
-        ));
-
-		$specificationForm->addElement(					
-		    'select',
-		    'drag_system_id',
-		    array(
-		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Drag_System'),
-		        'required'		=> true,
-		        'value'			=> '',
-		            'multiOptions'  => $this -> _getAllDragSystemByLocalId($this -> getLocale()),
-		    )
-		);
-		$specificationForm->addElement(					
-		    'select',
-		    'fuel_type_id',
-		    array(
-		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Fuel_Type'),
-		        'required'		=> true,
-		        'value'			=> '',
-		            'multiOptions'  => $this -> getLookup ('fuel_type'),
-		    )
-		); 
-		$specificationForm->addElement(					
+		$generalForm->addElement(					
             'select',
             'insurance_type_id',
             array(
@@ -927,6 +628,30 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 	            'multiOptions'  => $this -> _getAllInsuranceTypeByLocalId($this -> getLocale()),
             )
         );
+        $generalForm->addElement(
+            'DateTextBox',
+            'Warranty_until',
+            array(
+                'datePattern'=> 'dd-MM-yyyy',
+                'validators' => array('Date'),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Warranty_Until' ),
+                'trim' 		 => true,
+                'required'	 => true,
+                'class' 	 => 'lablvalue jstalgntop'
+            )
+        );
+
+
+		
+		
+
+        $specificationForm = new Zend_Dojo_Form_SubForm();
+        $specificationForm->setAttribs(array(
+                    'name' 	 =>  'specification',
+                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Specification' ),
+        ));
+		
+		
 		$specificationForm->addElement(
 		    'NumberTextBox',
 		    'engine_size',
@@ -966,41 +691,34 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 		        'value'			=> '',
 		            'multiOptions'  => $this -> getLookup ('spare_tire'),
 		    )
-		);		
-        $specificationForm->addElement(
-            'DateTextBox',
-            'approved_date',
+		);
+		$specificationForm->addElement(					
+            'select',
+            'number_of_seats',
             array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Approved_Date' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Seats'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _numberOfSeats,
             )
-        );
-        $specificationForm->addElement(
-            'DateTextBox',
-            'publish_date',
+        ); 
+		$specificationForm->addElement(					
+            'select',
+            'number_of_doors',
             array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_Date' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Doors'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _numberOfDoors,
             )
-        );
-        $specificationForm->addElement(
-            'DateTextBox',
-            'vehicle_registration_expiry',
+        ); 
+		$specificationForm->addElement(
+            'CheckBox',
+            'thermal_insulation_film',
             array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Vehicle_Registration_Expiry' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Thermal_Insulation_Film' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
             )
         );
 		$specificationForm->addElement(
@@ -1012,13 +730,240 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                 'uncheckedValue'=> '0',
             )
         ); 
+        $specificationForm->addElement(
+            'NumberTextBox',
+            'fuel_tank_size',
+            array(
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Fuel_Tank_Size' ),
+                'class' 	=> 'lablvalue jstalgntop',
+                'invalidMessage'=>'Invalid elevation.',
+                'required'	=> true,
+                'constraints' => array(
+                    'min' 	=> 0,
+                    'max'	=> 1000000,
+                    'places'=> 0,
+                )
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'abs',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_ABS' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'automatic_parking',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Automatic_Parking' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'parking_sensors',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Parking_Sensors' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'rear_camera',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Rear_Camera' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'front_lights',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Front_Lights' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'led_rear_lights',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Led_Rear_Lights' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'sport_exhaust',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Sport_Exhaust' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'alarm_system',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Alarm_System' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'portable_roof',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Portable_Roof' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'airbags',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Airbags' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'driving_control_system',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Driving_Control_System' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'ir_monitor',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IR_Monitor' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'bluetooth',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Bluetooth' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'ipod_port',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IPOD_Port' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'usb_port',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_USB_Port' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'external_mirrors_heating',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_External_Mirrors_Heating' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'dimmed_glass',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Dimmed_Glass' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'self_dimming_internal_mirror',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Self_Dimming_Internal_Mirror' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'electrical_seats',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Electrical_Seats' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'heated_seats',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Heated_Seats' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'massage_in_seats',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Massage_In_Seats' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(
+            'CheckBox',
+            'ventilated_seats',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Ventilated_Seats' ),
+                'checkedValue' 	=> '1',
+                'uncheckedValue'=> '0',
+            )
+        );
+		$specificationForm->addElement(					
+            'select',
+            'window_type_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Window_Type'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> getLookup ('window_type'),
+            )
+        );
+
+
+
 
         $extraFeatureForm = new Zend_Dojo_Form_SubForm();
         $extraFeatureForm->setAttribs(array(
-                    'name' 	 =>  'extraFeature',
-                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Extra_Feature' ),
+            'name' 	 =>  'extraFeature',
+            'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Extra_Feature' ),
         ));
 		
+
 		$extraFeatureForm->addElement(
             'CheckBox',
             'used_by_lady',
@@ -1066,33 +1011,108 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                 )
         );
         $extraFeatureForm->addElement(
-                'TextBox',
-                'options',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Options' ),
-                    'trim' 		=> true,
-                    'required'	=> false,
-                    'class' 	=> 'lablvalue jstalgntop',
-                	)
+            'TextBox',
+            'options',
+            array(
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Options' ),
+                'trim' 		=> true,
+                'required'	=> false,
+                'class' 	=> 'lablvalue jstalgntop',
+            	)
         );
+		
+		
+		
+
+        $systemForm= new Zend_Dojo_Form_SubForm();
+        $systemForm->setAttribs(array(
+            'name'			=> 'system',
+            'dijitParams' 	=> array(
+                'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_System_Information' ),
+            )
+        ));
+		/*$systemForm->addElement(
+            'select',
+            'locale_id',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Locale'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> _getLocaleAvailabe(),
+            )
+        );*/
+		$systemForm->addElement(					
+            'select',
+            'money_status',
+            array(
+                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Money_Status'),
+                'required'		=> true,
+                'value'			=> '',
+	            'multiOptions'  => $this -> getLookup ('money_status'),
+            )
+        ); 
+		$systemForm->addElement(
+            'CheckBox',
+            'approved',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Approved' ),
+                'checkedValue' 	=> 'Yes',
+                'uncheckedValue'=> 'No',
+            )
+        );
+		$systemForm->addElement(
+            'CheckBox',
+            'published',
+            array(
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Published' ),
+                'checkedValue' 	=> 'Yes',
+                'uncheckedValue'=> 'No',
+            )
+        );
+        /*$systemForm->addElement(
+            'DateTextBox',
+            'approved_date',
+            array(
+                'datePattern'=> 'dd-MM-yyyy',
+                'validators' => array('Date'),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Approved_Date' ),
+                'trim' 		 => true,
+                'required'	 => true,
+                'class' 	 => 'lablvalue jstalgntop'
+            )
+        );
+        $systemForm->addElement(
+            'DateTextBox',
+            'publish_date',
+            array(
+                'datePattern'=> 'dd-MM-yyyy',
+                'validators' => array('Date'),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_Date' ),
+                'trim' 		 => true,
+                'required'	 => true,
+                'class' 	 => 'lablvalue jstalgntop'
+            )
+        );*/
+		
+		
 
 
-        $this->addSubForm($mainForm, 'main')
-             ->addSubForm($contactForm , 'contact')
+        $this->addSubForm($contactForm , 'contact')
              ->addSubForm($generalForm , 'general')
              ->addSubForm($specificationForm , 'specification')
-             ->addSubForm($extraFeatureForm , 'extraFeature');
+             ->addSubForm($extraFeatureForm , 'extraFeature')
+			 ->addSubForm($systemForm, 'system');
 
 		
 		
 
-		$mainForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$systemForm  ->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$contactForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$generalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$specificationForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$extraFeatureForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 
-        $mainForm->setElementDecorators(array(
+        $systemForm->setElementDecorators(array(
 		'DijitElement',
 		'Errors',
 			array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
@@ -1286,7 +1306,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                     'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Photo' ) . ' ' . $number,
                 )
 	        ));
-	        $photoForm->addElement(
+	        /*$photoForm->addElement(
                 'ValidationTextBox',
                 'alias',
                 array(
@@ -1305,7 +1325,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                     'class' 	=> 'lablvalue jstalgntop',
                     'style'		=> 'height:40px'
                 )
-	        );
+	        );*/
 			$photoForm->addElement(
 				'file', 
 				'photo_' . $number, 
@@ -1324,7 +1344,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
 			    //'destination'=>APPLICATION_PATH . '/tmp'
 				)
 			);
-	        $photoForm->addElement(
+	        /*$photoForm->addElement(
                 'NumberTextBox',
                 'order',
                 array(
@@ -1380,7 +1400,7 @@ class Vehicle_Form_ForSaleUpdate extends Zend_Dojo_Form
                     'trim' 		 => true,
                     'class' 	 => 'lablvalue jstalgntop'
                 )
-	        );
+	        );*/
 	        $photoForm->addElement(
 				'hidden',
 	            'photo_id'
