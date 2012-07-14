@@ -1,7 +1,7 @@
 # public/.htaccess
 
 # set application environment [development-testing-staging-production]
-SetEnv AULA_APP_ENV 	"development"
+SetEnv AULA_APP_ENV 	"anas"
 # set physical application path '/var/www/htmll/www.mutashabih.local/'
 SetEnv AULA_APP_PATH 	"/var/www/html/www.aulaula.local/"
 # set domain name 'mutashabih.local'

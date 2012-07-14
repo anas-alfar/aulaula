@@ -57,13 +57,18 @@ class Vehicle_Model_BodyColor extends Aula_Model_DbTable {
 	{
 		$start = ( int )($start);
 		$limit = ( int )($limit);
-		$column = mysql_escape_string($column);
-		$sorting = mysql_escape_string($sorting); 
+		
+		if (in_array($column, $this -> cols)) {
+			$sorting = strtolower($sorting);
+			$sorting = in_array($sorting, array('desc', 'asc')) ? $sorting : 'DESC';
+			$sorting = array("$column $sorting");
+			$column = NULL;
+		}
 		
 		$result = $this 
 		-> select() 
 		-> from($this->_name, new Zend_Db_Expr('SQL_CALC_FOUND_ROWS *'))/* ->    where ('id > ?', 1)*/ 
-		-> order("$column $sorting") 
+		-> order($sorting) 
 		-> limit("$start, $limit") 
 		-> query() 
 		-> fetchAll();

@@ -54,8 +54,9 @@ class User_Model_Level extends Aula_Model_DbTable {
 	public function getAllUser_levelOrderByColumnWithLimit($column, $sorting, $start, $limit) {
 		$start = ( int ) ($start);
 		$limit = ( int ) ($limit);
-		$column = mysql_escape_string ( $column );
-		$sorting = mysql_escape_string ( $sorting );
+		
+		$column = $this->getAdapter()->quote ( $column );
+		$sorting = $this->getAdapter()->quote ( $sorting );
 		
 		$this->_orderBy = "$column $sorting";
 		$this->_limit = "$start, $limit";
