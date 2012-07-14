@@ -23,14 +23,14 @@
  * @category Aula
  * @package Vehicle
  * @subpackage Form
- * @name Vehicle_Form_ForSale
+ * @name Vehicle_Form_ForRent
  * @copyright Copyright (c) 2012 Aulaula (http://www.aulaula.com/)
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @author Mohammad R. Mousa <mohammad.riad@gmail.com>
  *
  */
 
-class Vehicle_Form_ForSale extends Zend_Dojo_Form
+class Vehicle_Form_ForRent extends Zend_Dojo_Form
 {
 	public $view = NULL;
 	public $locale_id, $vehicleLookup;
@@ -191,7 +191,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		'FormElements',
 		array('TabContainer', array(
 				'id' 			=> 'tabContainer',
-				'style' 		=> 'width:500px;height:1000px;',
+				'style' 		=> 'width:500px;height:900px;',
 				'dijitParams' 	=> array('tabPosition' => 'right')
 				)),
 			'DijitForm'
@@ -200,7 +200,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
         $contactForm = new Zend_Dojo_Form_SubForm();
         $contactForm->setAttribs(array(
                     'name' 	 =>  'contact',
-                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Contact_Information' ),
+                    'legend' => $this-> view -> __ ( 'Vehicle_For_Rent_Contact_Information' ),
         ));
 
 
@@ -208,7 +208,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'contact_type',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Contact_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Contact_Type'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> getLookup ('contact_type'),
@@ -232,7 +232,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'contact_bb',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Contact_BB' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Contact_BB' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'name'		=> 'contact_bb',
@@ -244,7 +244,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'contact_full_name',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Contact_Full_Name' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Contact_Full_Name' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'name'		=> 'contact_full_name',
@@ -256,7 +256,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'mobile_1',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Mobile_1' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Mobile_1' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'name'		=> 'mobile_1',
@@ -268,7 +268,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'mobile_2',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Mobile_2' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Mobile_2' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'name'		=> 'mobile_2',
@@ -283,7 +283,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 				'required'  => true, 
 				'name'		=> 'email',
 				'id'		=> 'email',
-				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Email' ),
+				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Email' ),
 				'regExp' 	=> '\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b', 
 				'invalidMessage' => 'Please provide valid Email address.', 
 				'filters' 	=> array (
@@ -307,7 +307,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 			'submit',
 			array(
 				'value'		=> 'submit',
-				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Save' ),
+				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Save' ),
 				'type'	 	=> 'Submit',
 				'ignore'	=> true,
 				'onclick' 	=> 'dijit.byId("add-edit").submit()',
@@ -316,10 +316,14 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 
 
 
+
+
+
+
         $generalForm = new Zend_Dojo_Form_SubForm();
         $generalForm->setAttribs(array(
 				'name' 	 =>  'general',
-				'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_General_Information' ),
+				'legend' => $this-> view -> __ ( 'Vehicle_For_Rent_General_Information' ),
         ));
 		
 
@@ -327,17 +331,17 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'status',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Vehicle_Status'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Vehicle_Status'),
                 'required'		=> true,
                 'value'			=> '',
-	            'multiOptions'  => $this -> getLookup ('vehicle_for_sale_status'),
+	            'multiOptions'  => $this -> getLookup ('vehicle_for_rent_status'),
             )
         );
         $generalForm->addElement(
             'ValidationTextBox',
             'job_car_number',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Job_Card_Number' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Job_Card_Number' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'class' 	=> 'lablvalue jstalgntop',
@@ -349,7 +353,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Advertise_Date' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Advertise_Date' ),
                 'trim' 		 => true,
                 'required'	 => true,
                 'class' 	 => 'lablvalue jstalgntop'
@@ -359,7 +363,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'NumberTextBox',
             'advertise_period',
             array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Advertise_Period' ),
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Advertise_Period' ),
                 'class' 	=> 'lablvalue jstalgntop',
                 'invalidMessage'=>'Invalid elevation.',
                 'required'	=> true,
@@ -374,7 +378,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'plate_number',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Plate_Number' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Plate_Number' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'class' 	=> 'lablvalue jstalgntop',
@@ -384,7 +388,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'FilteringSelect',
             'type_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Type'),
                 'required'		=> true,
                 'value'			=> '',
                 'id'			=> 'type_id',
@@ -396,13 +400,13 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'FilteringSelect',
             'make_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Make'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Make'),
                 'required'		=> true,
                 'value'			=> '',
                 'id'			=> 'make_id',
 	            'storeId' 		=> 'myData',
 				'storeType'		=> 'dojo.data.ItemFileReadStore',
-             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getMakeAjax/locale_id/'.$this -> getLocale(),),
+             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-rent/action/getMakeAjax/locale_id/'.$this -> getLocale(),),
              	'dijitParams' 	=> array( 'searchAttr' => '0' ),
              	'onchange' 		=> "dijit.byId('model_id').searchAttr = dijit.byId('make_id').getValue();return true",
             )
@@ -411,13 +415,13 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'FilteringSelect',
             'model_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Model'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Model'),
                 'required'		=> true,
                 'value'			=> '',
                 'id'			=> 'model_id',
 	            'storeId' 		=> 'myData',
 				'storeType'		=> 'dojo.data.ItemFileReadStore',
-             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-sale/action/getModelAjax/locale_id/'.$this -> getLocale(),),
+             	'storeParams' 	=> array( 'url' => '/admin/handle/pkg/vehicle-for-rent/action/getModelAjax/locale_id/'.$this -> getLocale(),),
              	'dijitParams' 	=> array( 'searchAttr' => '0' ),
             )
         );
@@ -425,7 +429,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'year_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Year'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Year'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _getAllYearByLocalId($this -> getLocale()),
@@ -435,7 +439,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'NumberTextBox',
             'cost',
             array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Cost' ),
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Cost' ),
                 'class' 	=> 'lablvalue jstalgntop',
                 'invalidMessage'=>'Invalid elevation.',
                 'required'	=> true,
@@ -446,38 +450,11 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 )
             )
         );
-        $generalForm->addElement(
-            'ValidationTextBox',
-            'swap',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Swap' ),
-                'trim' 		=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
-		$generalForm->addElement(
-            'CheckBox',
-            'negotiable',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Negotiable' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-        $generalForm->addElement(
-            'ValidationTextBox',
-            'mileage',
-            array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Mileage' ),
-                'trim' 		=> true,
-                'class' 	=> 'lablvalue jstalgntop',
-			)
-        );
 		$generalForm->addElement(					
             'select',
             'body_color_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Body_Color'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Body_Color'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _getAllBodyColorByLocalId($this -> getLocale()),
@@ -487,7 +464,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'inside_color_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Inside_Color'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Inside_Color'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _getAllInsideColorByLocalId($this -> getLocale()),
@@ -497,7 +474,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'gear_type_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Gear_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Gear_Type'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> getLookup ('gear_type'),
@@ -507,7 +484,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'seat_type_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Seat_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Seat_Type'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> getLookup ('seat_type'),
@@ -517,7 +494,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'number_of_cylinders',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Cylinders'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Number_Of_Cylinders'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _numberOfCylinders,
@@ -527,7 +504,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    'select',
 		    'drag_system_id',
 		    array(
-		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Drag_System'),
+		        'label' 		=> $this-> view -> __('Vehicle_For_Rent_Drag_System'),
 		        'required'		=> true,
 		        'value'			=> '',
 		            'multiOptions'  => $this -> _getAllDragSystemByLocalId($this -> getLocale()),
@@ -537,7 +514,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    'select',
 		    'fuel_type_id',
 		    array(
-		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Fuel_Type'),
+		        'label' 		=> $this-> view -> __('Vehicle_For_Rent_Fuel_Type'),
 		        'required'		=> true,
 		        'value'			=> '',
 		            'multiOptions'  => $this -> getLookup ('fuel_type'),
@@ -547,7 +524,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'cd',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_CD' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_CD' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -556,7 +533,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'dvd',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_DVD' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_DVD' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -565,7 +542,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'gps',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_GPS' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_GPS' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -574,51 +551,38 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'sunroof',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Sunroof' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Sunroof' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
-            )
-        );
-        $generalForm->addElement(
-            'DateTextBox',
-            'vehicle_registration_expiry',
-            array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Vehicle_Registration_Expiry' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
             )
         );
 		$generalForm->addElement(					
             'select',
             'insurance_type_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Insurance_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Insurance_Type'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _getAllInsuranceTypeByLocalId($this -> getLocale()),
             )
         );
-        $generalForm->addElement(
-            'DateTextBox',
-            'Warranty_until',
-            array(
-                'datePattern'=> 'dd-MM-yyyy',
-                'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Warranty_Until' ),
-                'trim' 		 => true,
-                'required'	 => true,
-                'class' 	 => 'lablvalue jstalgntop'
-            )
-        );
+		$generalForm->addElement(					
+		    'select',
+		    'with_driver',
+		    array(
+		        'label' 		=> $this-> view -> __('Vehicle_For_Rent_With_Driver'),
+		        'required'		=> true,
+		        'value'			=> '',
+		            'multiOptions'  => $this -> getLookup ('with_driver'),
+		    )
+		); 
+		
 		
 		
         $specificationForm = new Zend_Dojo_Form_SubForm();
         $specificationForm->setAttribs(array(
                     'name' 	 =>  'specification',
-                    'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Specification' ),
+                    'legend' => $this-> view -> __ ( 'Vehicle_For_Rent_Specification' ),
         ));
 		
 		
@@ -626,7 +590,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    'NumberTextBox',
 		    'engine_size',
 		    array(
-		        'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Engine_Size' ),
+		        'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Engine_Size' ),
 		        'class' 	=> 'lablvalue jstalgntop',
 		        'invalidMessage'=>'Invalid elevation.',
 		        'required'	=> true,
@@ -641,7 +605,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    'NumberTextBox',
 		    'horse_power',
 		    array(
-		        'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Horse_Power' ),
+		        'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Horse_Power' ),
 		        'class' 	=> 'lablvalue jstalgntop',
 		        'invalidMessage'=>'Invalid elevation.',
 		        'required'	=> true,
@@ -653,20 +617,10 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    )
 		);
 		$specificationForm->addElement(					
-		    'select',
-		    'spare_tire_id',
-		    array(
-		        'label' 		=> $this-> view -> __('Vehicle_For_Sale_Spare_Tire'),
-		        'required'		=> true,
-		        'value'			=> '',
-		            'multiOptions'  => $this -> getLookup ('spare_tire'),
-		    )
-		);
-		$specificationForm->addElement(					
             'select',
             'number_of_seats',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Seats'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Number_Of_Seats'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _numberOfSeats,
@@ -676,7 +630,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'number_of_doors',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Number_Of_Doors'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Number_Of_Doors'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _numberOfDoors,
@@ -686,7 +640,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'thermal_insulation_film',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Thermal_Insulation_Film' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Thermal_Insulation_Film' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -695,31 +649,16 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'body_protective_film',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Body_Protective_Film' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Body_Protective_Film' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
         ); 
-        $specificationForm->addElement(
-            'NumberTextBox',
-            'fuel_tank_size',
-            array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Fuel_Tank_Size' ),
-                'class' 	=> 'lablvalue jstalgntop',
-                'invalidMessage'=>'Invalid elevation.',
-                'required'	=> true,
-                'constraints' => array(
-                    'min' 	=> 0,
-                    'max'	=> 1000000,
-                    'places'=> 0,
-                )
-            )
-        );
 		$specificationForm->addElement(
             'CheckBox',
             'abs',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_ABS' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_ABS' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -728,7 +667,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'automatic_parking',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Automatic_Parking' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Automatic_Parking' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -737,7 +676,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'parking_sensors',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Parking_Sensors' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Parking_Sensors' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -746,7 +685,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'rear_camera',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Rear_Camera' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Rear_Camera' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -755,7 +694,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'front_lights',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Front_Lights' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Front_Lights' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -764,7 +703,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'led_rear_lights',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Led_Rear_Lights' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Led_Rear_Lights' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -773,7 +712,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'sport_exhaust',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Sport_Exhaust' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Sport_Exhaust' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -782,7 +721,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'alarm_system',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Alarm_System' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Alarm_System' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -791,7 +730,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'portable_roof',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Portable_Roof' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Portable_Roof' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -800,7 +739,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'airbags',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Airbags' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Airbags' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -809,7 +748,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'driving_control_system',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Driving_Control_System' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Driving_Control_System' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -818,7 +757,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'ir_monitor',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IR_Monitor' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_IR_Monitor' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -827,7 +766,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'bluetooth',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Bluetooth' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Bluetooth' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -836,7 +775,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'ipod_port',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_IPOD_Port' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_IPOD_Port' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -845,7 +784,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'usb_port',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_USB_Port' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_USB_Port' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -854,7 +793,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'external_mirrors_heating',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_External_Mirrors_Heating' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_External_Mirrors_Heating' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -863,7 +802,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'dimmed_glass',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Dimmed_Glass' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Dimmed_Glass' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -872,7 +811,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'self_dimming_internal_mirror',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Self_Dimming_Internal_Mirror' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Self_Dimming_Internal_Mirror' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -881,7 +820,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'electrical_seats',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Electrical_Seats' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Electrical_Seats' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -890,7 +829,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'heated_seats',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Heated_Seats' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Heated_Seats' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -899,7 +838,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'massage_in_seats',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Massage_In_Seats' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Massage_In_Seats' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -908,7 +847,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'ventilated_seats',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Ventilated_Seats' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Ventilated_Seats' ),
                 'checkedValue' 	=> '1',
                 'uncheckedValue'=> '0',
             )
@@ -917,56 +856,10 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'window_type_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Window_Type'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Window_Type'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> getLookup ('window_type'),
-            )
-        );
-
-
-
-        $extraFeatureForm = new Zend_Dojo_Form_SubForm();
-        $extraFeatureForm->setAttribs(array(
-            'name' 	 =>  'extraFeature',
-            'legend' => $this-> view -> __ ( 'Vehicle_For_Sale_Extra_Feature' ),
-        ));
-		
-
-		$extraFeatureForm->addElement(
-            'CheckBox',
-            'used_by_lady',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Used_By_Lady' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$extraFeatureForm->addElement(
-            'CheckBox',
-            'gearbox_changed',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Gearbox_Changed' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$extraFeatureForm->addElement(
-            'CheckBox',
-            'accident_free',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Accident_Free' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
-            )
-        );
-		$extraFeatureForm->addElement(
-            'CheckBox',
-            'original_engine_changed',
-            array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Original_Engine_Changed' ),
-                'checkedValue' 	=> '1',
-                'uncheckedValue'=> '0',
             )
         );
 
@@ -976,14 +869,14 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
         $systemForm->setAttribs(array(
             'name'			=> 'system',
             'dijitParams' 	=> array(
-                'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_System_Information' ),
+                'title' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_System_Information' ),
             )
         ));
 		/*$systemForm->addElement(
             'select',
             'locale_id',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Locale'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Locale'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> _getLocaleAvailabe(),
@@ -993,7 +886,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'select',
             'money_status',
             array(
-                'label' 		=> $this-> view -> __('Vehicle_For_Sale_Money_Status'),
+                'label' 		=> $this-> view -> __('Vehicle_For_Rent_Money_Status'),
                 'required'		=> true,
                 'value'			=> '',
 	            'multiOptions'  => $this -> getLookup ('money_status'),
@@ -1003,7 +896,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'approved',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Approved' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Approved' ),
                 'checkedValue' 	=> 'Yes',
                 'uncheckedValue'=> 'No',
             )
@@ -1012,7 +905,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'CheckBox',
             'published',
             array(
-                'label' 		=> $this-> view -> __( 'Vehicle_For_Sale_Published' ),
+                'label' 		=> $this-> view -> __( 'Vehicle_For_Rent_Published' ),
                 'checkedValue' 	=> 'Yes',
                 'uncheckedValue'=> 'No',
             )
@@ -1021,7 +914,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 			'TextBox',
             'comments',
             array(
-				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Comments' ),
+				'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Comments' ),
                 'trim' 		=> true,
                 'required'	=> false,
                 'class' 	=> 'lablvalue jstalgntop',
@@ -1031,7 +924,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'TextBox',
             'options',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Options' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Options' ),
                 'trim' 		=> true,
                 'required'	=> false,
                 'class' 	=> 'lablvalue jstalgntop',
@@ -1043,7 +936,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Approved_Date' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Approved_Date' ),
                 'trim' 		 => true,
                 'required'	 => true,
                 'class' 	 => 'lablvalue jstalgntop'
@@ -1055,7 +948,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_Date' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_Date' ),
                 'trim' 		 => true,
                 'required'	 => true,
                 'class' 	 => 'lablvalue jstalgntop'
@@ -1070,14 +963,14 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 'name'			=> 'video',
                 'legend' 		=> 'video',
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Video' ),
+                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Video' ),
                 )
         ));
         $videoForm->addElement(
             'ValidationTextBox',
             'alias',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Alias' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Alias' ),
                 'trim' 		=> true,
                 'required'	=> true,
                 'class' 	=> 'lablvalue jstalgntop',
@@ -1087,7 +980,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'intro_text',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Intro_Text' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Intro_Text' ),
                 'trim' 		=> true,
                 'class' 	=> 'lablvalue jstalgntop',
                 'style'		=> 'height:40px'
@@ -1098,7 +991,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 			'videoThumb', 
 			array(
 				'required'	=> true,
-		    	'label'     => $this -> view -> __ ( 'Vehicle_For_Sale_Thumb' ),
+		    	'label'     => $this -> view -> __ ( 'Vehicle_For_Rent_Thumb' ),
 		    	'validators'=> array(
 		    		array('ExcludeExtension', false, array('php', 'exe', 'case' => true)),
 		        	array('Count', false, array('min'=>1, 'max'=>3)),
@@ -1112,7 +1005,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 			'video', 
 			array(
 				'required'	=> true,
-		    	'label'         => $this -> view -> __ ( 'Vehicle_For_Sale_Video' ),
+		    	'label'         => $this -> view -> __ ( 'Vehicle_For_Rent_Video' ),
 		    	'validators'    => array(
 		    		array('ExcludeExtension', false, array('php', 'exe', 'case' => true)),
 		        	array('Extension', false, 'flv')
@@ -1123,7 +1016,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'ValidationTextBox',
             'taken_location',
             array(
-                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Taken_Location' ),
+                'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Taken_Location' ),
                 'trim' 		=> true,
                 'class' 	=> 'lablvalue jstalgntop',
             )
@@ -1132,7 +1025,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             'NumberTextBox',
             'order',
             array(
-                'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Order' ),
+                'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Order' ),
                 'class' 	=> 'lablvalue jstalgntop',
                 'invalidMessage'=>'Invalid elevation.',
                 'constraints' => array(
@@ -1148,7 +1041,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Taken_Date' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Taken_Date' ),
                 'trim' 		 => true,
                 'class' 	 => 'lablvalue jstalgntop'
             )
@@ -1159,7 +1052,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_From' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_From' ),
                 'trim' 		 => true,
                 'class' 	 => 'lablvalue jstalgntop'
             )
@@ -1170,7 +1063,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
             array(
                 'datePattern'=> 'dd-MM-yyyy',
                 'validators' => array('Date'),
-				'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_To' ),
+				'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_To' ),
                 'trim' 		 => true,
                 'class' 	 => 'lablvalue jstalgntop'
             )
@@ -1180,7 +1073,6 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
         $this->addSubForm($contactForm, 'contact')
              ->addSubForm($generalForm , 'general')
              ->addSubForm($specificationForm , 'specification')
-             ->addSubForm($extraFeatureForm , 'extraFeature')
              ->addSubForm($systemForm , 'system')
 			 ->addSubForm($videoForm	, 'video');
 		
@@ -1191,14 +1083,14 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 	        $photoForm->setAttribs(array(
                 'name'			=> 'photo',
                 'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Photo' ),
+                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Photo' ),
                 )
 	        ));
 	        /*$photoForm->addElement(
                 'ValidationTextBox',
                 'alias',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Alias' ),
+                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Alias' ),
                     'trim' 		=> true,
                     'required'	=> true,
                     'class' 	=> 'lablvalue jstalgntop',
@@ -1208,7 +1100,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 'ValidationTextBox',
                 'intro_text',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Intro_Text' ),
+                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Intro_Text' ),
                     'trim' 		=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                     'style'		=> 'height:40px'
@@ -1219,7 +1111,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 				'photo', 
 				array(
 					//'required'	=> true,
-			    	'label'     => $this -> view -> __ ( 'Vehicle_For_Sale_Upload' ),
+			    	'label'     => $this -> view -> __ ( 'Vehicle_For_Rent_Upload' ),
 			    	//'id'		=> 'photo',
 			    	'name'      => 'photo',
 			    	'validators'    => array(
@@ -1236,7 +1128,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 'NumberTextBox',
                 'order',
                 array(
-                    'label' 	=> $this-> view -> __( 'Vehicle_For_Sale_Order' ),
+                    'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Order' ),
                     'class' 	=> 'lablvalue jstalgntop',
                     'invalidMessage'=>'Invalid elevation.',
                     'required'	=> true,
@@ -1251,7 +1143,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 'ValidationTextBox',
                 'taken_location',
                 array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Sale_Taken_Location' ),
+                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Taken_Location' ),
                     'trim' 		=> true,
                     'class' 	=> 'lablvalue jstalgntop',
                 )
@@ -1262,7 +1154,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 array(
                     'datePattern'=> 'dd-MM-yyyy',
                     'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Taken_Date' ),
+					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Taken_Date' ),
                     'trim' 		 => true,
                     'class' 	 => 'lablvalue jstalgntop'
                 )
@@ -1273,7 +1165,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 array(
                     'datePattern'=> 'dd-MM-yyyy',
                     'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_From' ),
+					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_From' ),
                     'trim' 		 => true,
                     'class' 	 => 'lablvalue jstalgntop'
                 )
@@ -1284,7 +1176,7 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
                 array(
                     'datePattern'=> 'dd-MM-yyyy',
                     'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Sale_Publish_To' ),
+					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_To' ),
                     'trim' 		 => true,
                     'class' 	 => 'lablvalue jstalgntop'
                 )
@@ -1319,7 +1211,6 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		$contactForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$generalForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$specificationForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-		$extraFeatureForm	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 		$videoForm  	->setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
 
         $systemForm->setElementDecorators(array(
@@ -1344,13 +1235,6 @@ class Vehicle_Form_ForSale extends Zend_Dojo_Form
 		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
 		));
 		$specificationForm->setElementDecorators(array(
-		'DijitElement',
-		'Errors',
-		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-		));
-		$extraFeatureForm->setElementDecorators(array(
 		'DijitElement',
 		'Errors',
 		    array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),

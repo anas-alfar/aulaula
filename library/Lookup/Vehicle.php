@@ -38,11 +38,24 @@ class Lookup_Vehicle {
 	public function __construct($view) {
 		return $this -> vehicleComboBox = 
 				array(
-				'vehicle_status' => array(
+				'vehicle_for_sale_status' => array(
 					'' 			=> $view -> __('Root'),
 					'Pending' 	=> $view -> __('ComboBox_Pending'), 
 					'Sold' 		=> $view -> __('ComboBox_Sold'), 
 					'Blocked' 	=> $view -> __('ComboBox_Blocked'),
+					),
+				'vehicle_for_rent_status' => array(
+					'' 			=> $view -> __('Root'),
+					'Pending' 	=> $view -> __('ComboBox_Pending'), 
+					'Rented' 	=> $view -> __('ComboBox_Rented'), 
+					'Available' => $view -> __('ComboBox_Available'), 
+					'Blocked' 	=> $view -> __('ComboBox_Blocked'),
+					),
+				'with_driver' => array(
+					'' 			=> $view -> __('Root'),
+					'Yes' 	=> $view -> __('ComboBox_Yes'), 
+					'No' 		=> $view -> __('ComboBox_No'), 
+					'On Demand' 	=> $view -> __('ComboBox_On_Demand'),
 					),
 				'money_status' => array(
 					'' 			=> $view -> __('Root'),
