@@ -167,7 +167,7 @@ class Vehicle_Form_ForRentUpdate extends Zend_Dojo_Form
 
     }
 	
-	public function renderForm($numberOfPhoto) {
+	public function renderForm() {
 
 		Zend_Dojo::enableForm($this);
 		$this->translateValidators = array(
@@ -1173,138 +1173,69 @@ class Vehicle_Form_ForRentUpdate extends Zend_Dojo_Form
 	}
 
 
-	public function photoForm($number, $data) {
-		// Begin Photo Form 1, 2 and 3
-		// for ($value = 1; $value <= $numberOfPhoto; ++$value) {
-	        $photoForm = new Zend_Dojo_Form_SubForm();
-	        $photoForm->setAttribs(array(
-                'name'			=> 'photo_'  . $number,
-                'dijitParams' 	=> array(
-                    'title' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Photo' ) . ' ' . $number,
-                )
-	        ));
-	        /*$photoForm->addElement(
-                'ValidationTextBox',
-                'alias',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Alias' ),
-                    'trim' 		=> true,
-                    'required'	=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
-	        );
-	        $photoForm->addElement(
-                'ValidationTextBox',
-                'intro_text',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Intro_Text' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                    'style'		=> 'height:40px'
-                )
-	        );*/
-			$photoForm->addElement(
-				'file', 
-				'photo_' . $number, 
-				array(
-					'required'	=> true,
-			    	'label'     => $this -> view -> __ ( 'Vehicle_For_Rent_Upload' ),
-			    	'id'		=> 'photo_' . $number,
-			    	'name'      => 'photo_' . $number,
-			    	'validators'    => array(
-			        	//array('Count', false, array('min'=>1, 'max'=>3)),
-			        	array('Size', false, 209715200),
-			        	array('Extension', false, 'jpg,png,gif,jpeg,x-png')
-			    	),
-			    //'multiFile'=>3,
-			    //'maxFileSize' => 2048,
-			    //'destination'=>APPLICATION_PATH . '/tmp'
+	public function photoForm($number, $data, $src) {
+        $photoForm = new Zend_Dojo_Form_SubForm();
+        $photoForm->setAttribs(array(
+            'name'			=> 'photo_'  . $number,
+            'dijitParams' 	=> array(
+                'title' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Photo' ) . ' ' . $number,
+            )
+        ));
+
+
+		$photoForm->addElement(
+			'file', 
+			'photo_' . $number, 
+			array(
+				'required'	=> true,
+		    	'label'     => $this -> view -> __ ( 'Vehicle_For_Rent_Upload' ),
+		    	'id'		=> 'photo_' . $number,
+		    	'name'      => 'photo_' . $number,
+		    	'validators'    => array(
+		        	//array('Count', false, array('min'=>1, 'max'=>3)),
+		        	array('Size', false, 209715200),
+		        	array('Extension', false, 'jpg,png,gif,jpeg,x-png')
+		    	),
+			)
+		);
+        $photoForm->addElement(
+			'hidden',
+            'photo_id'
+        );
+		$photoForm->addElement(
+			'html', 
+			'someid', 
+			array(
+				'value' => '<img src="'.$src.'" />',
 				)
-			);
-	        /*$photoForm->addElement(
-                'NumberTextBox',
-                'order',
-                array(
-                    'label' 	=> $this-> view -> __( 'Vehicle_For_Rent_Order' ),
-                    'class' 	=> 'lablvalue jstalgntop',
-                    'invalidMessage'=>'Invalid elevation.',
-                    'required'	=> true,
-                    'constraints' => array(
-                        'min' 	=> 0,
-                        'max'	=> 1000000,
-                        'places'=> 0,
-                    )
-                )
-	        );
-	        $photoForm->addElement(
-                'ValidationTextBox',
-                'taken_location',
-                array(
-                    'label' 	=> $this-> view -> __ ( 'Vehicle_For_Rent_Taken_Location' ),
-                    'trim' 		=> true,
-                    'class' 	=> 'lablvalue jstalgntop',
-                )
-	        );
-	        $photoForm->addElement(
-                'DateTextBox',
-                'taken_date',
-                array(
-                    'datePattern'=> 'dd-MM-yyyy',
-                    'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Taken_Date' ),
-                    'trim' 		 => true,
-                    'class' 	 => 'lablvalue jstalgntop'
-                )
-	        );
-	        $photoForm->addElement(
-                'DateTextBox',
-                'publish_from',
-                array(
-                    'datePattern'=> 'dd-MM-yyyy',
-                    'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_From' ),
-                    'trim' 		 => true,
-                    'class' 	 => 'lablvalue jstalgntop'
-                )
-	        );
-	        $photoForm->addElement(
-                'DateTextBox',
-                'publish_to',
-                array(
-                    'datePattern'=> 'dd-MM-yyyy',
-                    'validators' => array('Date'),
-					'label' 	 => $this -> view -> __( 'Vehicle_For_Rent_Publish_To' ),
-                    'trim' 		 => true,
-                    'class' 	 => 'lablvalue jstalgntop'
-                )
-	        );*/
-	        $photoForm->addElement(
-				'hidden',
-	            'photo_id'
-	        );
+		);
 
-			$photoForm -> setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
-			$photoForm->setElementDecorators(array(
-			'DijitElement',
-			'Errors',
-				array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-		    	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-			    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-			));
+		$photoForm -> setDecorators ( array ('FormElements', array ('HtmlTag', array ('tag' => 'table', 'class'=>'formlist' ) ), 'ContentPane' ) );
+		$photoForm->setElementDecorators(array(
+		'DijitElement',
+		'Errors',
+			array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+	    	array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+		    array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
+		));
 
-			$photoForm->getElement('photo_' . $number)-> setDecorators(
-	    	array(
-	        	'File',
-		        'Errors',
-		        array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	    	    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
-	        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-	    		)
-			);
+		$photoForm->getElement('photo_' . $number)-> setDecorators(
+    	array(
+        	'File',
+	        'Errors',
+	        array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'lable jstalgntop')),
+    	    array('Label', array('tag' => 'td', 'class' => 'lable jstalgntop')),
+        	array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
+    		)
+		);
 
-			$photoForm->populate($data);
-			$this->addSubForm($photoForm 	, 'photo_' . $number);
-       // }
-		// End Photo Form 1, 2 and 3
+		$photoForm->populate($data);
+		$this->addSubForm($photoForm 	, 'photo_' . $number);
 	}
+
+
+
+
+
+
 }

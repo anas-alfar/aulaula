@@ -40,7 +40,7 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 	private $vehicleLookupObj = NULL;
 	private $vehiclePhotoObj = NULL;
 	private $vehicleVideoObj = NULL;
-	CONST NUMBER_OF_PHOTOS = 3;
+	CONST NUMBER_OF_PHOTOS = 10;
 
 	protected function _init() {
 		$this -> vehicleLookupObj = new Lookup_Vehicle($this -> view);
@@ -77,7 +77,7 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 		$form = new Vehicle_Form_ForRent($this -> view);
 		$form -> setLocale($this -> fc -> settings);
 		$form -> setLookup($this -> vehicleLookupObj -> vehicleComboBox);
-		$form -> renderForm(self::NUMBER_OF_PHOTOS);
+		$form -> renderForm();
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
@@ -96,6 +96,7 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 
 					for ($value = 1; $value <= self::NUMBER_OF_PHOTOS; ++$value) {
 						$_POST['photo_' . $value]['vehicle_id'] = $forRentObjLastInsertId;
+						$_POST['photo_' . $value]['type'] = 'Rent';
 						$photoUploadedSuccessfully = $this -> importPhoto($_POST['photo_' . $value], 'photo_' . $value, true);
 					}
 				}
@@ -117,12 +118,12 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 		$uploadPhotoObj = new Aula_Model_Upload_Photo($photoName);
 
 		if ($insertPhoto === false) {
-			$photoId = (int)$objectPhotoData['photo_id'];
-			$vehiclePhotoObjResult = $this -> vehiclePhotoObj -> select() -> where('`id` = ?', $photoId) -> query() -> fetch();
-			if ($vehiclePhotoObjResult['order'] != $objectPhotoData['order']) {
-				$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
-				$stmt -> execute(array($objectPhotoData['order']));
-			}
+			$photoId = (int) $objectPhotoData['photo_id'];
+			//$vehiclePhotoObjResult = $this -> vehiclePhotoObj -> select() -> where('`id` = ?', $photoId) -> query() -> fetch();
+			//if ($vehiclePhotoObjResult['order'] != $objectPhotoData['order']) {
+			//	$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
+			//	$stmt -> execute(array($objectPhotoData['order']));
+			//}
 			unset($objectPhotoData['photo_id']);
 			$objectPhotoData['modified_by'] = $this -> userId;
 			$objectPhotoData['modified_time'] = new Zend_db_Expr("Now()");
@@ -134,8 +135,8 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 			if ($uploadPhotoObj -> validatedMime()) {
 				if ($uploadPhotoObj -> validatedSize()) {
 					if ($insertPhoto === true) {
-						$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
-						$stmt -> execute(array($objectPhotoData['order']));
+						//$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
+						//$stmt -> execute(array($objectPhotoData['order']));
 
 						if (empty($objectPhotoData['taken_date'])) {
 							$objectPhotoData['taken_date'] = $uploadPhotoObj -> takenTime;
@@ -221,7 +222,7 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 		$form = new Vehicle_Form_ForRentUpdate($this -> view);
 		$form -> setLocale($this -> fc -> settings);
 		$form -> setLookup($this -> vehicleLookupObj -> vehicleComboBox);
-		$form -> renderForm(false);
+		$form -> renderForm();
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
@@ -235,8 +236,9 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 			$_POST['video']['vehicle_id'] = $vehiclForRentData['id'];
 			$videoUploadedSuccessfully = $this -> importVideo($_POST['video'], false);
 
-			for ($value = 0; $value < self::NUMBER_OF_PHOTOS; ++$value) {
+			for ($value = 1; $value <= self::NUMBER_OF_PHOTOS; ++$value) {
 				$_POST['photo_' . $value]['vehicle_id'] = $vehiclForRentData['id'];
+				if ( empty($_POST['photo_' . $value]['photo_id']) ) continue;
 				$photoUploadedSuccessfully = $this -> importPhoto($_POST['photo_' . $value], 'photo_' . $value, false);
 			}
 
@@ -245,16 +247,12 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 		} else {
 			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
 				$forRentObjResult = $this -> forRentObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
-				$photoForRentObjResult = $this -> vehiclePhotoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> query() -> fetchAll();
+				$photoForRentObjResult = $this -> vehiclePhotoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> where('`type` = ?', 'Rent') -> query() -> fetchAll();
 				$videoForRentObjResult = $this -> vehicleVideoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> query() -> fetch();
 
 				if ($forRentObjResult !== false) {
 					// Begin Vehicle For Rent Info
-					//$approved_date = explode(' ', $forRentObjResult['approved_date']);
-					//$publish_date = explode(' ', $forRentObjResult['publish_date']);
 					$advertise_date = explode(' ', $forRentObjResult['advertise_date']);
-					//$forRentObjResult['approved_date'] = $approved_date[0];
-					//$forRentObjResult['publish_date'] = $publish_date[0];
 					$forRentObjResult['advertise_date'] = $advertise_date[0];
 					$forRentObjResult['options'] = json_decode($forRentObjResult['options']);
 					/*
@@ -278,15 +276,13 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 
 					// Begin Vehicle Photo Info
 					foreach ($photoForRentObjResult as $key => $config) {
-						$approved_date = explode(' ', $config['taken_date']);
-						$publish_date = explode(' ', $config['publish_from']);
-						$advertise_date = explode(' ', $config['publish_to']);
-						$config['taken_date'] = $approved_date[0];
-						$config['publish_from'] = $publish_date[0];
-						$config['publish_to'] = $advertise_date[0];
+						$index = $key;
+						++$index;
 						$config['photo_id'] = $config['id'];
-						unset($config['id']);
-						$form -> photoForm($key, $config);
+
+			 			$photoDate 	   = explode('-', $config['date_added'], 3);
+			 			$largePhotoSRC = parent::$encryptedUrl['photo']['large'][$photoDate[0] . '-' . $photoDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $config['id']) . '.jpg?x=' . rand(0, 1000);
+						$form -> photoForm($index, $config, $largePhotoSRC);
 					}
 					// End Vehicle Photo Info
 

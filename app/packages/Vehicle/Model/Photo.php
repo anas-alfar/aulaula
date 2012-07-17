@@ -48,8 +48,8 @@ class Vehicle_Model_Photo extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'alias', 'intro_text', 'author_id', 'vehicle_id', 'size', 'height', 'width', 'extension', 'taken_date', 'taken_location', 'meta_data', 'published', 'approved', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `author_id`, `vehicle_id`, `size`, `height`, `width`, `extension`, `taken_date`, `taken_location`, `meta_data`, `published`, `approved`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
+		$this -> cols = $this -> _cols = array('id', 'alias', 'intro_text', 'author_id', 'vehicle_id', 'type', 'size', 'height', 'width', 'extension', 'taken_date', 'taken_location', 'meta_data', 'published', 'approved', 'order', 'locked_by', 'locked_time', 'modified_by', 'modified_time', 'publish_from', 'publish_to', 'date_added', 'comments', 'options');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `alias`, `intro_text`, `author_id`, `vehicle_id`, `type`, `size`, `height`, `width`, `extension`, `taken_date`, `taken_location`, `meta_data`, `published`, `approved`, `order`, `locked_by`, `locked_time`, `modified_by`, `modified_time`, `publish_from`, `publish_to`, `date_added`, `comments`, `options` ';
 		parent::__construct();
 	}
 

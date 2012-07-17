@@ -40,7 +40,7 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 	private $vehicleLookupObj = NULL;
 	private $vehiclePhotoObj = NULL;
 	private $vehicleVideoObj = NULL;
-	CONST NUMBER_OF_PHOTOS = 3;
+	CONST NUMBER_OF_PHOTOS = 10;
 
 	protected function _init() {
 		$this -> vehicleLookupObj = new Lookup_Vehicle($this -> view);
@@ -77,10 +77,15 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 		$form = new Vehicle_Form_ForSale($this -> view);
 		$form -> setLocale($this -> fc -> settings);
 		$form -> setLookup($this -> vehicleLookupObj -> vehicleComboBox);
-		$form -> renderForm(self::NUMBER_OF_PHOTOS);
+		$form -> renderForm();
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
+			//print_r($_POST);
+			//echo "<br /><br />";
+			//print_r($_FILES);
+			//exit;
+			
 			$vehiclForSaleData = array_merge($_POST['system'], $_POST['contact'], $_POST['general'], $_POST['specification'], $_POST['extraFeature']);
 			$vehiclForSaleData['created_by'] = $this -> userId;
 			$vehiclForSaleData['locale_id'] = $this -> fc -> settings -> locale -> default -> current -> id;
@@ -96,6 +101,7 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 
 					for ($value = 1; $value <= self::NUMBER_OF_PHOTOS; ++$value) {
 						$_POST['photo_' . $value]['vehicle_id'] = $forSaleObjLastInsertId;
+						$_POST['photo_' . $value]['type'] = 'Sale';
 						$photoUploadedSuccessfully = $this -> importPhoto($_POST['photo_' . $value], 'photo_' . $value, true);
 					}
 				}
@@ -117,12 +123,12 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 		$uploadPhotoObj = new Aula_Model_Upload_Photo($photoName);
 
 		if ($insertPhoto === false) {
-			$photoId = (int)$objectPhotoData['photo_id'];
-			$vehiclePhotoObjResult = $this -> vehiclePhotoObj -> select() -> where('`id` = ?', $photoId) -> query() -> fetch();
-			if ($vehiclePhotoObjResult['order'] != $objectPhotoData['order']) {
-				$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
-				$stmt -> execute(array($objectPhotoData['order']));
-			}
+			$photoId = (int) $objectPhotoData['photo_id'];
+			//$vehiclePhotoObjResult = $this -> vehiclePhotoObj -> select() -> where('`id` = ?', $photoId) -> query() -> fetch();
+			//if ($vehiclePhotoObjResult['order'] != $objectPhotoData['order']) {
+			//	$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
+			//	$stmt -> execute(array($objectPhotoData['order']));
+			//}
 			unset($objectPhotoData['photo_id']);
 			$objectPhotoData['modified_by'] = $this -> userId;
 			$objectPhotoData['modified_time'] = new Zend_db_Expr("Now()");
@@ -134,8 +140,8 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 			if ($uploadPhotoObj -> validatedMime()) {
 				if ($uploadPhotoObj -> validatedSize()) {
 					if ($insertPhoto === true) {
-						$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
-						$stmt -> execute(array($objectPhotoData['order']));
+						//$stmt = $this -> vehiclePhotoObj -> getAdapter() -> prepare('UPDATE vehicle_photo SET `order`=`order`+1 WHERE `order` >= ?');
+						//$stmt -> execute(array($objectPhotoData['order']));
 
 						if (empty($objectPhotoData['taken_date'])) {
 							$objectPhotoData['taken_date'] = $uploadPhotoObj -> takenTime;
@@ -221,7 +227,7 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 		$form = new Vehicle_Form_ForSaleUpdate($this -> view);
 		$form -> setLocale($this -> fc -> settings);
 		$form -> setLookup($this -> vehicleLookupObj -> vehicleComboBox);
-		$form -> renderForm(false);
+		$form -> renderForm();
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
@@ -235,8 +241,9 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 			$_POST['video']['vehicle_id'] = $vehiclForSaleData['id'];
 			$videoUploadedSuccessfully = $this -> importVideo($_POST['video'], false);
 
-			for ($value = 0; $value < self::NUMBER_OF_PHOTOS; ++$value) {
+			for ($value = 1; $value <= self::NUMBER_OF_PHOTOS; ++$value) {
 				$_POST['photo_' . $value]['vehicle_id'] = $vehiclForSaleData['id'];
+				if ( empty($_POST['photo_' . $value]['photo_id']) ) continue;
 				$photoUploadedSuccessfully = $this -> importPhoto($_POST['photo_' . $value], 'photo_' . $value, false);
 			}
 
@@ -245,16 +252,12 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 		} else {
 			if (isset($_GET['id']) and is_numeric($_GET['id'])) {
 				$forSaleObjResult = $this -> forSaleObj -> select() -> where('`id` = ?', $_GET['id']) -> query() -> fetch();
-				$photoForSaleObjResult = $this -> vehiclePhotoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> query() -> fetchAll();
+				$photoForSaleObjResult = $this -> vehiclePhotoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> where('`type` = ?', 'Sale') -> query() -> fetchAll();
 				$videoForSaleObjResult = $this -> vehicleVideoObj -> select() -> where('`vehicle_id` = ?', $_GET['id']) -> query() -> fetch();
 
 				if ($forSaleObjResult !== false) {
 					// Begin Vehicle For Sale Info
-					//$approved_date = explode(' ', $forSaleObjResult['approved_date']);
-					//$publish_date = explode(' ', $forSaleObjResult['publish_date']);
 					$advertise_date = explode(' ', $forSaleObjResult['advertise_date']);
-					//$forSaleObjResult['approved_date'] = $approved_date[0];
-					//$forSaleObjResult['publish_date'] = $publish_date[0];
 					$forSaleObjResult['advertise_date'] = $advertise_date[0];
 					$forSaleObjResult['options'] = json_decode($forSaleObjResult['options']);
 					/*
@@ -278,15 +281,13 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 
 					// Begin Vehicle Photo Info
 					foreach ($photoForSaleObjResult as $key => $config) {
-						$approved_date = explode(' ', $config['taken_date']);
-						$publish_date = explode(' ', $config['publish_from']);
-						$advertise_date = explode(' ', $config['publish_to']);
-						$config['taken_date'] = $approved_date[0];
-						$config['publish_from'] = $publish_date[0];
-						$config['publish_to'] = $advertise_date[0];
+						$index = $key;
+						++$index;
 						$config['photo_id'] = $config['id'];
-						unset($config['id']);
-						$form -> photoForm($key, $config);
+
+			 			$photoDate 	   = explode('-', $config['date_added'], 3);
+			 			$largePhotoSRC = parent::$encryptedUrl['photo']['large'][$photoDate[0] . '-' . $photoDate[1]] . md5($this -> fc -> settings -> encryption -> hash . $config['id']) . '.jpg?x=' . rand(0, 1000);
+						$form -> photoForm($index, $config, $largePhotoSRC);
 					}
 					// End Vehicle Photo Info
 
