@@ -88,7 +88,7 @@ class Vehicle_Controller_ForSaleAdmin extends Aula_Controller_Action {
 			
 			$vehiclForSaleData = array_merge($_POST['system'], $_POST['contact'], $_POST['general'], $_POST['specification'], $_POST['extraFeature']);
 			$vehiclForSaleData['created_by'] = $this -> userId;
-			$vehiclForSaleData['locale_id'] = $this -> fc -> settings -> locale -> default -> current -> id;
+			$vehiclForSaleData['locale_id'] = $this->fc->settings->locale->default->current->id;
 			$vehiclForSaleData['options'] = json_encode($vehiclForSaleData['options']);
 			$forSaleObjLastInsertId = $this -> forSaleObj -> insert($vehiclForSaleData);
 

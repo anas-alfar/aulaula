@@ -83,7 +83,7 @@ class Vehicle_Controller_ForRentAdmin extends Aula_Controller_Action {
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			$vehiclForRentData = array_merge($_POST['system'], $_POST['contact'], $_POST['general'], $_POST['specification']);
 			$vehiclForRentData['created_by'] = $this -> userId;
-			$vehiclForRentData['locale_id'] = $this -> fc -> settings -> locale -> default -> current -> id;
+			$vehiclForRentData['locale_id'] = $this->fc->settings->locale->default->current->id;
 			$vehiclForRentData['options'] = json_encode($vehiclForRentData['options']);
 			$forRentObjLastInsertId = $this -> forRentObj -> insert($vehiclForRentData);
 
