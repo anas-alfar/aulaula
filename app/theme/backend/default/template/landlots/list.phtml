@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<?php
+	include './html/meta.phtml';
+	?>
+</head>
+<body dir="rtl">
+	<!--container-->
+	<div class="container">
+		<?php
+		include './html/header.phtml';
+		?>
+		<?php
+			include './html/menu.phtml';
+		?>
+		<?php
+			include './html/notification.phtml';
+		?>
+		<!--content-->
+		<form method="get" action="" id="frm">
+			<div>
+				<input type="hidden" id="token" name="token" value="<?php print $this -> sanitized -> title -> value;?>" />
+				<input type="hidden" id="actionURI" value="<?php print $this -> sanitized -> actionURI -> value;?>" />
+			</div>
+			<div class="content">
+				<div class="srch-rslt cleaner">
+					<h3 class="fl page_title margthaf"><?php echo $this -> __('Landlots');?></h3>
+					<a href="<?php print $this -> sanitized -> actionURI -> value;?>add" class="add-btn"><em><?php echo $this -> __('Landlots Add New');?></em></a>
+				</div>
+				<!--filtration-->
+				<div class="filtration cleaner">
+					<!--go2page-->
+					<!--end go2page-->
+				<button type="button" onclick="return changeFormAction('approve', 'post');" name="approve" id="approve" class="inpt-btn fr">
+					<span><em><?php echo $this->__ ( 'Object_Approve' ); ?></em></span>
+				</button>
+	
+				<button type="button" onclick="return changeFormAction('publish', 'post');" name="publish" id="publish" class="inpt-btn fr">
+					<span><em><?php echo $this->__ ( 'Object_Publish' ); ?></em></span>
+				</button>
+	
+					<button type="button"
+					onclick="return changeFormAction('delete', 'post');" name="delete"
+					id="delete" class="inpt-btn fr">
+						<span><em><?php echo $this -> __('Landlots Delete');?></em></span>
+					</button>
+					<select style="float: left;" name="status">
+						<option <?php echo ($this->sanitized->status->value == 'Yes') ? 'selected="selected"' : '' ; ?> value="Yes"><?php echo $this -> __('Yes Option');?></option>
+						<option <?php echo ($this->sanitized->status->value == 'No') ? 'selected="selected"' : '' ; ?> value="No"><?php echo $this -> __('No Option');?></option>
+					</select>
+					<input type="hidden" id="redirectURI" name="redirectURI" value="<?php print $this -> sanitized -> redirectURI -> value;?>" />
+				</div>
+				
+				<?php //include './html/excel.phtml';?>
+				<!--end filtration-->
+				<!--srch-rsult-->
+				<table class="srch-rsult">
+					<tr class="heading">
+						<th class="jstalgntop col1">
+						<input type="checkbox" name="selectAll" id="selectAll" />
+						</th>
+						<th class="jstalgntop col1"><a
+						href="<?php echo $this -> sort -> money_status -> href;?>"
+						class="<?php echo $this -> sort -> money_status -> cssClass;?>"><span 
+						class="<?php echo $this -> sort -> money_status -> cssClass;?>"><?php echo $this -> __('Landlots_Money_Status');?></span></a></th>
+						
+						<!--<th class="jstalgntop col1"><a
+						href="<?php echo $this -> sort -> publish_date -> href;?>"
+						class="<?php echo $this -> sort -> publish_date -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> publish_date -> cssClass;?>"><?php echo $this -> __('Landlots_Publish_Date');?></span></a></th> -->
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> id -> href;?>"
+						class="<?php echo $this -> sort -> id -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> id -> cssClass;?>"><?php echo $this -> __('Landlots_Id');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> job_card_number -> href;?>"
+						class="<?php echo $this -> sort -> job_card_number -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> job_card_number -> cssClass;?>"><?php echo $this -> __('Landlots_Job_Car_Number');?></span></a></th>
+						
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> advertise_date -> href;?>"
+						class="<?php echo $this -> sort -> advertise_date -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> advertise_date -> cssClass;?>"><?php echo $this -> __('Landlots_Advertise_Date');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> advertise_period -> href;?>"
+						class="<?php echo $this -> sort -> advertise_period -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> advertise_period -> cssClass;?>"><?php echo $this -> __('Landlots_Advertise_Period');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> status -> href;?>"
+						class="<?php echo $this -> sort -> status -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> status -> cssClass;?>"><?php echo $this -> __('Landlots_Status');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> contact_type -> href;?>"
+						class="<?php echo $this -> sort -> contact_type -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> contact_type -> cssClass;?>"><?php echo $this -> __('Landlots_Contact_Type');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> contact_nid_cr -> href;?>"
+						class="<?php echo $this -> sort -> contact_nid_cr -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> contact_nid_cr -> cssClass;?>"><?php echo $this -> __('Landlots_contact_NID_CR');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> contact_full_name -> href;?>"
+						class="<?php echo $this -> sort -> contact_full_name -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> contact_full_name -> cssClass;?>"><?php echo $this -> __('Landlots_Contact_Full_Name');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> mobile_1 -> href;?>"
+						class="<?php echo $this -> sort -> mobile_1 -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> mobile_1 -> cssClass;?>"><?php echo $this -> __('Landlots_Mobile_1');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> mobile_2 -> href;?>"
+						class="<?php echo $this -> sort -> mobile_2 -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> mobile_2 -> cssClass;?>"><?php echo $this -> __('Landlots_Mobile_2');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> email -> href;?>"
+						class="<?php echo $this -> sort -> email -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> email -> cssClass;?>"><?php echo $this -> __('Landlots_Email');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> provence_id -> href;?>"
+						class="<?php echo $this -> sort -> provence_id -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> provence_id -> cssClass;?>"><?php echo $this -> __('Landlots_Provence');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> location_id -> href;?>"
+						class="<?php echo $this -> sort -> location_id -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> location_id -> cssClass;?>"><?php echo $this -> __('Landlots_Location');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> landlots_for_id -> href;?>"
+						class="<?php echo $this -> sort -> landlots_for_id -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> landlots_for_id -> cssClass;?>"><?php echo $this -> __('Landlots_For');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> cost -> href;?>"
+						class="<?php echo $this -> sort -> cost -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> cost -> cssClass;?>"><?php echo $this -> __('Landlots_Cost');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> created_by -> href;?>"
+						class="<?php echo $this -> sort -> created_by -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> created_by -> cssClass;?>"><?php echo $this -> __('Landlots_Created_By');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> created_date -> href;?>"
+						class="<?php echo $this -> sort -> created_date -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> created_date -> cssClass;?>"><?php echo $this -> __('Landlots_Created_Date');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> modified_by -> href;?>"
+						class="<?php echo $this -> sort -> modified_by -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> modified_by -> cssClass;?>"><?php echo $this -> __('Landlots_Modified_By');?></span></a></th>
+						
+						<th class="jstalgntop col6"><a
+						href="<?php echo $this -> sort -> modified_date -> href;?>"
+						class="<?php echo $this -> sort -> modified_date -> cssClass;?>"><span
+						class="<?php echo $this -> sort -> modified_date -> cssClass;?>"><?php echo $this -> __('Landlots_Modified_Date');?></span></a></th>
+						
+						<th class="jstalgntop tools"><a
+							href="<?php echo $this->sort->published->href; ?>"
+							class="<?php echo $this->sort->published->cssClass; ?>"><span
+							class="<?php echo $this->sort->published->cssClass; ?>"><?php echo $this->__ ( 'Object_Publish' ); ?></span></a></th>
+						<th class="jstalgntop tools"><a
+							href="<?php echo $this->sort->approved->href; ?>"
+							class="<?php echo $this->sort->approved->cssClass; ?>"><span
+							class="<?php echo $this->sort->approved->cssClass; ?>"><?php echo $this->__ ( 'Object_Aprrove' ); ?></span></a></th>
+						
+						
+						<th class="jstalgntop tools last"><span><?php echo $this -> __('Landlots_Tools');?></span></th>
+					</tr>
+					<?php
+					if (!empty($this->forRentList) and false != $this->forRentList) {
+		foreach ($this->forRentList as $key => $value) {
+			echo '<tr>';
+			echo '<td class="jstalgntop" style="text-align: center;"><input type="checkbox" name="landlotsId[' . $value['id'] . ']" id="check" value="Yes" /></td>';
+			echo '<td class="jstalgntop">' . $this -> cleanHtml($value['money_status']) . '</td>';
+			//echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['publish_date']) . '</td>';
+			echo '<td class="jstalgntop">' . $value['id'] . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['job_card_number']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['advertise_date']) . '</td>';
+			echo '<td class="jstalgntop">' . $value['advertise_period'] . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['status']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['contact_type_title']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['contact_nid_cr']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['contact_full_name']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['mobile_1']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['mobile_2']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['email']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['landlots_provence_title']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['landlots_location_title']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['landlots_for_title']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['cost']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['created_by']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['created_date']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['modified_by']) . '</td>';
+			echo '<td class="jstalgntop">' . $this ->  cleanHtml($value['modified_date']) . '</td>';
+			echo '<td class="jstalgntop">' . $this -> __($value['published']) . '</td>';
+			echo '<td class="jstalgntop">' . $this -> __($value['approved']) . '</td>';
+			echo '<td class="jstalgntop last"><a href="/admin/handle/pkg/landlots/action/edit/id/' . $value['id'] . '" class="modify fl" title="Edit"></a></td>';
+			echo '</tr>';
+		}
+	}
+					?>
+				</table>
+				<!--end srch-rsult-->
+				<?php
+					include './html/paging.phtml';
+				?>
+
+				<!--end content-->
+		</form>
+		<?php
+			include './html/footer.phtml';
+		?>
+	</div>
+	<!--end container-->
+</body>
+</html>
