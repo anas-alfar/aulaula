@@ -169,11 +169,11 @@ class Landlots_Controller_DefaultAdmin extends Aula_Controller_Action {
 
 		if ($insertVideo === false) {
 			$videoId = (int)$objectVideoData['video_id'];
-			$vehicleVideoObjResult = $this -> landlotsVideoObj -> select() -> where('`id` = ?', $videoId) -> query() -> fetch();
-			if ($vehicleVideoObjResult['order'] != $objectVideoData['order']) {
-				$stmt = $this -> landlotsVideoObj -> getAdapter() -> prepare('UPDATE vehicle_video SET `order`=`order`+1 WHERE `order` >= ?');
-				$stmt -> execute(array($objectVideoData['order']));
-			}
+			//$vehicleVideoObjResult = $this -> landlotsVideoObj -> select() -> where('`id` = ?', $videoId) -> query() -> fetch();
+			//if ($vehicleVideoObjResult['order'] != $objectVideoData['order']) {
+			//	$stmt = $this -> landlotsVideoObj -> getAdapter() -> prepare('UPDATE vehicle_video SET `order`=`order`+1 WHERE `order` >= ?');
+			//	$stmt -> execute(array($objectVideoData['order']));
+			//}
 			unset($objectVideoData['video_id']);
 			$objectVideoData['modified_by'] = $this -> userId;
 			$objectVideoData['modified_time'] = new Zend_db_Expr("Now()");
@@ -185,8 +185,8 @@ class Landlots_Controller_DefaultAdmin extends Aula_Controller_Action {
 			if ($uploadVideoObj -> validatedMime() && $uploadPhotoObj -> validatedMime()) {
 				if ($uploadVideoObj -> validatedSize() && $uploadPhotoObj -> validatedSize()) {
 					if ($insertVideo === true) {
-						$stmt = $this -> landlotsVideoObj -> getAdapter() -> prepare('UPDATE vehicle_video SET `order`=`order`+1 WHERE `order` >= ?');
-						$stmt -> execute(array($objectVideoData['order']));
+						//$stmt = $this -> landlotsVideoObj -> getAdapter() -> prepare('UPDATE vehicle_video SET `order`=`order`+1 WHERE `order` >= ?');
+						//$stmt -> execute(array($objectVideoData['order']));
 
 						$objectVideoData['author_id'] = $this -> userId;
 						$objectVideoData['size'] = 'NULL';
