@@ -51,8 +51,8 @@ class Object_Model_Source extends Aula_Model_DbTable {
 	public $dateAdded = 'CURRENT_TIMESTAMP';
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'name', 'description', 'source_type', 'url', 'author_id', 'locale_id', 'package_id', 'time_delay', 'published', 'approved', 'order' , 'date_added');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `description`, `source_type`, `url`, `author_id`, `locale_id`, `package_id`, `time_delay`, `published`, `approved`, `order`,`date_added` ';
+		$this -> cols = $this -> _cols = array('id', 'name', 'description', 'source_type', 'url', 'hash_key', 'author_id', 'locale_id', 'package_id', 'time_delay', 'published', 'approved', 'order' , 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `name`, `description`, `source_type`, `url`, `hash_key`, `author_id`, `locale_id`, `package_id`, `time_delay`, `published`, `approved`, `order`,`date_added` ';
 		parent::__construct();
 	}
 	

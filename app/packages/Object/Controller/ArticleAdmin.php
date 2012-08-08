@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -64,27 +64,81 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$form = new Object_Form_Article($this -> view);
+		$form = new Object_Form_AddArticle($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$stmt = $this -> articleObj -> getAdapter() -> prepare('UPDATE object_article SET `order`=`order`+1 WHERE `order` >= ?');
-			$stmt -> execute(array($_POST['optional']['order']));
+			$objectInfoData = array();
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$objectData = array('title' => $_POST[$language_id]['title'], 'author_id' => $this -> userId, 'published' => $_POST[$language_id]['published'], 'approved' => $_POST[$language_id]['approved'], 'locale_id' => $language_id, );
 
-			$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this->fc->settings->locale->default->current->id, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
-			$lastInsertId = $this -> objectObj -> insert($objectData);
+					$objectArticleData = array('alias' => $_POST[$language_id]['alias'], 'intro_text' => $_POST[$language_id]['intro_text'], 'full_text' => $_POST[$language_id]['full_text'], 'author_id' => $this -> userId, );
+					$locale_id = $language_id;
 
-			if ($lastInsertId !== false) {
-				$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-				$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
-				if ($lastInsertIdInfo !== false) {
-					$objectArticleData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'full_text' => $_POST['mandatory']['full_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
-					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
+					continue;
 
-					header('Location: /admin/handle/pkg/object-article/action/list/');
-					exit();
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$objectData['guid_url'] = $_POST['optional_' . $locale_id]['guid_url'];
+					$objectData['original_author'] = $_POST['optional_' . $locale_id]['original_author'];
+					$objectData['parent_id'] = $_POST['optional_' . $locale_id]['parent_id'];
+					$objectData['show_in_list'] = $_POST['optional_' . $locale_id]['show_in_list'];
+					$objectData['created_date'] = $_POST['optional_' . $locale_id]['created_date'];
+					$objectData['object_source_id'] = $_POST['optional_' . $locale_id]['object_source_id'];
+					$objectData['object_type_id'] = $_POST['optional_' . $locale_id]['object_type_id'];
+					$objectData['category_id'] = $_POST['optional_' . $locale_id]['category_id'];
+					$objectData['tags'] = $_POST['optional_' . $locale_id]['tags'];
+
+					$objectInfoData['options'] = json_encode($_POST['optional_' . $locale_id]['options']);
+					$objectInfoData['comments'] = $_POST['optional_' . $locale_id]['comments'];
+
+					$objectArticleData['show_in_object'] = $_POST['optional_' . $locale_id]['show_in_object'];
+					$objectArticleData['order'] = $_POST['optional_' . $locale_id]['order'];
+					$objectArticleData['publish_from'] = $_POST['optional_' . $locale_id]['publish_from'];
+					$objectArticleData['publish_to'] = $_POST['optional_' . $locale_id]['publish_to'];
+
+					continue;
+
+				} else if ($language_id == 'meta_' . $locale_id) {
+					$objectData['page_title'] = $_POST['meta_' . $locale_id]['page_title'];
+					$objectData['meta_title'] = $_POST['meta_' . $locale_id]['meta_title'];
+					$objectData['meta_key'] = $_POST['meta_' . $locale_id]['meta_key'];
+					$objectData['meta_desc'] = $_POST['meta_' . $locale_id]['meta_desc'];
+					$objectData['meta_data'] = $_POST['meta_' . $locale_id]['meta_data'];
 				}
+				
+				$stmt = $this -> articleObj -> getAdapter() -> prepare('UPDATE object_article SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($objectArticleData['order']));
+
+				if ($flag === true) {
+
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $lastInsertObjectId);
+					$this -> objectObj -> update(array('hash_key' => $hash_key), '`id` = ' . $lastInsertObjectId);
+					
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectArticleData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
+					$flag = false;
+				
+				} else {
+
+					$objectData['hash_key'] = $hash_key;
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectArticleData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
+				}
+				
 			}
+			header('Location: /admin/handle/pkg/object-article/action/list/');
+			exit();
 		}
 		$this -> view -> form = $form;
 		$this -> view -> render('object/addArticle.phtml');
@@ -239,7 +293,7 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 	public function listAction() {
 		$this -> view -> arrayToObject($this -> view -> sanitized);
 		$this -> view -> sanitized -> actionURI -> value = '/admin/handle/pkg/object-article/action/';
-		
+
 		if ($_GET['success'] == 'approve') {
 			$this -> view -> successMessage = $this -> view -> __('Records successfully Approved');
 			$this -> view -> successMessageStyle = 'display: block;';
