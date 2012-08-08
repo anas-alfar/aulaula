@@ -162,7 +162,7 @@ class Object_Form_Photo extends Zend_Dojo_Form
 				'file', 
 				'photo', 
 				array(
-					'required'	=> true,
+					//'required'	=> true,
 			    	'label'         => $this -> view -> __ ( 'Object_Upload' ),
 			    	'validators'    => array(
 			        	//array('Count', false, array('min'=>1, 'max'=>3)),

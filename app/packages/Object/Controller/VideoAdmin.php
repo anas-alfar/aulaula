@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -97,52 +97,117 @@ class Object_Controller_VideoAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$form = new Object_Form_Video($this -> view);
+		$form = new Object_Form_AddVideo($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$uploadPhotoObj = new Aula_Model_Upload_Photo('filePhoto');
-			$uploadVideoObj = new Aula_Model_Upload_Video('fileVideo');
 
-			if ($uploadVideoObj -> CheckIfThereIsFile() === TRUE && $uploadPhotoObj -> CheckIfThereIsFile() === TRUE) {
-				if ($uploadVideoObj -> validatedMime() && $uploadPhotoObj -> validatedMime()) {
-					if ($uploadVideoObj -> validatedSize() && $uploadPhotoObj -> validatedSize()) {
+			$objectInfoData = array();
+			$flag = true;
 
-						$stmt = $this -> videoObj -> getAdapter() -> prepare('UPDATE object_video SET `order`=`order`+1 WHERE `order` >= ?');
-						$stmt -> execute(array($_POST['optional']['order']));
+			if (array_key_exists('MAX_FILE_SIZE', $_POST)) {
+				unset($_POST['MAX_FILE_SIZE']);
+			}
 
-						$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this->fc->settings->locale->default->current->id, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
-						$lastInsertId = $this -> objectObj -> insert($objectData);
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$objectData = array('title' => $_POST[$language_id]['title'], 'author_id' => $this -> userId, 'published' => $_POST[$language_id]['published'], 'approved' => $_POST[$language_id]['approved'], 'locale_id' => $language_id, );
 
-						$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-						$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
+					$uploadPhotoObj = new Aula_Model_Upload_Photo('filePhoto_' . $language_id);
+					$uploadVideoObj = new Aula_Model_Upload_Video('fileVideo_' . $language_id);
 
-						$objectVideoData = array('alias' => $_POST['mandatory']['alias'], 'intro_text' => $_POST['mandatory']['intro_text'], 'author_id' => $this -> userId, 'object_id' => $lastInsertId, 'size' => 'NULL', 'width' => 'NULL', 'height' => 'NULL', 'extension' => 'NULL', 'taken_date' => $_POST['mandatory']['taken_date'], 'taken_location' => $_POST['mandatory']['taken_location'], 'show_in_object' => $_POST['optional']['show_in_object'], 'order' => $_POST['optional']['order'], 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], );
-						$lastInsertIdVideo = $this -> videoObj -> insert($objectVideoData);
-
-						if (is_numeric($lastInsertIdVideo)) {
-							$videoData = array('size' => $uploadVideoObj -> size, 'width' => $uploadVideoObj -> width, 'height' => $uploadVideoObj -> height, 'extension' => $uploadVideoObj -> extension, );
-							$this -> videoObj -> update($videoData, '`id` = ' . $lastInsertIdVideo);
-
-							$uploadVideoObj -> newFileName = parent::$encryptedDisk['video']['flv'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.flv';
-							$uploadVideoObj -> uploadFile($uploadVideoObj -> newFileName);
-
-							$uploadPhotoObj -> newFileName = parent::$encryptedDisk['video']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.jpg';
-							$uploadPhotoObj -> uploadFile($uploadPhotoObj -> newFileName);
-
-							$thumbUploaded = $uploadPhotoObj -> resizeUploadImage($uploadVideoObj -> width, $uploadVideoObj -> height, parent::$encryptedDisk['video']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
-
-						} else {
-							$this -> errorMessage['save'] = $this -> view -> __('Error happens try again later');
-						}
-					} else {
-						$this -> errorMessage['file'] = $this -> view -> __('Invalid File Size');
+					if ($uploadVideoObj -> CheckIfThereIsFile() === FALSE && $uploadPhotoObj -> CheckIfThereIsFile() === FALSE) {
+						$this -> errorMessage['filePhoto_' . $language_id] = $this -> view -> __('No File Uploaded');
+						$this -> errorMessage['fileVideo_' . $language_id] = $this -> view -> __('No File Uploaded');
+						exit ;
 					}
-				} else {
-					$this -> errorMessage['file'] = $this -> view -> __('Invalid File Type');
+					if (!$uploadVideoObj -> validatedMime() OR !$uploadPhotoObj -> validatedMime()) {
+						$this -> errorMessage['fileVideo_' . $language_id] = $this -> view -> __('Invalid File Type');
+						exit ;
+					}
+					if (!$uploadVideoObj -> validatedSize() OR !$uploadPhotoObj -> validatedSize()) {
+						$this -> errorMessage['fileVideo_' . $language_id] = $this -> view -> __('Invalid File Size');
+						exit ;
+					}
+
+					$objectVideoData = array('alias' => $_POST[$language_id]['alias'], 'intro_text' => $_POST[$language_id]['intro_text'], 'author_id' => $this -> userId, 'taken_date' => $_POST[$language_id]['taken_date'], 'taken_location' => $_POST[$language_id]['taken_location'], );
+					$locale_id = $language_id;
+
+					continue;
+
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$objectData['guid_url'] = $_POST['optional_' . $locale_id]['guid_url'];
+					$objectData['original_author'] = $_POST['optional_' . $locale_id]['original_author'];
+					$objectData['parent_id'] = $_POST['optional_' . $locale_id]['parent_id'];
+					$objectData['show_in_list'] = $_POST['optional_' . $locale_id]['show_in_list'];
+					$objectData['created_date'] = $_POST['optional_' . $locale_id]['created_date'];
+					$objectData['object_source_id'] = $_POST['optional_' . $locale_id]['object_source_id'];
+					$objectData['object_type_id'] = $_POST['optional_' . $locale_id]['object_type_id'];
+					$objectData['category_id'] = $_POST['optional_' . $locale_id]['category_id'];
+					$objectData['tags'] = $_POST['optional_' . $locale_id]['tags'];
+
+					$objectInfoData['options'] = json_encode($_POST['optional_' . $locale_id]['options']);
+					$objectInfoData['comments'] = $_POST['optional_' . $locale_id]['comments'];
+
+					$objectVideoData['size'] = 'NULL';
+					$objectVideoData['width'] = 'NULL';
+					$objectVideoData['height'] = 'NULL';
+					$objectVideoData['extension'] = 'NULL';
+					$objectVideoData['show_in_object'] = $_POST['optional_' . $locale_id]['show_in_object'];
+					$objectVideoData['order'] = $_POST['optional_' . $locale_id]['order'];
+					$objectVideoData['publish_from'] = $_POST['optional_' . $locale_id]['publish_from'];
+					$objectVideoData['publish_to'] = $_POST['optional_' . $locale_id]['publish_to'];
+
+					continue;
+
+				} else if ($language_id == 'meta_' . $locale_id) {
+					$objectData['page_title'] = $_POST['meta_' . $locale_id]['page_title'];
+					$objectData['meta_title'] = $_POST['meta_' . $locale_id]['meta_title'];
+					$objectData['meta_key'] = $_POST['meta_' . $locale_id]['meta_key'];
+					$objectData['meta_desc'] = $_POST['meta_' . $locale_id]['meta_desc'];
+					$objectData['meta_data'] = $_POST['meta_' . $locale_id]['meta_data'];
 				}
-			} else {
-				$this -> errorMessage['file'] = $this -> view -> __('No File Uploaded');
+
+				$stmt = $this -> videoObj -> getAdapter() -> prepare('UPDATE object_photo SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($objectVideoData['order']));
+
+				if ($flag === true) {
+
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $lastInsertObjectId);
+					$this -> objectObj -> update(array('hash_key' => $hash_key), '`id` = ' . $lastInsertObjectId);
+
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectVideoData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdVideo = $this -> videoObj -> insert($objectVideoData);
+					$flag = false;
+
+				} else {
+
+					$objectData['hash_key'] = $hash_key;
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectVideoData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdVideo = $this -> videoObj -> insert($objectVideoData);
+				}
+
+				if (is_numeric($lastInsertIdVideo)) {
+					$videoData = array('size' => $uploadVideoObj -> size, 'width' => $uploadVideoObj -> width, 'height' => $uploadVideoObj -> height, 'extension' => $uploadVideoObj -> extension, );
+					$this -> videoObj -> update($videoData, '`id` = ' . $lastInsertIdVideo);
+
+					$uploadVideoObj -> newFileName = parent::$encryptedDisk['video']['flv'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.flv';
+					$uploadVideoObj -> uploadFile($uploadVideoObj -> newFileName);
+
+					$uploadPhotoObj -> newFileName = parent::$encryptedDisk['video']['original'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdVideo) . '.jpg';
+					$uploadPhotoObj -> uploadFile($uploadPhotoObj -> newFileName);
+
+					$thumbUploaded = $uploadPhotoObj -> resizeUploadImage($uploadVideoObj -> width, $uploadVideoObj -> height, parent::$encryptedDisk['video']['thumb'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate]);
+				}
 			}
 
 			header('Location: /admin/handle/pkg/object-video/action/list/');

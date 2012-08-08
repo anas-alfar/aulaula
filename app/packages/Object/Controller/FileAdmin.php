@@ -43,7 +43,7 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 		$this -> objectInfoObj = new Object_Model_Info();
 		$this -> fileObj = new Object_Model_File();
 
-		$this -> uploadObj = new Aula_Model_Upload('uploadFile');
+		//$this -> uploadObj = new Aula_Model_Upload('uploadFile');
 
 		$this -> defualtAdminAction = 'list';
 		$this -> view -> sanitized = $_POST;
@@ -101,21 +101,161 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$form = new Object_Form_File($this -> view);
-		$form -> setView($this -> view);
+		$form = new Object_Form_AddFile($this -> view);
+		$form -> setView($this -> view); 
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
+			
+			//print_r($_POST);
+			//print_r($_FILES);
+			//exit;
+			
+			
+			$objectInfoData = array();
+			$flag = true;
+			
+			if (array_key_exists('MAX_FILE_SIZE', $_POST)) {
+    			unset($_POST['MAX_FILE_SIZE']);
+			}
+			
+			foreach ($_POST as $language_id => $value) {
+				if (is_numeric($language_id)) {
+					$objectData = array('title' => $_POST[$language_id]['title'], 'author_id' => $this -> userId, 'published' => $_POST[$language_id]['published'], 'approved' => $_POST[$language_id]['approved'], 'locale_id' => $language_id, );
+
+					$this -> uploadObj = new Aula_Model_Upload('uploadFile_' . $language_id);
+
+					if ( ! $this -> uploadObj -> validatedMime()) {
+						$this -> errorMessage['uploadFile_' . $language_id] = $this -> view -> __('Invalid File Type');
+						exit;
+					}
+					
+					if ( ! $this -> uploadObj -> validatedSize()) {
+						$this -> errorMessage['uploadFile_' . $language_id] = $this -> view -> __('Invalid File Size');
+						exit;
+					}
+
+					$objectFileData = array(
+					'name' => $_POST[$language_id]['name'], 
+					'label' => $_POST[$language_id]['label'], 
+					'description' => $_POST[$language_id]['description'], 
+					'object_directory_id' => $_POST[$language_id]['object_directory_id'], 
+					'full_path' => $_POST[$language_id]['full_path'], 
+					'author_id' => $_POST[$language_id]['author_id'], 
+					);
+					
+					$locale_id = $language_id;
+
+					continue;
+
+				} else if ($language_id == 'optional_' . $locale_id) {
+					$objectData['guid_url'] = $_POST['optional_' . $locale_id]['guid_url'];
+					$objectData['original_author'] = $_POST['optional_' . $locale_id]['original_author'];
+					$objectData['parent_id'] = $_POST['optional_' . $locale_id]['parent_id'];
+					$objectData['show_in_list'] = $_POST['optional_' . $locale_id]['show_in_list'];
+					$objectData['created_date'] = $_POST['optional_' . $locale_id]['created_date'];
+					$objectData['object_source_id'] = $_POST['optional_' . $locale_id]['object_source_id'];
+					$objectData['object_type_id'] = $_POST['optional_' . $locale_id]['object_type_id'];
+					$objectData['category_id'] = $_POST['optional_' . $locale_id]['category_id'];
+					$objectData['tags'] = $_POST['optional_' . $locale_id]['tags'];
+
+					$objectInfoData['options'] = json_encode($_POST['optional_' . $locale_id]['options']);
+					$objectInfoData['comments'] = $_POST['optional_' . $locale_id]['comments'];
+
+					$objectFileData['show_in_object'] = $_POST['optional_' . $locale_id]['show_in_object'];
+
+					continue;
+
+				} else if ($language_id == 'meta_' . $locale_id) {
+					$objectData['page_title'] = $_POST['meta_' . $locale_id]['page_title'];
+					$objectData['meta_title'] = $_POST['meta_' . $locale_id]['meta_title'];
+					$objectData['meta_key']   = $_POST['meta_' . $locale_id]['meta_key'];
+					$objectData['meta_desc']  = $_POST['meta_' . $locale_id]['meta_desc'];
+					$objectData['meta_data']  = $_POST['meta_' . $locale_id]['meta_data'];
+				}
+
+				if ($flag === true) {
+
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $lastInsertObjectId);
+					$this -> objectObj -> update(array('hash_key' => $hash_key), '`id` = ' . $lastInsertObjectId);
+
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectFileData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdFile = $this -> fileObj -> insert($objectFileData);
+					$flag = false;
+
+				} else {
+
+					$objectData['hash_key'] = $hash_key;
+					$lastInsertObjectId = $this -> objectObj -> insert($objectData);
+
+					$objectInfoData['object_id'] = $lastInsertObjectId;
+					$this -> objectInfoObj -> insert($objectInfoData);
+
+					$objectFileData['object_id'] = $lastInsertObjectId;
+					$lastInsertIdFile = $this -> fileObj -> insert($objectFileData);
+				}
+				
+				
+				if ($lastInsertIdFile !== false) {
+					$this -> uploadObj -> newFileName = parent::$encryptedDisk['file'][$this -> fc -> settings -> date_time -> _dateTodayVeryShortDate] . md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdFile) . $this -> uploadObj -> extension;
+					$fileUploaded = $this -> uploadObj -> uploadFile($this -> uploadObj -> newFileName);
+
+					if (true === $fileUploaded) {
+						$relativePath = explode('data' . DIRECTORY_SEPARATOR, $this -> uploadObj -> newFileName);
+						$objecdInfoData = array('mime_type' => $this -> uploadObj -> mime, 'size' => $this -> uploadObj -> size, 'extension' => $this -> uploadObj -> extension, 'full_path' => $relativePath[1], );
+						$this -> fileObj -> update($objecdInfoData, '`id` = ' . $lastInsertIdFile);
+					}
+					
+				}
+				
+				
+			}
+			header('Location: /admin/handle/pkg/object-file/action/list/');
+			exit();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			if ($this -> uploadObj -> validatedMime()) {
 				if ($this -> uploadObj -> validatedSize()) {
-					$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this->fc->settings->locale->default->current->id, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
-					$lastInsertId = $this -> objectObj -> insert($objectData);
+					//$objectData = array('title' => $_POST['mandatory']['title'], 'created_date' => $_POST['optional']['created_date'], 'author_id' => $this -> userId, 'object_source_id' => $_POST['optional']['object_source_id'], 'tags' => $_POST['optional']['tags'], 'page_title' => $_POST['meta']['page_title'], 'meta_title' => $_POST['meta']['meta_title'], 'meta_key' => $_POST['meta']['meta_key'], 'meta_desc' => $_POST['meta']['meta_desc'], 'meta_data' => $_POST['meta']['meta_data'], 'object_type_id' => $_POST['optional']['object_type_id'], 'category_id' => $_POST['optional']['category_id'], 'locale_id' => $this->fc->settings->locale->default->current->id, 'guid_url' => $_POST['optional']['guid_url'], 'original_author' => $_POST['optional']['original_author'], 'parent_id' => $_POST['optional']['parent_id'], 'show_in_list' => $_POST['optional']['show_in_list'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
+					//$lastInsertId = $this -> objectObj -> insert($objectData);
 
 					if ($lastInsertId !== false) {
-						$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
-						$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
+						//$objecdInfoData = array('object_id' => $lastInsertId, 'options' => json_encode($_POST['optional']['options']), 'comments' => $_POST['optional']['comments'], );
+						//$lastInsertIdInfo = $this -> objectInfoObj -> insert($objecdInfoData);
 
 						if ($lastInsertIdInfo !== false) {
-							$objectFileData = array('name' => $_POST['mandatory']['name'], 'label' => $_POST['mandatory']['label'], 'description' => $_POST['mandatory']['description'], 'object_directory_id' => $_POST['mandatory']['object_directory_id'], 'full_path' => $_POST['mandatory']['full_path'], 'author_id' => $_POST['mandatory']['author_id'], 'show_in_object' => $_POST['optional']['show_in_object'], 'object_id' => $lastInsertId, );
+							$objectFileData = array(
+							//'name' => $_POST['mandatory']['name'], 
+							//'label' => $_POST['mandatory']['label'], 
+							//'description' => $_POST['mandatory']['description'], 
+							//'object_directory_id' => $_POST['mandatory']['object_directory_id'], 
+							//'full_path' => $_POST['mandatory']['full_path'], 
+							//'author_id' => $_POST['mandatory']['author_id'], 
+							'show_in_object' => $_POST['optional']['show_in_object'], 
+							'object_id' => $lastInsertId, );
 							$lastInsertIdFile = $this -> fileObj -> insert($objectFileData);
 
 							if ($lastInsertIdFile !== false) {
@@ -138,6 +278,11 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 			} else {
 				$this -> errorMessage['uploadFile'] = $this -> view -> __('Invalid File Type');
 			}
+			
+			
+			
+			
+			
 		}
 		$this -> view -> form = $form;
 		$this -> view -> render('object/addFile.phtml');

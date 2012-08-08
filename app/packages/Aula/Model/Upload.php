@@ -49,7 +49,7 @@ class Aula_Model_Upload extends Aula_Model_Default {
 			$this->htmlFileObj = $htmlFileObj;
 		}
 		if (isset ( $_FILES [$this->htmlFileObj] ) and ! empty ( $_FILES [$this->htmlFileObj] ['name'] )) {
-			$this->allowedTypes = array ('text/plain', 'application/pdf', 'application/zip', 'application/x-rar-compressed', 'application/octet-stream', 'application/vnd.ms-excel' );
+			$this->allowedTypes = array ('text/plain', 'application/pdf', 'application/zip', 'application/x-rar-compressed', 'application/octet-stream', 'application/vnd.ms-excel', 'application/msword' );
 			$this->mime = $_FILES [$this->htmlFileObj] ['type'];
 			$this->size = $_FILES [$this->htmlFileObj] ['size'];
 			$this->extension = strstr ( basename ( $_FILES [$this->htmlFileObj] ['name'] ), '.' );

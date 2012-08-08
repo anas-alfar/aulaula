@@ -204,7 +204,7 @@ class Object_Form_File extends Zend_Dojo_Form
 				'file', 
 				'uploadFile', 
 				array(
-					'required'	=> true,
+					//'required'	=> true,
 			    	'label'         => $this -> view -> __ ( 'Object_Upload' ),
 			    	'validators'    => array(
 			    		array('ExcludeExtension', false, array('php', 'exe', 'case' => true)),

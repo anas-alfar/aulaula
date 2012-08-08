@@ -61,8 +61,8 @@ class Object_Model_Default extends Aula_Model_DbTable {
 	private $object_article;
 
 	public function __construct() {
-		$this -> cols = $this -> _cols = array('id', 'title', 'created_date', 'author_id', 'source_id', 'tags', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'type_id', 'category_id', 'locale_id', 'guid_url', 'original_author', 'parent_id', 'show_in_list', 'published', 'approved', 'date_added');
-		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `created_date`, `author_id`, `source_id`, `tags`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `type_id`, `category_id`, `locale_id`, `guid_url`, `original_author`, `parent_id`, `show_in_list`, `published`, `approved`, `date_added` ';
+		$this -> cols = $this -> _cols = array('id', 'title', 'created_date', 'author_id', 'source_id', 'hash_key', 'tags', 'page_title', 'meta_title', 'meta_key', 'meta_desc', 'meta_data', 'type_id', 'category_id', 'locale_id', 'guid_url', 'original_author', 'parent_id', 'show_in_list', 'published', 'approved', 'date_added');
+		$this -> _selectColumnsList = ' SQL_CALC_FOUND_ROWS `id`, `title`, `created_date`, `author_id`, `source_id`, `hash_key`, `tags`, `page_title`, `meta_title`, `meta_key`, `meta_desc`, `meta_data`, `type_id`, `category_id`, `locale_id`, `guid_url`, `original_author`, `parent_id`, `show_in_list`, `published`, `approved`, `date_added` ';
 
 		$this -> object_info = $this -> _name . '_info';
 		$this -> object_file = $this -> _name . '_file';

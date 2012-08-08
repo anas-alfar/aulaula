@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -58,24 +58,57 @@ class Object_Controller_SourceAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$form = new Object_Form_Source($this -> view);
+		$form = new Object_Form_AddSource($this -> view);
 		$form -> setView($this -> view);
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
-			$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
-			$stmt -> execute(array($_POST['optional']['order']));
 
-			$_POST['mandatory']['locale_id'] = $this->fc->settings->locale->default->current->id;
-			$_POST['mandatory']['author_id'] = $this -> userId;
+			$objectSourceInfoData = array();
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
 
-			$lastInsertId = $this -> sourceObj -> insert($_POST['mandatory']);
-			if ($lastInsertId !== false) {
-				$_POST['optional']['object_source_id'] = $lastInsertId;
-				$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
-				$this -> sourceInfoObj -> insert($_POST['optional']);
-				header('Location: /admin/handle/pkg/object-source/action/list');
-				exit();
+				if (is_numeric($language_id)) {
+
+					$objectSourceData = array('name' => $_POST[$language_id]['name'], 'description' => $_POST[$language_id]['description'], 'source_type' => $_POST[$language_id]['source_type'], 'url' => $_POST[$language_id]['url'], 'order' => $_POST[$language_id]['order'], 'time_delay' => $_POST[$language_id]['time_delay'], 'published' => $_POST[$language_id]['published'], 'approved' => $_POST[$language_id]['approved'], 'author_id' => $this -> userId, 'locale_id' => $language_id, );
+
+					$locale_id = $language_id;
+
+					continue;
+
+				} else if ($language_id == 'optional_' . $locale_id) {
+
+					$objectSourceInfoData['publish_from'] = $_POST['optional_' . $locale_id]['publish_from'];
+					$objectSourceInfoData['publish_to'] = $_POST['optional_' . $locale_id]['publish_to'];
+					$objectSourceInfoData['options'] = json_encode($_POST['optional_' . $locale_id]['options']);
+					$objectSourceInfoData['comments'] = $_POST['optional_' . $locale_id]['comments'];
+				}
+
+				$stmt = $this -> sourceObj -> getAdapter() -> prepare('UPDATE object_source SET `order`=`order`+1 WHERE `order` >= ?');
+				$stmt -> execute(array($objectSourceData['order']));
+
+				if ($flag === true) {
+
+					$lastInsertIdSource = $this -> sourceObj -> insert($objectSourceData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdSource);
+					$this -> sourceObj -> update(array('hash_key' => $hash_key), '`id` = ' . $lastInsertIdSource);
+
+					$objectSourceInfoData['object_source_id'] = $lastInsertIdSource;
+					$this -> sourceInfoObj -> insert($objectSourceInfoData);
+
+					$flag = false;
+
+				} else {
+
+					$objectSourceData['hash_key'] = $hash_key;
+					$lastInsertIdSource = $this -> sourceObj -> insert($objectSourceData);
+
+					$objectSourceInfoData['object_source_id'] = $lastInsertIdSource;
+					$this -> sourceInfoObj -> insert($objectSourceInfoData);
+				}
+
 			}
+			header('Location: /admin/handle/pkg/object-source/action/list/');
+			exit();
 		}
 		$this -> view -> form = $form;
 		$this -> view -> render('object/addSource.phtml');

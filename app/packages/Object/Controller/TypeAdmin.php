@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * Aulaula
  *
  * NOTICE OF LICENSE
@@ -74,18 +74,52 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 	}
 
 	public function addAction() {
-		$form = new Object_Form_Type($this -> view);
+		$form = new Object_Form_AddType($this -> view);
 		$form -> setView($this -> view);
-		 if (!empty($_POST) and $form -> isValid($_POST)) {
-		 	$_POST['mandatory']['author_id'] = $this-> userId;
-			$lastInsertId = $this -> typeObj -> insert($_POST['mandatory']);
-			if ($lastInsertId !== false) {
-				$_POST['optional']['object_type_id'] = $lastInsertId;
-				$_POST['optional']['options'] = json_encode( $_POST['optional']['options'] );
-				$this -> typeInfoObj -> insert($_POST['optional']);
-				header('Location: /admin/handle/pkg/object-type/action/list');
-				exit();
+		if (!empty($_POST) and $form -> isValid($_POST)) {
+
+			$objectTypeInfoData = array();
+			$flag = true;
+			foreach ($_POST as $language_id => $value) {
+
+				if (is_numeric($language_id)) {
+
+					$objectTypeData = array('title' => $_POST[$language_id]['title'], 'label' => $_POST[$language_id]['label'], 'description' => $_POST[$language_id]['description'], 'published' => $_POST[$language_id]['published'], 'approved' => $_POST[$language_id]['approved'], 'author_id' => $this -> userId, 'locale_id' => $language_id, );
+					$locale_id = $language_id;
+
+					continue;
+
+				} else if ($language_id == 'optional_' . $locale_id) {
+
+					$objectTypeInfoData['publish_from'] = $_POST['optional_' . $locale_id]['publish_from'];
+					$objectTypeInfoData['publish_to'] = $_POST['optional_' . $locale_id]['publish_to'];
+					$objectTypeInfoData['options'] = json_encode($_POST['optional_' . $locale_id]['options']);
+					$objectTypeInfoData['comments'] = $_POST['optional_' . $locale_id]['comments'];
+				}
+
+				if ($flag === true) {
+
+					$lastInsertIdType = $this -> typeObj -> insert($objectTypeData);
+					$hash_key = md5($this -> fc -> settings -> encryption -> hash . $lastInsertIdType);
+					$this -> typeObj -> update(array('hash_key' => $hash_key), '`id` = ' . $lastInsertIdType);
+
+					$objectTypeInfoData['object_type_id'] = $lastInsertIdType;
+					$this -> typeInfoObj -> insert($objectTypeInfoData);
+
+					$flag = false;
+
+				} else {
+
+					$objectTypeData['hash_key'] = $hash_key;
+					$lastInsertIdType = $this -> typeObj -> insert($objectTypeData);
+
+					$objectTypeInfoData['object_type_id'] = $lastInsertIdType;
+					$this -> typeInfoObj -> insert($objectTypeInfoData);
+				}
+
 			}
+			header('Location: /admin/handle/pkg/object-type/action/list/');
+			exit();
 		}
 		$this -> view -> form = $form;
 		$this -> view -> render('object/addType.phtml');
@@ -95,11 +129,11 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 	public function editAction() {
 		$form = new Object_Form_Type($this -> view);
 		$form -> setView($this -> view);
-		
-		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id']) ) {
-		 	$objectTypeId = (int) $_POST['mandatory']['id'];
-			
-			$_POST['optional']['options'] = json_encode( $_POST['optional']['options'] );
+
+		if (!empty($_POST) and $form -> isValid($_POST) and is_numeric($_POST['mandatory']['id'])) {
+			$objectTypeId = (int)$_POST['mandatory']['id'];
+
+			$_POST['optional']['options'] = json_encode($_POST['optional']['options']);
 			$dataType = array('title' => $_POST['mandatory']['title'], 'label' => $_POST['mandatory']['label'], 'description' => $_POST['mandatory']['description'], 'published' => $_POST['mandatory']['published'], 'approved' => $_POST['mandatory']['approved']);
 			$dataTypeInfo = array('modified_by' => $this -> userId, 'modified_time' => new Zend_db_Expr("Now()"), 'publish_from' => $_POST['optional']['publish_from'], 'publish_to' => $_POST['optional']['publish_to'], 'comments' => $_POST['optional']['comments'], 'options' => $_POST['optional']['options']);
 			$this -> typeObj -> update($dataType, '`id` = ' . $objectTypeId);
@@ -126,10 +160,10 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 				}
 			}
 		}
-		
+
 		$this -> view -> form = $form;
 		$this -> view -> render('object/updateType.phtml');
-		exit();		
+		exit();
 	}
 
 	public function deleteAction() {
@@ -251,10 +285,7 @@ class Object_Controller_TypeAdmin extends Aula_Controller_Action {
 		$this -> view -> objectList = $typeListResult;
 		$this -> view -> render('object/listObjectType.phtml');
 		exit();
-		
-		
-		
-		
+
 	}
 
 }
