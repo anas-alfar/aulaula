@@ -121,7 +121,7 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 					$this -> objectInfoObj -> insert($objectInfoData);
 
 					$objectArticleData['object_id'] = $lastInsertObjectId;
-					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
+					$this -> articleObj -> insert($objectArticleData);
 					$flag = false;
 				
 				} else {
@@ -133,7 +133,7 @@ class Object_Controller_ArticleAdmin extends Aula_Controller_Action {
 					$this -> objectInfoObj -> insert($objectInfoData);
 
 					$objectArticleData['object_id'] = $lastInsertObjectId;
-					$lastInsertIdPhoto = $this -> articleObj -> insert($objectArticleData);
+					$this -> articleObj -> insert($objectArticleData);
 				}
 				
 			}

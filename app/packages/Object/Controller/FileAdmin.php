@@ -106,11 +106,6 @@ class Object_Controller_FileAdmin extends Aula_Controller_Action {
 
 		if (!empty($_POST) and $form -> isValid($_POST)) {
 			
-			//print_r($_POST);
-			//print_r($_FILES);
-			//exit;
-			
-			
 			$objectInfoData = array();
 			$flag = true;
 			
